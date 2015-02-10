@@ -46,3 +46,8 @@ Current List of Applications:
 * Cython
 * NumPy
 * SciPy
+
+To be added soon
+----------------
+* Eclipse
+* Idea
