@@ -1,0 +1,87 @@
+.TH "GCLOUD COMPONENTS REPOSITORIES" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_components_repositories \- manage additional component repositories for Trusted Tester programs
+.SH "SYNOPSIS"
+.HP
+gcloud\ components\ repositories\ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+List, add, and remove component repositories for Trusted Tester programs\&. If you are not participating in a Trusted Tester program, these commands are not necessary for updating your Cloud SDK installation\&.
+.sp
+If you are participating in a Trusted Tester program, you will be instructed on the location of repositories that you should add\&. These commands allow you to manage the set of repositories you have registered\&.
+.sp
+Once you have a repository registered, the component manager will use that location to locate new Cloud SDK components that are available, or possibly different versions of existing components that can be installed\&.
+.sp
+If you want to revert to a standard version of the Cloud SDK at any time, you may remove all repositories and then run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud components update
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+to revert to a standard installation\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBadd\fR
+.RS 4
+Add a new Trusted Tester component repository\&.
+.RE
+.PP
+\fBlist\fR
+.RS 4
+List any Trusted Tester component repositories you have registered\&.
+.RE
+.PP
+\fBremove\fR
+.RS 4
+Remove a registered Trusted Test component repository\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

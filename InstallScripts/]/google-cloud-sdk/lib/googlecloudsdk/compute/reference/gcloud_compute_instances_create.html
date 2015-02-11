@@ -1,0 +1,655 @@
+<html devsite="">
+<head>
+<title>gcloud compute instances create</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute instances create - create Compute Engine virtual machine instances</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute instances create</code>&nbsp;&nbsp;&#32;<code><var>NAME</var></code>&nbsp;&nbsp;&#32;<nobr>[<code><var>NAME</var></code>&nbsp;&nbsp;&#32;…]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--boot-disk-device-name</code>&nbsp;&nbsp;&#32;<code><var>BOOT_DISK_DEVICE_NAME</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--boot-disk-size</code>&nbsp;&nbsp;&#32;<code><var>BOOT_DISK_SIZE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--boot-disk-type</code>&nbsp;&nbsp;&#32;<code><var>BOOT_DISK_TYPE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--can-ip-forward</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--description</code>&nbsp;&nbsp;&#32;<code><var>DESCRIPTION</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--disk</code>&nbsp;&nbsp;&#32;<code><var>PROPERTY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;[<code><var>PROPERTY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--image</code>&nbsp;&nbsp;&#32;<code><var>IMAGE</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>centos-6</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>centos-7</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>container-vm</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>coreos</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>debian-7</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>debian-7-backports</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>opensuse-13</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>rhel-6</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>rhel-7</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>sles-11</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>sles-12</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>ubuntu-12-04</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>ubuntu-14-04</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>ubuntu-14-10</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>windows-2008-r2</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--image-project</code>&nbsp;&nbsp;&#32;<code><var>IMAGE_PROJECT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--local-ssd</code>&nbsp;&nbsp;&#32;[<code><var>PROPERTY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--machine-type</code>&nbsp;&nbsp;&#32;<code><var>MACHINE_TYPE</var></code>;&nbsp;&nbsp;&#32;default="n1-standard-1"]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--maintenance-policy</code>&nbsp;&nbsp;&#32;<code><var>MAINTENANCE_POLICY</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--metadata</code>&nbsp;&nbsp;&#32;<code><var>KEY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;[<code><var>KEY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--metadata-from-file</code>&nbsp;&nbsp;&#32;<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code>&nbsp;&nbsp;&#32;[<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--network</code>&nbsp;&nbsp;&#32;<code><var>NETWORK</var></code>;&nbsp;&nbsp;&#32;default="default"]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--address</code>&nbsp;&nbsp;&#32;<code><var>ADDRESS</var></code>&nbsp;&nbsp;&#32;|</nobr>&#32;<nobr>&nbsp;&nbsp;<code>--no-address</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--no-boot-disk-auto-delete</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--no-restart-on-failure</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--no-scopes</code>&nbsp;&nbsp;&#32;|</nobr>&#32;<nobr>&nbsp;&nbsp;<code>--scopes</code>&nbsp;&nbsp;&#32;<code><var>SCOPE</var></code>&nbsp;&nbsp;&#32;[[<code><var>ACCOUNT</var></code>=]<code><var>SCOPE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--tags</code>&nbsp;&nbsp;&#32;<code><var>TAG</var></code>&nbsp;&nbsp;&#32;[<code><var>TAG</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--zone</code>&nbsp;&nbsp;&#32;<code><var>ZONE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>
+<code>gcloud compute instances create</code> facilitates the creation of Google Compute Engine
+virtual machines. For example, running:</dd>
+<dd><pre>$ <A href="../../compute/instances/create">gcloud compute instances create</A> example-instance-1 \
+    example-instance-2 example-instance-3 --zone us-central1-a</pre></dd>
+<dd>will create three instances called <code>example-instance-1</code>,
+<code>example-instance-2</code>, and <code>example-instance-3</code> in the
+<code><var>us-central1-a</var></code> zone.</dd>
+<dd>For more examples, refer to the <code>EXAMPLES</code> section below.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>NAME</var></code> [<code><var>NAME</var></code> …]
+</dt>
+
+<dd>
+The names of the instances to create.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--address</code> <code><var>ADDRESS</var></code>
+</dt>
+
+<dd>
+Assigns the given external address to the instance that is created.
+The address may be an IP address or the name or URI of an address
+resource. This option can only be used when creating a single instance.
+</dd>
+
+
+<dt>
+<code>--boot-disk-device-name</code> <code><var>BOOT_DISK_DEVICE_NAME</var></code>
+</dt>
+
+<dd>
+The name the guest operating system will see for the boot disk as.  This
+option can only be specified if a new boot disk is being created (as
+opposed to mounting an existing persistent disk).
+</dd>
+
+
+<dt>
+<code>--boot-disk-size</code> <code><var>BOOT_DISK_SIZE</var></code>
+</dt>
+
+<dd>
+The size of the boot disk. This option can only be specified if a new
+boot disk is being created (as opposed to mounting an existing
+persistent disk). The value must be a whole number followed by a size
+unit of <code><var>KB</var></code> for kilobyte, <code><var>MB</var></code> for megabyte, <code><var>GB</var></code> for gigabyte,
+or <code><var>TB</var></code> for terabyte. For example, <code><var>10GB</var></code> will produce a 10 gigabyte
+disk. If omitted, a default size of 200 GB is used. The minimum size a
+boot disk can have is 10 GB. Disk size must be a multiple of 1 GB.
+</dd>
+
+
+<dt>
+<code>--boot-disk-type</code> <code><var>BOOT_DISK_TYPE</var></code>
+</dt>
+
+<dd>
+The type of the boot disk. This option can only be specified if a new boot
+disk is being created (as opposed to mounting an existing persistent
+disk). To get a list of available disk types, run
+<code>$ <A href="../../compute/disk-types/list">gcloud compute disk-types list</A></code>.
+</dd>
+
+
+<dt>
+<code>--can-ip-forward</code>
+</dt>
+
+<dd>
+If provided, allows the instances to send and receive packets with non-matching destination or source IP addresses.
+</dd>
+
+
+<dt>
+<code>--description</code> <code><var>DESCRIPTION</var></code>
+</dt>
+
+<dd>
+Specifies a textual description of the instances.
+</dd>
+
+
+<dt>
+<code>--disk</code> <code><var>PROPERTY</var></code>=<code><var>VALUE</var></code> [<code><var>PROPERTY</var></code>=<code><var>VALUE</var></code> …]
+</dt>
+
+<dd>
+Attaches persistent disks to the instances. The disks
+specified must already exist.
+</dd>
+<dd><dl>
+<dt>
+<code>name</code>
+</dt>
+
+<dd>
+The disk to attach to the instances. When creating
+more than one instance and using this property, the only valid
+mode for attaching the disk is read-only (see <code>mode</code> below).
+</dd>
+
+
+<dt>
+<code>mode</code>
+</dt>
+
+<dd>
+Specifies the mode of the disk. Supported options
+are <code><var>ro</var></code> for read-only and <code><var>rw</var></code> for read-write. If
+omitted, <code><var>rw</var></code> is used as a default. It is an error for mode
+to be <code><var>rw</var></code> when creating more than one instance because
+read-write disks can only be attached to a single instance.
+</dd>
+
+
+<dt>
+<code>boot</code>
+</dt>
+
+<dd>
+If <code><var>yes</var></code>, indicates that this is a boot disk. The
+virtual machines will use the first partition of the disk for
+their root file systems. The default value for this is <code><var>no</var></code>.
+</dd>
+
+
+<dt>
+<code>device-name</code>
+</dt>
+
+<dd>
+An optional name that indicates the disk name
+the guest operating system will see. If omitted, a device name
+of the form <code><var>persistent-disk-N</var></code> will be used.
+</dd>
+
+
+<dt>
+<code>auto-delete</code>
+</dt>
+
+<dd>
+If <code><var>yes</var></code>,  this persistent disk will be
+automatically deleted when the instance is deleted. However,
+if the disk is later detached from the instance, this option
+won’t apply. The default value for this is <code><var>no</var></code>.
+</dd>
+
+</dl></dd>
+
+
+<dt>
+<code>--image</code> <code><var>IMAGE</var></code> | <code><var>centos-6</var></code> | <code><var>centos-7</var></code> | <code><var>container-vm</var></code> | <code><var>coreos</var></code> | <code><var>debian-7</var></code> | <code><var>debian-7-backports</var></code> | <code><var>opensuse-13</var></code> | <code><var>rhel-6</var></code> | <code><var>rhel-7</var></code> | <code><var>sles-11</var></code> | <code><var>sles-12</var></code> | <code><var>ubuntu-12-04</var></code> | <code><var>ubuntu-14-04</var></code> | <code><var>ubuntu-14-10</var></code> | <code><var>windows-2008-r2</var></code>
+</dt>
+
+<dd>
+Specifies the boot image for the instances. For each
+instance, a new boot disk will be created from the given
+image. Each boot disk will have the same name as the
+instance.
+</dd>
+<dd>The value for this option can be the name of an image or an
+alias from the table below.</dd>
+<p></p>
+<dd><table>
+<tr>
+<th>Alias</th>
+<th>Project</th>
+<th>Image Name</th>
+</tr>
+<tr>
+<td>centos-6</td>
+<td>centos-cloud</td>
+<td>centos-6</td>
+</tr>
+<tr>
+<td>centos-7</td>
+<td>centos-cloud</td>
+<td>centos-7</td>
+</tr>
+<tr>
+<td>container-vm</td>
+<td>google-containers</td>
+<td>container-vm</td>
+</tr>
+<tr>
+<td>coreos</td>
+<td>coreos-cloud</td>
+<td>coreos-stable</td>
+</tr>
+<tr>
+<td>debian-7</td>
+<td>debian-cloud</td>
+<td>debian-7-wheezy</td>
+</tr>
+<tr>
+<td>debian-7-backports</td>
+<td>debian-cloud</td>
+<td>backports-debian-7-wheezy</td>
+</tr>
+<tr>
+<td>opensuse-13</td>
+<td>opensuse-cloud</td>
+<td>opensuse-13</td>
+</tr>
+<tr>
+<td>rhel-6</td>
+<td>rhel-cloud</td>
+<td>rhel-6</td>
+</tr>
+<tr>
+<td>rhel-7</td>
+<td>rhel-cloud</td>
+<td>rhel-7</td>
+</tr>
+<tr>
+<td>sles-11</td>
+<td>suse-cloud</td>
+<td>sles-11</td>
+</tr>
+<tr>
+<td>sles-12</td>
+<td>suse-cloud</td>
+<td>sles-12</td>
+</tr>
+<tr>
+<td>ubuntu-12-04</td>
+<td>ubuntu-os-cloud</td>
+<td>ubuntu-1204-precise</td>
+</tr>
+<tr>
+<td>ubuntu-14-04</td>
+<td>ubuntu-os-cloud</td>
+<td>ubuntu-1404-trusty</td>
+</tr>
+<tr>
+<td>ubuntu-14-10</td>
+<td>ubuntu-os-cloud</td>
+<td>ubuntu-1410-utopic</td>
+</tr>
+<tr>
+<td>windows-2008-r2</td>
+<td>windows-cloud</td>
+<td>windows-server-2008-r2</td>
+</tr>
+</table></dd>
+<dd>When the value is an alias, this tool will query the public
+image project that contains the image type to find the
+latest image matching the alias. The user’s project is also
+queried for an image with the same name as the alias. If a
+conflict exists, the user will be prompted to resolve the
+conflict.</dd>
+<dd>To specify an image in another project for which there is no
+alias, use <code><var>--image-project</var></code>. When <code><var>--image-project</var></code> is
+present, no API calls are made to resolve the image. This
+property is useful for scripts.</dd>
+<dd>When using this option, <code><var>--boot-disk-device-name</var></code> and
+<code><var>--boot-disk-size</var></code> can be used to override the boot disk’s
+device name and size, respectively.</dd>
+<dd>By default, <code><var>debian-7-backports</var></code> is assumed for this flag.</dd>
+
+
+<dt>
+<code>--image-project</code> <code><var>IMAGE_PROJECT</var></code>
+</dt>
+
+<dd>
+The project against which all image references will be
+resolved. See <code><var>--image</var></code> for more details.
+</dd>
+
+
+<dt>
+<code>--local-ssd</code> [<code><var>PROPERTY</var></code>=<code><var>VALUE</var></code> …]
+</dt>
+
+<dd>
+Attaches a local SSD to the instances.
+</dd>
+<dd>This flag is currently in BETA and may change without notice.</dd>
+<dd><dl>
+<dt>
+<code>device-name</code>
+</dt>
+
+<dd>
+Optional. A name that indicates the disk name
+the guest operating system will see.  If omitted, a device name
+of the form <code><var>local-ssd-N</var></code> will be used.
+</dd>
+
+
+<dt>
+<code>interface</code>
+</dt>
+
+<dd>
+Optional. The kind of disk interface exposed to the VM
+for this SSD.  Valid values are <code><var>SCSI</var></code> and <code><var>NVME</var></code>.  SCSI is
+the default and is supported by more guest operating systems.  NVME
+may provide higher performance.
+</dd>
+
+</dl></dd>
+
+
+<dt>
+<code>--machine-type</code> <code><var>MACHINE_TYPE</var></code>; default="n1-standard-1"
+</dt>
+
+<dd>
+Specifies the machine type used for the instances. To get a
+list of available machine types, run <code>gcloud compute
+machine-types list</code>.
+</dd>
+
+
+<dt>
+<code>--maintenance-policy</code> <code><var>MAINTENANCE_POLICY</var></code>
+</dt>
+
+<dd>
+Specifies the behavior of the instances when their host machines
+undergo maintenance. <code><var>TERMINATE</var></code> indicates that the instances
+should be terminated. <code><var>MIGRATE</var></code> indicates that the instances
+should be migrated to a new host. Choosing <code><var>MIGRATE</var></code> will
+temporarily impact the performance of instances during a
+migration event. If omitted, <code><var>MIGRATE</var></code> is assumed.
+</dd>
+
+
+<dt>
+<code>--metadata</code> <code><var>KEY</var></code>=<code><var>VALUE</var></code> [<code><var>KEY</var></code>=<code><var>VALUE</var></code> …]
+</dt>
+
+<dd>
+Metadata to be made available to the guest operating system
+running on the instances. Each metadata entry is a key/value
+pair separated by an equals sign. Metadata keys must be unique
+and less than 128 bytes in length. Values must be less than or
+equal to 32,768 bytes in length. Multiple arguments can be
+passed to this flag, e.g., <code>_--metadata key-1=value-1
+key-2=value-2 key-3=value-3_</code>.
+</dd>
+<dd>In images that have
+<a href="https://developers.google.com/compute/docs/building-image">Compute
+Engine tools installed</a> on them, the following metadata keys
+have special meanings:</dd>
+<dd><dl>
+<dt>
+<code>startup-script</code>
+</dt>
+
+<dd>
+Specifies a script that will be executed
+by the instances once they start running. For convenience,
+<code><var>--metadata-from-file</var></code> can be used to pull the value from a
+file.
+</dd>
+
+
+<dt>
+<code>startup-script-url</code>
+</dt>
+
+<dd>
+Same as <code><var>startup-script</var></code> except that
+the script contents are pulled from a publicly-accessible
+location on the web.
+</dd>
+
+</dl></dd>
+
+
+<dt>
+<code>--metadata-from-file</code> <code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code> [<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code> …]
+</dt>
+
+<dd>
+Same as <code><var>--metadata</var></code> except that the value for the entry will
+be read from a local file. This is useful for values that are
+too large such as <code><var>startup-script</var></code> contents.
+</dd>
+
+
+<dt>
+<code>--network</code> <code><var>NETWORK</var></code>; default="default"
+</dt>
+
+<dd>
+Specifies the network that the instances will be part of. If
+omitted, the <code><var>default</var></code> network is used.
+</dd>
+
+
+<dt>
+<code>--no-address</code>
+</dt>
+
+<dd>
+If provided, the instances will not be assigned external IP addresses.
+</dd>
+
+
+<dt>
+<code>--no-boot-disk-auto-delete</code>
+</dt>
+
+<dd>
+If provided, boot disks will not be automatically deleted when their instances are deleted.
+</dd>
+
+
+<dt>
+<code>--no-restart-on-failure</code>
+</dt>
+
+<dd>
+If provided, the instances will not be restarted if they are
+terminated by Compute Engine. By default, failed instances will be
+restarted. This does not affect terminations performed by the user.
+</dd>
+
+
+<dt>
+<code>--no-scopes</code>
+</dt>
+
+<dd>
+If provided, the default scopes (<a href="https://www.googleapis.com/auth/devstorage.read_only">https://www.googleapis.com/auth/devstorage.read_only</a>) are not added to the instances.
+</dd>
+
+
+<dt>
+<code>--scopes</code> <code><var>SCOPE</var></code> [[<code><var>ACCOUNT</var></code>=]<code><var>SCOPE</var></code> …]
+</dt>
+
+<dd>
+Specifies service accounts and scopes for the
+instances. Service accounts generate access tokens that can be
+accessed through the instance metadata server and used to
+authenticate applications on the instance. The account can be
+either an email address or an alias corresponding to a
+service account. If account is omitted, the project’s default
+service account is used. The default service account can be
+specified explicitly by using the alias <code><var>default</var></code>. Example:
+</dd>
+<dd><pre>$ <A href="../../compute/instances/create/example-instance">gcloud compute instances create example-instance</A> --scopes compute-rw \
+    me@project.gserviceaccount.com=storage-rw</pre></dd>
+<dd>If this flag is not provided, the <code><var>storage-ro</var></code> scope is
+added to the instances. To create instances with no scopes,
+use <code><var>--no-scopes</var></code>:</dd>
+<dd><pre>$ <A href="../../compute/instances/create/example-instance">gcloud compute instances create example-instance</A> --no-scopes</pre></dd>
+<dd>SCOPE can be either the full URI of the scope or an
+alias. Available aliases are:</dd>
+<p></p>
+<dd><table>
+<tr>
+<th>Alias</th>
+<th>URI</th>
+</tr>
+<tr>
+<td>bigquery</td>
+<td>https://www.googleapis.com/auth/bigquery</td>
+</tr>
+<tr>
+<td>compute-ro</td>
+<td>https://www.googleapis.com/auth/compute.readonly</td>
+</tr>
+<tr>
+<td>compute-rw</td>
+<td>https://www.googleapis.com/auth/compute</td>
+</tr>
+<tr>
+<td>datastore</td>
+<td>https://www.googleapis.com/auth/datastore</td>
+</tr>
+<tr>
+<td>sql</td>
+<td>https://www.googleapis.com/auth/sqlservice</td>
+</tr>
+<tr>
+<td>sql-admin</td>
+<td>https://www.googleapis.com/auth/sqlservice.admin</td>
+</tr>
+<tr>
+<td>storage-full</td>
+<td>https://www.googleapis.com/auth/devstorage.full_control</td>
+</tr>
+<tr>
+<td>storage-ro</td>
+<td>https://www.googleapis.com/auth/devstorage.read_only</td>
+</tr>
+<tr>
+<td>storage-rw</td>
+<td>https://www.googleapis.com/auth/devstorage.read_write</td>
+</tr>
+<tr>
+<td>taskqueue</td>
+<td>https://www.googleapis.com/auth/taskqueue</td>
+</tr>
+<tr>
+<td>userinfo-email</td>
+<td>https://www.googleapis.com/auth/userinfo.email</td>
+</tr>
+</table></dd>
+
+
+<dt>
+<code>--tags</code> <code><var>TAG</var></code> [<code><var>TAG</var></code> …]
+</dt>
+
+<dd>
+Specifies a list of tags to apply to the instances for
+identifying the instances to which network firewall rules will
+apply. See <code><a href="../../compute/firewall-rules/create">gcloud compute firewall-rules create</a></code>(1) for more
+details.
+</dd>
+
+
+<dt>
+<code>--zone</code> <code><var>ZONE</var></code>
+</dt>
+
+<dd>
+The zone of the instances to create. If not specified, you will be prompted to select a zone.
+</dd>
+<dd>To avoid prompting when this flag is omitted, you can set the
+<code><var>compute/zone</var></code> property:</dd>
+<dd><pre>$ <A href="../../config/set">gcloud config set</A> compute/zone ZONE</pre></dd>
+<dd>A list of zones can fetched by running:</dd>
+<dd><pre>$ <A href="../../compute/zones/list">gcloud compute zones list</A></pre></dd>
+<dd>To unset the property, run:</dd>
+<dd><pre>$ <A href="../../config/unset">gcloud config unset</A> compute/zone</pre></dd>
+<dd>Alternatively, the zone can be stored in the environment variable
+<code><var>CLOUDSDK_COMPUTE_ZONE</var></code>.</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>EXAMPLES</dt>
+<dd>To create an instance with the latest <code>_Red Hat Enterprise Linux
+6_</code> image available, run:</dd>
+<dd><pre>$ <A href="../../compute/instances/create/example-instance">gcloud compute instances create example-instance</A> --image rhel-6 \
+    --zone us-central1-a</pre></dd>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

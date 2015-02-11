@@ -1,0 +1,102 @@
+NAME
+
+      gcloud compute instances delete - delete Google Compute Engine virtual
+         machine instances
+
+SYNOPSIS
+
+      gcloud compute instances delete NAME [NAME ...]
+         [--delete-disks {boot,data,all} | --keep-disks {boot,data,all}]
+         [--format FORMAT] [--help] [--project PROJECT_ID] [--quiet, -q]
+         [--trace-token TRACE_TOKEN] [--zone ZONE] [-h]
+
+DESCRIPTION
+
+      gcloud compute instances delete deletes one or more Google Compute Engine
+      virtual machine instances.
+
+POSITIONAL ARGUMENTS
+
+      NAME [NAME ...]
+
+         The names of the instances to delete.
+
+FLAGS
+
+      --delete-disks {boot,data,all}
+
+         The types of disks to delete with instance deletion regardless of the
+         disks' auto-delete configuration. When this flag is provided, the
+         auto-delete bits on the attached disks are modified accordingly before
+         the instance deletion requests are issued. For more information on disk
+         auto-deletion, see
+         https://developers.google.com/compute/docs/disks#updateautodelete.
+
+      --keep-disks {boot,data,all}
+
+         The types of disks to not delete with instance deletion regardless of
+         the disks' auto-delete configuration. When this flag is provided, the
+         auto-delete bits on the attached disks are modified accordingly before
+         the instance deletion requests are issued. For more information on disk
+         auto-deletion, see
+         https://developers.google.com/compute/docs/disks#updateautodelete.
+
+      --zone ZONE
+
+         The zone of the instances to delete. If not specified, you will be
+         prompted to select a zone.
+
+         To avoid prompting when this flag is omitted, you can set the
+         compute/zone property:
+
+           $ gcloud config set compute/zone ZONE
+
+         A list of zones can fetched by running:
+
+           $ gcloud compute zones list
+
+         To unset the property, run:
+
+           $ gcloud config unset compute/zone
+
+         Alternatively, the zone can be stored in the environment variable
+         CLOUDSDK_COMPUTE_ZONE.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

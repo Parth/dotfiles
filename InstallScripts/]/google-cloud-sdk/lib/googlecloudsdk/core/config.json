@@ -1,0 +1,11 @@
+{
+  "version": "0.9.46",
+  "user_agent": "Cloud SDK Command Line Tool",
+  "documentation_url": "https://developers.google.com/cloud/sdk/",
+  "snapshot_url": "https://dl.google.com/dl/cloudsdk/release/components-2.json",
+  "disable_updater": false,
+  "disable_usage_reporting": false,
+  "snapshot_schema_version": 3,
+  "release_channel": "stable",
+  "config_suffix": ""
+}

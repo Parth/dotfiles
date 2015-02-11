@@ -1,0 +1,117 @@
+NAME
+
+      gcloud compute http-health-checks create - create an HTTP health check to
+         monitor load balanced instances
+
+SYNOPSIS
+
+      gcloud compute http-health-checks create NAME
+         [--check-interval CHECK_INTERVAL; default="5s"]
+         [--description DESCRIPTION] [--format FORMAT]
+         [--healthy-threshold HEALTHY_THRESHOLD; default="2"] [--help]
+         [--host HOST] [--port PORT; default="80"] [--project PROJECT_ID]
+         [--quiet, -q] [--request-path REQUEST_PATH; default="/"]
+         [--timeout TIMEOUT; default="5s"] [--trace-token TRACE_TOKEN]
+         [--unhealthy-threshold UNHEALTHY_THRESHOLD; default="2"] [-h]
+
+DESCRIPTION
+
+      gcloud compute http-health-checks create is used to create an HTTP health
+      check. HTTP health checks monitor instances in a load balancer controlled
+      by a target pool. All arguments to the command are optional except for the
+      name of the health check. For more information on load balancing, see
+      https://developers.google.com/compute/docs/load-balancing/.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the HTTP health check.
+
+FLAGS
+
+      --check-interval CHECK_INTERVAL; default="5s"
+
+         How often to perform a health check for an instance. For example,
+         specifying 10s will run the check every 10 seconds. Valid units for
+         this flag are s for seconds, m for minutes, and h for hours. The
+         default value is 5s.
+
+      --description DESCRIPTION
+
+         An optional, textual description for the HTTP health check.
+
+      --healthy-threshold HEALTHY_THRESHOLD; default="2"
+
+         The number of consecutive successful health checks before an unhealthy
+         instance is marked as healthy. The default is 2.
+
+      --host HOST
+
+         The value of the host header used in this HTTP health check request. By
+         default, this is empty and Google Compute Engine automatically sets the
+         host header in health requests to the same external IP address as the
+         forwarding rule associated with the target pool.
+
+      --port PORT; default="80"
+
+         The TCP port number that this health check monitors. The default value
+         is 80.
+
+      --request-path REQUEST_PATH; default="/"
+
+         The request path that this health check monitors. For example,
+         /healthcheck. The default value is /.
+
+      --timeout TIMEOUT; default="5s"
+
+         If Google Compute Engine doesn't receive an HTTP 200 response from the
+         instance by the time specified by the value of this flag, the health
+         check request is considered a failure. For example, specifying 10s will
+         cause the check to wait for 10 seconds before considering the request a
+         failure. Valid units for this flag are s for seconds, m for minutes,
+         and h for hours. The default value is 5s.
+
+      --unhealthy-threshold UNHEALTHY_THRESHOLD; default="2"
+
+         The number of consecutive health check failures before a healthy
+         instance is marked as unhealthy. The default is 2.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

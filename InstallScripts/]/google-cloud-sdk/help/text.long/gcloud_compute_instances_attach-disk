@@ -1,0 +1,104 @@
+NAME
+
+      gcloud compute instances attach-disk - attach a disk to an instance
+
+SYNOPSIS
+
+      gcloud compute instances attach-disk INSTANCE [--device-name DEVICE_NAME]
+         --disk DISK [--format FORMAT] [--help] [--mode MODE; default="rw"]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN]
+         [--zone ZONE] [-h]
+
+DESCRIPTION
+
+      gcloud compute instances attach-disk is used to attach a disk to an
+      instance. For example,
+
+        $ gcloud compute instances attach-disk example-instance --disk DISK \
+            --zone us-central1-a
+
+      attaches the disk named 'DISK' to the instance named 'example-instance' in
+      zone us-central1-a.
+
+POSITIONAL ARGUMENTS
+
+      INSTANCE
+
+         The name of the instance to attach the disk to.
+
+FLAGS
+
+      --device-name DEVICE_NAME
+
+         An optional name that indicates the disk name the guest operating
+         system will see.
+
+      --disk DISK
+
+         The name of the disk to attach to the instance.
+
+      --mode MODE; default="rw"
+
+         Specifies the mode of the disk. Supported options are ro for read-only
+         and rw for read-write. If omitted, rw is used as a default. It is an
+         error to attach a disk in read-write mode to more than one instance.
+
+      --zone ZONE
+
+         The zone of the instance to attach a disk to. If not specified, you
+         will be prompted to select a zone.
+
+         To avoid prompting when this flag is omitted, you can set the
+         compute/zone property:
+
+           $ gcloud config set compute/zone ZONE
+
+         A list of zones can fetched by running:
+
+           $ gcloud compute zones list
+
+         To unset the property, run:
+
+           $ gcloud config unset compute/zone
+
+         Alternatively, the zone can be stored in the environment variable
+         CLOUDSDK_COMPUTE_ZONE.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

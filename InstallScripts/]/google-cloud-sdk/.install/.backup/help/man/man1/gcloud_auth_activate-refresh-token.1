@@ -1,0 +1,62 @@
+.TH "GCLOUD AUTH ACTIVATE-REFRESH-TOKEN" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_auth_activate-refresh-token \- get credentials via an existing refresh token
+.SH "SYNOPSIS"
+.HP
+gcloud\ auth\ activate\-refresh\-token\ \fIACCOUNT\fR [\fITOKEN\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Use an oauth2 refresh token to manufacture credentials for Google APIs\&. This token must have been acquired via some legitimate means to work\&. The account provided is only used locally to help the Cloud SDK keep track of the new credentials, so you can activate, list, and revoke the credentials in the future\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIACCOUNT\fR
+.RS 4
+The account to associate with the refresh token\&.
+.RE
+.PP
+[\fITOKEN\fR]
+.RS 4
+OAuth2 refresh token\&. If blank, prompt for value\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

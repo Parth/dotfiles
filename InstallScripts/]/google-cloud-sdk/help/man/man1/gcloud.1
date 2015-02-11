@@ -1,0 +1,127 @@
+.TH "GCLOUD " "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud \- manage Google Cloud Platform resources and developer workflow
+.SH "SYNOPSIS"
+.HP
+gcloud\ \fIGROUP\fR\ | \ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-\-user\-output\-enabled\fR\ \fIUSER_OUTPUT_ENABLED\fR] [\fB\-\-verbosity\fR\ \fIVERBOSITY\fR] [\fB\-h\fR] [\fB\-v\fR,\ \fB\-\-version\fR]
+.SH "DESCRIPTION"
+.sp
+The \fBgcloud\fR CLI manages authentication, local configuration, developer workflow, and interactions with the Google Cloud Platform APIs\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-\-user\-output\-enabled\fR \fIUSER_OUTPUT_ENABLED\fR
+.RS 4
+Control whether user intended output is printed to the console\&. (true/false)
+.RE
+.PP
+\fB\-\-verbosity\fR \fIVERBOSITY\fR
+.RS 4
+Override the default verbosity for this command\&. This must be a standard logging verbosity level: [debug, info, warning, error, critical, none] (Default: [warning])\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.PP
+\fB\-v\fR, \fB\-\-version\fR
+.RS 4
+Print version information\&.
+.RE
+.SH "GROUPS"
+.sp
+\fIGROUP\fR is one of the following:
+.PP
+\fBauth\fR
+.RS 4
+Manage oauth2 credentials for the Google Cloud SDK\&.
+.RE
+.PP
+\fBcomponents\fR
+.RS 4
+List, install, update, or remove Google Cloud SDK components or packages\&.
+.RE
+.PP
+\fBcompute\fR
+.RS 4
+Read and manipulate Google Compute Engine resources\&.
+.RE
+.PP
+\fBconfig\fR
+.RS 4
+View and edit Google Cloud SDK properties\&.
+.RE
+.PP
+\fBdns\fR
+.RS 4
+Manage Cloud DNS\&.
+.RE
+.PP
+\fBpreview\fR
+.RS 4
+Manage Preview CLI command groups\&.
+.RE
+.PP
+\fBsql\fR
+.RS 4
+Manage Cloud SQL databases\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBhelp\fR
+.RS 4
+Prints detailed help messages for the specified commands\&.
+.RE
+.PP
+\fBinfo\fR
+.RS 4
+Display information about the current gcloud environment\&.
+.RE
+.PP
+\fBinit\fR
+.RS 4
+Create and initialize a gcloud workspace in the current directory\&.
+.RE
+.PP
+\fBversion\fR
+.RS 4
+Print version information for Cloud SDK components\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

@@ -1,0 +1,142 @@
+.TH "GCLOUD COMPUTE TARGET-POOLS SET-BACKUP" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_target-pools_set-backup \- set a backup pool for a target pool
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ target\-pools\ set\-backup\ \fINAME\fR\ \fB\-\-backup\-pool\fR [\fIBACKUP_POOL\fR] [\fB\-\-failover\-ratio\fR\ \fIFAILOVER_RATIO\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-region\fR\ \fIREGION\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute target\-pools set\-backup\fR is used to set a backup target pool for a primary target pool, which defines the fallback behavior of the primary pool\&. If the ratio of the healthy instances in the primary pool is at or below the specified _\-\-failover\-ratio value_, then traffic arriving at the load\-balanced IP address will be directed to the backup pool\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the target pool for which to set the backup pool\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-backup\-pool\fR [\fIBACKUP_POOL\fR]
+.RS 4
+Name of the target pool that will serve as backup\&. If this flag is provided without a value, the existing backup pool is removed\&.
+.RE
+.PP
+\fB\-\-failover\-ratio\fR \fIFAILOVER_RATIO\fR
+.RS 4
+The new failover ratio value for the target pool\&. This must be a float in the range of [0, 1]\&.
+.RE
+.PP
+\fB\-\-region\fR \fIREGION\fR
+.RS 4
+The region of the target pool to set a backup pool for\&. If not specified, you will be prompted to select a region\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the
+\fIcompute/region\fR
+property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config set compute/region REGION
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of regions can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute regions list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config unset compute/region
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the region can be stored in the environment variable
+\fICLOUDSDK_COMPUTE_REGION\fR\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To cause \fITARGET\-POOL\fR (in region \fIus\-central1\fR) to fail over to \fIBACKUP\-POOL\fR when more than half of the \fITARGET\-POOL\fR instances are unhealthy, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute target\-pools set\-backup TARGET\-POOL \e
+    \-\-backup\-pool BACKUP\-POOL \-\-failover\-ratio 0\&.5 \e
+    \-\-region us\-central1
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To remove \fIBACKUP\-POOL\fR as a backup to \fITARGET\-POOL\fR, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute target\-pools set\-backup TARGET\-POOL \-\-backup\-pool \e
+    \-\-region us\-central1
+.fi
+.if n \{\
+.RE
+.\}
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

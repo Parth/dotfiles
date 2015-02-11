@@ -1,0 +1,83 @@
+NAME
+
+      gcloud components update - update or install one or more Cloud SDK
+         components or packages
+
+SYNOPSIS
+
+      gcloud components update [COMPONENT-IDS ...] [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Ensure that the latest version of each specified component, and the latest
+      version of all components upon which the specified components directly or
+      indirectly depend, is installed on the local workstation. If the command
+      includes one or more names of components or packages, the specified
+      components are the named components and the components contained in the
+      named packages; if the command does not name any components or packages,
+      the specified components are all installed components.
+
+      The items may be individual components or preconfigured packages. If a
+      downloaded component was not previously installed, the downloaded version
+      is installed. If an earlier version of the component was previously
+      installed, that version is replaced by the downloaded version.
+
+      If, for example, the component UNICORN-FACTORY depends on the component
+      HORN-FACTORY, installing the latest version of UNICORN-FACTORY will cause
+      the version of HORN-FACTORY upon which it depends to be installed as well,
+      if it is not already installed. The command lists all components it is
+      about to install, and asks for confirmation before proceeding.
+
+POSITIONAL ARGUMENTS
+
+      [COMPONENT-IDS ...]
+
+         The IDs of the components to be updated or installed.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      The following command ensures that the latest version is installed for
+      COMPONENT-1, COMPONENT-2, and all components that depend, directly or
+      indirectly, on either COMPONENT-1 or COMPONENT-2:
+
+        $ gcloud components update COMPONENT-1 COMPONENT-2
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

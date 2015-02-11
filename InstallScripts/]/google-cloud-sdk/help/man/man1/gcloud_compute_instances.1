@@ -1,0 +1,144 @@
+.TH "GCLOUD COMPUTE INSTANCES" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_instances \- read and manipulate Google Compute Engine virtual machine instances
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ instances\ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Read and manipulate Google Compute Engine virtual machine instances\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBadd\-access\-config\fR
+.RS 4
+Add access configs to Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBadd\-metadata\fR
+.RS 4
+Add or update instance metadata\&.
+.RE
+.PP
+\fBadd\-tags\fR
+.RS 4
+Add tags to Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBattach\-disk\fR
+.RS 4
+Attaches a disk to an instance\&.
+.RE
+.PP
+\fBcreate\fR
+.RS 4
+Create Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBdelete\fR
+.RS 4
+Delete Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBdelete\-access\-config\fR
+.RS 4
+Delete access configs from Google Compute Engine virtual machines\&.
+.RE
+.PP
+\fBdescribe\fR
+.RS 4
+Describe a virtual machine instance\&.
+.RE
+.PP
+\fBdetach\-disk\fR
+.RS 4
+Detach disks from Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBget\-serial\-port\-output\fR
+.RS 4
+Read output from a virtual machine instance\(cqs serial port\&.
+.RE
+.PP
+\fBlist\fR
+.RS 4
+List Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBremove\-metadata\fR
+.RS 4
+Remove instance metadata\&.
+.RE
+.PP
+\fBremove\-tags\fR
+.RS 4
+Remove tags from Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBreset\fR
+.RS 4
+Reset a virtual machine instance\&.
+.RE
+.PP
+\fBset\-disk\-auto\-delete\fR
+.RS 4
+Set auto\-delete behavior for disks\&.
+.RE
+.PP
+\fBset\-scheduling\fR
+.RS 4
+Set scheduling options for Google Compute Engine virtual machine instances\&.
+.RE
+.PP
+\fBstart\fR
+.RS 4
+Start a virtual machine instance\&.
+.RE
+.PP
+\fBstop\fR
+.RS 4
+Stop a virtual machine instance\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

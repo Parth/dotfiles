@@ -1,0 +1,93 @@
+.TH "GCLOUD COMPUTE ADDRESSES DESCRIBE" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_addresses_describe \- display detailed information about an address
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ addresses\ describe\ \fINAME\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-global\fR\ | \ \fB\-\-region\fR\ \fIREGION\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute addresses describe\fR displays all data associated with an address in a project\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the resource to fetch\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-global\fR
+.RS 4
+If provided, it is assumed that the requested resource is global\&.
+.RE
+.PP
+\fB\-\-region\fR \fIREGION\fR
+.RS 4
+The region of the resource to fetch\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To get details about a global address, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute addresses describe ADDRESS \-\-global
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To get details about a regional address, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute addresses describe ADDRESS \-\-region us\-central1
+.fi
+.if n \{\
+.RE
+.\}
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

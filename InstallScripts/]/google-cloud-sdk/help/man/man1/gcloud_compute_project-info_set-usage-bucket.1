@@ -1,0 +1,99 @@
+.TH "GCLOUD COMPUTE PROJECT-INFO SET-USAGE-BUCKET" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_project-info_set-usage-bucket \- set the usage reporting bucket for a project
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ project\-info\ set\-usage\-bucket\ \fB\-\-bucket\fR [\fIBUCKET\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-prefix\fR\ \fIPREFIX\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute project\-info set\-usage\-bucket\fR is used to configure usage reporting for projects\&.
+.sp
+Setting usage reporting will cause a log of usage per resource to be written to a specified Google Cloud Storage bucket daily\&. For example,
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute project\-info set\-usage\-bucket \-\-bucket gs://my\-bucket
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+will cause logs of the form usage_gce_YYYYMMDD\&.csv to be written daily to the bucket \fImy\-bucket\fR\&. To disable this feature, issue the command:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute project\-info set\-usage\-bucket \-\-bucket
+.fi
+.if n \{\
+.RE
+.\}
+.SH "FLAGS"
+.PP
+\fB\-\-bucket\fR [\fIBUCKET\fR]
+.RS 4
+The URI of a Google Cloud Storage bucket where the usage report object should be stored\&. The Google Service Account for performing usage reporting is granted write access to this bucket\&. The user running this command must be an owner of the bucket\&.
+.sp
+To clear the usage bucket, specify this flag without an argument:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute project\-info set\-usage\-bucket \-\-bucket
+.fi
+.if n \{\
+.RE
+.\}
+.RE
+.PP
+\fB\-\-prefix\fR \fIPREFIX\fR
+.RS 4
+An optional prefix for the name of the usage report object stored in the bucket\&. If not supplied, then this defaults to
+\fIusage\fR\&. The report is stored as a CSV file named PREFIX_gce_YYYYMMDD\&.csv where YYYYMMDD is the day of the usage according to Pacific Time\&. The prefix should conform to Google Cloud Storage object naming conventions\&. This flag must not be provided when clearing the usage bucket\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

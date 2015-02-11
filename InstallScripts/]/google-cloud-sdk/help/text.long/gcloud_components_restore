@@ -1,0 +1,58 @@
+NAME
+
+      gcloud components restore - restore the Cloud SDK installation to its
+         previous state
+
+SYNOPSIS
+
+      gcloud components restore [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      This is an undo operation, which restores the Cloud SDK installation on
+      the local workstation to the state it was in just before the most recent
+      gcloud components update or gcloud components remove command. Only the
+      state before the most recent such state is remembered, so it is impossible
+      to restore the state that existed before the two most recent update
+      commands, for example. A restore command does not undo a previous restore
+      command.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

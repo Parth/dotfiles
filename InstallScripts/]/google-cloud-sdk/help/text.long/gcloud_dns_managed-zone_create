@@ -1,0 +1,86 @@
+NAME
+
+      gcloud dns managed-zone create - create a new Cloud DNS managed zone
+
+SYNOPSIS
+
+      gcloud dns managed-zone create ZONE [--api_version API_VERSION]
+         --description DESCRIPTION --dns_name DNS_NAME [--format FORMAT]
+         [--help] [--http_timeout HTTP_TIMEOUT] [--log_http LOG_HTTP]
+         [--project PROJECT_ID] [--quiet, -q] [] [] [--trace-token TRACE_TOKEN |
+          --trace_token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Create a new Cloud DNS managed zone.
+
+POSITIONAL ARGUMENTS
+
+      ZONE
+
+         Managed Zone name.
+
+FLAGS
+
+      --description DESCRIPTION
+
+         Human readable description of this zone. Optional.
+
+      --dns_name DNS_NAME
+
+         A domain name spec, for example "foo.bar.com.".
+
+GLOBAL FLAGS
+
+      --api_version API_VERSION
+
+         API version. Optional.
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --http_timeout HTTP_TIMEOUT
+
+         Timeout for HTTP network requests
+
+      --log_http LOG_HTTP
+
+         If true, log http requests.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      --trace_token TRACE_TOKEN
+
+         Token for tracing API requests
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK dns component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,175 @@
+NAME
+
+      gcloud compute disks create - create Google Compute Engine persistent
+         disks
+
+SYNOPSIS
+
+      gcloud compute disks create NAME [NAME ...] [--description DESCRIPTION]
+         [--format FORMAT] [--help] [--image IMAGE |
+          --source-snapshot SOURCE_SNAPSHOT] [--image-project IMAGE_PROJECT]
+         [--project PROJECT_ID] [--quiet, -q] [--size SIZE]
+         [--trace-token TRACE_TOKEN] [--type TYPE] [--zone ZONE] [-h]
+
+DESCRIPTION
+
+      gcloud compute disks create creates one or more Google Compute Engine
+      persistent disks. When creating virtual machine instances, disks can be
+      attached to the instances through the 'gcloud compute instances create'
+      command. Disks can also be attached to instances that are already running
+      using 'gloud compute instances attach-disk'.
+
+      Disks are zonal resources, so they reside in a particular zone for their
+      entire lifetime. The contents of a disk can be moved to a different zone
+      by snapshotting the disk (using 'gcloud compute disks snapshot') and
+      creating a new disk using --source-snapshot in the desired zone. The
+      contents of a disk can also be moved across project or zone by creating an
+      image (using 'gcloud compute images create') and creating a new disk using
+      --image in the desired project and/or zone.
+
+      When creating disks, be sure to include the --zone option:
+
+        $ gcloud compute disks create my-disk-1 my-disk-2 --zone us-east1-a
+
+POSITIONAL ARGUMENTS
+
+      NAME [NAME ...]
+
+         The names of the disks to create.
+
+FLAGS
+
+      --description DESCRIPTION
+
+         An optional, textual description for the disks being created.
+
+      --image IMAGE
+
+         An image to apply to the disks being created. When using this option,
+         the size of the disks must be at least as large as the image size. Use
+         --size to adjust the size of the disks.
+
+         The value for this option can be the name of an image or an alias from
+         the table below.
+
+           Alias               Project             Image Name
+           centos-6            centos-cloud        centos-6
+           centos-7            centos-cloud        centos-7
+           container-vm        google-containers   container-vm
+           coreos              coreos-cloud        coreos-stable
+           debian-7            debian-cloud        debian-7-wheezy
+           debian-7-backports  debian-cloud        backports-debian-7-wheezy
+           opensuse-13         opensuse-cloud      opensuse-13
+           rhel-6              rhel-cloud          rhel-6
+           rhel-7              rhel-cloud          rhel-7
+           sles-11             suse-cloud          sles-11
+           sles-12             suse-cloud          sles-12
+           ubuntu-12-04        ubuntu-os-cloud     ubuntu-1204-precise
+           ubuntu-14-04        ubuntu-os-cloud     ubuntu-1404-trusty
+           ubuntu-14-10        ubuntu-os-cloud     ubuntu-1410-utopic
+           windows-2008-r2     windows-cloud       windows-server-2008-r2
+
+         When the value is an alias, this tool will query the public image
+         project that contains the image type to find the latest image matching
+         the alias. The user's project is also queried for an image with the
+         same name as the alias. If a conflict exists, the user will be prompted
+         to resolve the conflict.
+
+         To specify an image in another project for which there is no alias, use
+         --image-project. When --image-project is present, no API calls are made
+         to resolve the image. This property is useful for scripts.
+
+         This flag is mutually exclusive with --source-snapshot.
+
+      --image-project IMAGE_PROJECT
+
+         The project against which all image references will be resolved. See
+         --image for more details.
+
+      --size SIZE
+
+         Indicates the size of the disks. The value must be a whole number
+         followed by a size unit of KB for kilobyte, MB for megabyte, GB for
+         gigabyte, or TB for terabyte. For example, 10GB will produce 10
+         gigabyte disks. If omitted, a default size of 500 GB is used for
+         standard disks and 200GB for SSD disks. The minimum size a disk can
+         have is 1 GB. Disk size must be a multiple of 10 GB.
+
+      --source-snapshot SOURCE_SNAPSHOT
+
+         A source snapshot used to create the disks. It is safe to delete a
+         snapshot after a disk has been created from the snapshot. In such
+         cases, the disks will no longer reference the deleted snapshot. To get
+         a list of snapshots in your current project, run gcloud compute
+         snapshots list. A snapshot from an existing disk can be created using
+         the 'gcloud compute disks snapshot' command. This flag is mutually
+         exclusive with --image.
+
+         When using this option, the size of the disks must be at least as large
+         as the snapshot size. Use --size to adjust the size of the disks.
+
+      --type TYPE
+
+         Specifies the type of disk to create. To get a list of available disk
+         types, run 'gcloud compute disk-types list'. The default disk type is
+         pd-standard.
+
+      --zone ZONE
+
+         The zone of the disks to create. If not specified, you will be prompted
+         to select a zone.
+
+         To avoid prompting when this flag is omitted, you can set the
+         compute/zone property:
+
+           $ gcloud config set compute/zone ZONE
+
+         A list of zones can fetched by running:
+
+           $ gcloud compute zones list
+
+         To unset the property, run:
+
+           $ gcloud config unset compute/zone
+
+         Alternatively, the zone can be stored in the environment variable
+         CLOUDSDK_COMPUTE_ZONE.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

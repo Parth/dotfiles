@@ -1,0 +1,139 @@
+.TH "GCLOUD COMPUTE INSTANCES ADD-METADATA" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_instances_add-metadata \- add or update instance metadata
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ instances\ add\-metadata\ \fINAME\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-metadata\fR\ \fIKEY\fR=\fIVALUE\fR [\fIKEY\fR=\fIVALUE\fR\ \&...]] [\fB\-\-metadata\-from\-file\fR\ \fIKEY\fR=\fILOCAL_FILE_PATH\fR [\fIKEY\fR=\fILOCAL_FILE_PATH\fR\ \&...]] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-\-zone\fR\ \fIZONE\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+gcloud compute instances add\-metadata can be used to add or update the metadata of a virtual machine instance\&. Every instance has access to a metadata server that can be used to query metadata that has been set through this tool\&. For information on metadata, see https://developers\&.google\&.com/compute/docs/metadata\&.
+.sp
+Only metadata keys that are provided are mutated\&. Existing metadata entries will remain unaffected\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the instance whose metadata should be modified\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-metadata\fR \fIKEY\fR=\fIVALUE\fR [\fIKEY\fR=\fIVALUE\fR \&...]
+.RS 4
+Metadata to be made available to the guest operating system running on the instances\&. Each metadata entry is a key/value pair separated by an equals sign\&. Metadata keys must be unique and less than 128 bytes in length\&. Values must be less than or equal to 32,768 bytes in length\&. Multiple arguments can be passed to this flag, e\&.g\&.,
+_\-\-metadata key\-1=value\-1 key\-2=value\-2 key\-3=value\-3_\&.
+.sp
+In images that have
+Compute Engine tools installed
+on them, the following metadata keys have special meanings:
+.PP
+\fBstartup\-script\fR
+.RS 4
+Specifies a script that will be executed by the instances once they start running\&. For convenience,
+\fI\-\-metadata\-from\-file\fR
+can be used to pull the value from a file\&.
+.RE
+.PP
+\fBstartup\-script\-url\fR
+.RS 4
+Same as
+\fIstartup\-script\fR
+except that the script contents are pulled from a publicly\-accessible location on the web\&.
+.RE
+.RE
+.PP
+\fB\-\-metadata\-from\-file\fR \fIKEY\fR=\fILOCAL_FILE_PATH\fR [\fIKEY\fR=\fILOCAL_FILE_PATH\fR \&...]
+.RS 4
+Same as
+\fI\-\-metadata\fR
+except that the value for the entry will be read from a local file\&. This is useful for values that are too large such as
+\fIstartup\-script\fR
+contents\&.
+.RE
+.PP
+\fB\-\-zone\fR \fIZONE\fR
+.RS 4
+The zone of the instance to set metadata on\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the
+\fIcompute/zone\fR
+property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable
+\fICLOUDSDK_COMPUTE_ZONE\fR\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

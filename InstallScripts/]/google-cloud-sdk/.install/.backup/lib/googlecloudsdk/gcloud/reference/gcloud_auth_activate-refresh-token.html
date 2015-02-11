@@ -1,0 +1,127 @@
+<html devsite="">
+<head>
+<title>gcloud auth activate-refresh-token</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud auth activate-refresh-token - get credentials via an existing refresh token</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud auth activate-refresh-token</code>&nbsp;&nbsp;&#32;<code><var>ACCOUNT</var></code>&nbsp;&nbsp;&#32;<nobr>[<code><var>TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>Use an oauth2 refresh token to manufacture credentials for Google APIs. This
+token must have been acquired via some legitimate means to work. The account
+provided is only used locally to help the Cloud SDK keep track of the new
+credentials, so you can activate, list, and revoke the credentials in the
+future.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>ACCOUNT</var></code>
+</dt>
+
+<dd>
+The account to associate with the refresh token.
+</dd>
+
+
+<dt>
+[<code><var>TOKEN</var></code>]
+</dt>
+
+<dd>
+OAuth2 refresh token. If blank, prompt for value.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>core</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

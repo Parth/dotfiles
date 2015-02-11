@@ -1,0 +1,115 @@
+NAME
+
+      gcloud compute copy-files - copy files to and from Google Compute Engine
+         virtual machines
+
+SYNOPSIS
+
+      gcloud compute copy-files [[USER@]INSTANCE:]SRC [[[USER@]INSTANCE:]SRC
+         ...] [[USER@]INSTANCE:]DEST [--dry-run] [--format FORMAT] [--help]
+         [--plain] [--project PROJECT_ID] [--quiet, -q]
+         [--ssh-key-file SSH_KEY_FILE] [--trace-token TRACE_TOKEN] [--zone ZONE]
+         [-h]
+
+DESCRIPTION
+
+      gcloud compute copy-files copies files between a virtual machine instance
+      and your local machine.
+
+      To denote a remote file, prefix the file name with the virtual machine
+      instance name (e.g., example-instance:~/FILE). To denote a local file, do
+      not add a prefix to the file name (e.g., ~/FILE). For example, to copy a
+      remote directory to your local host, run:
+
+        $ gcloud compute copy-files example-instance:~/REMOTE-DIR ~/LOCAL-DIR \
+            --zone us-central1-a
+
+      In the above example, ~/REMOTE-DIR from example-instance is copied into
+      the ~/LOCAL-DIR directory.
+
+      Conversely, files from your local computer can be copied to a virtual
+      machine:
+
+        $ gcloud compute copy-files ~/LOCAL-FILE-1 ~/LOCAL-FILE-2 \
+            example-instance:~/REMOTE-DIR --zone us-central1-a
+
+      If a file contains a colon (:), you must specify it by either using an
+      absolute path or a path that begins with ./.
+
+      Under the covers, scp(1) is used to facilitate the transfer.
+
+      When the destination is local, all sources must be the same virtual
+      machine instance. When the destination is remote, all source must be
+      local.
+
+POSITIONAL ARGUMENTS
+
+      [[USER@]INSTANCE:]SRC [[[USER@]INSTANCE:]SRC ...]
+
+         Specifies a source file.
+
+      [[USER@]INSTANCE:]DEST
+
+         Specifies a destination for the source files.
+
+FLAGS
+
+      --dry-run
+
+         If provided, prints the command that would be run to standard out
+         instead of executing it.
+
+      --plain
+
+         Suppresses the automatic addition of ssh(1)/scp(1) flags. This flag is
+         useful if you want to take care of authentication yourself or re-enable
+         strict host checking.
+
+      --ssh-key-file SSH_KEY_FILE
+
+         The path to the SSH key file. By default, this is
+         ~/.ssh/google_compute_engine.
+
+      --zone ZONE
+
+         The zone of the instance to copy files to/from. If omitted, you will be
+         prompted to select a zone.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

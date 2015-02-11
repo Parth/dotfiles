@@ -1,0 +1,81 @@
+.TH "GCLOUD INIT" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_init \- create and initialize a gcloud workspace in the current directory
+.SH "SYNOPSIS"
+.HP
+gcloud\ init\ \fIPROJECT\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+This command is creates and initializes a local workspace for a Google Cloud Platform project\&.
+.sp
+The local workspace is indicated by the creation of a [\&.gcloud] folder\&. In this folder is a file [properties] which allows you to override any global properties you may have set via the $ gcloud config command\&.
+.sp
+When you run a Cloud SDK command\-line tool from within this new workspace, it will use the new [properties] file as the first place to load properties\&. As a result, if you use gcloud, gcutil, gsutil, or any of the other commands in google\-cloud\-sdk/bin from within the workspace, they will connect to the correct project\&.
+.sp
+If you have enabled push\-to\-deploy in the Cloud Console, one of the things that gcloud init will do for you is cloning the Google\-hosted git repository associated with PROJECT\&. This repository will automatically be connected to Google, and it will use the credentials indicated as \fIactive\fR by gcloud auth list\&. Pushing to the origin\(cqs \fImaster\fR branch will trigger an App Engine deployment using the contents of that branch\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIPROJECT\fR
+.RS 4
+The name of the Google Cloud Platform project that you want to use in a local workspace that will be created by this command\&. If this project has an associated Google\-hosted git repository, that repository will be cloned into the local workspace\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To perform a simple "Hello, world!" App Engine deployment with this command, run the following command lines with MYPROJECT replaced by a project you own and can use for this experiment\&.
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud auth login
+$ gcloud init MYPROJECT
+$ cd MYPROJECT/default
+$ git pull
+  https://github\&.com/GoogleCloudPlatform/appengine\-helloworld\-python
+$ git push origin master
+.fi
+.if n \{\
+.RE
+.\}
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

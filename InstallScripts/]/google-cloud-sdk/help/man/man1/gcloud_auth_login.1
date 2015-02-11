@@ -1,0 +1,73 @@
+.TH "GCLOUD AUTH LOGIN" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_auth_login \- get credentials for the tools in the Google Cloud SDK via a web flow
+.SH "SYNOPSIS"
+.HP
+gcloud\ auth\ login [\fIACCOUNT\fR] [\fB\-\-do\-not\-activate\fR] [\fB\-\-force\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-no\-launch\-browser\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Obtains access credentials for the Google Cloud Platform resources of the given account, via a web flow\&. If the account already has valid credentials, it is set as active without re\-running the web flow\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+[\fIACCOUNT\fR]
+.RS 4
+The account to log in as\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-do\-not\-activate\fR
+.RS 4
+Do not set the new credentials as active\&.
+.RE
+.PP
+\fB\-\-force\fR
+.RS 4
+Re\-run the web flow even if the given account has valid credentials\&.
+.RE
+.PP
+\fB\-\-no\-launch\-browser\fR
+.RS 4
+Print a URL to be copied instead of launching a web browser\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

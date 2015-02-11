@@ -1,0 +1,122 @@
+NAME
+
+      gcloud compute firewall-rules create - create a Google Compute Engine
+         firewall rule
+
+SYNOPSIS
+
+      gcloud compute firewall-rules create NAME
+         --allow PROTOCOL[:PORT[-PORT]] [PROTOCOL[:PORT[-PORT]] ...]
+         [--description DESCRIPTION] [--format FORMAT] [--help]
+         [--network NETWORK; default="default"] [--project PROJECT_ID]
+         [--quiet, -q] [--source-ranges CIDR_RANGE [CIDR_RANGE ...]]
+         [--source-tags TAG [TAG ...]] [--target-tags TAG [TAG ...]]
+         [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute firewall-rules create is used to create firewall rules to
+      allow incoming traffic to a network.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the firewall rule to create.
+
+FLAGS
+
+      --allow PROTOCOL[:PORT[-PORT]] [PROTOCOL[:PORT[-PORT]] ...]
+
+         A list of protocols and ports whose traffic will be allowed.
+
+         PROTOCOL is the IP protocol whose traffic will be allowed. PROTOCOL can
+         be either the name of a well-known protocol (e.g., tcp or icmp) or the
+         IP protocol number. A list of IP protocols can be found at
+         http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml.
+
+         A port or port range can be specified after PROTOCOL to allow traffic
+         through specific ports. If no port or port range is specified,
+         connections through all ranges are allowed. For example, the following
+         will create a rule that allows TCP traffic through port 80 and allows
+         ICMP traffic:
+
+           $ gcloud compute firewall-rules create MY-RULE --allow tcp:80 icmp
+
+         TCP and UDP rules must include a port or port range.
+
+      --description DESCRIPTION
+
+         An optional, textual description for the firewall rule.
+
+      --network NETWORK; default="default"
+
+         The network to which this rule is attached. If omitted, the rule is
+         attached to the default network.
+
+      --source-ranges CIDR_RANGE [CIDR_RANGE ...]
+
+         A list of IP address blocks that are allowed to make inbound
+         connections that match the firewall rule to the instances on the
+         network. The IP address blocks must be specified in CIDR format:
+         http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing. If neither
+         --source-ranges nor --source-tags is provided, then this flag will
+         default to 0.0.0.0/0, allowing all sources. Multiple IP address blocks
+         can be specified if they are separated by spaces.
+
+      --source-tags TAG [TAG ...]
+
+         A list of instance tags indicating the set of instances on the network
+         which may accept inbound connections that match the firewall rule. If
+         omitted, all instances on the network can receive inbound connections
+         that match the rule.
+
+         Tags can be assigned to instances during instance creation.
+
+      --target-tags TAG [TAG ...]
+
+         A list of instance tags indicating the set of instances on the network
+         which may make network connections that match the firewall rule. If
+         omitted, all instances on the network can make connections that match
+         the rule.
+
+         Tags can be assigned to instances during instance creation.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,203 @@
+<html devsite="">
+<head>
+<title>gcloud compute firewall-rules create</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute firewall-rules create - create a Google Compute Engine firewall rule</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute firewall-rules create</code>&nbsp;&nbsp;&#32;<code><var>NAME</var></code>&nbsp;&nbsp;&#32;<code>--allow</code>&nbsp;&nbsp;&#32;<code><var>PROTOCOL</var></code><nobr>[:_PORT_[-<code><var>PORT</var></code>]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code><var>PROTOCOL</var></code>[:_PORT_[-<code><var>PORT</var></code>]]&nbsp;&nbsp;&#32;…]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--description</code>&nbsp;&nbsp;&#32;<code><var>DESCRIPTION</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--network</code>&nbsp;&nbsp;&#32;<code><var>NETWORK</var></code>;&nbsp;&nbsp;&#32;default="default"]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--source-ranges</code>&nbsp;&nbsp;&#32;<code><var>CIDR_RANGE</var></code>&nbsp;&nbsp;&#32;[<code><var>CIDR_RANGE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--source-tags</code>&nbsp;&nbsp;&#32;<code><var>TAG</var></code>&nbsp;&nbsp;&#32;[<code><var>TAG</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--target-tags</code>&nbsp;&nbsp;&#32;<code><var>TAG</var></code>&nbsp;&nbsp;&#32;[<code><var>TAG</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>
+<code>gcloud compute firewall-rules create</code> is used to create firewall rules to allow incoming
+traffic to a network.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>NAME</var></code>
+</dt>
+
+<dd>
+The name of the firewall rule to create.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--allow</code> <code><var>PROTOCOL</var></code>[:_PORT_[-<code><var>PORT</var></code>]] [<code><var>PROTOCOL</var></code>[:_PORT_[-<code><var>PORT</var></code>]] …]
+</dt>
+
+<dd>
+A list of protocols and ports whose traffic will be allowed.
+</dd>
+<dd>
+<code><var>PROTOCOL</var></code> is the IP protocol whose traffic will be allowed.
+<code><var>PROTOCOL</var></code> can be either the name of a well-known protocol
+(e.g., <code><var>tcp</var></code> or <code><var>icmp</var></code>) or the IP protocol number.
+A list of IP protocols can be found at
+<a href="http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml">http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml</a>.</dd>
+<dd>A port or port range can be specified after <code><var>PROTOCOL</var></code> to
+allow traffic through specific ports. If no port or port range
+is specified, connections through all ranges are allowed. For
+example, the following will create a rule that allows TCP traffic
+through port 80 and allows ICMP traffic:</dd>
+<dd><pre>$ <A href="../../compute/firewall-rules/create">gcloud compute firewall-rules create</A> MY-RULE --allow tcp:80 icmp</pre></dd>
+<dd>TCP and UDP rules must include a port or port range.</dd>
+
+
+<dt>
+<code>--description</code> <code><var>DESCRIPTION</var></code>
+</dt>
+
+<dd>
+An optional, textual description for the firewall rule.
+</dd>
+
+
+<dt>
+<code>--network</code> <code><var>NETWORK</var></code>; default="default"
+</dt>
+
+<dd>
+The network to which this rule is attached. If omitted, the
+rule is attached to the <code><var>default</var></code> network.
+</dd>
+
+
+<dt>
+<code>--source-ranges</code> <code><var>CIDR_RANGE</var></code> [<code><var>CIDR_RANGE</var></code> …]
+</dt>
+
+<dd>
+A list of IP address blocks that are allowed to make inbound
+connections that match the firewall rule to the instances on
+the network. The IP address blocks must be specified in CIDR
+format:
+<a href="http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing">http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing</a>.
+If neither --source-ranges nor --source-tags is provided, then this
+flag will default to <code><var>0.0.0.0/0</var></code>, allowing all sources. Multiple IP
+address blocks can be specified if they are separated by spaces.
+</dd>
+
+
+<dt>
+<code>--source-tags</code> <code><var>TAG</var></code> [<code><var>TAG</var></code> …]
+</dt>
+
+<dd>
+A list of instance tags indicating the set of instances on the
+network which may accept inbound connections that match the
+firewall rule. If omitted, all instances on the network can
+receive inbound connections that match the rule.
+</dd>
+<dd>Tags can be assigned to instances during instance creation.</dd>
+
+
+<dt>
+<code>--target-tags</code> <code><var>TAG</var></code> [<code><var>TAG</var></code> …]
+</dt>
+
+<dd>
+A list of instance tags indicating the set of instances on the
+network which may make network connections that match the
+firewall rule. If omitted, all instances on the network can
+make connections that match the rule.
+</dd>
+<dd>Tags can be assigned to instances during instance creation.</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

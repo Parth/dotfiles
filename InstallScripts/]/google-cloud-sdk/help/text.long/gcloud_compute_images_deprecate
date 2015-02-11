@@ -1,0 +1,132 @@
+NAME
+
+      gcloud compute images deprecate - manage deprecation status of Google
+         Compute Engine images
+
+SYNOPSIS
+
+      gcloud compute images deprecate NAME [--delete-in DELETE_IN |
+          --delete-on DELETE_ON] [--format FORMAT] [--help]
+         [--obsolete-in OBSOLETE_IN | --obsolete-on OBSOLETE_ON]
+         [--project PROJECT_ID] [--quiet, -q] [--replacement REPLACEMENT]
+         --state STATE [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute images deprecate is used to deprecate images.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the image to set deprecation status of.
+
+FLAGS
+
+      --delete-in DELETE_IN
+
+         Specifies the amount of time until the image's status should be set to
+         DELETED. For instance, specifying 30d will set the status to DELETED in
+         30 days from the current system time. Valid units for this flag are s
+         for seconds, m for minutes, h for hours and d for days. If no unit is
+         specified, seconds is assumed.
+
+         Note that the image will not be deleted automatically. The image will
+         only be marked as deleted. An explicit request to delete the image must
+         be made in order to remove it from the image list. This flag is
+         mutually exclusive with --delete-on.
+
+      --delete-on DELETE_ON
+
+         Similar to --delete-in, but specifies an absolute time when the status
+         should be set to DELETED. The date and time specified must be a valid
+         RFC 3339 full-date or date-time. For times in UTC, this looks like
+         YYYY-MM-DDTHH:MM:SSZ. For example: 2020-01-02T00:00:00Z for midnight on
+         January 2, 2020 in UTC. This flag is mutually exclusive with
+         --delete-in.
+
+      --obsolete-in OBSOLETE_IN
+
+         Specifies time (in the same format as --delete-in) until this image's
+         status should become OBSOLETE. Obsolete images will cause an error
+         whenever an attempt is made to apply the image to a new disk. This flag
+         is mutually exclusive with --obsolete-on.
+
+      --obsolete-on OBSOLETE_ON
+
+         Specifies time (in the same format as --delete-on) when this image's
+         status should become OBSOLETE. This flag is mutually exclusive with
+         --obsolete-in.
+
+      --replacement REPLACEMENT
+
+         Specifies a Compute Engine image as a replacement for the image being
+         phased out. Users of the deprecated image will be advised to switch to
+         this replacement. For example, --replacement example-image or
+         --replacement projects/google/global/images/example-image. This flag is
+         required when setting the image state to anything other than ACTIVE or
+         when --delete-in, --delete-on, --obsolete-in, or --obsolete-on is
+         provided.
+
+      --state STATE
+
+         The deprecation state to set on the image. An image's default state is
+         ACTIVE, suggesting that the image is currently supported. Operations
+         which create a new resource using a DEPRECATED image return
+         successfully, but with a warning indicating that the image is
+         deprecated and recommending its replacement. New uses of OBSOLETE or
+         DELETED images result in an error. Note that setting the deprecation
+         state to DELETED will not automatically delete the image. You must
+         still make a request to delete the image to remove it from the image
+         list.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To deprecate an image called 'IMAGE' immediately, mark it as obsolete in
+      one day, and mark it as deleted in two days, use:
+
+        $ gcloud compute images deprecate IMAGE --status DEPRECATED \
+            --obsolete-in 1d --delete-in 2d
+
+      To un-deprecate an image called 'IMAGE', use:
+
+        $ gcloud compute images deprecate IMAGE --status ACTIVE
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,88 @@
+.TH "GCLOUD COMPONENTS" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_components \- list, install, update, or remove Google Cloud SDK components or packages
+.SH "SYNOPSIS"
+.HP
+gcloud\ components\ \fIGROUP\fR\ | \ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+List, install, update, or remove Google Cloud SDK components or packages\&.
+.sp
+Because you might need only some of the tools in the Cloud SDK to do your work, you can control which tools are installed on your workstation\&. You can install new tools on your workstation when you find that you need them, and remove tools that you no longer need\&. The gcloud command regularly checks whether updates are available for the tools you already have installed, and gives you the opportunity to upgrade to the latest version\&.
+.sp
+Tools can be installed as individual components or as preconfigured \fIpackages\fR of components that are typically all used together to perform a particular task (such as developing a PHP application on App Engine)\&.
+.sp
+Certain components \fIdepend\fR on other components\&. When you install a component that you need, all components upon which it directly or indirectly depends, and that are not already present on your workstation, are installed automatically\&. When you remove a component, all components that depend on the removed component are also removed\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "GROUPS"
+.sp
+\fIGROUP\fR is one of the following:
+.PP
+\fBrepositories\fR
+.RS 4
+Manage additional component repositories for Trusted Tester programs\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBlist\fR
+.RS 4
+List the status of all Cloud SDK components\&.
+.RE
+.PP
+\fBremove\fR
+.RS 4
+Remove one or more installed components\&.
+.RE
+.PP
+\fBrestore\fR
+.RS 4
+Restore the Cloud SDK installation to its previous state\&.
+.RE
+.PP
+\fBupdate\fR
+.RS 4
+Update or install one or more Cloud SDK components or packages\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

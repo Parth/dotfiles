@@ -1,0 +1,76 @@
+NAME
+
+      gcloud components list - list the status of all Cloud SDK components
+
+SYNOPSIS
+
+      gcloud components list [--format FORMAT] [--help] [--project PROJECT_ID]
+         [--quiet, -q] [--show-versions] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      This command lists all the tools in the Cloud SDK (both individual
+      components and preconfigured packages of components). For each component,
+      the command lists the following information:
+
+      o Status on your local workstation: not installed, installed (and
+        up to date), and update available (installed, but not up to date)
+      o Name of the component (a description)
+      o ID of the component (used to refer to the component in other
+        [gcloud components] commands)
+      o Size of the component
+
+      In addition, if the --show-versions flag is specified, the command lists
+      the currently installed version (if any) and the latest available version
+      of each individual component.
+
+FLAGS
+
+      --show-versions
+
+         Show installed and available versions of all components.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      $ gcloud components list
+
+      $ gcloud components list --show-versions
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

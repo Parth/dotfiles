@@ -1,0 +1,96 @@
+NAME
+
+      gcloud compute target-pools - read and manipulate Google Compute Engine
+         target poolsto handle network load balancing
+
+SYNOPSIS
+
+      gcloud compute target-pools COMMAND [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Read and manipulate Google Compute Engine target pools.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      add-health-checks
+
+         Add a health check to a target pool.
+
+      add-instances
+
+         Add instances to a target pool.
+
+      create
+
+         Create a target pool for network load balancing.
+
+      delete
+
+         Delete target pools.
+
+      describe
+
+         Describe a target pool.
+
+      get-health
+
+         Get the health of instances in a target pool.
+
+      list
+
+         List target pools.
+
+      remove-health-checks
+
+         Remove a health check from a target pool.
+
+      remove-instances
+
+         Remove instances from a target pool.
+
+      set-backup
+
+         Set a backup pool for a target pool.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

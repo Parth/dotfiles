@@ -1,0 +1,128 @@
+.TH "GCLOUD COMPUTE INSTANCES SET-DISK-AUTO-DELETE" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_instances_set-disk-auto-delete \- set auto\-delete behavior for disks
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ instances\ set\-disk\-auto\-delete\ \fIINSTANCE\fR [\fB\-\-auto\-delete\fR\ | \ \fB\-\-no\-auto\-delete\fR] [\fB\-\-device\-name\fR\ \fIDEVICE_NAME\fR\ | \ \fB\-\-disk\fR\ \fIDISK\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-\-zone\fR\ \fIZONE\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fB$gcloud compute instances set\-disk\-auto\-delete\fR is used to configure the auto\-delete behavior for disks attached to Google Compute Engine virtual machines\&. When auto\-delete is on, the persistent disk is deleted when the instance it is attached to is deleted\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIINSTANCE\fR
+.RS 4
+The name of the instance for which to configure disk auto\-deletion\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-auto\-delete\fR
+.RS 4
+Set auto\-delete for the given disk to true\&.
+.RE
+.PP
+\fB\-\-device\-name\fR \fIDEVICE_NAME\fR
+.RS 4
+Specifies a disk to set auto\-delete for by its device name, which is the name that the guest operating system sees\&. The device name is set at the time that the disk is attached to the instance, and need not be the same as the persistent disk name\&. If the disk\(cqs device name is specified, then its persistent disk name must not be specified using the
+\fI\-\-disk\fR
+flag\&.
+.RE
+.PP
+\fB\-\-disk\fR \fIDISK\fR
+.RS 4
+Specifies a disk to set auto\-delete for by its resource name\&. If you specify a disk to set auto\-delete for by persistent disk name, then you must not specify its device name using the
+\fI\-\-device\-name\fR
+flag\&.
+.RE
+.PP
+\fB\-\-no\-auto\-delete\fR
+.RS 4
+Set auto\-delete for the given disk to false\&.
+.RE
+.PP
+\fB\-\-zone\fR \fIZONE\fR
+.RS 4
+The zone of the instance to configure disk auto\-delete for\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the
+\fIcompute/zone\fR
+property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable
+\fICLOUDSDK_COMPUTE_ZONE\fR\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

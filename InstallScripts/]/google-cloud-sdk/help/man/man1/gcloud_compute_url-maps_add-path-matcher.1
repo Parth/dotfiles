@@ -1,0 +1,112 @@
+.TH "GCLOUD COMPUTE URL-MAPS ADD-PATH-MATCHER" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_url-maps_add-path-matcher \- add a path matcher to a URL map
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ url\-maps\ add\-path\-matcher\ \fINAME\fR\ \fB\-\-default\-service\fR\ \fIDEFAULT_SERVICE\fR [\fB\-\-delete\-orphaned\-path\-matcher\fR] [\fB\-\-description\fR\ \fIDESCRIPTION\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-existing\-host\fR\ \fIEXISTING_HOST\fR\ | \ \fB\-\-new\-hosts\fR\ \fINEW_HOST\fR [\fINEW_HOST\fR\ \&...]] \fB\-\-path\-matcher\-name\fR\ \fIPATH_MATCHER_NAME\fR [\fB\-\-path\-rules\fR\ \fIPATH\fR=\fISERVICE\fR [\fIPATH\fR=\fISERVICE\fR\ \&...]] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute url\-maps add\-path\-matcher\fR is used to add a path matcher to a URL map\&. A path matcher maps HTTP request paths to backend services\&. Each path matcher must be referenced by at least one host rule\&. This command can create a new host rule through the \fI\-\-new\-hosts\fR flag or it can reconfigure an existing host rule to point to the newly added path matcher using \fI\-\-existing\-host\fR\&. In the latter case, if a path matcher is orphaned as a result of the operation, this command will fail unless \fI\-\-delete\-orphaned\-path\-matcher\fR is provided\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the URL map\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-default\-service\fR \fIDEFAULT_SERVICE\fR
+.RS 4
+A backend service that will be used for requests that the path matcher cannot match\&.
+.RE
+.PP
+\fB\-\-delete\-orphaned\-path\-matcher\fR
+.RS 4
+If provided and a path matcher is orphaned as a result of this command, the command removes the orphaned path matcher instead of failing\&.
+.RE
+.PP
+\fB\-\-description\fR \fIDESCRIPTION\fR
+.RS 4
+An optional, textual description for the path matcher\&.
+.RE
+.PP
+\fB\-\-existing\-host\fR \fIEXISTING_HOST\fR
+.RS 4
+An existing host rule to tie the new path matcher to\&. Although host rules can contain more than one host, only a single host is needed to uniquely identify the host rule\&.
+.RE
+.PP
+\fB\-\-new\-hosts\fR \fINEW_HOST\fR [\fINEW_HOST\fR \&...]
+.RS 4
+If specified, a new host rule with the given hosts is createdand the path matcher is tied to the new host rule\&.
+.RE
+.PP
+\fB\-\-path\-matcher\-name\fR \fIPATH_MATCHER_NAME\fR
+.RS 4
+The name to assign to the path matcher\&.
+.RE
+.PP
+\fB\-\-path\-rules\fR \fIPATH\fR=\fISERVICE\fR [\fIPATH\fR=\fISERVICE\fR \&...]
+.RS 4
+Rules for mapping request paths to services\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To create a rule for mapping the paths \fI/search\fR and \fI/search/*\fR to the hypothetical \fIsearch\-service\fR and \fI/images/*\fR to the \fIimages\-service\fR under the hosts \fIgoogle\&.com\fR and \fI*\&.google\&.com\fR, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute url\-maps add\-path\-matcher MY\-URL\-MAP \e
+    \-\-path\-matcher\-name MY\-MATCHER \e
+    \-\-default\-service MY\-DEFAULT\-SERVICE \e
+    \-\-path\-rules /search=search\-service /search/*=search_service \e
+    /images/*=images\-service \-\-new\-hosts google\&.com "*\&.google\&.com"
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Note that a default service must be provided to handle paths for which there is no mapping\&.
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

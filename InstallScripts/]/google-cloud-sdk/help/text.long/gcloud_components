@@ -1,0 +1,98 @@
+NAME
+
+      gcloud components - list, install, update, or remove Google Cloud SDK
+         components or packages
+
+SYNOPSIS
+
+      gcloud components GROUP | COMMAND [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      List, install, update, or remove Google Cloud SDK components or packages.
+
+      Because you might need only some of the tools in the Cloud SDK to do your
+      work, you can control which tools are installed on your workstation. You
+      can install new tools on your workstation when you find that you need
+      them, and remove tools that you no longer need. The gcloud command
+      regularly checks whether updates are available for the tools you already
+      have installed, and gives you the opportunity to upgrade to the latest
+      version.
+
+      Tools can be installed as individual components or as preconfigured
+      packages of components that are typically all used together to perform a
+      particular task (such as developing a PHP application on App Engine).
+
+      Certain components depend on other components. When you install a
+      component that you need, all components upon which it directly or
+      indirectly depends, and that are not already present on your workstation,
+      are installed automatically. When you remove a component, all components
+      that depend on the removed component are also removed.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+GROUPS
+
+      GROUP is one of the following:
+
+      repositories
+
+         Manage additional component repositories for Trusted Tester programs.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      list
+
+         List the status of all Cloud SDK components.
+
+      remove
+
+         Remove one or more installed components.
+
+      restore
+
+         Restore the Cloud SDK installation to its previous state.
+
+      update
+
+         Update or install one or more Cloud SDK components or packages.
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,208 @@
+.TH "GCLOUD COMPUTE SSH" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_ssh \- SSH into a virtual machine instance
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ ssh\ \fIINSTANCE\fR [\fB\-\-command\fR\ \fICOMMAND\fR] [\fB\-\-container\fR\ \fICONTAINER\fR] [\fB\-\-dry\-run\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-plain\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-ssh\-flag\fR\ \fISSH_FLAG\fR] [\fB\-\-ssh\-key\-file\fR\ \fISSH_KEY_FILE\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-\-zone\fR\ \fIZONE\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute ssh\fR is a thin wrapper around the \fBssh(1)\fR command that takes care of authentication and the translation of the instance name into an IP address\&.
+.sp
+This command ensures that the user\(cqs public SSH key is present in the project\(cqs metadata\&. If the user does not have a public SSH key, one is generated using \fBssh\-keygen(1)\fR\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fIINSTANCE\fR
+.RS 4
+Specifies the instance to SSH into\&.
+.sp
+\fIUSER\fR
+specifies the username with which to SSH\&. If omitted, $USER from the environment is selected\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-command\fR \fICOMMAND\fR
+.RS 4
+A command to run on the virtual machine\&.
+.RE
+.PP
+\fB\-\-container\fR \fICONTAINER\fR
+.RS 4
+The name of a container inside of the virtual machine instance to connect to\&. This only applies to virtual machines that are using a Google container virtual machine image\&. For more information, see
+https://developers\&.google\&.com/compute/docs/containers\&.
+.RE
+.PP
+\fB\-\-dry\-run\fR
+.RS 4
+If provided, prints the command that would be run to standard out instead of executing it\&.
+.RE
+.PP
+\fB\-\-plain\fR
+.RS 4
+Suppresses the automatic addition of
+\fBssh(1)\fR/\fBscp(1)\fR
+flags\&. This flag is useful if you want to take care of authentication yourself or re\-enable strict host checking\&.
+.RE
+.PP
+\fB\-\-ssh\-flag\fR \fISSH_FLAG\fR
+.RS 4
+Additional flags to be passed to
+\fBssh(1)\fR\&. It is recommended that flags be passed using an assignment operator and quotes\&. This flag will replace occurences of
+\fI%USER%\fR
+and
+\fI%INSTANCE%\fR
+with their dereferenced values\&. Example:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute ssh example\-instance \-\-zone us\-central1\-a \e
+    \-\-ssh\-flag="\-vvv" \-\-ssh\-flag="\-L 80:%INSTANCE%:80"
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+is equivalent to passing the flags
+\fI\-\-vvv\fR
+and
+_\-L 80:162\&.222\&.181\&.197:80_
+to
+\fBssh(1)\fR
+if the external IP address of
+\fIexample\-instance\fR
+is 162\&.222\&.181\&.197\&.
+.RE
+.PP
+\fB\-\-ssh\-key\-file\fR \fISSH_KEY_FILE\fR
+.RS 4
+The path to the SSH key file\&. By default, this is
+\fI~/\&.ssh/google_compute_engine\fR\&.
+.RE
+.PP
+\fB\-\-zone\fR \fIZONE\fR
+.RS 4
+The zone of the instance to connect to\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the
+\fIcompute/zone\fR
+property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable
+\fICLOUDSDK_COMPUTE_ZONE\fR\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To SSH into \fIexample\-instance\fR in zone \fIus\-central1\-a\fR, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute ssh example\-instance \-\-zone us\-central1\-a
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+You can also run a command on the virtual machine\&. For example, to get a snapshot of the guest\(cqs process tree, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute ssh example\-instance \-\-zone us\-central1\-a \e
+    \-\-command "ps \-ejH"
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+If you are using the Google container virtual machine image, you can SSH into one of your containers with:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute ssh example\-instance \-\-zone us\-central1\-a \e
+    \-\-container CONTAINER
+.fi
+.if n \{\
+.RE
+.\}
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

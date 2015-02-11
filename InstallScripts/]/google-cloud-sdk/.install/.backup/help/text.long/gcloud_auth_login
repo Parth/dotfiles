@@ -1,0 +1,75 @@
+NAME
+
+      gcloud auth login - get credentials for the tools in the Google Cloud SDK
+         via a web flow
+
+SYNOPSIS
+
+      gcloud auth login [ACCOUNT] [--do-not-activate] [--force]
+         [--format FORMAT] [--help] [--no-launch-browser] [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Obtains access credentials for the Google Cloud Platform resources of the
+      given account, via a web flow. If the account already has valid
+      credentials, it is set as active without re-running the web flow.
+
+POSITIONAL ARGUMENTS
+
+      [ACCOUNT]
+
+         The account to log in as.
+
+FLAGS
+
+      --do-not-activate
+
+         Do not set the new credentials as active.
+
+      --force
+
+         Re-run the web flow even if the given account has valid credentials.
+
+      --no-launch-browser
+
+         Print a URL to be copied instead of launching a web browser.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

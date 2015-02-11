@@ -1,0 +1,104 @@
+.TH "GCLOUD COMPUTE TARGET-POOLS" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_target-pools \- read and manipulate Google Compute Engine target poolsto handle network load balancing
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ target\-pools\ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Read and manipulate Google Compute Engine target pools\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBadd\-health\-checks\fR
+.RS 4
+Add a health check to a target pool\&.
+.RE
+.PP
+\fBadd\-instances\fR
+.RS 4
+Add instances to a target pool\&.
+.RE
+.PP
+\fBcreate\fR
+.RS 4
+Create a target pool for network load balancing\&.
+.RE
+.PP
+\fBdelete\fR
+.RS 4
+Delete target pools\&.
+.RE
+.PP
+\fBdescribe\fR
+.RS 4
+Describe a target pool\&.
+.RE
+.PP
+\fBget\-health\fR
+.RS 4
+Get the health of instances in a target pool\&.
+.RE
+.PP
+\fBlist\fR
+.RS 4
+List target pools\&.
+.RE
+.PP
+\fBremove\-health\-checks\fR
+.RS 4
+Remove a health check from a target pool\&.
+.RE
+.PP
+\fBremove\-instances\fR
+.RS 4
+Remove instances from a target pool\&.
+.RE
+.PP
+\fBset\-backup\fR
+.RS 4
+Set a backup pool for a target pool\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

@@ -1,0 +1,174 @@
+<html devsite="">
+<head>
+<title>gcloud components</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud components - list, install, update, or remove Google Cloud SDK components or packages</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud components</code>&nbsp;&nbsp;&#32;<code><var>GROUP</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>COMMAND</var></code>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>List, install, update, or remove Google Cloud SDK components or packages.</dd>
+<dd>Because you might need only some of the tools in the Cloud SDK to do
+your work, you can control which tools are installed on your
+workstation. You can install new tools on your workstation when you
+find that you need them, and remove tools that you no longer need.
+The gcloud command regularly checks whether updates are available for
+the tools you already have installed, and gives you the opportunity
+to upgrade to the latest version.</dd>
+<dd>Tools can be installed as individual components or as preconfigured
+<code>packages</code> of components that are typically all used together to
+perform a particular task (such as developing a PHP application on
+App Engine).</dd>
+<dd>Certain components <code>depend</code> on other components. When you install a
+component that you need, all components upon which it directly or
+indirectly depends, and that are not already present on your
+workstation, are installed automatically. When you remove a
+component, all components that depend on the removed component are
+also removed.</dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>GROUPS</dt>
+<dd>
+<code><var>GROUP</var></code> is one of the following:</dd>
+<dd><dl>
+<dt>
+<code><a href="repositories">repositories</a></code>
+</dt>
+
+<dd>
+Manage additional component repositories for Trusted Tester programs.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>COMMANDS</dt>
+<dd>
+<code><var>COMMAND</var></code> is one of the following:</dd>
+<dd><dl>
+<dt>
+<code><a href="list">list</a></code>
+</dt>
+
+<dd>
+List the status of all Cloud SDK components.
+</dd>
+
+
+<dt>
+<code><a href="remove">remove</a></code>
+</dt>
+
+<dd>
+Remove one or more installed components.
+</dd>
+
+
+<dt>
+<code><a href="restore">restore</a></code>
+</dt>
+
+<dd>
+Restore the Cloud SDK installation to its previous state.
+</dd>
+
+
+<dt>
+<code><a href="update">update</a></code>
+</dt>
+
+<dd>
+Update or install one or more Cloud SDK components or packages.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>core</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

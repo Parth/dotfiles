@@ -1,0 +1,367 @@
+NAME
+
+      gcloud compute instances create - create Compute Engine virtual machine
+         instances
+
+SYNOPSIS
+
+      gcloud compute instances create NAME [NAME ...]
+         [--boot-disk-device-name BOOT_DISK_DEVICE_NAME]
+         [--boot-disk-size BOOT_DISK_SIZE] [--boot-disk-type BOOT_DISK_TYPE]
+         [--can-ip-forward] [--description DESCRIPTION]
+         [--disk PROPERTY=VALUE [PROPERTY=VALUE ...]] [--format FORMAT] [--help]
+         [--image IMAGE | centos-6 | centos-7 | container-vm | coreos | debian-7
+         | debian-7-backports | opensuse-13 | rhel-6 | rhel-7 | sles-11 |
+            sles-12 | ubuntu-12-04 | ubuntu-14-04 | ubuntu-14-10 |
+            windows-2008-r2] [--image-project IMAGE_PROJECT]
+         [--local-ssd [PROPERTY=VALUE ...]]
+         [--machine-type MACHINE_TYPE; default="n1-standard-1"]
+         [--maintenance-policy MAINTENANCE_POLICY]
+         [--metadata KEY=VALUE [KEY=VALUE ...]]
+         [--metadata-from-file KEY=LOCAL_FILE_PATH [KEY=LOCAL_FILE_PATH ...]]
+         [--network NETWORK; default="default"] [--address ADDRESS |
+          --no-address] [--no-boot-disk-auto-delete] [--no-restart-on-failure]
+         [--project PROJECT_ID] [--quiet, -q] [--no-scopes |
+          --scopes [ACCOUNT=]SCOPE [[ACCOUNT=]SCOPE ...]] [--tags TAG [TAG ...]]
+         [--trace-token TRACE_TOKEN] [--zone ZONE] [-h]
+
+DESCRIPTION
+
+      gcloud compute instances create facilitates the creation of Google Compute
+      Engine virtual machines. For example, running:
+
+        $ gcloud compute instances create example-instance-1 \
+            example-instance-2 example-instance-3 --zone us-central1-a
+
+      will create three instances called 'example-instance-1',
+      'example-instance-2', and 'example-instance-3' in the us-central1-a zone.
+
+      For more examples, refer to the EXAMPLES section below.
+
+POSITIONAL ARGUMENTS
+
+      NAME [NAME ...]
+
+         The names of the instances to create.
+
+FLAGS
+
+      --address ADDRESS
+
+         Assigns the given external address to the instance that is created. The
+         address may be an IP address or the name or URI of an address resource.
+         This option can only be used when creating a single instance.
+
+      --boot-disk-device-name BOOT_DISK_DEVICE_NAME
+
+         The name the guest operating system will see for the boot disk as. This
+         option can only be specified if a new boot disk is being created (as
+         opposed to mounting an existing persistent disk).
+
+      --boot-disk-size BOOT_DISK_SIZE
+
+         The size of the boot disk. This option can only be specified if a new
+         boot disk is being created (as opposed to mounting an existing
+         persistent disk). The value must be a whole number followed by a size
+         unit of KB for kilobyte, MB for megabyte, GB for gigabyte, or TB for
+         terabyte. For example, 10GB will produce a 10 gigabyte disk. If
+         omitted, a default size of 200 GB is used. The minimum size a boot disk
+         can have is 10 GB. Disk size must be a multiple of 1 GB.
+
+      --boot-disk-type BOOT_DISK_TYPE
+
+         The type of the boot disk. This option can only be specified if a new
+         boot disk is being created (as opposed to mounting an existing
+         persistent disk). To get a list of available disk types, run $ gcloud
+         compute disk-types list.
+
+      --can-ip-forward
+
+         If provided, allows the instances to send and receive packets with
+         non-matching destination or source IP addresses.
+
+      --description DESCRIPTION
+
+         Specifies a textual description of the instances.
+
+      --disk PROPERTY=VALUE [PROPERTY=VALUE ...]
+
+         Attaches persistent disks to the instances. The disks specified must
+         already exist.
+
+         name
+
+            The disk to attach to the instances. When creating more than one
+            instance and using this property, the only valid mode for attaching
+            the disk is read-only (see mode below).
+
+         mode
+
+            Specifies the mode of the disk. Supported options are ro for
+            read-only and rw for read-write. If omitted, rw is used as a
+            default. It is an error for mode to be rw when creating more than
+            one instance because read-write disks can only be attached to a
+            single instance.
+
+         boot
+
+            If yes, indicates that this is a boot disk. The virtual machines
+            will use the first partition of the disk for their root file
+            systems. The default value for this is no.
+
+         device-name
+
+            An optional name that indicates the disk name the guest operating
+            system will see. If omitted, a device name of the form
+            persistent-disk-N will be used.
+
+         auto-delete
+
+            If yes, this persistent disk will be automatically deleted when the
+            instance is deleted. However, if the disk is later detached from the
+            instance, this option won't apply. The default value for this is no.
+
+      --image IMAGE | centos-6 | centos-7 | container-vm | coreos | debian-7 |
+         debian-7-backports | opensuse-13 | rhel-6 | rhel-7 | sles-11 | sles-12
+         | ubuntu-12-04 | ubuntu-14-04 | ubuntu-14-10 | windows-2008-r2
+
+         Specifies the boot image for the instances. For each instance, a new
+         boot disk will be created from the given image. Each boot disk will
+         have the same name as the instance.
+
+         The value for this option can be the name of an image or an alias from
+         the table below.
+
+           Alias               Project             Image Name
+           centos-6            centos-cloud        centos-6
+           centos-7            centos-cloud        centos-7
+           container-vm        google-containers   container-vm
+           coreos              coreos-cloud        coreos-stable
+           debian-7            debian-cloud        debian-7-wheezy
+           debian-7-backports  debian-cloud        backports-debian-7-wheezy
+           opensuse-13         opensuse-cloud      opensuse-13
+           rhel-6              rhel-cloud          rhel-6
+           rhel-7              rhel-cloud          rhel-7
+           sles-11             suse-cloud          sles-11
+           sles-12             suse-cloud          sles-12
+           ubuntu-12-04        ubuntu-os-cloud     ubuntu-1204-precise
+           ubuntu-14-04        ubuntu-os-cloud     ubuntu-1404-trusty
+           ubuntu-14-10        ubuntu-os-cloud     ubuntu-1410-utopic
+           windows-2008-r2     windows-cloud       windows-server-2008-r2
+
+         When the value is an alias, this tool will query the public image
+         project that contains the image type to find the latest image matching
+         the alias. The user's project is also queried for an image with the
+         same name as the alias. If a conflict exists, the user will be prompted
+         to resolve the conflict.
+
+         To specify an image in another project for which there is no alias, use
+         --image-project. When --image-project is present, no API calls are made
+         to resolve the image. This property is useful for scripts.
+
+         When using this option, --boot-disk-device-name and --boot-disk-size
+         can be used to override the boot disk's device name and size,
+         respectively.
+
+         By default, debian-7-backports is assumed for this flag.
+
+      --image-project IMAGE_PROJECT
+
+         The project against which all image references will be resolved. See
+         --image for more details.
+
+      --local-ssd [PROPERTY=VALUE ...]
+
+         Attaches a local SSD to the instances.
+
+         This flag is currently in BETA and may change without notice.
+
+         device-name
+
+            Optional. A name that indicates the disk name the guest operating
+            system will see. If omitted, a device name of the form local-ssd-N
+            will be used.
+
+         interface
+
+            Optional. The kind of disk interface exposed to the VM for this SSD.
+            Valid values are SCSI and NVME. SCSI is the default and is supported
+            by more guest operating systems. NVME may provide higher
+            performance.
+
+      --machine-type MACHINE_TYPE; default="n1-standard-1"
+
+         Specifies the machine type used for the instances. To get a list of
+         available machine types, run 'gcloud compute machine-types list'.
+
+      --maintenance-policy MAINTENANCE_POLICY
+
+         Specifies the behavior of the instances when their host machines
+         undergo maintenance. TERMINATE indicates that the instances should be
+         terminated. MIGRATE indicates that the instances should be migrated to
+         a new host. Choosing MIGRATE will temporarily impact the performance of
+         instances during a migration event. If omitted, MIGRATE is assumed.
+
+      --metadata KEY=VALUE [KEY=VALUE ...]
+
+         Metadata to be made available to the guest operating system running on
+         the instances. Each metadata entry is a key/value pair separated by an
+         equals sign. Metadata keys must be unique and less than 128 bytes in
+         length. Values must be less than or equal to 32,768 bytes in length.
+         Multiple arguments can be passed to this flag, e.g., --metadata
+         key-1=value-1 key-2=value-2 key-3=value-3.
+
+         In images that have Compute Engine tools installed on them, the
+         following metadata keys have special meanings:
+
+         startup-script
+
+            Specifies a script that will be executed by the instances once they
+            start running. For convenience, --metadata-from-file can be used to
+            pull the value from a file.
+
+         startup-script-url
+
+            Same as startup-script except that the script contents are pulled
+            from a publicly-accessible location on the web.
+
+      --metadata-from-file KEY=LOCAL_FILE_PATH [KEY=LOCAL_FILE_PATH ...]
+
+         Same as --metadata except that the value for the entry will be read
+         from a local file. This is useful for values that are too large such as
+         startup-script contents.
+
+      --network NETWORK; default="default"
+
+         Specifies the network that the instances will be part of. If omitted,
+         the default network is used.
+
+      --no-address
+
+         If provided, the instances will not be assigned external IP addresses.
+
+      --no-boot-disk-auto-delete
+
+         If provided, boot disks will not be automatically deleted when their
+         instances are deleted.
+
+      --no-restart-on-failure
+
+         If provided, the instances will not be restarted if they are terminated
+         by Compute Engine. By default, failed instances will be restarted. This
+         does not affect terminations performed by the user.
+
+      --no-scopes
+
+         If provided, the default scopes
+         (https://www.googleapis.com/auth/devstorage.read_only) are not added to
+         the instances.
+
+      --scopes [ACCOUNT=]SCOPE [[ACCOUNT=]SCOPE ...]
+
+         Specifies service accounts and scopes for the instances. Service
+         accounts generate access tokens that can be accessed through the
+         instance metadata server and used to authenticate applications on the
+         instance. The account can be either an email address or an alias
+         corresponding to a service account. If account is omitted, the
+         project's default service account is used. The default service account
+         can be specified explicitly by using the alias default. Example:
+
+           $ gcloud compute instances create example-instance --scopes
+         compute-rw \
+               me@project.gserviceaccount.com=storage-rw
+
+         If this flag is not provided, the storage-ro scope is added to the
+         instances. To create instances with no scopes, use --no-scopes:
+
+           $ gcloud compute instances create example-instance --no-scopes
+
+         SCOPE can be either the full URI of the scope or an alias. Available
+         aliases are:
+
+           Alias           URI
+           bigquery        https://www.googleapis.com/auth/bigquery
+           compute-ro      https://www.googleapis.com/auth/compute.readonly
+           compute-rw      https://www.googleapis.com/auth/compute
+           datastore       https://www.googleapis.com/auth/datastore
+           sql             https://www.googleapis.com/auth/sqlservice
+           sql-admin       https://www.googleapis.com/auth/sqlservice.admin
+           storage-full    https://www.googleapis.com/auth/devstorage.full_control
+           storage-ro      https://www.googleapis.com/auth/devstorage.read_only
+           storage-rw      https://www.googleapis.com/auth/devstorage.read_write
+           taskqueue       https://www.googleapis.com/auth/taskqueue
+           userinfo-email  https://www.googleapis.com/auth/userinfo.email
+
+      --tags TAG [TAG ...]
+
+         Specifies a list of tags to apply to the instances for identifying the
+         instances to which network firewall rules will apply. See gcloud
+         compute firewall-rules create(1) for more details.
+
+      --zone ZONE
+
+         The zone of the instances to create. If not specified, you will be
+         prompted to select a zone.
+
+         To avoid prompting when this flag is omitted, you can set the
+         compute/zone property:
+
+           $ gcloud config set compute/zone ZONE
+
+         A list of zones can fetched by running:
+
+           $ gcloud compute zones list
+
+         To unset the property, run:
+
+           $ gcloud config unset compute/zone
+
+         Alternatively, the zone can be stored in the environment variable
+         CLOUDSDK_COMPUTE_ZONE.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To create an instance with the latest Red Hat Enterprise Linux 6 image
+      available, run:
+
+        $ gcloud compute instances create example-instance --image rhel-6 \
+            --zone us-central1-a
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

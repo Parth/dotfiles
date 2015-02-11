@@ -1,0 +1,196 @@
+<html devsite="">
+<head>
+<title>gcloud compute instances add-metadata</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute instances add-metadata - add or update instance metadata</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute instances add-metadata</code>&nbsp;&nbsp;&#32;<code><var>NAME</var></code>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--metadata</code>&nbsp;&nbsp;&#32;<code><var>KEY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;[<code><var>KEY</var></code>=<code><var>VALUE</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--metadata-from-file</code>&nbsp;&nbsp;&#32;<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code>&nbsp;&nbsp;&#32;[<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code>&nbsp;&nbsp;&#32;…]]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--zone</code>&nbsp;&nbsp;&#32;<code><var>ZONE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>gcloud compute instances add-metadata can be used to add or update the metadata of a
+virtual machine instance. Every instance has access to a
+metadata server that can be used to query metadata that has
+been set through this tool. For information on metadata, see
+<a href="https://developers.google.com/compute/docs/metadata">https://developers.google.com/compute/docs/metadata</a>.</dd>
+<dd>Only metadata keys that are provided are mutated. Existing
+metadata entries will remain unaffected.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>NAME</var></code>
+</dt>
+
+<dd>
+The name of the instance whose metadata should be modified.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--metadata</code> <code><var>KEY</var></code>=<code><var>VALUE</var></code> [<code><var>KEY</var></code>=<code><var>VALUE</var></code> …]
+</dt>
+
+<dd>
+Metadata to be made available to the guest operating system
+running on the instances. Each metadata entry is a key/value
+pair separated by an equals sign. Metadata keys must be unique
+and less than 128 bytes in length. Values must be less than or
+equal to 32,768 bytes in length. Multiple arguments can be
+passed to this flag, e.g., <code>_--metadata key-1=value-1
+key-2=value-2 key-3=value-3_</code>.
+</dd>
+<dd>In images that have
+<a href="https://developers.google.com/compute/docs/building-image">Compute
+Engine tools installed</a> on them, the following metadata keys
+have special meanings:</dd>
+<dd><dl>
+<dt>
+<code>startup-script</code>
+</dt>
+
+<dd>
+Specifies a script that will be executed
+by the instances once they start running. For convenience,
+<code><var>--metadata-from-file</var></code> can be used to pull the value from a
+file.
+</dd>
+
+
+<dt>
+<code>startup-script-url</code>
+</dt>
+
+<dd>
+Same as <code><var>startup-script</var></code> except that
+the script contents are pulled from a publicly-accessible
+location on the web.
+</dd>
+
+</dl></dd>
+
+
+<dt>
+<code>--metadata-from-file</code> <code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code> [<code><var>KEY</var></code>=<code><var>LOCAL_FILE_PATH</var></code> …]
+</dt>
+
+<dd>
+Same as <code><var>--metadata</var></code> except that the value for the entry will
+be read from a local file. This is useful for values that are
+too large such as <code><var>startup-script</var></code> contents.
+</dd>
+
+
+<dt>
+<code>--zone</code> <code><var>ZONE</var></code>
+</dt>
+
+<dd>
+The zone of the instance to set metadata on. If not specified, you will be prompted to select a zone.
+</dd>
+<dd>To avoid prompting when this flag is omitted, you can set the
+<code><var>compute/zone</var></code> property:</dd>
+<dd><pre>$ <A href="../../config/set">gcloud config set</A> compute/zone ZONE</pre></dd>
+<dd>A list of zones can fetched by running:</dd>
+<dd><pre>$ <A href="../../compute/zones/list">gcloud compute zones list</A></pre></dd>
+<dd>To unset the property, run:</dd>
+<dd><pre>$ <A href="../../config/unset">gcloud config unset</A> compute/zone</pre></dd>
+<dd>Alternatively, the zone can be stored in the environment variable
+<code><var>CLOUDSDK_COMPUTE_ZONE</var></code>.</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

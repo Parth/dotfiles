@@ -1,0 +1,79 @@
+NAME
+
+      gcloud config list - view Google Cloud SDK properties
+
+SYNOPSIS
+
+      gcloud config list [SECTION/PROPERTY] [--all] [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      List all currently available Cloud SDK properties associated with your
+      current workspace or global configuration.
+
+POSITIONAL ARGUMENTS
+
+      [SECTION/PROPERTY]
+
+         The property to be listed. Note that SECTION/ is optional while
+         referring to properties in the core section.
+
+FLAGS
+
+      --all
+
+         List all set and unset properties that match the arguments.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To list the project property in the core section, run:
+
+        $ gcloud config list project
+
+      To list the zone property in the compute section, run:
+
+        $ gcloud config list compute/zone
+
+      To list all the properties, run:
+
+        $ gcloud config list --all
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,92 @@
+NAME
+
+      gcloud init - create and initialize a gcloud workspace in the current
+         directory
+
+SYNOPSIS
+
+      gcloud init PROJECT [--format FORMAT] [--help] [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      This command is creates and initializes a local workspace for a Google
+      Cloud Platform project.
+
+      The local workspace is indicated by the creation of a [.gcloud] folder. In
+      this folder is a file [properties] which allows you to override any global
+      properties you may have set via the $ gcloud config command.
+
+      When you run a Cloud SDK command-line tool from within this new workspace,
+      it will use the new [properties] file as the first place to load
+      properties. As a result, if you use gcloud, gcutil, gsutil, or any of the
+      other commands in google-cloud-sdk/bin from within the workspace, they
+      will connect to the correct project.
+
+      If you have enabled push-to-deploy in the Cloud Console, one of the things
+      that gcloud init will do for you is cloning the Google-hosted git
+      repository associated with PROJECT. This repository will automatically be
+      connected to Google, and it will use the credentials indicated as active
+      by gcloud auth list. Pushing to the origin's master branch will trigger an
+      App Engine deployment using the contents of that branch.
+
+POSITIONAL ARGUMENTS
+
+      PROJECT
+
+         The name of the Google Cloud Platform project that you want to use in a
+         local workspace that will be created by this command. If this project
+         has an associated Google-hosted git repository, that repository will be
+         cloned into the local workspace.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To perform a simple "Hello, world!" App Engine deployment with this
+      command, run the following command lines with MYPROJECT replaced by a
+      project you own and can use for this experiment.
+
+        $ gcloud auth login
+        $ gcloud init MYPROJECT
+        $ cd MYPROJECT/default
+        $ git pull
+          https://github.com/GoogleCloudPlatform/appengine-helloworld-python
+        $ git push origin master
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

@@ -1,0 +1,85 @@
+NAME
+
+      gcloud compute routes list - list routes
+
+SYNOPSIS
+
+      gcloud compute routes list [NAME ...] [--format FORMAT] [--help]
+         [--limit LIMIT] [--project PROJECT_ID] [--quiet, -q]
+         [--regexp REGEXP, -r REGEXP] [--sort-by SORT_BY]
+         [--trace-token TRACE_TOKEN] [--uri] [-h]
+
+DESCRIPTION
+
+      gcloud compute routes list lists summary information for the routes in a
+      project. The --uri option can be used to display the URIs for the routes.
+      Users who want to see more data should use 'gcloud compute routes
+      describe'.
+
+POSITIONAL ARGUMENTS
+
+      [NAME ...]
+
+         If provided, show details for the specified names and/or URIs of
+         resources.
+
+FLAGS
+
+      --limit LIMIT
+
+         The maximum number of results.
+
+      --regexp REGEXP, -r REGEXP
+
+         A regular expression to filter the names of the results on. Any names
+         that do not match the entire regular expression will be filtered out.
+
+      --sort-by SORT_BY
+
+         A field to sort by. To perform a descending-order sort, prefix the
+         value of this flag with a tilde (~).
+
+      --uri
+
+         If provided, the list command will only print URIs for the resources
+         returned. If this flag is not provided, the list command will print a
+         human-readable table of useful resource data.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

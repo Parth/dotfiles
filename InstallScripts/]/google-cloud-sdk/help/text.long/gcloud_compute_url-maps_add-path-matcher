@@ -1,0 +1,119 @@
+NAME
+
+      gcloud compute url-maps add-path-matcher - add a path matcher to a URL map
+
+SYNOPSIS
+
+      gcloud compute url-maps add-path-matcher NAME
+         --default-service DEFAULT_SERVICE [--delete-orphaned-path-matcher]
+         [--description DESCRIPTION] [--format FORMAT] [--help]
+         [--existing-host EXISTING_HOST | --new-hosts NEW_HOST [NEW_HOST ...]]
+         --path-matcher-name PATH_MATCHER_NAME
+         [--path-rules PATH=SERVICE [PATH=SERVICE ...]] [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute url-maps add-path-matcher is used to add a path matcher to
+      a URL map. A path matcher maps HTTP request paths to backend services.
+      Each path matcher must be referenced by at least one host rule. This
+      command can create a new host rule through the --new-hosts flag or it can
+      reconfigure an existing host rule to point to the newly added path matcher
+      using --existing-host. In the latter case, if a path matcher is orphaned
+      as a result of the operation, this command will fail unless
+      --delete-orphaned-path-matcher is provided.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the URL map.
+
+FLAGS
+
+      --default-service DEFAULT_SERVICE
+
+         A backend service that will be used for requests that the path matcher
+         cannot match.
+
+      --delete-orphaned-path-matcher
+
+         If provided and a path matcher is orphaned as a result of this command,
+         the command removes the orphaned path matcher instead of failing.
+
+      --description DESCRIPTION
+
+         An optional, textual description for the path matcher.
+
+      --existing-host EXISTING_HOST
+
+         An existing host rule to tie the new path matcher to. Although host
+         rules can contain more than one host, only a single host is needed to
+         uniquely identify the host rule.
+
+      --new-hosts NEW_HOST [NEW_HOST ...]
+
+         If specified, a new host rule with the given hosts is createdand the
+         path matcher is tied to the new host rule.
+
+      --path-matcher-name PATH_MATCHER_NAME
+
+         The name to assign to the path matcher.
+
+      --path-rules PATH=SERVICE [PATH=SERVICE ...]
+
+         Rules for mapping request paths to services.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To create a rule for mapping the paths /search and /search/* to the
+      hypothetical search-service and /images/* to the images-service under the
+      hosts google.com and *.google.com, run:
+
+        $ gcloud compute url-maps add-path-matcher MY-URL-MAP \
+            --path-matcher-name MY-MATCHER \
+            --default-service MY-DEFAULT-SERVICE \
+            --path-rules /search=search-service /search/*=search_service \
+            /images/*=images-service --new-hosts google.com "*.google.com"
+
+      Note that a default service must be provided to handle paths for which
+      there is no mapping.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

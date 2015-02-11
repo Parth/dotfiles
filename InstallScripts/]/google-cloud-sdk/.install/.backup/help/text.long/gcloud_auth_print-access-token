@@ -1,0 +1,62 @@
+NAME
+
+      gcloud auth print-access-token - a command that prints the access token
+         for the current account
+
+SYNOPSIS
+
+      gcloud auth print-access-token [ACCOUNT] [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      A command that prints the access token for the current account.
+
+POSITIONAL ARGUMENTS
+
+      [ACCOUNT]
+
+         The account to get the access token for. Leave empty for the active
+         account.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+
+      This command is an internal implementation detail and may change or
+      disappear without notice.
+

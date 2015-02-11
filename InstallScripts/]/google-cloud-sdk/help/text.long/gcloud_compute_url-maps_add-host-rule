@@ -1,0 +1,93 @@
+NAME
+
+      gcloud compute url-maps add-host-rule - add a rule to a URL map to map
+         hosts to a path matcher
+
+SYNOPSIS
+
+      gcloud compute url-maps add-host-rule NAME [--description DESCRIPTION]
+         [--format FORMAT] [--help] --hosts HOSTS [HOSTS ...]
+         --path-matcher-name PATH_MATCHER_NAME [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute url-maps add-host-rule is used to add a mapping of hosts to
+      a patch matcher in a URL map. The mapping will match the host component of
+      HTTP requests to path matchers which in turn map the request to a backend
+      service. Before adding a host rule, at least one path matcher must exist
+      in the URL map to take care of the path component of the requests. 'gcloud
+      compute url-maps add-path-matcher' or 'gcloud compute url-maps edit' can
+      be used to add path matchers.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the URL map.
+
+FLAGS
+
+      --description DESCRIPTION
+
+         An optional, textual description for the host rule.
+
+      --hosts HOSTS [HOSTS ...]
+
+         The set of hosts to match requests against. Each host must be a fully
+         qualified domain name (FQDN) with the exception that the host can begin
+         with a or -. * acts as a glob and will match any string of atoms to the
+         left where an atom is separated by dots (.) or dashes (-).
+
+      --path-matcher-name PATH_MATCHER_NAME
+
+         The name of the patch matcher to use if a request matches this host
+         rule. The patch matcher must already exist in the URL map (see 'gcloud
+         compute url-maps add-path-matcher').
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To create a host rule mapping the *-foo.google.com and google.com hosts to
+      the www path matcher, run:
+
+        $ gcloud compute url-maps add-host-rule MY-URL-MAP \
+            --hosts *-foo.google.com google.com --path-matcher-name www
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

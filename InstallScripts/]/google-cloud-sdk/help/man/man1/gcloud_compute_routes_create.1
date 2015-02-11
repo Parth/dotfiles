@@ -1,0 +1,155 @@
+.TH "GCLOUD COMPUTE ROUTES CREATE" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_routes_create \- create a new route
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ routes\ create\ \fINAME\fR [\fB\-\-description\fR\ \fIDESCRIPTION\fR] \fB\-\-destination\-range\fR\ \fIDESTINATION_RANGE\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-network\fR\ \fINETWORK\fR;\ default="default"] [\fB\-\-next\-hop\-address\fR\ \fINEXT_HOP_ADDRESS\fR\ | \ \fB\-\-next\-hop\-gateway\fR\ \fINEXT_HOP_GATEWAY\fR\ | \ \fB\-\-next\-hop\-instance\fR\ \fINEXT_HOP_INSTANCE\fR] [\fB\-\-next\-hop\-instance\-zone\fR\ \fINEXT_HOP_INSTANCE_ZONE\fR] [\fB\-\-priority\fR\ \fIPRIORITY\fR;\ default="1000"] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-tags\fR\ \fITAG\fR [\fITAG\fR\ \&...]] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute routes create\fR is used to create routes\&. A route is a rule that specifies how certain packets should be handled by the virtual network\&. Routes are associated with virtual machine instances by tag, and the set of routes for a particular VM is called its routing table\&. For each packet leaving a virtual machine, the system searches that machine\(cqs routing table for a single best matching route\&.
+.sp
+Routes match packets by destination IP address, preferring smaller or more specific ranges over larger ones (see \fI\-\-destination\-range\fR)\&. If there is a tie, the system selects the route with the smallest priority value\&. If there is still a tie, it uses the layer three and four packet headers to select just one of the remaining matching routes\&. The packet is then forwarded as specified by \fI\-\-next\-hop\-address\fR, \fI\-\-next\-hop\-instance\fR, or \fI\-\-next\-hop\-gateway\fR of the winning route\&. Packets that do not match any route in the sending virtual machine routing table will be dropped\&.
+.sp
+Exactly one of \fI\-\-next\-hop\-address\fR, \fI\-\-next\-hop\-gateway\fR, or \fI\-\-next\-hop\-instance\fR must be provided with this command\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name to assign to the route\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-description\fR \fIDESCRIPTION\fR
+.RS 4
+An optional, textual description for the route\&.
+.RE
+.PP
+\fB\-\-destination\-range\fR \fIDESTINATION_RANGE\fR
+.RS 4
+The destination range of outgoing packets that the route will apply to\&. To match all traffic, use
+\fI0\&.0\&.0\&.0/0\fR\&.
+.RE
+.PP
+\fB\-\-network\fR \fINETWORK\fR; default="default"
+.RS 4
+Specifies the network to which the route will be applied\&.
+.RE
+.PP
+\fB\-\-next\-hop\-address\fR \fINEXT_HOP_ADDRESS\fR
+.RS 4
+Specifies the IP address of an instance that should handle matching packets\&. The instance must have IP forwarding enabled (i\&.e\&., include
+\fI\-\-can\-ip\-forward\fR
+when creating the instance using
+\fIgcloud compute instances create\fR)
+.RE
+.PP
+\fB\-\-next\-hop\-gateway\fR \fINEXT_HOP_GATEWAY\fR
+.RS 4
+Specifies the gateway that should handle matching packets\&. Currently, the only acceptable value is
+\fIdefault\-internet\-gateway\fR
+which is a gateway operated by Google Compute Engine\&.
+.RE
+.PP
+\fB\-\-next\-hop\-instance\fR \fINEXT_HOP_INSTANCE\fR
+.RS 4
+Specifies the name of an instance that should handle traffic matching this route\&. When this flag is specified, the zone of the instance must be specified using
+\fI\-\-next\-hop\-instance\-zone\fR\&.
+.RE
+.PP
+\fB\-\-next\-hop\-instance\-zone\fR \fINEXT_HOP_INSTANCE_ZONE\fR
+.RS 4
+The zone of the next hop instance\&. If not specified, you will be prompted to select a zone\&.
+.sp
+To avoid prompting when this flag is omitted, you can set the
+\fIcompute/zone\fR
+property:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config set compute/zone ZONE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+A list of zones can fetched by running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute zones list
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To unset the property, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config unset compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+Alternatively, the zone can be stored in the environment variable
+\fICLOUDSDK_COMPUTE_ZONE\fR\&.
+.RE
+.PP
+\fB\-\-priority\fR \fIPRIORITY\fR; default="1000"
+.RS 4
+Specifies the priority of this route relative to other routes with the same specifity\&. The lower the value, the higher the priority\&.
+.RE
+.PP
+\fB\-\-tags\fR \fITAG\fR [\fITAG\fR \&...]
+.RS 4
+Identifies the set of instances that this route will apply to\&. If no tags are provided, the route will apply to all instances in the network\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

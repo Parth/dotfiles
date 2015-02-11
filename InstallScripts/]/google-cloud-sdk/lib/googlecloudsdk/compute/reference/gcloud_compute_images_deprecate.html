@@ -1,0 +1,214 @@
+<html devsite="">
+<head>
+<title>gcloud compute images deprecate</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute images deprecate - manage deprecation status of Google Compute Engine images</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute images deprecate</code>&nbsp;&nbsp;&#32;<code><var>NAME</var></code>&nbsp;&nbsp;&#32;<nobr>[<code>--delete-in</code>&nbsp;&nbsp;&#32;<code><var>DELETE_IN</var></code>&nbsp;&nbsp;&#32;|</nobr>&#32;<nobr>&nbsp;&nbsp;<code>--delete-on</code>&nbsp;&nbsp;&#32;<code><var>DELETE_ON</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--obsolete-in</code>&nbsp;&nbsp;&#32;<code><var>OBSOLETE_IN</var></code>&nbsp;&nbsp;&#32;|</nobr>&#32;<nobr>&nbsp;&nbsp;<code>--obsolete-on</code>&nbsp;&nbsp;&#32;<code><var>OBSOLETE_ON</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--replacement</code>&nbsp;&nbsp;&#32;<code><var>REPLACEMENT</var></code>]&nbsp;&nbsp;&#32;<code>--state</code>&nbsp;&nbsp;&#32;<code><var>STATE</var></code>&nbsp;&nbsp;&#32;[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>
+<code>gcloud compute images deprecate</code> is used to deprecate images.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>NAME</var></code>
+</dt>
+
+<dd>
+The name of the image to set deprecation status of.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--delete-in</code> <code><var>DELETE_IN</var></code>
+</dt>
+
+<dd>
+Specifies the amount of time until the image’s status should be set
+to DELETED. For instance, specifying <code><var>30d</var></code> will set the status to
+DELETED in 30 days from the current system time. Valid units for this
+flag are <code><var>s</var></code> for seconds, <code><var>m</var></code> for minutes, <code><var>h</var></code> for hours and
+<code><var>d</var></code> for days. If no unit is specified, seconds is assumed.
+</dd>
+<dd>Note that the image will not be deleted automatically. The image will
+only be marked as deleted. An explicit request to delete the image must
+be made in order to remove it from the image list.
+This flag is mutually exclusive with --delete-on.</dd>
+
+
+<dt>
+<code>--delete-on</code> <code><var>DELETE_ON</var></code>
+</dt>
+
+<dd>
+Similar to --delete-in, but specifies an absolute time when the status
+should be set to DELETED. The date and time
+specified must be a valid RFC 3339 full-date or date-time.
+For times in UTC, this looks like <code><var>YYYY-MM-DDTHH:MM:SSZ</var></code>. For example:
+2020-01-02T00:00:00Z for midnight on January 2, 2020 in UTC.
+This flag is mutually exclusive with --delete-in.
+</dd>
+
+
+<dt>
+<code>--obsolete-in</code> <code><var>OBSOLETE_IN</var></code>
+</dt>
+
+<dd>
+Specifies time (in the same format as --delete-in) until this image’s
+status should become OBSOLETE. Obsolete images will cause an error
+whenever an attempt is made to apply the image to a new disk.
+This flag is mutually exclusive with --obsolete-on.
+</dd>
+
+
+<dt>
+<code>--obsolete-on</code> <code><var>OBSOLETE_ON</var></code>
+</dt>
+
+<dd>
+Specifies time (in the same format as --delete-on) when this image’s
+status should become OBSOLETE.
+This flag is mutually exclusive with --obsolete-in.
+</dd>
+
+
+<dt>
+<code>--replacement</code> <code><var>REPLACEMENT</var></code>
+</dt>
+
+<dd>
+Specifies a Compute Engine image as a replacement for the image
+being phased out. Users of the deprecated image will be advised to switch
+to this replacement. For example, <code><var>--replacement example-image</var></code> or
+<code><var>--replacement projects/google/global/images/example-image</var></code>. This
+flag is required when setting the image state to anything other than
+<code><var>ACTIVE</var></code> or when --delete-in, --delete-on, --obsolete-in, or
+--obsolete-on is provided.
+</dd>
+
+
+<dt>
+<code>--state</code> <code><var>STATE</var></code>
+</dt>
+
+<dd>
+The deprecation state to set on the image.
+An image’s default state is <code><var>ACTIVE</var></code>, suggesting that the image is
+currently supported. Operations which create a new
+resource using a <code><var>DEPRECATED</var></code> image
+return successfully, but with a warning indicating that the image
+is deprecated and recommending its replacement. New uses of <code><var>OBSOLETE</var></code> or
+<code><var>DELETED</var></code> images result in an error. Note that setting the
+deprecation state to <code><var>DELETED</var></code> will not automatically delete the
+image. You must still make a request to delete the image to remove it
+from the image list.
+</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>EXAMPLES</dt>
+<dd>To deprecate an image called <code>IMAGE</code> immediately, mark it as
+obsolete in one day, and mark it as deleted in two days, use:</dd>
+<dd><pre>$ <A href="../../compute/images/deprecate">gcloud compute images deprecate</A> IMAGE --status DEPRECATED \
+    --obsolete-in 1d --delete-in 2d</pre></dd>
+<dd>To un-deprecate an image called <code>IMAGE</code>, use:</dd>
+<dd><pre>$ <A href="../../compute/images/deprecate">gcloud compute images deprecate</A> IMAGE --status ACTIVE</pre></dd>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

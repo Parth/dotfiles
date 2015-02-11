@@ -1,0 +1,540 @@
+.TH "GCLOUD COMPUTE INSTANCE-TEMPLATES CREATE" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_instance-templates_create \- create a Compute Engine virtual machine instance template
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ instance\-templates\ create\ \fINAME\fR [\fB\-\-boot\-disk\-device\-name\fR\ \fIBOOT_DISK_DEVICE_NAME\fR] [\fB\-\-boot\-disk\-size\fR\ \fIBOOT_DISK_SIZE\fR] [\fB\-\-boot\-disk\-type\fR\ \fIBOOT_DISK_TYPE\fR] [\fB\-\-can\-ip\-forward\fR] [\fB\-\-description\fR\ \fIDESCRIPTION\fR] [\fB\-\-disk\fR\ \fIPROPERTY\fR=\fIVALUE\fR [\fIPROPERTY\fR=\fIVALUE\fR\ \&...]] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-image\fR\ \fIIMAGE\fR\ | \ \fIcentos\-6\fR\ | \ \fIcentos\-7\fR\ | \ \fIcontainer\-vm\fR\ | \ \fIcoreos\fR\ | \ \fIdebian\-7\fR\ | \ \fIdebian\-7\-backports\fR\ | \ \fIopensuse\-13\fR\ | \ \fIrhel\-6\fR\ | \ \fIrhel\-7\fR\ | \ \fIsles\-11\fR\ | \ \fIsles\-12\fR\ | \ \fIubuntu\-12\-04\fR\ | \ \fIubuntu\-14\-04\fR\ | \ \fIubuntu\-14\-10\fR\ | \ \fIwindows\-2008\-r2\fR] [\fB\-\-image\-project\fR\ \fIIMAGE_PROJECT\fR] [\fB\-\-local\-ssd\fR [\fIPROPERTY\fR=\fIVALUE\fR\ \&...]] [\fB\-\-machine\-type\fR\ \fIMACHINE_TYPE\fR;\ default="n1\-standard\-1"] [\fB\-\-maintenance\-policy\fR\ \fIMAINTENANCE_POLICY\fR] [\fB\-\-metadata\fR\ \fIKEY\fR=\fIVALUE\fR [\fIKEY\fR=\fIVALUE\fR\ \&...]] [\fB\-\-metadata\-from\-file\fR\ \fIKEY\fR=\fILOCAL_FILE_PATH\fR [\fIKEY\fR=\fILOCAL_FILE_PATH\fR\ \&...]] [\fB\-\-network\fR\ \fINETWORK\fR;\ default="default"] [\fB\-\-address\fR\ \fIADDRESS\fR\ | \ \fB\-\-no\-address\fR] [\fB\-\-no\-boot\-disk\-auto\-delete\fR] [\fB\-\-no\-restart\-on\-failure\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-no\-scopes\fR\ | \ \fB\-\-scopes\fR\ \fISCOPE\fR [[\fIACCOUNT\fR=]\fISCOPE\fR\ \&...]] [\fB\-\-tags\fR\ \fITAG\fR [\fITAG\fR\ \&...]] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute instance\-templates create\fR facilitates the creation of Google Compute Engine virtual machine instance templates\&. For example, running:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute instance\-templates create INSTANCE\-TEMPLATE
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+will create one instance templates called \fIINSTANCE\-TEMPLATE\fR\&.
+.sp
+Instance templates are global resources, and can be used to create instances in any zone\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the instance template to create\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-address\fR \fIADDRESS\fR
+.RS 4
+Assigns the given external IP address to the instance that is created\&. This option can only be used when creating a single instance\&.
+.RE
+.PP
+\fB\-\-boot\-disk\-device\-name\fR \fIBOOT_DISK_DEVICE_NAME\fR
+.RS 4
+The name the guest operating system will see for the boot disk as\&. This option can only be specified if a new boot disk is being created (as opposed to mounting an existing persistent disk)\&.
+.RE
+.PP
+\fB\-\-boot\-disk\-size\fR \fIBOOT_DISK_SIZE\fR
+.RS 4
+The size of the boot disk\&. This option can only be specified if a new boot disk is being created (as opposed to mounting an existing persistent disk)\&. The value must be a whole number followed by a size unit of
+\fIKB\fR
+for kilobyte,
+\fIMB\fR
+for megabyte,
+\fIGB\fR
+for gigabyte, or
+\fITB\fR
+for terabyte\&. For example,
+\fI10GB\fR
+will produce a 10 gigabyte disk\&. If omitted, a default size of 200 GB is used\&. The minimum size a boot disk can have is 10 GB\&. Disk size must be a multiple of 1 GB\&.
+.RE
+.PP
+\fB\-\-boot\-disk\-type\fR \fIBOOT_DISK_TYPE\fR
+.RS 4
+The type of the boot disk\&. This option can only be specified if a new boot disk is being created (as opposed to mounting an existing persistent disk)\&. To get a list of available disk types, run
+$ gcloud compute disk\-types list\&.
+.RE
+.PP
+\fB\-\-can\-ip\-forward\fR
+.RS 4
+If provided, allows the instances to send and receive packets with non\-matching destination or source IP addresses\&.
+.RE
+.PP
+\fB\-\-description\fR \fIDESCRIPTION\fR
+.RS 4
+Specifies a textual description for the instance template\&.
+.RE
+.PP
+\fB\-\-disk\fR \fIPROPERTY\fR=\fIVALUE\fR [\fIPROPERTY\fR=\fIVALUE\fR \&...]
+.RS 4
+Attaches persistent disks to the instances\&. The disks specified must already exist\&.
+.PP
+\fBname\fR
+.RS 4
+The disk to attach to the instances\&. When creating more than one instance and using this property, the only valid mode for attaching the disk is read\-only (see
+\fBmode\fR
+below)\&.
+.RE
+.PP
+\fBmode\fR
+.RS 4
+Specifies the mode of the disk\&. Supported options are
+\fIro\fR
+for read\-only and
+\fIrw\fR
+for read\-write\&. If omitted,
+\fIrw\fR
+is used as a default\&. It is an error for mode to be
+\fIrw\fR
+when creating more than one instance because read\-write disks can only be attached to a single instance\&.
+.RE
+.PP
+\fBboot\fR
+.RS 4
+If
+\fIyes\fR, indicates that this is a boot disk\&. The virtual machines will use the first partition of the disk for their root file systems\&. The default value for this is
+\fIno\fR\&.
+.RE
+.PP
+\fBdevice\-name\fR
+.RS 4
+An optional name that indicates the disk name the guest operating system will see\&. If omitted, a device name of the form
+\fIpersistent\-disk\-N\fR
+will be used\&.
+.RE
+.PP
+\fBauto\-delete\fR
+.RS 4
+If
+\fIyes\fR, this persistent disk will be automatically deleted when the instance is deleted\&. However, if the disk is later detached from the instance, this option won\(cqt apply\&. The default value for this is
+\fIno\fR\&.
+.RE
+.RE
+.PP
+\fB\-\-image\fR \fIIMAGE\fR | \fIcentos\-6\fR | \fIcentos\-7\fR | \fIcontainer\-vm\fR | \fIcoreos\fR | \fIdebian\-7\fR | \fIdebian\-7\-backports\fR | \fIopensuse\-13\fR | \fIrhel\-6\fR | \fIrhel\-7\fR | \fIsles\-11\fR | \fIsles\-12\fR | \fIubuntu\-12\-04\fR | \fIubuntu\-14\-04\fR | \fIubuntu\-14\-10\fR | \fIwindows\-2008\-r2\fR
+.RS 4
+Specifies the boot image for the instances\&. For each instance, a new boot disk will be created from the given image\&. Each boot disk will have the same name as the instance\&.
+.sp
+The value for this option can be the name of an image or an alias from the table below\&.
+.TS
+tab(:);
+ltB ltB ltB.
+T{
+Alias
+T}:T{
+Project
+T}:T{
+Image Name
+T}
+.T&
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt
+lt lt lt.
+T{
+centos\-6
+T}:T{
+centos\-cloud
+T}:T{
+centos\-6
+T}
+T{
+centos\-7
+T}:T{
+centos\-cloud
+T}:T{
+centos\-7
+T}
+T{
+container\-vm
+T}:T{
+google\-containers
+T}:T{
+container\-vm
+T}
+T{
+coreos
+T}:T{
+coreos\-cloud
+T}:T{
+coreos\-stable
+T}
+T{
+debian\-7
+T}:T{
+debian\-cloud
+T}:T{
+debian\-7\-wheezy
+T}
+T{
+debian\-7\-backports
+T}:T{
+debian\-cloud
+T}:T{
+backports\-debian\-7\-wheezy
+T}
+T{
+opensuse\-13
+T}:T{
+opensuse\-cloud
+T}:T{
+opensuse\-13
+T}
+T{
+rhel\-6
+T}:T{
+rhel\-cloud
+T}:T{
+rhel\-6
+T}
+T{
+rhel\-7
+T}:T{
+rhel\-cloud
+T}:T{
+rhel\-7
+T}
+T{
+sles\-11
+T}:T{
+suse\-cloud
+T}:T{
+sles\-11
+T}
+T{
+sles\-12
+T}:T{
+suse\-cloud
+T}:T{
+sles\-12
+T}
+T{
+ubuntu\-12\-04
+T}:T{
+ubuntu\-os\-cloud
+T}:T{
+ubuntu\-1204\-precise
+T}
+T{
+ubuntu\-14\-04
+T}:T{
+ubuntu\-os\-cloud
+T}:T{
+ubuntu\-1404\-trusty
+T}
+T{
+ubuntu\-14\-10
+T}:T{
+ubuntu\-os\-cloud
+T}:T{
+ubuntu\-1410\-utopic
+T}
+T{
+windows\-2008\-r2
+T}:T{
+windows\-cloud
+T}:T{
+windows\-server\-2008\-r2
+T}
+.TE
+.sp 1
+When the value is an alias, this tool will query the public image project that contains the image type to find the latest image matching the alias\&. The user\(cqs project is also queried for an image with the same name as the alias\&. If a conflict exists, the user will be prompted to resolve the conflict\&.
+.sp
+To specify an image in another project for which there is no alias, use
+\fI\-\-image\-project\fR\&. When
+\fI\-\-image\-project\fR
+is present, no API calls are made to resolve the image\&. This property is useful for scripts\&.
+.sp
+When using this option,
+\fI\-\-boot\-disk\-device\-name\fR
+and
+\fI\-\-boot\-disk\-size\fR
+can be used to override the boot disk\(cqs device name and size, respectively\&.
+.sp
+By default,
+\fIdebian\-7\-backports\fR
+is assumed for this flag\&.
+.RE
+.PP
+\fB\-\-image\-project\fR \fIIMAGE_PROJECT\fR
+.RS 4
+The project against which all image references will be resolved\&. See
+\fI\-\-image\fR
+for more details\&.
+.RE
+.PP
+\fB\-\-local\-ssd\fR [\fIPROPERTY\fR=\fIVALUE\fR \&...]
+.RS 4
+Attaches a local SSD to the instances\&.
+.sp
+This flag is currently in BETA and may change without notice\&.
+.PP
+\fBdevice\-name\fR
+.RS 4
+Optional\&. A name that indicates the disk name the guest operating system will see\&. If omitted, a device name of the form
+\fIlocal\-ssd\-N\fR
+will be used\&.
+.RE
+.PP
+\fBinterface\fR
+.RS 4
+Optional\&. The kind of disk interface exposed to the VM for this SSD\&. Valid values are
+\fISCSI\fR
+and
+\fINVME\fR\&. SCSI is the default and is supported by more guest operating systems\&. NVME may provide higher performance\&.
+.RE
+.RE
+.PP
+\fB\-\-machine\-type\fR \fIMACHINE_TYPE\fR; default="n1\-standard\-1"
+.RS 4
+Specifies the machine type used for the instances\&. To get a list of available machine types, run
+\fIgcloud compute machine\-types list\fR\&.
+.RE
+.PP
+\fB\-\-maintenance\-policy\fR \fIMAINTENANCE_POLICY\fR
+.RS 4
+Specifies the behavior of the instances when their host machines undergo maintenance\&.
+\fITERMINATE\fR
+indicates that the instances should be terminated\&.
+\fIMIGRATE\fR
+indicates that the instances should be migrated to a new host\&. Choosing
+\fIMIGRATE\fR
+will temporarily impact the performance of instances during a migration event\&. If omitted,
+\fIMIGRATE\fR
+is assumed\&.
+.RE
+.PP
+\fB\-\-metadata\fR \fIKEY\fR=\fIVALUE\fR [\fIKEY\fR=\fIVALUE\fR \&...]
+.RS 4
+Metadata to be made available to the guest operating system running on the instances\&. Each metadata entry is a key/value pair separated by an equals sign\&. Metadata keys must be unique and less than 128 bytes in length\&. Values must be less than or equal to 32,768 bytes in length\&. Multiple arguments can be passed to this flag, e\&.g\&.,
+_\-\-metadata key\-1=value\-1 key\-2=value\-2 key\-3=value\-3_\&.
+.sp
+In images that have
+Compute Engine tools installed
+on them, the following metadata keys have special meanings:
+.PP
+\fBstartup\-script\fR
+.RS 4
+Specifies a script that will be executed by the instances once they start running\&. For convenience,
+\fI\-\-metadata\-from\-file\fR
+can be used to pull the value from a file\&.
+.RE
+.PP
+\fBstartup\-script\-url\fR
+.RS 4
+Same as
+\fIstartup\-script\fR
+except that the script contents are pulled from a publicly\-accessible location on the web\&.
+.RE
+.RE
+.PP
+\fB\-\-metadata\-from\-file\fR \fIKEY\fR=\fILOCAL_FILE_PATH\fR [\fIKEY\fR=\fILOCAL_FILE_PATH\fR \&...]
+.RS 4
+Same as
+\fI\-\-metadata\fR
+except that the value for the entry will be read from a local file\&. This is useful for values that are too large such as
+\fIstartup\-script\fR
+contents\&.
+.RE
+.PP
+\fB\-\-network\fR \fINETWORK\fR; default="default"
+.RS 4
+Specifies the network that the instances will be part of\&. If omitted, the
+\fIdefault\fR
+network is used\&.
+.RE
+.PP
+\fB\-\-no\-address\fR
+.RS 4
+If provided, the instances will not be assigned external IP addresses\&.
+.RE
+.PP
+\fB\-\-no\-boot\-disk\-auto\-delete\fR
+.RS 4
+If provided, boot disks will not be automatically deleted when their instances are deleted\&.
+.RE
+.PP
+\fB\-\-no\-restart\-on\-failure\fR
+.RS 4
+If provided, the instances will not be restarted if they are terminated by Compute Engine\&. By default, failed instances will be restarted\&. This does not affect terminations performed by the user\&.
+.RE
+.PP
+\fB\-\-no\-scopes\fR
+.RS 4
+If provided, the default scopes (https://www\&.googleapis\&.com/auth/devstorage\&.read_only) are not added to the instances\&.
+.RE
+.PP
+\fB\-\-scopes\fR \fISCOPE\fR [[\fIACCOUNT\fR=]\fISCOPE\fR \&...]
+.RS 4
+Specifies service accounts and scopes for the instances\&. Service accounts generate access tokens that can be accessed through the instance metadata server and used to authenticate applications on the instance\&. The account can be either an email address or an alias corresponding to a service account\&. If account is omitted, the project\(cqs default service account is used\&. The default service account can be specified explicitly by using the alias
+\fIdefault\fR\&. Example:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute instance\-templates create example\-instance \e
+    \-\-scopes compute\-rw me@project\&.gserviceaccount\&.com=storage\-rw
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+If this flag is not provided, the
+\fIstorage\-ro\fR
+scope is added to the instances\&. To create instances with no scopes, use
+\fI\-\-no\-scopes\fR:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud compute instance\-templates create example\-instance \-\-no\-scopes
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+SCOPE can be either the full URI of the scope or an alias\&. Available aliases are:
+.TS
+tab(:);
+ltB ltB.
+T{
+Alias
+T}:T{
+URI
+T}
+.T&
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt
+lt lt.
+T{
+bigquery
+T}:T{
+https://www\&.googleapis\&.com/auth/bigquery
+T}
+T{
+compute\-ro
+T}:T{
+https://www\&.googleapis\&.com/auth/compute\&.readonly
+T}
+T{
+compute\-rw
+T}:T{
+https://www\&.googleapis\&.com/auth/compute
+T}
+T{
+datastore
+T}:T{
+https://www\&.googleapis\&.com/auth/datastore
+T}
+T{
+sql
+T}:T{
+https://www\&.googleapis\&.com/auth/sqlservice
+T}
+T{
+sql\-admin
+T}:T{
+https://www\&.googleapis\&.com/auth/sqlservice\&.admin
+T}
+T{
+storage\-full
+T}:T{
+https://www\&.googleapis\&.com/auth/devstorage\&.full_control
+T}
+T{
+storage\-ro
+T}:T{
+https://www\&.googleapis\&.com/auth/devstorage\&.read_only
+T}
+T{
+storage\-rw
+T}:T{
+https://www\&.googleapis\&.com/auth/devstorage\&.read_write
+T}
+T{
+taskqueue
+T}:T{
+https://www\&.googleapis\&.com/auth/taskqueue
+T}
+T{
+userinfo\-email
+T}:T{
+https://www\&.googleapis\&.com/auth/userinfo\&.email
+T}
+.TE
+.sp 1
+.RE
+.PP
+\fB\-\-tags\fR \fITAG\fR [\fITAG\fR \&...]
+.RS 4
+Specifies a list of tags to apply to the instances for identifying the instances to which network firewall rules will apply\&. See
+\fBgcloud compute firewall\-rules create\fR(1) for more details\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

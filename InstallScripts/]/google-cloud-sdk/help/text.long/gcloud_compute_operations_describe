@@ -1,0 +1,88 @@
+NAME
+
+      gcloud compute operations describe - describe a Google Compute Engine
+         operation
+
+SYNOPSIS
+
+      gcloud compute operations describe NAME [--format FORMAT] [--global |
+          --region REGION | --zone ZONE] [--help] [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute operations describe displays all data associated with a
+      Google Compute Engine operation in a project.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the resource to fetch.
+
+FLAGS
+
+      --global
+
+         If provided, it is assumed that the requested operation is global.
+
+      --region REGION
+
+         The region of the operation to fetch.
+
+      --zone ZONE
+
+         The zone of the operation to fetch.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To get details about a global operation, run:
+
+        $ gcloud compute operations describe OPERATION --global
+
+      To get details about a regional operation, run:
+
+        $ gcloud compute operations describe OPERATION --region us-central1
+
+      To get details about a zonal operation, run:
+
+        $ gcloud compute operations describe OPERATION --zone us-central1-a
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

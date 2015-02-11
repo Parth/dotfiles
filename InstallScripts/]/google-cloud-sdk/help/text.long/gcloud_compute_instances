@@ -1,0 +1,129 @@
+NAME
+
+      gcloud compute instances - read and manipulate Google Compute Engine
+         virtual machine instances
+
+SYNOPSIS
+
+      gcloud compute instances COMMAND [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Read and manipulate Google Compute Engine virtual machine instances.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      add-access-config
+
+         Add access configs to Google Compute Engine virtual machine instances.
+
+      add-metadata
+
+         Add or update instance metadata.
+
+      add-tags
+
+         Add tags to Google Compute Engine virtual machine instances.
+
+      attach-disk
+
+         Attaches a disk to an instance.
+
+      create
+
+         Create Google Compute Engine virtual machine instances.
+
+      delete
+
+         Delete Google Compute Engine virtual machine instances.
+
+      delete-access-config
+
+         Delete access configs from Google Compute Engine virtual machines.
+
+      describe
+
+         Describe a virtual machine instance.
+
+      detach-disk
+
+         Detach disks from Google Compute Engine virtual machine instances.
+
+      get-serial-port-output
+
+         Read output from a virtual machine instance's serial port.
+
+      list
+
+         List Google Compute Engine virtual machine instances.
+
+      remove-metadata
+
+         Remove instance metadata.
+
+      remove-tags
+
+         Remove tags from Google Compute Engine virtual machine instances.
+
+      reset
+
+         Reset a virtual machine instance.
+
+      set-disk-auto-delete
+
+         Set auto-delete behavior for disks.
+
+      set-scheduling
+
+         Set scheduling options for Google Compute Engine virtual machine
+         instances.
+
+      start
+
+         Start a virtual machine instance.
+
+      stop
+
+         Stop a virtual machine instance.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

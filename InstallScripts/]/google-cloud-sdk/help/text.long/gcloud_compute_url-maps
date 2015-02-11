@@ -1,0 +1,95 @@
+NAME
+
+      gcloud compute url-maps - list, create, and delete URL maps
+
+SYNOPSIS
+
+      gcloud compute url-maps COMMAND [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      List, create, and delete URL maps.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      add-host-rule
+
+         Add a rule to a URL map to map hosts to a path matcher.
+
+      add-path-matcher
+
+         Add a path matcher to a URL map.
+
+      create
+
+         Create a URL map.
+
+      delete
+
+         Delete backend services.
+
+      describe
+
+         Describe a URL map.
+
+      edit
+
+         Modify URL maps.
+
+      list
+
+         List URL maps.
+
+      remove-host-rule
+
+         Remove a host rule from a URL map.
+
+      remove-path-matcher
+
+         Remove a path matcher from a URL map.
+
+      set-default-service
+
+         Change the default service of a URL map.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

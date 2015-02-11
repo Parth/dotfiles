@@ -1,0 +1,70 @@
+.TH "GCLOUD COMPONENTS REMOVE" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_components_remove \- remove one or more installed components
+.SH "SYNOPSIS"
+.HP
+gcloud\ components\ remove\ \fICOMPONENT\-ID\fR [\fICOMPONENT\-ID\fR\ \&...] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Uninstall all listed components, as well as all components that directly or indirectly depend on them\&. For example, if the component unicorn\-factory depends on the component horn\-factory, removing horn\-factory will cause unicorn\-factory to be removed as well\&. The command lists all components it is about to remove, and asks for confirmation before proceeding\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fICOMPONENT\-ID\fR [\fICOMPONENT\-ID\fR \&...]
+.RS 4
+The IDs of the components to be removed\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To remove \fICOMPONENT\-1\fR, \fICOMPONENT\-2\fR, and all components that directly or indirectly depend on \fICOMPONENT\-1\fR or \fICOMPONENT\-2\fR, type the following:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud components remove COMPONENT\-1 COMPONENT\-2
+.fi
+.if n \{\
+.RE
+.\}
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

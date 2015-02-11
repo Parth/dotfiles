@@ -1,0 +1,239 @@
+<html devsite="">
+<head>
+<title>gcloud </title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud - manage Google Cloud Platform resources and developer workflow</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud</code>&nbsp;&nbsp;&#32;<code><var>GROUP</var></code>&nbsp;&nbsp;&#32;|&nbsp;&nbsp;&#32;<code><var>COMMAND</var></code>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--user-output-enabled</code>&nbsp;&nbsp;&#32;<code><var>USER_OUTPUT_ENABLED</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--verbosity</code>&nbsp;&nbsp;&#32;<code><var>VERBOSITY</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-v</code>,&nbsp;&nbsp;&#32;<code>--version</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>The <code>gcloud</code> CLI manages authentication, local configuration, developer
+workflow, and interactions with the Google Cloud Platform APIs.</dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>--user-output-enabled</code> <code><var>USER_OUTPUT_ENABLED</var></code>
+</dt>
+
+<dd>
+Control whether user intended output is printed to the console.  (true/false)
+</dd>
+
+
+<dt>
+<code>--verbosity</code> <code><var>VERBOSITY</var></code>
+</dt>
+
+<dd>
+Override the default verbosity for this command.  This must be a standard logging verbosity level: [debug, info, warning, error, critical, none] (Default: [warning]).
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+
+<dt>
+<code>-v</code>, <code>--version</code>
+</dt>
+
+<dd>
+Print version information.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>GROUPS</dt>
+<dd>
+<code><var>GROUP</var></code> is one of the following:</dd>
+<dd><dl>
+<dt>
+<code><a href="auth">auth</a></code>
+</dt>
+
+<dd>
+Manage oauth2 credentials for the Google Cloud SDK.
+</dd>
+
+
+<dt>
+<code><a href="components">components</a></code>
+</dt>
+
+<dd>
+List, install, update, or remove Google Cloud SDK components or packages.
+</dd>
+
+
+<dt>
+<code><a href="compute">compute</a></code>
+</dt>
+
+<dd>
+Read and manipulate Google Compute Engine resources.
+</dd>
+
+
+<dt>
+<code><a href="config">config</a></code>
+</dt>
+
+<dd>
+View and edit Google Cloud SDK properties.
+</dd>
+
+
+<dt>
+<code><a href="dns">dns</a></code>
+</dt>
+
+<dd>
+Manage Cloud DNS.
+</dd>
+
+
+<dt>
+<code><a href="preview">preview</a></code>
+</dt>
+
+<dd>
+Manage Preview CLI command groups.
+</dd>
+
+
+<dt>
+<code><a href="sql">sql</a></code>
+</dt>
+
+<dd>
+Manage Cloud SQL databases.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>COMMANDS</dt>
+<dd>
+<code><var>COMMAND</var></code> is one of the following:</dd>
+<dd><dl>
+<dt>
+<code><a href="help">help</a></code>
+</dt>
+
+<dd>
+Prints detailed help messages for the specified commands.
+</dd>
+
+
+<dt>
+<code><a href="info">info</a></code>
+</dt>
+
+<dd>
+Display information about the current gcloud environment.
+</dd>
+
+
+<dt>
+<code><a href="init">init</a></code>
+</dt>
+
+<dd>
+Create and initialize a gcloud workspace in the current directory.
+</dd>
+
+
+<dt>
+<code><a href="version">version</a></code>
+</dt>
+
+<dd>
+Print version information for Cloud SDK components.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>core</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

@@ -1,0 +1,82 @@
+NAME
+
+      gcloud compute url-maps remove-host-rule - remove a host rule from a URL
+         map
+
+SYNOPSIS
+
+      gcloud compute url-maps remove-host-rule NAME
+         [--delete-orphaned-path-matcher] [--format FORMAT] [--help] --host HOST
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute url-maps remove-host-rule is used to remove a host rule
+      from a URL map. When
+
+       a host rule is removed, its path matcher is only removed if
+       it is not referenced by any other host rules and
+       --delete-orphaned-path-matcher is provided.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the URL map.
+
+FLAGS
+
+      --delete-orphaned-path-matcher
+
+         If provided and a path matcher is orphaned as a result of this command,
+         the command removes the orphaned path matcher instead of failing.
+
+      --host HOST
+
+         One of the hosts in the host rule to remove.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To remove a host rule that contains the host google.com from the URL map
+      named MY-URL-MAP, you can use this command:
+
+        $ gcloud compute url-maps remove-host-rule MY-URL-MAP --host google.com
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

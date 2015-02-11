@@ -1,0 +1,99 @@
+NAME
+
+      gcloud compute config-ssh - populate SSH config files with Host entries
+         from each instance
+
+SYNOPSIS
+
+      gcloud compute config-ssh [--dry-run] [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--remove]
+         [--ssh-config-file SSH_CONFIG_FILE] [--ssh-key-file SSH_KEY_FILE]
+         [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute config-ssh makes SSHing to virtual machine instances easier
+      by adding an alias for each instance to the user SSH configuration
+      (~/.ssh/config) file.
+
+      In most cases, it is sufficient to run:
+
+        $ gcloud compute config-ssh
+
+      Each instance will be given an alias of the form NAME.ZONE.PROJECT. For
+      example, if example-instance resides in us-central1-a, you can SSH to it
+      by running:
+
+        $ ssh example-instance.us-central1-a.MY-PROJECT
+
+      On some platforms, the host alias can be tab-completed, making the long
+      alias less daunting to type.
+
+      The aliases created interface with SSH-based programs like scp(1), so it
+      is possible to use the aliases elsewhere:
+
+        $ scp ~/MY-FILE example-instance.us-central1-a.MY-PROJECT:~
+
+      Whenever instances are added, removed, or their external IP addresses are
+      changed, this command should be re-executed to update the configuration.
+
+FLAGS
+
+      --dry-run
+
+         If provided, the proposed changes to the SSH config file are printed to
+         standard out and no actual changes are made.
+
+      --remove
+
+         If provided, any changes made to the SSH config file by this tool are
+         reverted.
+
+      --ssh-config-file SSH_CONFIG_FILE
+
+         Specifies an alternative per-user SSH configuration file. By default,
+         this is ~/.ssh/config.
+
+      --ssh-key-file SSH_KEY_FILE
+
+         The path to the SSH key file. By default, this is
+         ~/.ssh/google_compute_engine.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

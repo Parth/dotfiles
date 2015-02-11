@@ -1,0 +1,84 @@
+.TH "GCLOUD SQL" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_sql \- manage Cloud SQL databases
+.SH "SYNOPSIS"
+.HP
+gcloud\ sql\ \fIGROUP\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+Manage Cloud SQL databases\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "GROUPS"
+.sp
+\fIGROUP\fR is one of the following:
+.PP
+\fBbackups\fR
+.RS 4
+Provide commands for working with backups of Cloud SQL instances\&.
+.RE
+.PP
+\fBflags\fR
+.RS 4
+Provide a command to list flags\&.
+.RE
+.PP
+\fBinstances\fR
+.RS 4
+Provide commands for managing Cloud SQL instances\&.
+.RE
+.PP
+\fBoperations\fR
+.RS 4
+Provide commands for working with Cloud SQL instance operations\&.
+.RE
+.PP
+\fBssl\-certs\fR
+.RS 4
+Provide commands for managing SSL certificates of Cloud SQL instances\&.
+.RE
+.PP
+\fBtiers\fR
+.RS 4
+Provide a command to list tiers\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBsql\fR component\&. See installing components if it is not installed\&.

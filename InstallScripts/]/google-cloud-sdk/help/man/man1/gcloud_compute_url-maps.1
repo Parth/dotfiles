@@ -1,0 +1,104 @@
+.TH "GCLOUD COMPUTE URL-MAPS" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_url-maps \- list, create, and delete URL maps
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ url\-maps\ \fICOMMAND\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+List, create, and delete URL maps\&.
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "COMMANDS"
+.sp
+\fICOMMAND\fR is one of the following:
+.PP
+\fBadd\-host\-rule\fR
+.RS 4
+Add a rule to a URL map to map hosts to a path matcher\&.
+.RE
+.PP
+\fBadd\-path\-matcher\fR
+.RS 4
+Add a path matcher to a URL map\&.
+.RE
+.PP
+\fBcreate\fR
+.RS 4
+Create a URL map\&.
+.RE
+.PP
+\fBdelete\fR
+.RS 4
+Delete backend services\&.
+.RE
+.PP
+\fBdescribe\fR
+.RS 4
+Describe a URL map\&.
+.RE
+.PP
+\fBedit\fR
+.RS 4
+Modify URL maps\&.
+.RE
+.PP
+\fBlist\fR
+.RS 4
+List URL maps\&.
+.RE
+.PP
+\fBremove\-host\-rule\fR
+.RS 4
+Remove a host rule from a URL map\&.
+.RE
+.PP
+\fBremove\-path\-matcher\fR
+.RS 4
+Remove a path matcher from a URL map\&.
+.RE
+.PP
+\fBset\-default\-service\fR
+.RS 4
+Change the default service of a URL map\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

@@ -1,0 +1,120 @@
+NAME
+
+      gcloud compute addresses list - list addresses
+
+SYNOPSIS
+
+      gcloud compute addresses list [NAME ...] [--format FORMAT] [--help]
+         [--limit LIMIT] [--project PROJECT_ID] [--quiet, -q]
+         [--regexp REGEXP, -r REGEXP] [--global | --regions [REGION ...]]
+         [--sort-by SORT_BY] [--trace-token TRACE_TOKEN] [--uri] [-h]
+
+DESCRIPTION
+
+      gcloud compute addresses list lists summary information of addresses in a
+      project. The --uri option can be used to display URIs instead. Users who
+      want to see more data should use 'gcloud compute addresses describe'.
+
+      By default, global addresses and addresses from all regions are listed.
+      The results can be narrowed down by providing the --regions or --global
+      flag.
+
+POSITIONAL ARGUMENTS
+
+      [NAME ...]
+
+         If provided, show details for the specified names and/or URIs of
+         resources.
+
+FLAGS
+
+      --global
+
+         If provided, only global resources are shown.
+
+      --limit LIMIT
+
+         The maximum number of results.
+
+      --regexp REGEXP, -r REGEXP
+
+         A regular expression to filter the names of the results on. Any names
+         that do not match the entire regular expression will be filtered out.
+
+      --regions [REGION ...]
+
+         If provided, only regional resources are shown. If arguments are
+         provided, only resources from the given regions are shown.
+
+      --sort-by SORT_BY
+
+         A field to sort by. To perform a descending-order sort, prefix the
+         value of this flag with a tilde (~).
+
+      --uri
+
+         If provided, the list command will only print URIs for the resources
+         returned. If this flag is not provided, the list command will print a
+         human-readable table of useful resource data.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+EXAMPLES
+
+      To list all addresses in a project in table form, run:
+
+        $ gcloud compute addresses list
+
+      To list the URIs of all addresses in a project, run:
+
+        $ gcloud compute addresses list --uri
+
+      To list all of the global addresses in a project, run:
+
+        $ gcloud compute addresses list --global
+
+      To list all of the regional addresses in a project, run:
+
+        $ gcloud compute addresses list --regions
+
+      To list all of the addresses from the us-central1 and the europe-west1
+      regions, run:
+
+        $ gcloud compute addresses list --regions us-central1 europe-west1
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

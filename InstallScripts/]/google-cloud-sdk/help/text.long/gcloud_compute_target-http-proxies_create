@@ -1,0 +1,75 @@
+NAME
+
+      gcloud compute target-http-proxies create - create a target HTTP proxy
+
+SYNOPSIS
+
+      gcloud compute target-http-proxies create NAME [--description DESCRIPTION]
+         [--format FORMAT] [--help] [--project PROJECT_ID] [--quiet, -q]
+         [--trace-token TRACE_TOKEN] --url-map URL_MAP [-h]
+
+DESCRIPTION
+
+      gcloud compute target-http-proxies create is used to create target HTTP
+      proxies. A target HTTP proxy is referenced by one or more forwarding rules
+      which define which packets the proxy is responsible for routing. The
+      target HTTP proxy points to a URL map that defines the rules for routing
+      the requests. The URL map's job is to map URLs to backend services which
+      handle the actual requests.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the target HTTP proxy.
+
+FLAGS
+
+      --description DESCRIPTION
+
+         An optional, textual description for the target HTTP proxy.
+
+      --url-map URL_MAP
+
+         A reference to a URL map resource that defines the mapping of URLs to
+         backend services. The URL map must exist and cannot be deleted while
+         referenced by a target HTTP proxy.
+
+GLOBAL FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

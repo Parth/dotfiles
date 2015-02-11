@@ -1,0 +1,14 @@
+# Build artifacts
+*.py[cod]
+oauth2client.egg-info/
+build/
+dist/
+docs/
+
+# Test files
+.tox/
+
+# Coverage files
+.coverage
+coverage.xml
+nosetests.xml

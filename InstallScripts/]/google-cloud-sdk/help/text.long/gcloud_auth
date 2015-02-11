@@ -1,0 +1,75 @@
+NAME
+
+      gcloud auth - manage oauth2 credentials for the Google Cloud SDK
+
+SYNOPSIS
+
+      gcloud auth COMMAND [--format FORMAT] [--help] [--project PROJECT_ID]
+         [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Manage oauth2 credentials for the Google Cloud SDK.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      activate-refresh-token
+
+         Get credentials via an existing refresh token.
+
+      activate-service-account
+
+         Get credentials via the private key for a service account.
+
+      list
+
+         List the accounts for known credentials.
+
+      login
+
+         Get credentials for the tools in the Google Cloud SDK via a web flow.
+
+      revoke
+
+         Revoke authorization for credentials.
+
+NOTES
+
+      This command is in the Google Cloud SDK core component. See installing
+      components if it is not installed.
+

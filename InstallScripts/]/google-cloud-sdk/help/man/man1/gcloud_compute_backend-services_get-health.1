@@ -1,0 +1,61 @@
+.TH "GCLOUD COMPUTE BACKEND-SERVICES GET-HEALTH" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_compute_backend-services_get-health \- get backend health statuses from a backend service
+.SH "SYNOPSIS"
+.HP
+gcloud\ compute\ backend\-services\ get\-health\ \fINAME\fR [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+\fBgcloud compute backend\-services get\-health\fR is used to request the current health status of instances in a backend service\&. Every group in the service is checked and the health status of each configured instance is printed\&.
+.sp
+If a group contains names of instances that don\(cqt exist or instances that haven\(cqt yet been pushed to the load\-balancing system, they will not show up\&. Those that are listed as \fIHEALTHY\fR are able to receive load\-balanced traffic\&. Those that are marked as \fIUNHEALTHY\fR are either failing the configured health\-check or not responding to it\&.
+.sp
+Since the health checks are performed continuously and in a distributed manner, the state returned by this command is the most recent result of a vote of several redundant health checks\&. Backend services that do not have a valid global forwarding rule referencing it will not be health checked and so will have no health status\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+\fINAME\fR
+.RS 4
+The name of the backend service\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcompute\fR component\&. See installing components if it is not installed\&.

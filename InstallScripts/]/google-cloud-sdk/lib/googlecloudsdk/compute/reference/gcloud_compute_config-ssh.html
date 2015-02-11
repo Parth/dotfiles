@@ -1,0 +1,160 @@
+<html devsite="">
+<head>
+<title>gcloud compute config-ssh</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute config-ssh - populate SSH config files with Host entries from each instance</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute config-ssh</code>&nbsp;&nbsp;&#32;<nobr>[<code>--dry-run</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--remove</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--ssh-config-file</code>&nbsp;&nbsp;&#32;<code><var>SSH_CONFIG_FILE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--ssh-key-file</code>&nbsp;&nbsp;&#32;<code><var>SSH_KEY_FILE</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>
+<code>gcloud compute config-ssh</code> makes SSHing to virtual machine instances easier
+by adding an alias for each instance to the user SSH configuration
+(<code><var>~/.ssh/config</var></code>) file.</dd>
+<dd>In most cases, it is sufficient to run:</dd>
+<dd><pre>$ <A href="../compute/config-ssh">gcloud compute config-ssh</A></pre></dd>
+<dd>Each instance will be given an alias of the form
+<code><var>NAME.ZONE.PROJECT</var></code>. For example, if <code><var>example-instance</var></code> resides in
+<code><var>us-central1-a</var></code>, you can SSH to it by running:</dd>
+<dd><pre>$ ssh example-instance.us-central1-a.MY-PROJECT</pre></dd>
+<dd>On some platforms, the host alias can be tab-completed, making
+the long alias less daunting to type.</dd>
+<dd>The aliases created interface with SSH-based programs like
+<code>scp(1)</code>, so it is possible to use the aliases elsewhere:</dd>
+<dd><pre>$ scp ~/MY-FILE example-instance.us-central1-a.MY-PROJECT:~</pre></dd>
+<dd>Whenever instances are added, removed, or their external IP
+addresses are changed, this command should be re-executed to
+update the configuration.</dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--dry-run</code>
+</dt>
+
+<dd>
+If provided, the proposed changes to the SSH config file are printed to standard out and no actual changes are made.
+</dd>
+
+
+<dt>
+<code>--remove</code>
+</dt>
+
+<dd>
+If provided, any changes made to the SSH config file by this tool are reverted.
+</dd>
+
+
+<dt>
+<code>--ssh-config-file</code> <code><var>SSH_CONFIG_FILE</var></code>
+</dt>
+
+<dd>
+Specifies an alternative per-user SSH configuration file. By
+default, this is <code><var>~/.ssh/config</var></code>.
+</dd>
+
+
+<dt>
+<code>--ssh-key-file</code> <code><var>SSH_KEY_FILE</var></code>
+</dt>
+
+<dd>
+The path to the SSH key file. By default, this is <code><var>~/.ssh/google_compute_engine</var></code>.
+</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+

@@ -1,0 +1,90 @@
+.TH "GCLOUD CONFIG LIST" "1" "" "" ""
+.ie \n(.g .ds Aq \(aq
+.el       .ds Aq '
+.nh
+.ad l
+.SH "NAME"
+.HP
+gcloud_config_list \- view Google Cloud SDK properties
+.SH "SYNOPSIS"
+.HP
+gcloud\ config\ list [\fISECTION\fR/\fIPROPERTY\fR] [\fB\-\-all\fR] [\fB\-\-format\fR\ \fIFORMAT\fR] [\fB\-\-help\fR] [\fB\-\-project\fR\ \fIPROJECT_ID\fR] [\fB\-\-quiet\fR,\ \fB\-q\fR] [\fB\-\-trace\-token\fR\ \fITRACE_TOKEN\fR] [\fB\-h\fR]
+.SH "DESCRIPTION"
+.sp
+List all currently available Cloud SDK properties associated with your current workspace or global configuration\&.
+.SH "POSITIONAL ARGUMENTS"
+.PP
+[\fISECTION\fR/\fIPROPERTY\fR]
+.RS 4
+The property to be listed\&. Note that SECTION/ is optional while referring to properties in the core section\&.
+.RE
+.SH "FLAGS"
+.PP
+\fB\-\-all\fR
+.RS 4
+List all set and unset properties that match the arguments\&.
+.RE
+.SS "GLOBAL FLAGS"
+.PP
+\fB\-\-format\fR \fIFORMAT\fR
+.RS 4
+Specify a format for printed output\&. By default, a command\-specific human\-friendly output format is used\&. Setting this flag to one of the available options will serialize the result of the command in the chosen format and print it to stdout\&. Supported formats are:
+json,
+text,
+yaml\&.
+.RE
+.PP
+\fB\-\-help\fR
+.RS 4
+Display detailed help\&.
+.RE
+.PP
+\fB\-\-project\fR \fIPROJECT_ID\fR
+.RS 4
+The Google Cloud Platform project name to use for this invocation\&. If omitted then the current project is assumed\&.
+.RE
+.PP
+\fB\-\-quiet\fR, \fB\-q\fR
+.RS 4
+Disable all interactive prompts when running gcloud commands\&. If input is required, defaults will be used, or an error will be raised\&.
+.RE
+.PP
+\fB\-\-trace\-token\fR \fITRACE_TOKEN\fR
+.RS 4
+Token used to route traces of service requests for investigation of issues\&.
+.RE
+.PP
+\fB\-h\fR
+.RS 4
+Print a summary help and exit\&.
+.RE
+.SH "EXAMPLES"
+.sp
+To list the project property in the core section, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config list project
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To list the zone property in the compute section, run:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+$ gcloud config list compute/zone
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+To list all the properties, run: $ gcloud config list \-\-all
+.SH "NOTES"
+.sp
+This command is in the Google Cloud SDK \fBcore\fR component\&. See installing components if it is not installed\&.

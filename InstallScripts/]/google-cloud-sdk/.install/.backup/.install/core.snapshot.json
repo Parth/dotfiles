@@ -1,0 +1,1551 @@
+{
+  "components": [
+    {
+      "data": {
+        "checksum": "97f6a3e1857f4eb7eab7e509dd5194230f159ca5", 
+        "contents_checksum": "b33fa18e64d280278907551c18a5bf9c725d16cd", 
+        "size": 64248, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "preview", 
+        "app-engine-python", 
+        "app-engine-java", 
+        "app-engine-go-linux-x86", 
+        "app-engine-go-darwin-x86", 
+        "app-engine-go-windows-x86", 
+        "app-engine-go-linux-x86_64", 
+        "app-engine-go-darwin-x86_64", 
+        "app-engine-go-windows-x86_64", 
+        "app-engine-managed-vms"
+      ], 
+      "details": {
+        "description": "Provides the gcloud app tool for managing your apps.", 
+        "display_name": "App Engine Command Line Interface (Preview)"
+      }, 
+      "id": "app", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "942d2a5bb9d6e6a577ef13228fa1ef0563207777", 
+        "contents_checksum": "19583d649196b047ac03153f746eb1a273b15e5d", 
+        "size": 33099554, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-darwin-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Mac OS X, x86)"
+      }, 
+      "id": "app-engine-go-darwin-x86", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "69320bbc97869336a7877aa0a85a2830988fea09", 
+        "contents_checksum": "4a768ad97b0e425ab9d2b7e95c9ab26f2facc1b2", 
+        "size": 33610146, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-darwin-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Mac OS X, x86_64)"
+      }, 
+      "id": "app-engine-go-darwin-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "16aeaf072c7cdd2edb98d08de2bd5fcbd2723c21", 
+        "contents_checksum": "1c27c167923230a2264bbc58756d01de00c62b3b", 
+        "size": 34954214, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-linux-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Linux, x86)"
+      }, 
+      "id": "app-engine-go-linux-x86", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "c35980daebdcdd256736619aeb23124f88c97f2d", 
+        "contents_checksum": "96e6c6b8de9a5969287eae929fe9e36cd9378594", 
+        "size": 35647812, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-linux-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Linux, x86_64)"
+      }, 
+      "id": "app-engine-go-linux-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "967f9564a353b9d61178415698af05682dc19f83", 
+        "contents_checksum": "9f8a36cb93a0d8f1107e782dab19e15a7da5ac2a", 
+        "size": 33493114, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-windows-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Windows, x86)"
+      }, 
+      "id": "app-engine-go-windows-x86", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "WINDOWS", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "78f2c6c663137b6987ee2ddce66f32d68b1d058d", 
+        "contents_checksum": "adb247d92d251a86a0bde65c0e315953d3f13ae7", 
+        "size": 33950505, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-go-windows-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Go applications using gcloud.", 
+        "display_name": "gcloud app Go Extensions (Windows, x86_64)"
+      }, 
+      "id": "app-engine-go-windows-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "WINDOWS", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "46e9ae543e108ed423587b9132db0afa1b2ce6da", 
+        "contents_checksum": "a7009576ece0940f8289f91b4c32da4cbc663062", 
+        "size": 93326183, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-java-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Java applications using gcloud.", 
+        "display_name": "gcloud app Java Extensions"
+      }, 
+      "id": "app-engine-java", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "e2b178ab3d3b848e991a23f7eb5e6921e5f6f540", 
+        "contents_checksum": "80368a8ebbca2599413cccfc8ece208ad59c085a", 
+        "size": 88698939, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-managed-vms-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "app"
+      ], 
+      "details": {
+        "description": "Provides the tools needed to run locally and deploy your apps that use Managed VMs.", 
+        "display_name": "App Engine Managed VMs Component (Preview)"
+      }, 
+      "id": "app-engine-managed-vms", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "2f9097fd6cbcef5cc8d6c0faf3843e3ac0f391c5", 
+        "contents_checksum": "feab2a480961822f0e6b2813c16edebdac796ecc", 
+        "size": 6876960, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-python-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides the tools required to develop Python and PHP applications using gcloud.", 
+        "display_name": "gcloud app Python Extensions"
+      }, 
+      "id": "app-engine-python", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "11a535eac9d1bc70a3725148110bf1ca5b9c0bae", 
+        "contents_checksum": "d1d5f39249a0c826e352dda2e94498c6967c44ab", 
+        "size": 31026999, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-app-engine-python-extras-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python"
+      ], 
+      "details": {
+        "description": "Extra libraries for the App Engine Python Extentions.", 
+        "display_name": "gcloud app Python Extensions (Extra Libraries)"
+      }, 
+      "id": "app-engine-python-extras", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "2bd4c7582c9d4dba9e3b153fa07e48ae20cf08ad", 
+        "contents_checksum": "519e99e5adfb99289a6b7f3c8a6bb46eb6b68d4d", 
+        "size": 71280, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-bq-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "bq-nix", 
+        "bq-win"
+      ], 
+      "details": {
+        "description": "Provides the bq tool for interacting with the BigQuery service.", 
+        "display_name": "BigQuery Command Line Tool"
+      }, 
+      "id": "bq", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2.0.18"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "3a7c74d0cd3d54d8c79a32dabc3afd51c303e267", 
+        "contents_checksum": "680e360046a5ce7c2d747e8fb182c1ee08bdc1e2", 
+        "size": 960, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-bq-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "bq"
+      ], 
+      "details": {
+        "description": "Provides the bq tool for interacting with the BigQuery service.", 
+        "display_name": "BigQuery Command Line Tool (Platform Specific)"
+      }, 
+      "id": "bq-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2.0.18"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "817a00d93195f431952ffd747b8311903287b31c", 
+        "contents_checksum": "e98f723892785739d7eccbe471cfc97186c964bd", 
+        "size": 621, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-bq-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "bq"
+      ], 
+      "details": {
+        "description": "Provides the bq tool for interacting with the BigQuery service.", 
+        "display_name": "BigQuery Command Line Tool (Platform Specific)"
+      }, 
+      "id": "bq-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2.0.18"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "e13275911debeb690747a49ac34dac669a40dc45", 
+        "contents_checksum": "c0d873335656870a91d746ea1711a5355d0895fc", 
+        "size": 241458, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-compute-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "windows-ssh-tools"
+      ], 
+      "details": {
+        "description": "Provides the gcloud compute tool for working with Compute Engine.", 
+        "display_name": "Compute Engine Command Line Interface"
+      }, 
+      "id": "compute", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "8f492fe3d1db555aa59673de578d0a3ed4fda5be", 
+        "contents_checksum": "3f19a891dd10f31e62e671423d4fd2d2d713771b", 
+        "size": 1394758, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-core-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core-nix", 
+        "core-win"
+      ], 
+      "details": {
+        "description": "Handles all core functionality for the Cloud SDK.", 
+        "display_name": "Cloud SDK Core Libraries"
+      }, 
+      "id": "core", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": true, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "d0dd4dddb906eb78a05966776f472cb6ccb1e03a", 
+        "contents_checksum": "878b6855765c3dd791ef548e8d635dfa4621931c", 
+        "size": 1137, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-core-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Handles all core functionality for the Cloud SDK.", 
+        "display_name": "Cloud SDK Core Libraries (Platform Specific)"
+      }, 
+      "id": "core-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": true, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "39cd5f9e79b695e03c2fab483a0efb1ee42ba871", 
+        "contents_checksum": "f0f902af2e5d2186dcfd65c98a8b623466442ffb", 
+        "size": 757, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-core-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Handles all core functionality for the Cloud SDK.", 
+        "display_name": "Cloud SDK Core Libraries (Platform Specific)"
+      }, 
+      "id": "core-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": true, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "eca2b88deca17c02351719f21361543750da9f70", 
+        "contents_checksum": "5c910d7efb9d7f40cd047e6b03c98173a0194bce", 
+        "size": 17506, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-dns-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides the gcloud dns tool for managing your Cloud DNS.", 
+        "display_name": "Cloud DNS Admin Command Line Interface"
+      }, 
+      "id": "dns", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "dependencies": [
+        "core", 
+        "gae-python", 
+        "app-engine-go-linux-x86", 
+        "app-engine-go-darwin-x86", 
+        "app-engine-go-windows-x86", 
+        "app-engine-go-linux-x86_64", 
+        "app-engine-go-darwin-x86_64", 
+        "app-engine-go-windows-x86_64", 
+        "gae-go-nix", 
+        "gae-go-win"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Go applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Go"
+      }, 
+      "id": "gae-go", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "06324060fa3e02e2ee8460dd3d01589d1141159c", 
+        "contents_checksum": "a5bc5bb1efbd623ada90642ddf0086ebb7bb87f9", 
+        "size": 990, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-go-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-python", 
+        "app-engine-go-linux-x86", 
+        "app-engine-go-darwin-x86", 
+        "app-engine-go-windows-x86", 
+        "app-engine-go-linux-x86_64", 
+        "app-engine-go-darwin-x86_64", 
+        "app-engine-go-windows-x86_64", 
+        "gae-go"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Go applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Go (Platform Specific)"
+      }, 
+      "id": "gae-go-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "092ee6e3c7f5d8e9d640b75430816e974ed81ac5", 
+        "contents_checksum": "f37faf63116f0f944afcb7148a94555578b494bf", 
+        "size": 645, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-go-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-python", 
+        "app-engine-go-linux-x86", 
+        "app-engine-go-darwin-x86", 
+        "app-engine-go-windows-x86", 
+        "app-engine-go-linux-x86_64", 
+        "app-engine-go-darwin-x86_64", 
+        "app-engine-go-windows-x86_64", 
+        "gae-go"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Go applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Go (Platform Specific)"
+      }, 
+      "id": "gae-go-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "c41a66ad44b81a817f4b816749627d98af176953", 
+        "contents_checksum": "6590256e8fa564213f3a4255c374d51539f43701", 
+        "size": 169028992, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-java-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-java-nix", 
+        "gae-java-win"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Java applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Java"
+      }, 
+      "id": "gae-java", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "9b98625d2c1623a8763d746a3eeab01633e23e81", 
+        "contents_checksum": "5ae6b19e172c92c757898f44384bc2dbb87635d1", 
+        "size": 1480, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-java-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-java"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Java applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Java (Platform Specific)"
+      }, 
+      "id": "gae-java-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "fc69ec6a4d557994b491097d76dd230575a5156e", 
+        "contents_checksum": "e16feeddbb5ae5dbf20f47129e7c660de702832c", 
+        "size": 1173, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-java-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-java"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Java applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Java (Platform Specific)"
+      }, 
+      "id": "gae-java-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "33cd9d91f0ae86a2355691210c9a2e098fc56934", 
+        "contents_checksum": "a6b8940f68ba0467493df914083aae5df3438e51", 
+        "size": 1156, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-python-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "app-engine-python", 
+        "app-engine-python-extras", 
+        "gae-python-launcher-mac", 
+        "gae-python-launcher-win"
+      ], 
+      "details": {
+        "description": "Provides all the tools required to develop Python and PHP applications on Google App Engine.", 
+        "display_name": "App Engine SDK for Python and PHP"
+      }, 
+      "id": "gae-python", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "07d75f2d4602a6d1e1ce19e873b77f5197981735", 
+        "contents_checksum": "38a8170b044cf638df896f0959245fa35d6479c9", 
+        "size": 14984588, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-python-launcher-mac-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-python"
+      ], 
+      "details": {
+        "description": "Provides the GUI application for launching App Engine apps locally.", 
+        "display_name": "App Engine Launcher Application for Mac"
+      }, 
+      "id": "gae-python-launcher-mac", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "345d072b04b394215375b8c4fa4cd88e61ffac78", 
+        "contents_checksum": "ddf3494eef208b1dd180b5ebf0e68c405ccce4a3", 
+        "size": 11728457, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gae-python-launcher-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gae-python"
+      ], 
+      "details": {
+        "description": "Provides the GUI application for launching App Engine apps locally.", 
+        "display_name": "App Engine Launcher Application for Windows"
+      }, 
+      "id": "gae-python-launcher-win", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.9.17"
+      }
+    }, 
+    {
+      "dependencies": [
+        "core", 
+        "gcloud-oss-linux-x86", 
+        "gcloud-oss-linux-x86_64", 
+        "gcloud-oss-darwin-x86", 
+        "gcloud-oss-darwin-x86_64", 
+        "gcloud-oss-windows-x86", 
+        "gcloud-oss-windows-x86_64"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions"
+      }, 
+      "id": "gcloud-oss", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 0, 
+        "version_string": ""
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "7e3b6f4b67fe95f3243bc9f864afae13f31c8753", 
+        "contents_checksum": "f8273a35335b8eda25fb62de5296b559f6d347c6", 
+        "size": 2505535, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-darwin-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Linux, x86)"
+      }, 
+      "id": "gcloud-oss-darwin-x86", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "d68c77d02b4955bddbbe6d2ac06ab639e463378b", 
+        "contents_checksum": "4e459006fc159cb06d9ae5bf56d660829409719b", 
+        "size": 2718199, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-darwin-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Mac, x86_64)"
+      }, 
+      "id": "gcloud-oss-darwin-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "34a02b6dba22420ffcb9ec4eb564ca532c5226c2", 
+        "contents_checksum": "edcf56faaccca9623b86aa5ad584c2383a3f23fb", 
+        "size": 2482396, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-linux-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Linux, x86)"
+      }, 
+      "id": "gcloud-oss-linux-x86", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "af34307359b32b8f07fc9799d5c98d0c2abcf6a3", 
+        "contents_checksum": "f7b69764c20a490c3ab00e01f45bebd00662c030", 
+        "size": 2707352, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-linux-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Linux, x86_64)"
+      }, 
+      "id": "gcloud-oss-linux-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "9b39614eaa70d70865d9f4a8423a091b98382f1a", 
+        "contents_checksum": "a55ca31d093d5afe1b7dd38dd08b1d8f1d757b30", 
+        "size": 2477945, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-windows-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Windows, x86)"
+      }, 
+      "id": "gcloud-oss-windows-x86", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "1a158714847d1598d6f6914a3b9ce65c06247362", 
+        "contents_checksum": "553060245a0e7c1f0d6429610499d25c72cfbb38", 
+        "size": 2703172, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcloud-oss-windows-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides binaries for OSS gcloud extensions.", 
+        "display_name": "OSS gcloud extensions (Windows, x86_64)"
+      }, 
+      "id": "gcloud-oss-windows-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.1.0"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "6d74f2f8ccb1acfd63cdcd529c25a2ba8c5f5480", 
+        "contents_checksum": "99137eca3cb1b1244086af8650439db9e2194979", 
+        "size": 477533, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcutil-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "windows-ssh-tools", 
+        "gcutil-nix", 
+        "gcutil-win"
+      ], 
+      "details": {
+        "description": "Provides the gcutil tool for interacting with Google Compute Engine.", 
+        "display_name": "Compute Engine Command Line Tool (deprecated)"
+      }, 
+      "id": "gcutil", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.16.5"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "5a962bcfad2d1e4794b5cc1cce83a5a7ec14c693", 
+        "contents_checksum": "16227561d5856375409cf6f824377d35bd4207e5", 
+        "size": 966, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcutil-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "windows-ssh-tools", 
+        "gcutil"
+      ], 
+      "details": {
+        "description": "Provides the gcutil tool for interacting with Google Compute Engine.", 
+        "display_name": "Compute Engine Command Line Tool (deprecated) (Platform Specific)"
+      }, 
+      "id": "gcutil-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.16.5"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "1dc02f29b9678dbf43cdf654609630f85ccf37e9", 
+        "contents_checksum": "0751123393c0bbef6338f5bf24fa76eaf650b29c", 
+        "size": 625, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gcutil-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "windows-ssh-tools", 
+        "gcutil"
+      ], 
+      "details": {
+        "description": "Provides the gcutil tool for interacting with Google Compute Engine.", 
+        "display_name": "Compute Engine Command Line Tool (deprecated) (Platform Specific)"
+      }, 
+      "id": "gcutil-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "1.16.5"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "02ab496975988a5a7ad1fa60ab8b3c48a21dbe64", 
+        "contents_checksum": "ac9850b31c74126258f61c60bed59dd6e49b80b7", 
+        "size": 2129558, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gsutil-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gsutil-nix", 
+        "gsutil-win"
+      ], 
+      "details": {
+        "description": "Provides the gsutil tool for interacting with Google Cloud Storage.", 
+        "display_name": "Cloud Storage Command Line Tool"
+      }, 
+      "id": "gsutil", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "4.8"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "d037a980cbbf29f1d7c76f87796ef3d41d2a9d22", 
+        "contents_checksum": "a6b3430913f8a3046831aeca8ee07992b95a3f29", 
+        "size": 974, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gsutil-nix-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gsutil"
+      ], 
+      "details": {
+        "description": "Provides the gsutil tool for interacting with Google Cloud Storage.", 
+        "display_name": "Cloud Storage Command Line Tool (Platform Specific)"
+      }, 
+      "id": "gsutil-nix", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "LINUX", 
+          "MACOSX", 
+          "CYGWIN", 
+          "MSYS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "4.8"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "b55c5b3e530765ffc7fdce0c79884f5f6f46d1f7", 
+        "contents_checksum": "cc0dd4524250dff480ff43dfef8e420dac4b638c", 
+        "size": 635, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-gsutil-win-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "gsutil"
+      ], 
+      "details": {
+        "description": "Provides the gsutil tool for interacting with Google Cloud Storage.", 
+        "display_name": "Cloud Storage Command Line Tool (Platform Specific)"
+      }, 
+      "id": "gsutil-win", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "4.8"
+      }
+    }, 
+    {
+      "dependencies": [
+        "core", 
+        "bq", 
+        "compute", 
+        "dns", 
+        "gcutil", 
+        "gsutil", 
+        "sql"
+      ], 
+      "details": {
+        "description": "Contains all the standard cloud platform command line tools.", 
+        "display_name": "Cloud SDK Core Command Line Tools"
+      }, 
+      "id": "pkg-core", 
+      "is_configuration": true, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 1, 
+        "version_string": "1"
+      }
+    }, 
+    {
+      "dependencies": [
+        "pkg-core", 
+        "gae-go"
+      ], 
+      "details": {
+        "description": "Contains all tools for building cloud applications in Go.", 
+        "display_name": "Cloud SDK for Go Developers"
+      }, 
+      "id": "pkg-go", 
+      "is_configuration": true, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 1, 
+        "version_string": "1"
+      }
+    }, 
+    {
+      "dependencies": [
+        "pkg-core", 
+        "gae-java"
+      ], 
+      "details": {
+        "description": "Contains all tools for building cloud applications in Java.", 
+        "display_name": "Cloud SDK for Java Developers"
+      }, 
+      "id": "pkg-java", 
+      "is_configuration": true, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 1, 
+        "version_string": "1"
+      }
+    }, 
+    {
+      "dependencies": [
+        "pkg-core", 
+        "gae-python"
+      ], 
+      "details": {
+        "description": "Contains all tools for building cloud applications in Python and PHP.", 
+        "display_name": "Cloud SDK for Python and PHP Developers"
+      }, 
+      "id": "pkg-python", 
+      "is_configuration": true, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 1, 
+        "version_string": "1"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "840592c3bb3c03bd264107f46a31dbad7cf78179", 
+        "contents_checksum": "2bdab1ceab8cba509d2afb39a479246801dbeee6", 
+        "size": 131431, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-preview-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core", 
+        "preview-extensions-linux-x86", 
+        "preview-extensions-linux-x86_64", 
+        "preview-extensions-darwin-x86", 
+        "preview-extensions-darwin-x86_64"
+      ], 
+      "details": {
+        "description": "Provides gcloud commands that are in developer preview.", 
+        "display_name": "Developer Preview gcloud Commands"
+      }, 
+      "id": "preview", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "d31304f6ae00822d3ec020d29672fd712084a8b7", 
+        "contents_checksum": "e5ad6f5f45dc8b76fec438b62164f601c91c8323", 
+        "size": 3265696, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-preview-extensions-darwin-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "preview"
+      ], 
+      "details": {
+        "description": "Provides native extensions for preview commands.", 
+        "display_name": "Native extensions for preview commands (Mac OS X, x86)"
+      }, 
+      "id": "preview-extensions-darwin-x86", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.9.1"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "8ebf6090ce32494bc7c105383d7fd9ca06d9b8f4", 
+        "contents_checksum": "65bf3306d8143a938f2bc31a430a57bdb13dedaf", 
+        "size": 3393073, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-preview-extensions-darwin-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "preview"
+      ], 
+      "details": {
+        "description": "Provides native extensions for preview commands.", 
+        "display_name": "Native extensions for preview commands (Mac OS X, x86_64)"
+      }, 
+      "id": "preview-extensions-darwin-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "MACOSX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.9.1"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "af8ac43cd90d0a78f03f272752fadcce1206384c", 
+        "contents_checksum": "e398fb8dac07a62f4234e6a8dc0609aa53931fa0", 
+        "size": 3287792, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-preview-extensions-linux-x86-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "preview"
+      ], 
+      "details": {
+        "description": "Provides native extensions for preview commands.", 
+        "display_name": "Native extensions for preview commands (Linux, x86)"
+      }, 
+      "id": "preview-extensions-linux-x86", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.9.1"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "f827a64be6836dc1f11b30626919e0b97e468500", 
+        "contents_checksum": "0ab2664ebeb604f9bacc8a817b13141703d1522e", 
+        "size": 3431722, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-preview-extensions-linux-x86_64-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "preview"
+      ], 
+      "details": {
+        "description": "Provides native extensions for preview commands.", 
+        "display_name": "Native extensions for preview commands (Linux, x86_64)"
+      }, 
+      "id": "preview-extensions-linux-x86_64", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "architectures": [
+          "x86_64"
+        ], 
+        "operating_systems": [
+          "LINUX"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "0.9.1"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "6c1ddf9b256b04f7b94d8d12b15f0ffb2d408acf", 
+        "contents_checksum": "6ce1784ec8a347788c42ce292b494af8f7f44206", 
+        "size": 34986, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-sql-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [
+        "core"
+      ], 
+      "details": {
+        "description": "Provides the gcloud sql tool for interacting with your Cloud SQL instances.", 
+        "display_name": "Cloud SQL Admin Command Line Interface"
+      }, 
+      "id": "sql", 
+      "is_configuration": false, 
+      "is_hidden": false, 
+      "is_required": false, 
+      "platform": {}, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }, 
+    {
+      "data": {
+        "checksum": "3dbd67d14a10f7e28387388a5ec03d3c28eb969f", 
+        "contents_checksum": "299718b6cb571f23fb5ac05a6e531aafa284d781", 
+        "size": 906906, 
+        "source": "file:///tmp/tmpcAPnEQ/components/google-cloud-sdk-windows-ssh-tools-20150205210641.tar.gz", 
+        "type": "tar"
+      }, 
+      "dependencies": [], 
+      "details": {
+        "description": "Provides Windows command line ssh tools.", 
+        "display_name": "Windows command line ssh tools"
+      }, 
+      "id": "windows-ssh-tools", 
+      "is_configuration": false, 
+      "is_hidden": true, 
+      "is_required": false, 
+      "platform": {
+        "operating_systems": [
+          "WINDOWS"
+        ]
+      }, 
+      "version": {
+        "build_number": 20150205210641, 
+        "version_string": "2015.02.05"
+      }
+    }
+  ], 
+  "revision": 20150205210641, 
+  "schema_version": {
+    "no_update": false, 
+    "url": "https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.tar.gz", 
+    "version": 3
+  }
+}

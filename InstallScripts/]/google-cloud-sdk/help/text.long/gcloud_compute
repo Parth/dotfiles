@@ -1,0 +1,163 @@
+NAME
+
+      gcloud compute - read and manipulate Google Compute Engine resources
+
+SYNOPSIS
+
+      gcloud compute GROUP | COMMAND [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      Read and manipulate Google Compute Engine resources.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+GROUPS
+
+      GROUP is one of the following:
+
+      addresses
+
+         Read and manipulate Google Compute Engine addresses.
+
+      backend-services
+
+         List, create, and delete backend services.
+
+      disk-types
+
+         Read Google Compute Engine virtual disk types.
+
+      disks
+
+         Read and manipulate Google Compute Engine disks.
+
+      firewall-rules
+
+         List, create, and delete Google Compute Engine firewall rules.
+
+      forwarding-rules
+
+         Read and manipulate forwarding rules to send traffic to load balancers.
+
+      http-health-checks
+
+         Read and manipulate HTTP health checks for load balanced instances.
+
+      images
+
+         List, create, and delete Google Compute Engine images.
+
+      instance-groups
+
+         Read and manipulate Google Compute Engine instance groups.
+
+      instance-templates
+
+         Read and manipulate Google Compute Engine instance templates.
+
+      instances
+
+         Read and manipulate Google Compute Engine virtual machine instances.
+
+      machine-types
+
+         Read Google Compute Engine virtual machine types.
+
+      networks
+
+         List, create, and delete Google Compute Engine networks.
+
+      operations
+
+         Read and manipulate Google Compute Engine operations.
+
+      project-info
+
+         Read and manipulate project-level data like quotas and metadata.
+
+      regions
+
+         List Google Compute Engine regions.
+
+      routes
+
+         Read and manipulate routes.
+
+      snapshots
+
+         List, describe, and delete Google Compute Engine snapshots.
+
+      target-http-proxies
+
+         List, create, and delete target HTTP proxies.
+
+      target-instances
+
+         Read and manipulate Google Compute Engine virtual target instances.
+
+      target-pools
+
+         Read and manipulate Google Compute Engine target pools.
+
+      url-maps
+
+         List, create, and delete URL maps.
+
+      zones
+
+         List Google Compute Engine zones.
+
+COMMANDS
+
+      COMMAND is one of the following:
+
+      config-ssh
+
+         Populate SSH config files with Host entries from each instance.
+
+      copy-files
+
+         Copy files to and from Google Compute Engine virtual machines.
+
+      ssh
+
+         SSH into a virtual machine instance.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

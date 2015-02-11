@@ -1,0 +1,73 @@
+NAME
+
+      gcloud compute backend-services get-health - get backend health statuses
+         from a backend service
+
+SYNOPSIS
+
+      gcloud compute backend-services get-health NAME [--format FORMAT] [--help]
+         [--project PROJECT_ID] [--quiet, -q] [--trace-token TRACE_TOKEN] [-h]
+
+DESCRIPTION
+
+      gcloud compute backend-services get-health is used to request the current
+      health status of instances in a backend service. Every group in the
+      service is checked and the health status of each configured instance is
+      printed.
+
+      If a group contains names of instances that don't exist or instances that
+      haven't yet been pushed to the load-balancing system, they will not show
+      up. Those that are listed as HEALTHY are able to receive load-balanced
+      traffic. Those that are marked as UNHEALTHY are either failing the
+      configured health-check or not responding to it.
+
+      Since the health checks are performed continuously and in a distributed
+      manner, the state returned by this command is the most recent result of a
+      vote of several redundant health checks. Backend services that do not have
+      a valid global forwarding rule referencing it will not be health checked
+      and so will have no health status.
+
+POSITIONAL ARGUMENTS
+
+      NAME
+
+         The name of the backend service.
+
+FLAGS
+
+      --format FORMAT
+
+         Specify a format for printed output. By default, a command-specific
+         human-friendly output format is used. Setting this flag to one of the
+         available options will serialize the result of the command in the
+         chosen format and print it to stdout. Supported formats are: json,
+         text, yaml.
+
+      --help
+
+         Display detailed help.
+
+      --project PROJECT_ID
+
+         The Google Cloud Platform project name to use for this invocation. If
+         omitted then the current project is assumed.
+
+      --quiet, -q
+
+         Disable all interactive prompts when running gcloud commands. If input
+         is required, defaults will be used, or an error will be raised.
+
+      --trace-token TRACE_TOKEN
+
+         Token used to route traces of service requests for investigation of
+         issues.
+
+      -h
+
+         Print a summary help and exit.
+
+NOTES
+
+      This command is in the Google Cloud SDK compute component. See installing
+      components if it is not installed.
+

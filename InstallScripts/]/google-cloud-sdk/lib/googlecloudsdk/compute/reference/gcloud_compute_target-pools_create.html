@@ -1,0 +1,221 @@
+<html devsite="">
+<head>
+<title>gcloud compute target-pools create</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="project_path" value="/sdk/_project.yaml">
+<meta name="book_path" value="/sdk/_book.yaml">
+<!--
+        THIS DOC IS GENERATED.  DO NOT EDIT.
+        -->
+<style>
+  dd { margin-bottom: 1ex; }
+  .hangingindent { padding-left: 1.5em; text-indent: -1.5em; }
+</style>
+</head>
+<body><dl>
+<section>
+<dt>NAME</dt>
+<dd>gcloud compute target-pools create - define a load-balanced pool of virtual machine instances</dd>
+</section><section>
+<dt>SYNOPSIS</dt>
+<dd><dl>
+<dt class="hangingindent">
+<code>gcloud compute target-pools create</code>&nbsp;&nbsp;&#32;<code><var>NAME</var></code>&nbsp;&nbsp;&#32;<nobr>[<code>--backup-pool</code>&nbsp;&nbsp;&#32;<code><var>BACKUP_POOL</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--description</code>&nbsp;&nbsp;&#32;<code><var>DESCRIPTION</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--failover-ratio</code>&nbsp;&nbsp;&#32;<code><var>FAILOVER_RATIO</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--format</code>&nbsp;&nbsp;&#32;<code><var>FORMAT</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--health-check</code>&nbsp;&nbsp;&#32;<code><var>HEALTH_CHECK</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--help</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--project</code>&nbsp;&nbsp;&#32;<code><var>PROJECT_ID</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--quiet</code>,&nbsp;&nbsp;&#32;<code>-q</code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--region</code>&nbsp;&nbsp;&#32;<code><var>REGION</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--session-affinity</code>&nbsp;&nbsp;&#32;<code><var>SESSION_AFFINITY</var></code>;&nbsp;&nbsp;&#32;default="NONE"]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>--trace-token</code>&nbsp;&nbsp;&#32;<code><var>TRACE_TOKEN</var></code>]</nobr>&nbsp;&nbsp;&#32;<nobr>[<code>-h</code>]</nobr>
+</dt>
+
+
+</dl></dd>
+</section><section>
+<dt>DESCRIPTION</dt>
+<dd>
+<code>gcloud compute target-pools create</code> is used to create a target pool. A target pool resource
+defines a group of instances that can receive incoming traffic
+from forwarding rules. When a forwarding rule directs traffic to a
+target pool, Google Compute Engine picks an instance from the
+target pool based on a hash of the source and
+destination IP addresses and ports. For more
+information on load balancing, see
+<a href="https://developers.google.com/compute/docs/load-balancing/">https://developers.google.com/compute/docs/load-balancing/</a>.</dd>
+<dd>To add instances to a target pool, use <code>gcloud compute
+target-pools add-instances</code>.</dd>
+</section><section>
+<dt>POSITIONAL ARGUMENTS</dt>
+<dd><dl>
+<dt>
+<code><var>NAME</var></code>
+</dt>
+
+<dd>
+The name of the target pool.
+</dd>
+
+</dl></dd>
+</section><section>
+<dt>FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--backup-pool</code> <code><var>BACKUP_POOL</var></code>
+</dt>
+
+<dd>
+Together with <code><var>--failover-ratio</var></code>, this flag defines the fallback
+behavior of the target pool (primary pool) to be created by this
+command. If the ratio of the healthy instances in the primary pool
+is at or below the specified <code><var>--failover-ratio value</var></code>, then traffic
+arriving at the load-balanced IP address will be directed to the
+backup pool. If this flag is provided, then <code><var>--failover-ratio</var></code> is
+required.
+</dd>
+
+
+<dt>
+<code>--description</code> <code><var>DESCRIPTION</var></code>
+</dt>
+
+<dd>
+An optional description of this target pool.
+</dd>
+
+
+<dt>
+<code>--failover-ratio</code> <code><var>FAILOVER_RATIO</var></code>
+</dt>
+
+<dd>
+Together with <code><var>--backup-pool</var></code>, defines the fallback behavior of the
+target pool (primary pool) to be created by this command. If the
+ratio of the healthy instances in the primary pool is at or below this
+number, traffic arriving at the load-balanced IP address will be
+directed to the backup pool. For example, if 0.4 is chosen as the
+failover ratio, then traffic will fail over to the backup pool if
+more than 40% of the instances become unhealthy.
+If not set, the traffic will be directed the
+instances in this pool in the <code><var>force</var></code> mode, where traffic will be
+spread to the healthy instances with the best effort, or to all
+instances when no instance is healthy.
+If this flag is provided, then <code><var>--backup-pool</var></code> is required.
+</dd>
+
+
+<dt>
+<code>--health-check</code> <code><var>HEALTH_CHECK</var></code>
+</dt>
+
+<dd>
+Specifies an HTTP health check resource to use to determine the health
+of instances in this pool. If no health check is specified, traffic will
+be sent to all instances in this target pool as if the instances
+were healthy, but the health status of this pool will appear as
+unhealthy as a warning that this target pool does not have a health
+check.
+</dd>
+
+
+<dt>
+<code>--region</code> <code><var>REGION</var></code>
+</dt>
+
+<dd>
+The region of the target pool to create. If not specified, you will be prompted to select a region.
+</dd>
+<dd>To avoid prompting when this flag is omitted, you can set the
+<code><var>compute/region</var></code> property:</dd>
+<dd><pre>$ <A href="../../config/set">gcloud config set</A> compute/region REGION</pre></dd>
+<dd>A list of regions can fetched by running:</dd>
+<dd><pre>$ <A href="../../compute/regions/list">gcloud compute regions list</A></pre></dd>
+<dd>To unset the property, run:</dd>
+<dd><pre>$ <A href="../../config/unset">gcloud config unset</A> compute/region</pre></dd>
+<dd>Alternatively, the region can be stored in the environment
+variable <code><var>CLOUDSDK_COMPUTE_REGION</var></code>.</dd>
+
+
+<dt>
+<code>--session-affinity</code> <code><var>SESSION_AFFINITY</var></code>; default="NONE"
+</dt>
+
+<dd>
+Specifies the session affinity option for the connection.
+If <code><var>NONE</var></code> is selected, then connections from the same client
+IP address may go to any instance in the target pool.
+If <code><var>CLIENT_IP</var></code> is selected, then connections
+from the same client IP address will go to the same instance
+in the target pool.
+If <code><var>CLIENT_IP_PROTO</var></code> is selected, then connections from the same
+client IP with the same IP protocol will go to the same client pool.
+If not specified, then <code><var>NONE</var></code> is used as a default.
+</dd>
+
+</dl></dd>
+<section id="_global_flags">
+<dt>GLOBAL FLAGS</dt>
+<dd><dl>
+<dt>
+<code>--format</code> <code><var>FORMAT</var></code>
+</dt>
+
+<dd>
+Specify a format for printed output. By default, a command-specific
+human-friendly output format is used. Setting this flag to one of
+the available options will serialize the result of the command in
+the chosen format and print it to stdout. Supported formats are:
+<code>json</code>, <code>text</code>, <code>yaml</code>.
+</dd>
+
+
+<dt>
+<code>--help</code>
+</dt>
+
+<dd>
+Display detailed help.
+</dd>
+
+
+<dt>
+<code>--project</code> <code><var>PROJECT_ID</var></code>
+</dt>
+
+<dd>
+The Google Cloud Platform project name to use for this invocation. If
+omitted then the current project is assumed.
+</dd>
+
+
+<dt>
+<code>--quiet</code>, <code>-q</code>
+</dt>
+
+<dd>
+Disable all interactive prompts when running gcloud commands. If input
+is required, defaults will be used, or an error will be raised.
+</dd>
+
+
+<dt>
+<code>--trace-token</code> <code><var>TRACE_TOKEN</var></code>
+</dt>
+
+<dd>
+Token used to route traces of service requests for investigation of issues.
+</dd>
+
+
+<dt>
+<code>-h</code>
+</dt>
+
+<dd>
+Print a summary help and exit.
+</dd>
+
+</dl></dd>
+</section>
+</section><section>
+<dt>NOTES</dt>
+<dd>This command is in the Google Cloud SDK <code>compute</code> component. See
+<a href="/sdk/gcloud/#gcloud.components">installing components</a>
+if it is not installed.</dd>
+</section>
+</dl></body>
+</html>
+
