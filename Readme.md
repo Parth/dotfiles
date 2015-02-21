@@ -46,6 +46,7 @@ Current List of Applications:
 * Cython
 * NumPy
 * SciPy
+* PCL
 
 To be added soon
 ----------------
