@@ -1,3 +1,3 @@
 :set autoindent
-:set syntax on
+:set syntax=on
 :set nu
