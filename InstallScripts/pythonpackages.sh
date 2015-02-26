@@ -1,1 +1,1 @@
-pip install cython scipy numpy
+pip install --upgrade cython scipy numpy autopep8
