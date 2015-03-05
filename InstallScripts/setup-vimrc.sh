@@ -1,1 +1,2 @@
-ln ../Files/vimrc/.vimrc ~/.vimrc
+cd ~/Tools
+ln Files/vimrc/.vimrc ~/.vimrc
