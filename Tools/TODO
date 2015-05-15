@@ -1,0 +1,2 @@
+Remove all git files recursively:
+find . | grep .git | xargs rm -rf
