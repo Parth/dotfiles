@@ -1,1 +1,1 @@
-appcfg.py update .
+python ~/google-cloud-sdk/bin/appcfg.py update .
