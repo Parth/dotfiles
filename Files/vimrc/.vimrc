@@ -10,3 +10,4 @@
 :set cursorline
 :hi CursorLine term=bold cterm=bold guibg=Grey40 ctermbg=blue
 :set foldmethod=indent
+:set hlsearch
