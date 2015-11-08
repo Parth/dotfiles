@@ -1,3 +1,3 @@
-sudo apt-get install zsh
+sudo apt-get install curl zsh
 curl -L http://install.ohmyz.sh | sh
 chsh -s /bin/zsh
