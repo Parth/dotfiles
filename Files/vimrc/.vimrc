@@ -1,6 +1,6 @@
 :set autoindent
-:set syntax=on
 :set nu
+:syntax on
 :set relativenumber
 :set tabstop=4
 :set expandtab
