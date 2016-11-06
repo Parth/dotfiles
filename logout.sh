@@ -2,8 +2,8 @@ confirm Revert dotfiles? Current dotfiles will be deleted. If there is nothing t
 rm -rf ~/.zshrc
 rm -rf ~/.vimrc
 
-mv ~/temp_dot_files/* ~
-rm -rf temp_dot_files
+mv ~/.temp_dot_files/* ~
+rm -rf .temp_dot_files
 
 function confirm() {
     echo -n "$@ "
