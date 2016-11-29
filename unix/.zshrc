@@ -6,17 +6,6 @@
 	plugins=(git brew colored-man-pages cp sudo)
 
 # Path stuff
-	# The next line updates PATH for the Google Cloud SDK.
-	source '/Users/parthmehrotra/google-cloud-sdk/path.zsh.inc'
-
-	# The next line enables shell command completion for gcloud.
-	source '/Users/parthmehrotra/google-cloud-sdk/completion.zsh.inc'
-	source "/Users/parthmehrotra/google-cloud-sdk/path.zsh.inc"
-	source "/Users/parthmehrotra/google-cloud-sdk/completion.zsh.inc"
-
-	# For Latex
-	export PATH=$PATH:/Library/TeX/Distributions/.DefaultTeX/Contents/Programs/texbin
-
 	# For vim mappings: 
 	stty -ixon
 
