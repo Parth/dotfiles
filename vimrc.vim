@@ -23,22 +23,17 @@
 
 	map <tab> %
 
-	nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 	set backspace=indent,eol,start
 
 	nnoremap <Space> za
 	nnoremap <leader>z zMzvzz
 
-	nnoremap <leader>V V`]
 	nnoremap vv 0v$
 
 	:set listchars=tab:\|\ 
 	nnoremap <leader><tab> :set list!<cr>
 
-" Clipboard related things
-	vnoremap <leader>c "+y:echo "Coppied to clipboard"
-	nnoremap <leader>v :set paste<cr>"+p:set nopaste<cr>:echo "Contents Pasted"<cr>
-	inoremap <leader>v <esc>:set paste<cr>"+p:set nopaste<cr>:echo "Contents Pasted"<cr>a
+" Clipboard related things TODO
 
 " Language Specific
 	" Java
