@@ -13,4 +13,3 @@
 	stty -ixon
 
 source ~/dotfiles/keybindings.sh
-

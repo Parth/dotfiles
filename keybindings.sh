@@ -25,7 +25,7 @@
 
 # compile and run
 	function compile_and_run() {
-		BUFFER="./compile.sh && ./run.sh"
+		BUFFER="sh compile.sh && sh run.sh"
 		zle accept-line
 	}
 	zle -N compile_and_run
