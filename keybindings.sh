@@ -24,9 +24,10 @@
 	bindkey "^g" git_prepare
 
 # compile and run
-	function compile_and_run() {
-		BUFFER="sh compile.sh && sh run.sh"
+	#TODO 
+	function re_run() {
+		BUFFER="!!"
 		zle accept-line
 	}
-	zle -N compile_and_run
-	bindkey "^r" compile_and_run
+	zle -N re_run
+	bindkey "^r" re_run
