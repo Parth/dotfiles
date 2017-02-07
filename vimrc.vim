@@ -7,7 +7,7 @@
 	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
-	:set foldmethod=indent
+	set foldmethod=indent
 	hi Folded ctermbg=023
 
 	set hlsearch
@@ -38,8 +38,7 @@
 " Language Specific
 	" Java
 		inoremap <leader>sys <esc>ISystem.out.println(<esc>A);
-		vnoremap <leader>sys yoSystem.out.println(<esc>pA);
-		nnoremap <silent> <leader>im <esc>G?import<CR>oimport <esc>"+pA;<esc>:nohl<cr>:echo "Import added"<cr>
+		vnoremap <leader>sys yOSystem.out.println(<esc>pA);
 
 	" C++
 		inoremap <leader>cout <esc>Istd::cout << <esc>A << std::endl;
