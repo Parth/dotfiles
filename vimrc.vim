@@ -42,9 +42,11 @@
 
 	" C++
 		inoremap <leader>cout <esc>Istd::cout << <esc>A << std::endl;
+		vnoremap <leader>cout yOstd::cout << <esc>pA << std:endl;
 
 	" C
-		inoremap <leader>pf <esc>Iprintf(<esc>A);<esc>hi
+		inoremap <leader>out <esc>Iprintf(<esc>A);<esc>
+		vnoremap <leader>out yOprintf(<esc>pA, );<esc>hi
 
 
 " File and Window Management 
