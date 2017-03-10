@@ -1,3 +1,3 @@
 echo "Updating rc files"
-(cd ~/dotfiles && timeout 2 git pull)
+(cd ~/dotfiles && git pull)
 source ~/dotfiles/zshrc.sh
