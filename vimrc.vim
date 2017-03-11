@@ -30,12 +30,18 @@
 
 	nnoremap vv 0v$
 
-	:set listchars=tab:\|\ 
+	set listchars=tab:\|\ 
 	nnoremap <leader><tab> :set list!<cr>
+	set pastetoggle=<F2>
 
 " Clipboard related things TODO
 
 " Language Specific
+	" General
+		inoremap <leader>for <esc>Ifor (int i = 0; i < <esc>A; i++) {<enter>}<esc>O<tab>
+		inoremap <leader>if <esc>Iif (<esc>A) {<enter>}<esc>O<tab>
+		
+
 	" Java
 		inoremap <leader>sys <esc>ISystem.out.println(<esc>A);
 		vnoremap <leader>sys yOSystem.out.println(<esc>pA);
