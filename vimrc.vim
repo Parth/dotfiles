@@ -34,8 +34,6 @@
 	nnoremap <leader><tab> :set list!<cr>
 	set pastetoggle=<F2>
 
-" Clipboard related things TODO
-
 " Language Specific
 	" General
 		inoremap <leader>for <esc>Ifor (int i = 0; i < <esc>A; i++) {<enter>}<esc>O<tab>
@@ -53,6 +51,9 @@
 	" C
 		inoremap <leader>out <esc>Iprintf(<esc>A);<esc>
 		vnoremap <leader>out yOprintf(<esc>pA, );<esc>hi
+
+	" Typescript
+		autocmd BufNewFile,BufRead *.ts set syntax=javascript
 
 
 " File and Window Management 
