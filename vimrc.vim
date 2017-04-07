@@ -55,6 +55,9 @@
 	" Typescript
 		autocmd BufNewFile,BufRead *.ts set syntax=javascript
 
+	" Markup
+		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
+
 
 " File and Window Management 
 	inoremap <leader>s <Esc>:w<CR>
