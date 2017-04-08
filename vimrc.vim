@@ -60,12 +60,17 @@
 
 
 " File and Window Management 
-	inoremap <leader>s <Esc>:w<CR>
-	nnoremap <leader>s :w<CR>
+	inoremap <leader>w <Esc>:w<CR>
+	nnoremap <leader>w :w<CR>
 
-	inoremap <leader>q <ESC>:x<CR>
-	nnoremap <leader>q :x<CR>
-	nnoremap <leader>t :tabnew 
+	inoremap <leader>q <ESC>:q<CR>
+	nnoremap <leader>q :q<CR>
+
+	inoremap <leader>x <ESC>:x<CR>
+	nnoremap <leader>x :x<CR>
+
+	nnoremap <leader>t :tabnew<CR>:Ex<CR>
+	nnoremap <leader>v :vsplit<CR>:Ex<CR>
 
 " Return to the same line you left off at
 	augroup line_return
