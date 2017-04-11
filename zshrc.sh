@@ -13,4 +13,4 @@
 	stty -ixon
 
 source ~/dotfiles/keybindings.sh
-source ~/dotfiles/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/dotfiles/zsh-autosuggestions.zsh
