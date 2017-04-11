@@ -1,6 +1,9 @@
 # Aliases
 	alias v="vim"
 
+# Settings
+	export VISUAL=vim
+
 #Functions
 	# Custom cd
 	c() {
