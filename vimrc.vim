@@ -1,6 +1,5 @@
 " General Vim settings
 	syntax on
-	set t_Co=16
 	let mapleader=","
 	set relativenumber number
 	set autoindent
