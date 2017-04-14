@@ -50,8 +50,8 @@
 		vnoremap <leader>cout yOstd::cout << <esc>pA << std:endl;
 
 	" C
-		inoremap <leader>out <esc>Iprintf(<esc>A);<esc>
-		vnoremap <leader>out yOprintf(<esc>pA, );<esc>hi
+		inoremap <leader>out <esc>Iprintf(<esc>A);<esc>2hi
+		vnoremap <leader>out yOprintf(, <esc>pA);<esc>h%a
 
 	" Typescript
 		autocmd BufNewFile,BufRead *.ts set syntax=javascript
