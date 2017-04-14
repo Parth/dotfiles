@@ -374,6 +374,7 @@ done
 zle -N autosuggest-accept _zsh_autosuggest_widget_accept
 zle -N autosuggest-clear _zsh_autosuggest_widget_clear
 zle -N autosuggest-execute _zsh_autosuggest_widget_execute
+bindkey "^e" autosuggest-execute
 
 #--------------------------------------------------------------------#
 # Suggestion                                                         #
