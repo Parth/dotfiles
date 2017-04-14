@@ -1,5 +1,5 @@
 # Aliases
-	alias vim="vim -p"
+	alias v="vim -p"
 
 # Settings
 	export VISUAL=vim
