@@ -1,9 +1,6 @@
 # Aliases
 	alias v="vim -p"
 
-	# TEMPORARY TO BREAK HABBIT:
-	alias vim="echo use v instead"
-
 # Settings
 	export VISUAL=vim
 
