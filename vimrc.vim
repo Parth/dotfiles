@@ -75,6 +75,7 @@
 	nnoremap <leader>e :Ex<CR>
 	nnoremap <leader>t :tabnew<CR>:Ex<CR>
 	nnoremap <leader>v :vsplit<CR>:w<CR>:Ex<CR>
+	nnoremap <leader>s :split<CR>:w<CR>:Ex<CR>
 
 " Return to the same line you left off at
 	augroup line_return
