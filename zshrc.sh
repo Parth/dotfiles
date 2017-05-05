@@ -17,3 +17,4 @@
 
 source ~/dotfiles/keybindings.sh
 source ~/dotfiles/zsh-autosuggestions.zsh
+source ~/dotfiles/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
