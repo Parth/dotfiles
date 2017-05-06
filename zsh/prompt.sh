@@ -1,13 +1,15 @@
- autoload -U colors && colors
+# Reference for colors: http://stackoverflow.com/questions/689765/how-can-i-change-the-color-of-my-prompt-in-zsh-different-from-normal-text
 
- setopt PROMPT_SUBST
+autoload -U colors && colors
+
+setopt PROMPT_SUBST
 
 set_prompt() {
-		local EXIT="$?"
+
 	# [
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
-	# Path
+	# Path: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 	PS1+="%{$fg[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
 
 	# Status Code
@@ -25,7 +27,7 @@ set_prompt() {
 	fi
 
 
-	# Timer
+	# Timer: http://stackoverflow.com/questions/2704635/is-there-a-way-to-find-the-running-time-of-the-last-executed-command-in-the-shel
 	if [[ $_elapsed[-1] -ne 0 ]]; then
 		PS1+=', '
 		PS1+="%{$fg[magenta]%}$_elapsed[-1]s%{$reset_color%}"
@@ -37,7 +39,7 @@ set_prompt() {
 		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
 	fi
 
-	# Sudo
+	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
 	CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
 	if [ ${CAN_I_RUN_SUDO} -gt 0 ]
 	then
