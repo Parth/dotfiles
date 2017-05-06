@@ -28,7 +28,13 @@ set_prompt() {
 	# Timer
 	if [[ $_elapsed[-1] -ne 0 ]]; then
 		PS1+=', '
-		PS1+="%{$fg[blue]%}$_elapsed[-1]s%{$reset_color%}"
+		PS1+="%{$fg[magenta]%}$_elapsed[-1]s%{$reset_color%}"
+	fi
+
+	# PID
+	if [[ $! -ne 0 ]]; then
+		PS1+=', '
+		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
 	fi
 
 	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
