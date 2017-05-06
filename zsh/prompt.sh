@@ -14,8 +14,11 @@ set_prompt() {
 	PS1+=', '
 	PS1+='%(?.%{$fg[green]%}%?.%{$fg[red]%}%?)'
 
-	PS1+=', '
-	PS1+="%{$fg[blue]%}$_elapsed[-1]s%{$reset_color%}"
+	# Timer
+	if [[ $_elapsed[-1] -ne 0 ]]; then
+		PS1+=', '
+		PS1+="%{$fg[blue]%}$_elapsed[-1]s%{$reset_color%}"
+	fi
 
 	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
 }
