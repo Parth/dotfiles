@@ -3,7 +3,7 @@
  setopt PROMPT_SUBST
 
 set_prompt() {
-    	local EXIT="$?"
+		local EXIT="$?"
 	# [
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
@@ -35,6 +35,14 @@ set_prompt() {
 	if [[ $! -ne 0 ]]; then
 		PS1+=', '
 		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
+	fi
+
+	# Sudo
+	CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+	if [ ${CAN_I_RUN_SUDO} -gt 0 ]
+	then
+		PS1+=', '
+		PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
 	fi
 
 	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
