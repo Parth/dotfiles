@@ -14,6 +14,12 @@ set_prompt() {
 	PS1+=', '
 	PS1+='%(?.%{$fg[green]%}%?.%{$fg[red]%}%?)'
 
+	if [[ $(git rev-parse --is-inside-work-tree) == "true" ]]; then
+		PS1+=', '
+		PS1+="%{$fg[blue]%}$(git branch)%{$reset_color%}"
+	fi
+
+
 	# Timer
 	if [[ $_elapsed[-1] -ne 0 ]]; then
 		PS1+=', '
