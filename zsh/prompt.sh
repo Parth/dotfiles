@@ -13,10 +13,7 @@ set_prompt() {
 	PS1+="%{$fg_bold[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
 
 	# Status Code
-	if [[ $? -ne 0 ]]; then 
-		PS1+=', '
-		PS1+='%(?.%{$fg[green]%}%?.%{$fg[red]%}%?)'
-	fi
+	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
 
 	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
 		PS1+=', '
