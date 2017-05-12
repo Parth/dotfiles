@@ -47,3 +47,10 @@
 	}
 	zle -N ctrl_l
 	bindkey "^l" ctrl_l
+
+# Edit and rerun
+	function edit_and_run() {
+		zle accept-line
+	}
+	zle -N edit_and_run
+	bindkey "^o" edit_and_run
