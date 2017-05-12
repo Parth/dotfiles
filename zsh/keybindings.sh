@@ -49,8 +49,8 @@
 	bindkey "^l" ctrl_l
 
 # Edit and rerun
-	function edit_and_run() {
+	function enter_line() {
 		zle accept-line
 	}
-	zle -N edit_and_run
-	bindkey "^o" edit_and_run
+	zle -N enter_line
+	bindkey "^o" enter_line
