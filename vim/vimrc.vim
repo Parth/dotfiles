@@ -3,6 +3,9 @@
 	let mapleader=","
 	set relativenumber number
 	set autoindent
+	set tabstop=4
+	set shiftwidth=4
+	set dir=/tmp/
 
 	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
