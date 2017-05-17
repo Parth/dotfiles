@@ -6,7 +6,6 @@
 
 # Aliases
 	alias v="vim -p"
-	alias ls="ls --color=always"
 
 # Settings
 	export VISUAL=vim
