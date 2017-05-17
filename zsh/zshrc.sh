@@ -6,9 +6,11 @@
 
 # Aliases
 	alias v="vim -p"
+	alias ls="ls -GF"
 
 # Settings
 	export VISUAL=vim
+	export LSCOLORS="cxfxFxdxbxegedabagacad";
 
 #Functions
 	# Custom cd
