@@ -11,6 +11,6 @@ git submodule update --init --recursive
 ```
 
 ## tmux
-Ctrl-B has been remapped to &#96;.
-If you want to type to actual &#96; character itself, just hit the key twice.
+Ctrl-B has been remapped to the backtick character (&#96;).
+If you want to type to actual backtick character (&#96;) itself, just hit the key twice.
 
