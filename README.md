@@ -11,6 +11,6 @@ git submodule update --init --recursive
 ```
 
 ## tmux
-Ctrl-B has been remapped to `.
-If you want to type to actual ` character itself, just hit the key twice.
+Ctrl-B has been remapped to &#96;.
+If you want to type to actual &#96; character itself, just hit the key twice.
 
