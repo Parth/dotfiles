@@ -1,24 +1,50 @@
+#!/bin/bash
+
+prompt_install() {
+	echo -n "Heads up! $1 is not installed. Would you like to install it? (y/n) " >&2
+	old_stty_cfg=$(stty -g)
+	stty raw -echo
+	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+	stty $old_stty_cfg && echo
+	if echo "$answer" | grep -iq "^y" ;then
+		case "$(uname -s)" in
+			Darwin)
+				brew install $1
+				;;
+			Linux)
+				sudo apt install $1
+				;;
+			FreeBSD)
+				sudo pkg install $1
+				;;
+			*)
+				echo "Operating system not recognized, please install $1 manually"
+				;;
+			esac
+	fi
+}
 
 check_for_software() {
-	# command -v "$1" > /dev/null 2>&1;
+	echo "Checking to see if $1 is installed"
 	if ! [ -x "$(command -v $1)" ]; then
-		echo -n "Heads up! $1 is not installed. Would you like to install it? (y/n) " >&2
-		old_stty_cfg=$(stty -g)
-		stty raw -echo
-		answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-		stty $old_stty_cfg && echo
-		if echo "$answer" | grep -iq "^y" ;then
-			echo "Running:	sudo pkg install $1"
-			sudo pkg install $1
-		fi
+		prompt_install $1
 	else
-		echo -e "$1 is installed."
+		echo "$1 is installed."
+	fi
+}
+
+check_default_shell() {
+	if [[ $SHELL != *zsh* ]]; then
+		echo "Default shell is not zsh, attempting chsh: "
+		chsh -s $(which zsh)
 	fi
 }
 
 check_for_software zsh
 check_for_software vim
 check_for_software tmux
+
+check_default_shell
 
 echo -n "Would you like to backup your current dotfiles? (y/n) "
 old_stty_cfg=$(stty -g)
@@ -36,3 +62,4 @@ fi
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
+exec zsh

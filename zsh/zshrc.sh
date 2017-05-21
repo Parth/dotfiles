@@ -10,6 +10,8 @@
 # Settings
 	export VISUAL=vim
 
+source ~/dotfiles/zsh/plugins/fixls.zsh
+
 #Functions
 	# Custom cd
 	c() {
@@ -21,8 +23,6 @@
 # For vim mappings: 
 	stty -ixon
 
-
-source ~/dotfiles/zsh/plugins/fixls.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
