@@ -31,9 +31,19 @@ check_for_software() {
 	fi
 }
 
+check_default_shell() {
+	if [[ $SHELL != *zsh* ]]; then
+		echo "Default shell is not zsh, attempting chsh: "
+		chsh -s $(which zsh)
+		echo "Full logout may be required"
+	fi
+}
+
 check_for_software zsh
 check_for_software vim
 check_for_software tmux
+
+check_default_shell
 
 echo -n "Would you like to backup your current dotfiles? (y/n) "
 old_stty_cfg=$(stty -g)
