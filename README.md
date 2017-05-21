@@ -6,9 +6,9 @@ Extensive customization of ZSH, TMUX, and Vim.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/UgDz_9i2nwc/0.jpg)](https://www.youtube.com/watch?v=UgDz_9i2nwc)
 
 ## Installation
-Once the repo is cloned, run the following to pull down all the submodules.
+Once the repo is cloned, execute the deploy script:
 ```
-git submodule update --init --recursive
+./deploy.sh
 ```
 
 # Sumary of Changes
