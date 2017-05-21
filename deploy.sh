@@ -1,3 +1,5 @@
+#!/bin/bash
+
 prompt_install() {
 	echo -n "Heads up! $1 is not installed. Would you like to install it? (y/n) " >&2
 	old_stty_cfg=$(stty -g)
@@ -32,7 +34,7 @@ check_for_software() {
 }
 
 check_default_shell() {
-	if [ $SHELL != *zsh* ]; then
+	if [[ $SHELL != *zsh* ]]; then
 		echo "Default shell is not zsh, attempting chsh: "
 		chsh -s $(which zsh)
 	fi
