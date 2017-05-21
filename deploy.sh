@@ -32,7 +32,7 @@ check_for_software() {
 }
 
 check_default_shell() {
-	if [[ $SHELL != *zsh* ]]; then
+	if [ $SHELL != *zsh* ]; then
 		echo "Default shell is not zsh, attempting chsh: "
 		chsh -s $(which zsh)
 	fi
