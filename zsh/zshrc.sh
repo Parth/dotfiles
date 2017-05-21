@@ -6,7 +6,6 @@
 
 # Aliases
 	alias v="vim -p"
-	alias ls="ls --color=always"
 
 # Settings
 	export VISUAL=vim
@@ -23,6 +22,7 @@
 	stty -ixon
 
 
+source ~/dotfiles/zsh/plugins/fixls.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
