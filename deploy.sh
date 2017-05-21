@@ -12,7 +12,7 @@ prompt_install() {
 			Linux)
 				sudo apt install $1
 				;;
-			freebsd)
+			FreeBSD)
 				sudo pkg install $1
 				;;
 			*)
@@ -35,7 +35,6 @@ check_default_shell() {
 	if [[ $SHELL != *zsh* ]]; then
 		echo "Default shell is not zsh, attempting chsh: "
 		chsh -s $(which zsh)
-		echo "Full logout may be required"
 	fi
 }
 
@@ -61,3 +60,4 @@ fi
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
+exec zsh
