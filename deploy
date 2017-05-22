@@ -1,5 +1,5 @@
 prompt_install() {
-	echo -n "Heads up! $1 is not installed. Would you like to install it? (y/n) " >&2
+	echo -n "$1 is not installed. Would you like to install it? (y/n) " >&2
 	old_stty_cfg=$(stty -g)
 	stty raw -echo
 	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
@@ -10,7 +10,7 @@ prompt_install() {
 				brew install $1
 				;;
 			Linux)
-				sudo apt install $1
+				sudo apt install $1 -y 
 				;;
 			FreeBSD)
 				sudo pkg install $1
@@ -35,9 +35,16 @@ check_default_shell() {
 	if [ -z "${SHELL##*zsh*}" ] ;then
 			echo "Default shell is zsh."
 	else
-		echo "Default shell is not zsh. Attempting chsh"
-		chsh -s $(which zsh)
-		echo "Full logout may be necessary"
+		echo -n "Default shell is not zsh. Do you want to chsh -s \$(which zsh)? (y/n)"
+		old_stty_cfg=$(stty -g)
+		stty raw -echo
+		answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+		stty $old_stty_cfg && echo
+		if echo "$answer" | grep -iq "^y" ;then
+			chsh -s $(which zsh)
+		else
+			echo "Warning: Your configuration won't work properly. If you exec zsh, it'll exec tmux which will exec your default shell which isn't zsh."
+		fi
 	fi
 }
 
@@ -64,11 +71,4 @@ printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "so $HOME/dotfiles/vim/vimrc.vim" > ~/.vimrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
-echo -n "Please log out and log back in for default shell to be initialized. Logout of this shell? (y/n) " >&2
-old_stty_cfg=$(stty -g)
-stty raw -echo
-answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-stty $old_stty_cfg && echo
-if echo "$answer" | grep -iq "^y" ;then
-	sudo logout
-fi
+echo "Please log out and log back in for default shell to be initialized."
