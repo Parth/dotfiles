@@ -31,7 +31,7 @@ Upon launching a new shell, the first thing that's evaulated is `zshrc_manager.s
 * `cd` has been reassigned to `cd` and `ls`. Every time you navigate to a new directory, it will display the contents of that directory.
 * `v` has been aliased too: `vim -p`. This let's you open multiple files in vim as tabs. 
 
-### Promt
+### Prompt
 
 The prompt takes on the form:
 
