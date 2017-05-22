@@ -5,6 +5,7 @@ prompt_install() {
 	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 	stty $old_stty_cfg && echo
 	if echo "$answer" | grep -iq "^y" ;then
+		# This could def use community support
 		case "$(uname -s)" in
 			Darwin)
 				brew install $1
