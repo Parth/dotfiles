@@ -2,7 +2,7 @@ time_out () { perl -e 'alarm shift; exec @ARGV' "$@"; }
 
 # Run tmux if exists
 if command -v tmux>/dev/null; then
-	[[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+	[ -z $TMUX ] && exec tmux
 fi
 
 echo "Updating configuration"
