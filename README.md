@@ -41,12 +41,12 @@ The prompt takes on the form:
 
 Each plugin is sensitive to where you are and what you're doing, they reveal themselves when it's contextually relevant. Plugins include:
 
-* PWD plugin: always present, tells you where you are. Always the first plugin.
-* Status code plugin: appears anytime a program returns with a non-zero status code. Tells you what status code the program completed with. 
-* Git plugin: appears when you're in a git repository. Tells you what branch you're on, and how many files have been changed since the last commit.
-* Sudo plugin: tells you when you can sudo without a password. Or when you're logged in as root.
-* Time plugin: appears when a program took more than 1s to execute. Tells you how long it took to execute.
-* PID plugin: appears when you background a task. Tells you what the PID of the task is.
+* `PWD plugin`: always present, tells you where you are. Always the first plugin.
+* `Status code plugin`: appears anytime a program returns with a non-zero status code. Tells you what status code the program completed with. 
+* `Git plugin`: appears when you're in a git repository. Tells you what branch you're on, and how many files have been changed since the last commit.
+* `Sudo plugin`: tells you when you can sudo without a password. Or when you're logged in as root.
+* `Time plugin`: appears when a program took more than 1s to execute. Tells you how long it took to execute.
+* `PID plugin`: appears when you background a task. Tells you what the PID of the task is.
 
 ### Keybindings
 
