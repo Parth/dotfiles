@@ -19,7 +19,7 @@ set_prompt() {
 		PS1+=', '
 		PS1+="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD)%{$reset_color%}"
 		if [ $(git status --short | wc -l) -gt 0 ]; then 
-			PS1+="%{$fg[red]%}+$(git status --short | wc -l)%{$reset_color%}"
+			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
 
