@@ -18,6 +18,8 @@ This script guides you through the following:
 4. Sets zsh to your default shell.
 5. Backs up your old configuration files.
 
+Pretty convenient for configuring new servers.
+
 # Sumary of Changes
 
 ## Basic runtime opperations 
