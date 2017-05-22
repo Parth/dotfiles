@@ -51,6 +51,15 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 * `PID plugin`: appears when you background a task. Tells you what the PID of the task is.
 
 ### Keybindings
+| Key Stroke | What It Does |
+|------------|--------------|
+| Ctrl-H     | Runs ``cd ~/`` |
+| Ctrl-K     | Runs ``cd ..`` |
+| Ctrl-G     | Runs ``git add -A; git commit -v && git push`` |
+| Ctrl-V     | Runs ``fc``. Takes last command and puts it in a vim buffer. |
+| Ctrl-S     | Add's ``sudo`` to the beginning of the buffer. |
+| Ctrl-L     | Run's ``ls``. |
+| Ctrl-O     | Equivalent to hitting ``Enter``. |
 
 ### Plugins
 
