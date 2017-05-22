@@ -26,7 +26,7 @@ All default dotfiles (`.zshrc`, `.vimrc`, etc) source something within the dotfi
 
 Upon launching a new shell, the first thing that's evaulated is `zshrc_manager.sh`. This script first launches tmux. Then once zsh logs in, within tmux, it updates the dotfiles repository, and sources the changes.
 
-## Zsh
+## [Zsh](https://en.wikipedia.org/wiki/Z_shell)
 
 * `cd` has been reassigned to `cd` and `ls`. Every time you navigate to a new directory, it will display the contents of that directory.
 * `v` has been aliased too: `vim -p`. This let's you open multiple files in vim as tabs. 
@@ -56,11 +56,11 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/ad522a091429ba180c930f84b2a023b40de4dbcc): Provides fish style syntax highlighting for zsh.
 * [ohmyzsh](https://github.com/robbyrussell/oh-my-zsh/tree/291e96dcd034750fbe7473482508c08833b168e3): Borrowed things like tab completion, fixing ls, tmux's vi-mode plugin.
 
-## Vim
+## [Vim](https://en.wikipedia.org/wiki/Vim_(text_editor))
 
 * Leader key has ben remapped to `,`
 
-## tmux
+## [Tmux](https://en.wikipedia.org/wiki/Tmux)
 
 * Ctrl-B has been remapped to the backtick character (&#96;). If you want to type the actual backtick character (&#96;) itself, just hit the key twice.
 * `%` has been remapped to `v`.
