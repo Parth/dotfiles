@@ -34,9 +34,12 @@ check_for_software() {
 }
 
 check_default_shell() {
-	if [[ $SHELL != *zsh* ]]; then
-		echo "Default shell is not zsh, attempting chsh: "
+	if [ -z "${SHELL##*zsh*}" ] ;then
+			echo "Default shell is zsh."
+	else
+		echo "Default shell is not zsh. Attempting chsh"
 		chsh -s $(which zsh)
+		echo "Full logout may be necessary"
 	fi
 }
 
