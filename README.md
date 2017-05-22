@@ -10,9 +10,11 @@ There's 3 ways in which you can use this, depending on how much you think you'll
 
 One of the key features is that this implementation stays in sync across all your machines. So depending on how much you'd like to customize your configuration, you have a few options:
 
-* Little Customization: Just clone this repo and jump to [Installation](#installation)
-* Mild Customization: [Fork]() this repo, and clone your own fork. Keep an eye on this repo for bugfixes and other improvements that you'd like to incorporate into your fork. Then jump to [Installation]()
-* Most Customization: Building your own dotfiles from scratch! Read through these docs, watch the video above, star this repo, and create your own dotfiles! You can add this repository as a [git module]() and source the parts you like. 
+* Little Customization: Just clone this repo and jump to [Installation](#installation).
+* Mild Customization: [Fork]() this repo, and clone your own fork. Keep an eye on this repo for bugfixes and other improvements that you'd like to incorporate into your fork. Then jump to [Installation](#installation).
+* Most Customization: Building your own dotfiles from scratch! Read through these docs, watch the video above, star this repo, and create your own dotfiles! You can add this repository as a [git module](https://git-scm.com/book/en/v2/Git-Tools-Submodules) and source the parts you like. 
+
+If you're unsure, just read the docs, watch the video, clone this repository, and jump to [Installation](#installation).
 
 ## Installation
 
