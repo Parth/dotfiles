@@ -78,7 +78,8 @@ echo
 
 check_default_shell
 
-echo -n "\nWould you like to backup your current dotfiles? (y/n) "
+echo
+echo -n "Would you like to backup your current dotfiles? (y/n) "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
