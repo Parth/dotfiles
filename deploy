@@ -60,10 +60,10 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-	exit
+	echo 
 else
 	echo "Quitting, nothing was changed."
-	return
+	exit 0
 fi
 
 
