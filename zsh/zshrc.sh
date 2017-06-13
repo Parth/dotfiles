@@ -6,19 +6,12 @@
 
 # Aliases
 	alias v="vim -p"
+	alias cd='cd $1 && ls'
 
 # Settings
 	export VISUAL=vim
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
-
-#Functions
-	# Custom cd
-	c() {
-		cd $1;
-		ls;
-	}
-	alias cd="c"
 
 # For vim mappings: 
 	stty -ixon
