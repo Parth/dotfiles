@@ -10,8 +10,13 @@
 	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
+	au FocusLost * :set number
+	au FocusGained * :set relativenumber
+
 	set hlsearch
-	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<cr>
+	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
+	nnoremap <C-c> :set norelativenumber<CR>:set nonumber<CR>:echo "Line numbers turned off.<CR>
+	nnoremap <C-n> :set relativenumber<CR>:set number<CR>:echo "Line numbers turned off.<CR>
 
 	nnoremap n nzzzv
 	nnoremap N Nzzzv
