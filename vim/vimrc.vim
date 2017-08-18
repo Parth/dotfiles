@@ -1,17 +1,15 @@
 " General Vim settings
 	syntax on
 	let mapleader=","
-	set relativenumber number
 	set autoindent
 	set tabstop=4
 	set shiftwidth=4
 	set dir=/tmp/
+	set relativenumber 
+	set number
 
 	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
-
-	au FocusLost * :set number
-	au FocusGained * :set relativenumber
 
 	set hlsearch
 	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
