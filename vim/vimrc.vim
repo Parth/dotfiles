@@ -49,6 +49,10 @@
 		inoremap <leader>sys <esc>ISystem.out.println(<esc>A);
 		vnoremap <leader>sys yOSystem.out.println(<esc>pA);
 
+	" Java
+		inoremap <leader>con <esc>Iconsole.log(<esc>A);
+		vnoremap <leader>con yOconsole.log(<esc>pA);
+
 	" C++
 		inoremap <leader>cout <esc>Istd::cout << <esc>A << std::endl;
 		vnoremap <leader>cout yOstd::cout << <esc>pA << std:endl;
