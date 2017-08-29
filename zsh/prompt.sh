@@ -5,7 +5,7 @@ autoload -U colors && colors
 setopt PROMPT_SUBST
 
 set_prompt() {
-
+    
 	# [
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
@@ -46,6 +46,8 @@ set_prompt() {
 	fi
 
 	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
+
+	PS1="(`basename \"$VIRTUAL_ENV\"`)$PS1"
 }
 
 precmd_functions+=set_prompt
