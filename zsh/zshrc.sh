@@ -6,6 +6,7 @@
 
 # Aliases
 	alias v="vim -p"
+	alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
 	export VISUAL=vim
