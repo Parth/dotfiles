@@ -6,21 +6,21 @@ prompt_install() {
 	stty $old_stty_cfg && echo
 	if echo "$answer" | grep -iq "^y" ;then
 		# This could def use community support
-		case "$(uname -s)" in
-			Darwin)
-				brew install $1
-				;;
-			Linux)
-				sudo apt install $1 -y 
-				;;
-			FreeBSD)
-				sudo pkg install $1
-				;;
-			*)
-				echo "Operating system not recognized, please install $1 manually, then re-run this script."
-				exit 1
-				;;
-			esac
+		if [ -x "$(command -v apt)" ]; then
+			sudo apt install $1 -y
+
+		elif [ -x "$(command -v brew)" ]; then
+			brew install $1
+
+		elif [ -x "$(command -v pkg)" ]; then
+			sudo pkg install $1
+
+		elif [ -x "$(command -v pacman)" ]; then
+			sudo pacman -S $1
+
+		else
+			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
+		fi 
 	fi
 }
 
