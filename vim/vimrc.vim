@@ -2,8 +2,10 @@
 	syntax on
 	let mapleader=","
 	set autoindent
-	set tabstop=4
-	set shiftwidth=4
+	filetype plugin indent on
+	set tabstop=2		" show existing tab with 4 spaces width
+	set shiftwidth=2 	" when indenting with '>', use 4 spaces width
+	set expandtab 		" On pressing tab, insert 2 spaces
 	set dir=/tmp/
 	set relativenumber 
 	set number
@@ -96,4 +98,23 @@
 " Future stuff
 	"Swap line
 	"Insert blank below and above
+
+" Plugins
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'skywind3000/asyncrun.vim'
+call plug#end()
+
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
