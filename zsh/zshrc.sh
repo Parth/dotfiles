@@ -19,15 +19,15 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 #Functions
 	# Loop a command and show the output in vim
 	loop() {
-		echo ":cq to quit" > /tmp/log/output 
+		echo ":cq to quit\n" > /tmp/log/output 
 		fc -ln -1 > /tmp/log/program
 		while true; do
-			cat /tmp/log/program >> /tmp/log/output 2>>&1 ;
+			cat /tmp/log/program >> /tmp/log/output ;
 			$(cat /tmp/log/program) |& tee -a /tmp/log/output ;
 			echo '\n' >> /tmp/log/output
 			vim + /tmp/log/output || break;
+			rm -rf /tmp/log/output
 		done;
-		rm -rf /tmp/log/output
 	}
 
 	# Custom cd
