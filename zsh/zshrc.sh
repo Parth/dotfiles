@@ -6,6 +6,7 @@
 
 # Aliases
 	alias v="vim -p"
+	mkdir -p /tmp/log
 	
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
@@ -16,6 +17,19 @@
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
 #Functions
+	# Loop a command and show the output in vim
+	loop() {
+		echo ":cq to quit" > /tmp/log/output 
+		fc -ln -1 > /tmp/log/program
+		while true; do
+			cat /tmp/log/program >> /tmp/log/output 2>>&1 ;
+			$(cat /tmp/log/program) >> /tmp/log/output 2>>&1 ;
+			echo '\n' >> /tmp/log/output
+			vim + /tmp/log/output || break;
+		done;
+		rm -rf /tmp/log/output
+	}
+
 	# Custom cd
 	c() {
 		cd $1;
