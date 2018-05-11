@@ -73,7 +73,7 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 | Ctrl-S     | Add's ``sudo`` to the beginning of the buffer. |
 | Ctrl-L     | Run's ``ls``. |
 | Ctrl-O     | Equivalent to hitting ``Enter``. |
-| Ctrl-P     | Equivalent to pressing ``up`` arrow. |
+| Ctrl-P     | Equivalent to pressing ``up arrow``. |
 
 ### Plugins
 
