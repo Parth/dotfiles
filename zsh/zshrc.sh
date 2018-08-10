@@ -30,15 +30,33 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 		done;
 	}
 
-	# Custom cd
-	c() {
-		cd $1;
-		ls;
-	}
-	alias cd="c"
+ 	# Custom cd
+ 	c() {
+ 		cd $1;
+ 		ls;
+ 	}
+ 	alias cd="c"
 
 # For vim mappings: 
 	stty -ixon
+
+# Completions
+# These are all the plugin options available: https://github.com/robbyrussell/oh-my-zsh/tree/291e96dcd034750fbe7473482508c08833b168e3/plugins
+#
+# Edit the array below, or relocate it to ~/.zshrc before anything is sourced
+# For help create an issue at github.com/parth/dotfiles
+
+autoload -U compinit
+
+plugins=(
+	docker
+)
+
+for plugin ($plugins); do
+    fpath=(~/dotfiles/zsh/plugins/oh-my-zsh/plugins/$plugin $fpath)
+done
+
+compinit
 
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh

@@ -8,6 +8,9 @@
 	set relativenumber 
 	set number
 
+	autocmd Filetype html setlocal sw=2 expandtab
+	autocmd Filetype javascript setlocal sw=4 expandtab
+
 	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
