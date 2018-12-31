@@ -26,14 +26,14 @@ Once the repo is cloned, execute the deploy script:
 This script guides you through the following:
 
 1. Checks to see if you have zsh, tmux, and vim installed. 
-2. Installs it using your default package manager if you don't have it installed.
+2. Installs them using your default package manager if you don't have some of them installed.
 3. Checks to see if your default shell is zsh.
 4. Sets zsh to your default shell.
 5. Backs up your old configuration files.
 
 Pretty convenient for configuring new servers.
 
-# Sumary of Changes
+# Summary of Changes
 
 ## Basic runtime opperations 
 
@@ -43,7 +43,7 @@ Upon launching a new shell, the first thing that's evaulated is `zshrc_manager.s
 
 ## [Zsh](https://en.wikipedia.org/wiki/Z_shell)
 
-* `cd` has been reassigned to `cd` and `ls`. Every time you navigate to a new directory, it will display the contents of that directory.
+* `cd` has been reassigned to `cd` and `ls`. Every time you navigate to a new directory, it will display the content of that directory.
 * `v` has been aliased too: `vim -p`. This let's you open multiple files in vim as tabs. 
 
 ### Prompt
@@ -70,10 +70,10 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 | Ctrl-K     | Runs ``cd ..`` |
 | Ctrl-G     | Runs ``git add -A; git commit -v && git push`` |
 | Ctrl-V     | Runs ``fc``. Takes last command and puts it in a vim buffer. |
-| Ctrl-S     | Add's ``sudo`` to the beginning of the buffer. |
-| Ctrl-L     | Run's ``ls``. |
+| Ctrl-S     | Adds ``sudo`` to the beginning of the buffer. |
+| Ctrl-L     | Runs ``ls``. |
 | Ctrl-O     | Equivalent to hitting ``Enter``. |
-| Ctrl-P     | Equivalent to pressing ``up arrow``. |
+| Ctrl-P     | Equivalent to pressing ``Up Arrow``. |
 
 ### Plugins
 
