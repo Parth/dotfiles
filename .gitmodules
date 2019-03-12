@@ -7,3 +7,6 @@
 [submodule "zsh/plugins/oh-my-zsh"]
 	path = zsh/plugins/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git

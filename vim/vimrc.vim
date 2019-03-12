@@ -114,3 +114,8 @@
 	"Swap line
 	"Insert blank below and above
 
+" Pathogen Plugins
+so ~/dotfiles/vim/pathogen.vim
+set runtimepath+=~/dotfiles/vim
+call pathogen#runtime_append_all_bundles()
+execute pathogen#infect()

@@ -18,7 +18,7 @@
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
-eval "`dircolors ~/dotfiles/zsh/dircolors.db`O
+eval "`dircolors ~/dotfiles/zsh/dircolors.db`"
 #Functions
 	# Loop a command and show the output in vim
 	loop() {
@@ -86,3 +86,4 @@ fi
 
 source ~/dotfiles/zsh/prompt.sh
 export PATH=$PATH:$HOME/dotfiles/utils
+
