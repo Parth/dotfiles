@@ -117,5 +117,11 @@
 " Pathogen Plugins
 so ~/dotfiles/vim/pathogen.vim
 set runtimepath+=~/dotfiles/vim
-call pathogen#runtime_append_all_bundles()
+" execute pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
+
+" Plugins
+" NERDTree
+map <C-k> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "Close if tree is last tab
+
