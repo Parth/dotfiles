@@ -1,6 +1,6 @@
 " General Vim settings
 	syntax on
-"	let mapleader=","
+	let mapleader=","
 	set autoindent
 	set tabstop=4
 	set shiftwidth=4
@@ -120,8 +120,10 @@ set runtimepath+=~/dotfiles/vim
 " execute pathogen#runtime_append_all_bundles()
 execute pathogen#infect()
 
-" Plugins
-" NERDTree
-map <C-k> :NERDTreeToggle<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif "Close if tree is last tab
-
+" Plugins ----------------------------------------------
+" NERDTree -----
+nnoremap <silent> <Leader>m :NERDTreeToggle<CR>
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+" Close if ND is the last tab
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
