@@ -10,3 +10,6 @@
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+[submodule "utils/nvm"]
+	path = utils/nvm
+	url = https://github.com/creationix/nvm.git
