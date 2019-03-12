@@ -18,6 +18,7 @@
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
+eval "`dircolors ~/dotfiles/zsh/dircolors.db`O
 #Functions
 	# Loop a command and show the output in vim
 	loop() {
@@ -51,6 +52,7 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 autoload -U compinit
 
 plugins=(
+	git,
 	docker
 )
 

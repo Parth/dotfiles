@@ -1,17 +1,17 @@
 " General Vim settings
 	syntax on
-	let mapleader=","
+"	let mapleader=","
 	set autoindent
 	set tabstop=4
 	set shiftwidth=4
 	set dir=/tmp/
-	set relativenumber 
+"	set relativenumber 
 	set number
 
 	autocmd Filetype html setlocal sw=2 expandtab
 	autocmd Filetype javascript setlocal sw=4 expandtab
 
-	set cursorline
+"	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
 	set hlsearch
