@@ -68,8 +68,8 @@
 		vnoremap <leader>out yOprintf(, <esc>pA);<esc>h%a
 
 	" Typescript
-		autocmd BufNewFile,BufRead *.ts set syntax=javascript
-		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
+"		autocmd BufNewFile,BufRead *.ts set syntax=javascript
+"		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
 
 	" Markup
 		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
@@ -127,3 +127,11 @@ let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 " Close if ND is the last tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Typescript-vim------
+autocmd BufNewFile,BufRead *.ts,*.d.ts setlocal filetype=typescript
+
+" Syntastic ts integration
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+autocmd FileType javascript,javascript.jsx,typescript setlocal omnifunc=tsuquyomi#complete

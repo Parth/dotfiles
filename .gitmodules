@@ -13,3 +13,15 @@
 [submodule "utils/nvm"]
 	path = utils/nvm
 	url = https://github.com/creationix/nvm.git
+[submodule "vim/bundle/typescript-vim"]
+	path = vim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "vim/bundle/yats.vim"]
+	path = vim/bundle/yats.vim
+	url = https://github.com/HerringtonDarkholme/yats.vim.git
+[submodule "vim/bundle/tsuquyomi"]
+	path = vim/bundle/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
