@@ -10,6 +10,10 @@
 "	set relativenumber 
 	set number
 
+	set background=dark
+	colorscheme solarized
+	let g:solarized_termcolors=256
+
 	autocmd Filetype html setlocal sw=2 expandtab
 	autocmd Filetype javascript setlocal sw=4 expandtab
 
