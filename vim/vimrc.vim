@@ -17,6 +17,9 @@
 
 	autocmd Filetype html setlocal sw=2 expandtab
 	autocmd Filetype javascript setlocal sw=4 expandtab
+	autocmd Filetype typescript setlocal sw=4 expandtab
+	"autocmd Filetype typescript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd Filetype typescript set omnifunc=tscompletejob#complete
 
 "	set cursorline
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold

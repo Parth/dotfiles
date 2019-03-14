@@ -10,18 +10,18 @@
 [submodule "utils/nvm"]
 	path = utils/nvm
 	url = https://github.com/creationix/nvm.git
-[submodule "vim/vim/pack/plugins/start/typescript-vim"]
+[submodule "vim/.vim/pack/plugins/start/typescript-vim"]
 	path = vim/.vim/pack/plugins/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "vim/vim/pack/plugins/start/yats.vim"]
+[submodule "vim/.vim/pack/plugins/start/yats.vim"]
 	path = vim/.vim/pack/plugins/start/yats.vim
 	url = https://github.com/HerringtonDarkholme/yats.vim.git
-[submodule "vim/vim/pack/plugins/start/tsuquyomi"]
-	path = vim/.vim/pack/plugins/start/tsuquyomi
-	url = https://github.com/Quramy/tsuquyomi.git
-[submodule "vim/vim/pack/plugins/start/nerdtree"]
+[submodule "vim/.vim/pack/plugins/start/nerdtree"]
 	path = vim/.vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
 [submodule "vim/.vim/pack/plugins/start/ale"]
 	path = vim/.vim/pack/plugins/start/ale
 	url = https://github.com/w0rp/ale.git
+[submodule "vim/.vim/pack/plugins/start/tscompletejob"]
+	path = vim/.vim/pack/plugins/start/tscompletejob
+	url = https://github.com/runoshun/tscompletejob.git
