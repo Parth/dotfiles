@@ -7,18 +7,21 @@
 [submodule "zsh/plugins/oh-my-zsh"]
 	path = zsh/plugins/oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "utils/nvm"]
 	path = utils/nvm
 	url = https://github.com/creationix/nvm.git
-[submodule "vim/bundle/typescript-vim"]
-	path = vim/bundle/typescript-vim
+[submodule "vim/vim/pack/plugins/start/typescript-vim"]
+	path = vim/.vim/pack/plugins/start/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
-[submodule "vim/bundle/yats.vim"]
-	path = vim/bundle/yats.vim
+[submodule "vim/vim/pack/plugins/start/yats.vim"]
+	path = vim/.vim/pack/plugins/start/yats.vim
 	url = https://github.com/HerringtonDarkholme/yats.vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
+[submodule "vim/vim/pack/plugins/start/tsuquyomi"]
+	path = vim/.vim/pack/plugins/start/tsuquyomi
+	url = https://github.com/Quramy/tsuquyomi.git
+[submodule "vim/vim/pack/plugins/start/nerdtree"]
+	path = vim/.vim/pack/plugins/start/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/.vim/pack/plugins/start/ale"]
+	path = vim/.vim/pack/plugins/start/ale
+	url = https://github.com/w0rp/ale.git

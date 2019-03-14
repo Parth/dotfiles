@@ -1,5 +1,7 @@
 " General Vim settings
 	syntax on
+	filetype plugin on
+	set omnifunc=syntaxcomplete#Complete
 	let mapleader=","
 	set autoindent
 	set tabstop=4
@@ -115,10 +117,10 @@
 	"Insert blank below and above
 
 " Pathogen Plugins
-so ~/dotfiles/vim/pathogen.vim
-set runtimepath+=~/dotfiles/vim
+"so ~/dotfiles/vim/pathogen.vim
+"set runtimepath+=~/dotfiles/vim
 " execute pathogen#runtime_append_all_bundles()
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " Plugins ----------------------------------------------
 " NERDTree -----
