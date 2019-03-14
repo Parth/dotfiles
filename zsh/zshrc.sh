@@ -114,3 +114,6 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+# Fix autosuggest color in solarized dark theme
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
