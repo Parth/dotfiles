@@ -1,5 +1,6 @@
 " General Vim settings
 	syntax on
+	syntax enable
 	filetype plugin on
 	set omnifunc=syntaxcomplete#Complete
 	let mapleader=","
