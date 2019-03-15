@@ -18,7 +18,10 @@
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
-eval "`dircolors ~/dotfiles/zsh/dircolors.db`"
+if command -v dircolors; then
+	eval "`dircolors ~/dotfiles/zsh/dircolors.db`"
+fi
+
 #Functions
 	# Loop a command and show the output in vim
 	loop() {
