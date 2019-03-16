@@ -114,3 +114,6 @@
 	"Swap line
 	"Insert blank below and above
 
+" Fix for: https://github.com/fatih/vim-go/issues/1509
+
+filetype plugin indent on
