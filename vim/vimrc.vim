@@ -11,6 +11,9 @@
 "	set relativenumber 
 	set number
 
+	" Disable terminal output, makes ack better, might block other plugins
+	set shellpipe=>
+
 	set background=dark
 	colorscheme solarized
 	let g:solarized_termcolors=256
@@ -133,8 +136,16 @@
 " Plugins ----------------------------------------------
 " NERDTree -----
 nnoremap <silent> <Leader>m :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>M :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 " Close if ND is the last tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" TSCompleteJob ------
+let g:tscompletejob_enable_tagstack = 1
+
+" ACK ---------
+nnoremap <leader>s :Ack!  src/<left><left><left><left><left>
+xnoremap <leader>S y:Ack!  src/<left><left><left><left><left><C-R>"
 
