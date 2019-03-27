@@ -139,6 +139,7 @@ nnoremap <silent> <Leader>m :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>M :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
+let NERDTreeShowHidden=1
 " Close if ND is the last tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
