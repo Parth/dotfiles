@@ -135,8 +135,8 @@
 
 " Plugins ----------------------------------------------
 " NERDTree -----
-nnoremap <silent> <Leader>m :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>M :NERDTreeFind<CR>
+nnoremap <silent> <Leader>M :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>m :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
 let NERDTreeShowHidden=1
