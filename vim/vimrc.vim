@@ -3,6 +3,7 @@
 	syntax enable
 	filetype plugin on
 	set omnifunc=syntaxcomplete#Complete
+	set backspace=indent,eol,start
 	let mapleader=","
 	set autoindent
 	set tabstop=4
@@ -135,6 +136,7 @@
 
 " Plugins ----------------------------------------------
 " NERDTree -----
+
 nnoremap <silent> <Leader>M :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>m :NERDTreeFind<CR>
 let NERDTreeMinimalUI=1
