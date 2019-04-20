@@ -68,7 +68,7 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 |------------|--------------|
 | Ctrl-H     | Runs ``cd ~/`` |
 | Ctrl-K     | Runs ``cd ..`` |
-| Ctrl-G     | Runs ``git add -A; git commit -v && git push`` |
+| Ctrl-G     | Runs ``git add .; git commit -v && git push`` |
 | Ctrl-V     | Runs ``fc``. Takes last command and puts it in a vim buffer. |
 | Ctrl-S     | Adds ``sudo`` to the beginning of the buffer. |
 | Ctrl-L     | Runs ``ls``. |
@@ -92,4 +92,7 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 * `%` has been remapped to `v`.
 * Use vim movement keys for moving between panes. 
 * Copy buffer is coppied to xclip.
-* Status bar tells you date, time, user, and hostname. Especially useful with nested ssh sessions. 
+* Status bar tells you date, time, user, and hostname. Especially useful with nested ssh sessions.
+
+## [Dir-color]
+* The color is located in `.dir_colors`. You can change it to dir-colors you want. The default is Zenburn.
