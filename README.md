@@ -94,5 +94,5 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 * Copy buffer is coppied to xclip.
 * Status bar tells you date, time, user, and hostname. Especially useful with nested ssh sessions.
 
-## [Dir-color]
+## [Dir-color](http://manpages.ubuntu.com/manpages/xenial/man5/dir_colors.5.html)
 * The color is located in `.dir_colors`. You can change it to dir-colors you want. The default is Zenburn.
