@@ -84,3 +84,4 @@ fi
 
 source ~/dotfiles/zsh/prompt.sh
 export PATH=$PATH:$HOME/dotfiles/utils
+eval $( dircolors -b $HOME/dotfiles/.dir_colors )
