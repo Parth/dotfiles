@@ -152,3 +152,6 @@ let g:tscompletejob_enable_tagstack = 1
 nnoremap <leader>s :Ack!  src/<left><left><left><left><left>
 xnoremap <leader>S y:Ack!  src/<left><left><left><left><left><C-R>"
 
+" Omnisharp .NET ------
+let g:OmniSharp_server_stdio=1
+" let g:OmniSharp_server_path='~/dotfiles/utils/omnisharp-linux-x64/run'

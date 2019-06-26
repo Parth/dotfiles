@@ -25,3 +25,6 @@
 [submodule "vim/.vim/pack/plugins/start/ack.vim"]
 	path = vim/.vim/pack/plugins/start/ack.vim
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/.vim/pack/plugins/start/omnisharp-vim"]
+	path = vim/.vim/pack/plugins/start/omnisharp-vim
+	url = https://github.com/OmniSharp/omnisharp-vim.git
