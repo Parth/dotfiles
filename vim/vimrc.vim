@@ -44,7 +44,7 @@
 
 " Language Specific
 	" Tabs
-		so ~/dotfiles/vim/sleuth.vim
+		source ~/dotfiles/vim/sleuth.vim
 
 	" Typescript
 		autocmd BufNewFile,BufRead *.ts set syntax=javascript
