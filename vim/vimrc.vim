@@ -96,3 +96,10 @@
 " Fix for: https://github.com/fatih/vim-go/issues/1509
 
 filetype plugin indent on
+
+" persistent folds
+augroup AutoSaveFolds
+  autocmd!
+  autocmd BufWinLeave * mkview
+  autocmd BufWinEnter * silent loadview
+augroup END
