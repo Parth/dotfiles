@@ -1,73 +1,37 @@
-" General Vim settings
-	syntax on
-	let mapleader=","
-	set autoindent
-	set tabstop=4
-	set shiftwidth=4
-	set dir=/tmp/
-	set relativenumber 
-	set number
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-	autocmd Filetype html setlocal sw=2 expandtab
-	autocmd Filetype javascript setlocal sw=4 expandtab
+set rtp+=~/dotfiles/vim/bundle/Vundle.vim
+call vundle#begin()
 
-	set cursorline
-	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
 
-	set hlsearch
-	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
-	nnoremap <C-c> :set norelativenumber<CR>:set nonumber<CR>:echo "Line numbers turned off."<CR>
-	nnoremap <C-n> :set relativenumber<CR>:set number<CR>:echo "Line numbers turned on."<CR>
+call vundle#end()
 
-	nnoremap n nzzzv
-	nnoremap N Nzzzv
+" NERDTree Config 
+" 
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-	nnoremap H 0
-	nnoremap L $
-	nnoremap J G
-	nnoremap K gg
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
-	map <tab> %
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-	set backspace=indent,eol,start
+map <C-n> :NERDTreeToggle<CR>
 
-	nnoremap <Space> za
-	nnoremap <leader>z zMzvzz
+" Gernal Settings
+syntax enable
+set relativenumber 
+set number
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
-	nnoremap vv 0v$
-
-	set listchars=tab:\|\ 
-	nnoremap <leader><tab> :set list!<cr>
-	set pastetoggle=<F2>
-	set mouse=a
-	set incsearch
-
-" Language Specific
-	" Tabs
-		so ~/dotfiles/vim/sleuth.vim
-
-	" Typescript
-		autocmd BufNewFile,BufRead *.ts set syntax=javascript
-		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
-
-	" Markup
-		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
-
-
-" File and Window Management 
-	inoremap <leader>w <Esc>:w<CR>
-	nnoremap <leader>w :w<CR>
-
-	inoremap <leader>q <ESC>:q<CR>
-	nnoremap <leader>q :q<CR>
-
-	inoremap <leader>x <ESC>:x<CR>
-	nnoremap <leader>x :x<CR>
-
-	nnoremap <leader>e :Ex<CR>
-	nnoremap <leader>t :tabnew<CR>:Ex<CR>
-	nnoremap <leader>v :vsplit<CR>:w<CR>:Ex<CR>
-	nnoremap <leader>s :split<CR>:w<CR>:Ex<CR>
+" Line numbers to gray color
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
 " Return to the same line you left off at
 	augroup line_return
@@ -88,11 +52,5 @@
 	" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 	autocmd FileChangedShellPost *
 	  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-" Future stuff
-	"Swap line
-	"Insert blank below and above
-
-" Fix for: https://github.com/fatih/vim-go/issues/1509
 
 filetype plugin indent on
