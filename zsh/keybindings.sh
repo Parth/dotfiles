@@ -10,18 +10,25 @@
 	function git_prepare() {
 		if [ -n "$BUFFER" ];
 			then
-				BUFFER="git add -A && git commit -m \"$BUFFER\" && git push"
+				BUFFER="git add . && git commit -m \"$BUFFER\""
 		fi
 
 		if [ -z "$BUFFER" ];
 			then
-				BUFFER="git add -A && git commit -v && git push"
+				BUFFER="git add . && git commit -v"
 		fi
 				
 		zle accept-line
 	}
 	zle -N git_prepare
 	bindkey "^g" git_prepare
+
+    function git_push() {
+        BUFFER="git push"
+		zle accept-line
+    }
+	zle -N git_push
+	bindkey "^p" git_push
 
 # home
 	function goto_home() { 
