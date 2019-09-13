@@ -48,6 +48,7 @@ autoload -U compinit
 
 plugins=(
 	docker
+    extract
 )
 
 for plugin ($plugins); do
