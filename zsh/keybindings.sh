@@ -30,6 +30,13 @@
 	zle -N git_push
 	bindkey "^p" git_push
 
+    function git_status() {
+        BUFFER="git status"
+		zle accept-line
+    }
+	zle -N git_status
+	bindkey "^s" git_status
+
 # home
 	function goto_home() { 
 		BUFFER="cd ~/"$BUFFER
@@ -55,11 +62,3 @@
 	zle -N ctrl_j
 	bindkey "^j" ctrl_j
 
-
-# Sudo
-	function add_sudo() {
-		BUFFER="sudo "$BUFFER
-		zle end-of-line
-	}
-	zle -N add_sudo
-	bindkey "^s" add_sudo
