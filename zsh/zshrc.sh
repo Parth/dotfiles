@@ -9,12 +9,20 @@
 # Aliases
 	alias v="vim -p"
 	mkdir -p /tmp/log
-	
+    alias ios='open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app'
+    alias android='emulator @Pixel &'
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
 
 # Settings
 	export VISUAL=vim
+    export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home
+    export ANDROID_HOME=/usr/local/share/android-sdk
+    export TSC_NONPOLLING_WATCHER="1"
+    export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+    export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+    export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
+    export PATH=~/.npm-global/bin:$PATH
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
