@@ -21,6 +21,23 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 map <C-n> :NERDTreeToggle<CR>
 
+" Upload Functionality
+set exrc
+set secure
+
+" rsync
+function RemoteSync ()
+    if !exists("g:enable_rsync") || g:enable_rsync == 0
+        return
+    endif
+
+    let rsync_command = "rsync -a --exclude-from=./" . g:rsync_exclude . " . " . g:rsync_user . "@" . g:rsync_server . ":" .g:rsync_remote . " &> /dev/null"
+
+    execute "!" . rsync_command
+endfunction
+
+au BufWritePost,FileWritePost * silent call RemoteSync()
+
 " Gernal Settings
 syntax enable
 set relativenumber 

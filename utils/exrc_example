@@ -1,0 +1,6 @@
+" rsync on save
+let g:enable_rsync  = 1
+let g:rsync_server  = "ptolemy"
+let g:rsync_user    = "kschmaltz"
+let g:rsync_remote  = "/home/kschmaltz/sat_geo"
+let g:rsync_exclude = ".gitignore"
