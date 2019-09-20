@@ -33,12 +33,24 @@ function RemoteSync ()
         return
     endif
 
-    let rsync_command = "rsync -a --exclude-from=./" . g:rsync_exclude . " . " . g:rsync_user . "@" . g:rsync_server . ":" .g:rsync_remote . " &> /dev/null"
+    let rsync_command = "rsync -a --exclude='*.swp' --exclude='.git/' --exclude='.exrc' --exclude-from=" . g:rsync_exclude . " . " . g:rsync_user . "@" . g:rsync_server . ":" .g:rsync_remote . " &> /dev/null"
 
     execute "!" . rsync_command
 endfunction
 
 au BufWritePost,FileWritePost * silent call RemoteSync()
+
+function Upload ()
+    if !exists("g:enable_rsync") || g:enable_rsync == 0
+        return
+    endif
+
+    let rsync_command = "rsync -a --progress --exclude='*.swp' --exclude='.git/' --exclude='.exrc' --exclude-from=" . g:rsync_exclude . " . " . g:rsync_user . "@" . g:rsync_server . ":" .g:rsync_remote . " "
+
+    execute "!" . rsync_command
+endfunction
+
+map <C-s> :call Upload()<CR>
 
 " Gernal Settings
 syntax enable
