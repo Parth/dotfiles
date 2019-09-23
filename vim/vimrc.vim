@@ -1,6 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
+let mapleader=","
 set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -8,6 +8,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'valloric/youcompleteme'
 Plugin 'scrooloose/syntastic'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()
 
@@ -22,6 +23,18 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 map <C-n> :NERDTreeToggle<CR>
+
+" Syntastic Config
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:syntastic_typescript_checkers = ['eslint']
 
 " Upload Functionality
 set exrc
@@ -59,6 +72,7 @@ set number
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set hlsearch
 
 " Line numbers to gray color
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
