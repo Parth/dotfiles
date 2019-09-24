@@ -9,6 +9,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'valloric/youcompleteme'
 Plugin 'scrooloose/syntastic'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'prettier/vim-prettier'
 
 call vundle#end()
 
@@ -29,12 +30,13 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 let g:syntastic_typescript_checkers = ['eslint']
+" let g:syntastic_typescript_eslint_args = ['--fix .']
+
+map <C-p> :Prettier<CR>
 
 " Upload Functionality
 set exrc
