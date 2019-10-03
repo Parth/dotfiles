@@ -62,3 +62,11 @@
 	}
 	zle -N add_sudo
 	bindkey "^s" add_sudo
+
+# Home - current git repo
+	function git_root() {
+		BUFFER="cd $(git rev-parse --show-toplevel)"
+		zle accept-line
+	}
+	zle -N git_root
+	bindkey "^a" git_root
