@@ -65,7 +65,7 @@
 
 # Home - current git repo
 	function git_root() {
-		BUFFER="cd $(git rev-parse --show-toplevel)"
+		BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
 		zle accept-line
 	}
 	zle -N git_root
