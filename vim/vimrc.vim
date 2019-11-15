@@ -1,3 +1,5 @@
+" Variables
+	let isWindows = system('uname -mrs | grep Microsoft | wc -l')
 " General Vim settings
 	syntax on
 	syntax enable
@@ -16,8 +18,10 @@
 	set shellpipe=>
 
 	set background=dark
-	colorscheme solarized
-	let g:solarized_termcolors=256
+	if isWindows == 0 |
+		colorscheme solarized
+		let g:solarized_termcolors=256 |
+	endif
 
 	autocmd Filetype html setlocal sw=2 expandtab
 	autocmd Filetype javascript setlocal sw=4 expandtab

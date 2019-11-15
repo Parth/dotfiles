@@ -1,6 +1,7 @@
 # Vars
 	HISTFILE=~/.zsh_history
 	SAVEHIST=1000 
+	ISWINDOWS=`uname -mrs | grep Microsoft | wc -l`
 	setopt inc_append_history # To save every command before it is executed 
 	setopt share_history # setopt inc_append_history
 
@@ -19,7 +20,7 @@
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
-if command -v dircolors; then
+if [ $(command -v dircolors | wc -l) -gt 1 ]; then 
 	eval "`dircolors ~/dotfiles/zsh/dircolors.db`"
 fi
 
