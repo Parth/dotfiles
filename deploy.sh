@@ -76,6 +76,10 @@ check_for_software vim
 echo
 check_for_software tmux
 echo
+check_for_software git
+echo
+check_for_software xclip
+echo
 
 check_default_shell
 
