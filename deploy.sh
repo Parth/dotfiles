@@ -103,7 +103,9 @@ printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
-# TODO add to .bashrc fzf related snippets
+
+###########################################
+# TODO add to .bashrc
 c() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
@@ -124,6 +126,31 @@ c() {
   fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
 }
 
+
+man-find() {
+    f=$(fd . $MANPATH/man${1:-1} -t f -x echo {/.} | fzf) && man $f
+}
+fman() {
+    man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
+}
+
+export PS1="\t \w\[$(tput sgr0)\]\$ "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
+alias ll='ls -alF'
+
+shopt -s checkwinsize
+
+alias rand_console='tr -cd "[:alnum:]" < /dev/urandom | fold -w`tput cols`'
+
+###########################################
+
+
+# TODO download mitmproxy
 
 echo
 echo "Please log out and log back in for default shell to be initialized."
