@@ -150,7 +150,7 @@ alias rand_console='tr -cd "[:alnum:]" < /dev/urandom | fold -w`tput cols`'
 ###########################################
 
 
-# TODO download mitmproxy
+# TODO download mitmproxy, chrome.. JEB & IDA, apktools, docker..
 
 echo
 echo "Please log out and log back in for default shell to be initialized."
