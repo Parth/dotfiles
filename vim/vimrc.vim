@@ -33,6 +33,7 @@
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
 
 	set hlsearch
+	nnoremap <leader>n :set rnu!<CR>
 "	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
 "	nnoremap <C-c> :set norelativenumber<CR>:set nonumber<CR>:echo "Line numbers turned off."<CR>
 "	nnoremap <C-n> :set relativenumber<CR>:set number<CR>:echo "Line numbers turned on."<CR>
@@ -161,10 +162,13 @@ let g:OmniSharp_server_stdio=1
 " let g:OmniSharp_server_path='~/dotfiles/utils/omnisharp-linux-x64/run'
 
 "ALE linting
+let g:ale_lint_on_text_change = 'never'
+let g:ale_lint_on_enter = 0
 let g:ale_set_highlights = 0
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_sign_error = '>>'
 let g:ale_sign_warning = '--'
-
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
