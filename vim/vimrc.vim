@@ -159,3 +159,12 @@ xnoremap <leader>S y:Ack!  src/<left><left><left><left><left><C-R>"
 " Omnisharp .NET ------
 let g:OmniSharp_server_stdio=1
 " let g:OmniSharp_server_path='~/dotfiles/utils/omnisharp-linux-x64/run'
+
+"ALE linting
+let g:ale_set_highlights = 0
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+
