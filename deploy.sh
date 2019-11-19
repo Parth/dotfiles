@@ -79,6 +79,7 @@ echo
 check_for_software git
 echo
 check_for_software xclip
+# TODO apt install cmake gcc libssl-dev libwebsockets-dev pkg-config
 echo
 
 check_default_shell
