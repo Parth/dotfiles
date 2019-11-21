@@ -43,3 +43,6 @@ colors:
 cursor:
   style: Underline
   unfocused_hollow: false
+
+key_bindings:
+  - { key: N, mods: Command, command: { program: "open", args: ["-n", "/Applications/Alacritty.app"] } }
