@@ -1,0 +1,48 @@
+font:
+  normal:
+    family: SauceCodePro Nerd Font Mono
+    style: Regular
+  bold:
+    family: SauceCodePro Nerd Font Mono
+    style: Regular
+  italic:
+    family: SauceCodePro Nerd Font Mono
+    style: Regular
+
+  size: 13.0
+
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
+
+colors:
+  primary:
+    background: '0x2D2A2E'
+    foreground: '0xFCFCFA'
+
+  normal:
+    black:   '0x403E41'
+    red:     '0xFF6188'
+    green:   '0xA9DC76'
+    yellow:  '0xFFD866'
+    blue:    '0xFC9867'
+    magenta: '0xAB9DF2'
+    cyan:    '0x78DCE8'
+    white:   '0xFCFCFA'
+
+  bright:
+    black:   '0x727072'
+    red:     '0xFF6188'
+    green:   '0xA9DC76'
+    yellow:  '0xFFD866'
+    blue:    '0xFC9867'
+    magenta: '0xAB9DF2'
+    cyan:    '0x78DCE8'
+    white:   '0xFCFCFA'
+
+cursor:
+  style: Underline
+  unfocused_hollow: false
+
+key_bindings:
+  - { key: N, mods: Command, command: { program: "open", args: ["-n", "/Applications/Alacritty.app"] } }
