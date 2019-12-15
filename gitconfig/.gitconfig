@@ -1,0 +1,11 @@
+[includeIf "gitdir:~/Documents/work/"]
+	path = .gitconfig-work
+[includeIf "gitdir:~/Documents/personal_project/"]
+	path = .gitconfig-personal
+[push]
+	default = current
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

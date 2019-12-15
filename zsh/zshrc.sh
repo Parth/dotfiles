@@ -1,20 +1,13 @@
 # Vars
-	HISTFILE=~/.zsh_history
-	SAVEHIST=1000 
-	setopt inc_append_history # To save every command before it is executed 
-	setopt share_history # setopt inc_append_history
+  HISTFILE=~/.zsh_history
+  SAVEHIST=1000
+  setopt inc_append_history # To save every command before it is executed
+  setopt share_history # setopt inc_append_history
 
-	git config --global push.default current
+git config --global push.default current
 
-# Aliases
-	alias v="vim -p"
-	mkdir -p /tmp/log
-	
-	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
-	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
+mkdir -p /tmp/log
 
-# Settings
-	export VISUAL=vim
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
@@ -32,12 +25,8 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 		done;
 	}
 
- 	# Custom cd
- 	c() {
- 		cd $1;
- 		ls;
- 	}
- 	alias cd="c"
+# Custom cd
+chpwd() ls
 
 # For vim mappings: 
 	stty -ixon
@@ -60,6 +49,7 @@ done
 
 compinit
 
+source ~/dotfiles/aliases/.aliases
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
@@ -83,5 +73,8 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 fi
 
 source ~/dotfiles/zsh/prompt.sh
+# Add dir colors for terminal currently doesn't suppor well for mac
+# eval $( dircolors -b ~/dotfiles/.dir_colors )
 export PATH=$PATH:$HOME/dotfiles/utils
-eval $( dircolors -b $HOME/dotfiles/.dir_colors )
+
+

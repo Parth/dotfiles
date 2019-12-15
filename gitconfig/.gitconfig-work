@@ -1,0 +1,6 @@
+[user]
+name = "hai che viet"
+email = "haiche@jobhop.vn"
+
+[core]
+sshCommand = "ssh -i ~/.ssh/work_key"

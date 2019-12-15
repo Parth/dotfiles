@@ -1,0 +1,7 @@
+[user]
+name = "hai che viet"
+email = "cheviethai123@gmail.com"
+
+[core]
+sshCommand = "ssh -i ~/.ssh/id_hai8111997"
+
