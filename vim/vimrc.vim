@@ -120,3 +120,40 @@ fun! ReadMan()
 endfun
 " Map the K key to the ReadMan function:
 map K :call ReadMan()<CR>
+
+autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.jsonc set ft=javascript
+
+"###########################################################
+"# Autocorrect Dictionary                                  #
+"###########################################################
+abbr ture true
+abbr flase false
+
+"###########################################################
+"# Set Default Search highlighting ON (Off commented out)  #
+"###########################################################
+:set hlsearch
+:set incsearch
+
+"Map F6 to toggle on and off the baner
+nmap <F6> I
+
+"# to change the way netrw shows the files and directorys
+"let g:netrw_liststyle= 0    " Default view (directory name/file name)
+"let g:netrw_liststyle= 1    " Show time and size
+"let g:netrw_liststyle= 2    " Shows listing in 2 columns
+let g:netrw_liststyle= 3    " show the tree listing
+
+"# Set the split windows to always be equal and open splits to the right
+let g:netrw_winsize = 0         "   set default window size to be always equal
+let g:netrw_preview = 1		    "	open splits to the right
+
+" Per default, netrw leaves unmodified buffers open.  This autocommand
+" deletes netrw's buffer once it's hidden (using ':q;, for example)
+autocmd FileType netrw setl bufhidden=delete  " or use :qa!
+
+"These next three lines are for the fuzzy search:
+set nocompatible      "Limit search to your project
+set path+=**          "Search all subdirectories and recursively
+set wildmenu          "Shows multiple matches on one line
