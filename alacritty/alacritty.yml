@@ -24,3 +24,6 @@ colors:
     magenta: '0xAB9DF2'
     cyan:    '0x78DCE8'
     white:   '0xFCFCFA'
+
+key_bindings:
+- { key: N, mods: Command, action: SpawnNewInstance }
