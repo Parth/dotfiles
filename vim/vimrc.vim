@@ -14,6 +14,7 @@
 
 	inoremap jk <Esc>
 	hi Cursor ctermfg=White ctermbg=Yellow cterm=bold guifg=white guibg=yellow gui=bold
+        hi Search cterm=NONE ctermfg=yellow ctermbg=NONE
 
 	set hlsearch
 	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
