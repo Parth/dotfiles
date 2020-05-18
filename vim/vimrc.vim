@@ -158,3 +158,11 @@ autocmd FileType netrw setl bufhidden=delete  " or use :qa!
 set nocompatible      "Limit search to your project
 set path+=**          "Search all subdirectories and recursively
 set wildmenu          "Shows multiple matches on one line
+
+
+" curl -fLo ~/.vim/colors/molokai.vim --create-dirs https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim
+" curl -fLo ~/.vim/colors/github.vim --create-dirs https://raw.githubusercontent.com/endel/vim-github-colorscheme/master/colors/github.vim
+if &diff
+"   colorscheme github
+    colorscheme molokai
+endif
