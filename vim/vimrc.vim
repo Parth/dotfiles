@@ -100,11 +100,11 @@
 filetype plugin indent on
 
 " persistent folds
-augroup AutoSaveFolds
-  autocmd!
-  autocmd BufWinLeave * mkview
-  autocmd BufWinEnter * silent loadview
-augroup END
+" augroup AutoSaveFolds
+"   autocmd!
+"   autocmd BufWinLeave * mkview
+"   autocmd BufWinEnter * silent loadview
+" augroup END
 
 " Opens man page in split window, "ZQ" to close
 fun! ReadMan()
@@ -166,3 +166,5 @@ if &diff
 "   colorscheme github
     colorscheme molokai
 endif
+
+nnoremap <C-f> :vim /<C-r><C-w>/ %<CR> \| !:copen <Enter>
