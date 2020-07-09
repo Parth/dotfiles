@@ -9,6 +9,7 @@
 # Aliases
 	alias v="vim -p"
 	mkdir -p /tmp/log
+	source ~/dotfiles/zsh/lockbook.sh
 	
 	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
 	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
@@ -34,9 +35,6 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
 # Custom cd
 chpwd() ls
-
-# For vim mappings: 
-	stty -ixon
 
 # Completions
 # These are all the plugin options available: https://github.com/robbyrussell/oh-my-zsh/tree/291e96dcd034750fbe7473482508c08833b168e3/plugins
