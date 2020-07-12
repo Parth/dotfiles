@@ -1,7 +1,22 @@
 export LOCKBOOK_EDITOR="vim"
 
-alias lls="lockbook list | fzf"
-alias lvim="lockbook list-docs | fzf | lockbook edit && lockbook sync"
-alias lcat="lockbook list | fzf | lockbook print"
+alias dirs="lockbook list-folders | fzf --prompt='Select a folder: '"
+alias docs="lockbook list-docs | fzf --prompt='Select a document: '"
+alias edit='lockbook edit $(docs)'
+
+function new_document() {
+	BUFFER='lockbook new $(dirs)'
+	zle end-of-line
+}
+
+zle -N new_document
+bindkey "^l" new_document
+
+function edit_document() {
+	BUFFER='lockbook edit $(docs) && lockbook sync'
+	zle accept-line
+}
+zle -N edit_document
+bindkey "^f" edit_document
 
 alias configure="vim ~/dotfiles/zsh/lockbook.sh"
