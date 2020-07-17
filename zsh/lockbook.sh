@@ -1,7 +1,8 @@
 export LOCKBOOK_EDITOR="vim"
 
+alias all="lockbook list-all | fzf --prompt='Select a file: '"
 alias dirs="lockbook list-folders | fzf --prompt='Select a folder: '"
-alias docs="lockbook list-docs | fzf --prompt='Select a document: '"
+alias docs="lockbook list-docs | grep -v 'parth/trash' | fzf --prompt='Select a document: '"
 alias edit='lockbook edit $(docs)'
 
 function new_document() {
