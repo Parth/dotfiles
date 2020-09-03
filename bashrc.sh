@@ -53,4 +53,8 @@ shopt -s checkwinsize
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 
+# vim smali syntax
+echo au BufRead,BufNewFile *.smali set filetype=smali >> ~/.vim/filetype.vim
+ && mkdir ~/.vim/syntax && cd $_ && wget http://codetastrophe.com/smali.vim
+
 
