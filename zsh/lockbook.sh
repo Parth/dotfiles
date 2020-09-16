@@ -6,7 +6,7 @@ alias docs="lockbook list-docs | grep -v 'parth/trash' | fzf --prompt='Select a 
 alias edit='lockbook edit $(docs)'
 
 function new_document() {
-	BUFFER='lockbook new $(dirs)'
+	BUFFER='lockbook new $(dirs) && lockbook sync'
 	zle end-of-line
 }
 
