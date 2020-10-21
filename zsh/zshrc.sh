@@ -86,4 +86,5 @@ if [[ "${terminfo[kcud1]}" != "" ]]; then
 	bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
 fi
 
-export PATH=$PATH:$HOME/dotfiles/utils
+#export PATH=$PATH:$HOME/dotfiles/utils
+export PATH=/usr/local/cuda/bin${PATH:+:${PATH}}$ 
