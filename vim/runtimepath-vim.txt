@@ -1,0 +1,43 @@
+Command to replace comma with newline character
+:s/,/\r/g
+
+Command to sort based on length of the line
+awk '{ print length, $1}' < dummy | sort -n
+
+~/.vim
+~/.vim/after
+~/.fzf/bin/fzf
+~/.vim/plugged/fzf
+~/.vim/plugged/fzf.vim
+~/.vim/plugged/gruvbox
+~/.vim/plugged/coc.nvim
+~/.vim/plugged/ultisnips
+~/.vim/plugged/vim-emoji
+~/.vim/plugged/vim-sleuth
+/usr/local/share/vim/vim82
+~/.vim/plugged/killersheep
+~/.vim/plugged/vim-airline
+~/.vim/plugged/vim-rhubarb
+~/.vim/plugged/vim-asciidoc
+~/.vim/plugged/vim-devicons
+~/.vim/plugged/vim-fugitive
+~/.vim/plugged/vim-snippets
+~/.vim/plugged/vim-surround
+~/.vim/plugged/quickpeek.vim
+/usr/local/share/vim/vimfiles
+~/.vim/plugged/vim-unimpaired
+~/.vim/plugged/ultisnips/after
+~/.vim/plugged/vim-healthcheck
+~/.vim/plugged/vim-airline-themes
+~/.vim/plugged/nerdtree-git-plugin
+/usr/local/share/vim/vimfiles/after
+~/.vim/pack/minpac/start/killersheep
+~/.vim/pack/minpac/start/vim-airline
+~/.vim/pack/minpac/start/vim-rhubarb
+~/.vim/pack/minpac/start/vim-ripgrep
+~/.vim/plugged/vim-visual-star-search
+~/.vim/pack/minpac/start/quickpeek.vim
+~/.vim/pack/minpac/start/vim-unimpaired
+~/.vim/plugged/nerdtree-git-plugin/after
+~/.vim/pack/minpac/start/vim-airline-themes
+~/.vim/pack/minpac/start/vim-visual-star-search

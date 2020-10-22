@@ -1,0 +1,7 @@
+{
+  "conventionalCommits.scopes": [
+    "zsh",
+    "tmux",
+    "vim"
+  ]
+}
