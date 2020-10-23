@@ -9,6 +9,7 @@ Plug 'junegunn/fzf.vim'                                                   "GOD o
 Plug 'SirVer/ultisnips'                                                   "vscode like snippets
 Plug 'tpope/vim-sleuth'                                                   "shiftwidth and expandtab manager
 Plug 'tpope/vim-rhubarb'                                                  "fugitive suppliment
+Plug 'markonm/traces.vim'                                                 "search and replace preview
 Plug 'tpope/vim-fugitive'                                                 "version control within vim
 Plug 'tpope/vim-surround'                                                 "YAGNI - text Objects
 Plug 'honza/vim-snippets'                                                 "ultisnips suppliment

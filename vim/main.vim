@@ -3,6 +3,7 @@
 "
 source $HOME/dotfiles/vim/keybindings.vim
 source $HOME/dotfiles/vim/general-config.vim
+"execute "silent! source vimrc." . $USER
 
 " Select package manager to use
 source $HOME/dotfiles/vim/vim-plug-package-manager.vim

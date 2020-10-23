@@ -52,7 +52,13 @@ let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#fzf#enabled = 1
 let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
-
+" theme
+set t_Co=256
+syntax on
+let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'hard'
+colorscheme gruvbox
+set background=dark
 
 " ultisnip snippet manager
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -62,21 +68,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 
-" Key bindings
-map ; :
-" Useful when creating markup blocks
-imap <C-d> <ESC>ddyO
-" vscode like bindings
-nmap <C-p> :FZF<CR>
-
-" code refactor
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-
-
-" Function Keys
-nmap <F4> :Ranger<CR>
-nnoremap <F9> :terminal<CR>             "open terminal half-mode
-nnoremap <S-F9> :shell<CR>              "open terminal full-screen
-
 " Runtimepath
-set rtp+=/home/avi/.fzf/bin/fzf
+set rtp+=$HOME/.fzf/bin/fzf
+set rtp+=$HOME/.vim/plugged/gruvbox

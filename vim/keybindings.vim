@@ -3,7 +3,11 @@ let g:maplocalleader  = '['
 
 " Key bindings
 " Do not use comments after the line in keymappings
+" :help recursive-mapping
 nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Markup blocks
 inoremap <C-d> <ESC>yypA
