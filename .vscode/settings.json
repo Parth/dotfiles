@@ -3,6 +3,8 @@
     "zsh",
     "tmux",
     "vim",
-    "alacritty"
+    "alacritty",
+    "shell",
+    "neovim"
   ]
 }
