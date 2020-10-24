@@ -2,6 +2,7 @@
   "conventionalCommits.scopes": [
     "zsh",
     "tmux",
-    "vim"
+    "vim",
+    "alacritty"
   ]
 }
