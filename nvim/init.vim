@@ -1,6 +1,23 @@
+" Use configs as .vimrc
 " set runtimepath^=~/.vim runtimepath+=~/.vim/after
 " let &packpath = &runtimepath
 " source ~/.vimrc
+
+
+" Plugin Manager
+call plug#begin()
+Plug 'tpope/vim-sensible'                               "set config sensible defaults
+Plug 'mhinz/vim-signify'                                "vim gitgutter killer
+Plug 'tpope/vim-fugitive'				"version control
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-unimpaired'				"complementary pair of mappings
+Plug 'tpope/vim-commentary'				"comment with ranges
+Plug 'ap/vim-css-color'					"vscode like colorbackground for colorcodes
+
+call plug#end()
+
+set updatetime=100
+
 
 " Build statusline yourself
 set cursorline
