@@ -7,6 +7,27 @@
 apt show  vim neovim | grep -i size
 ```
 
+* `after` folder, add these configs to already loaded configs
+* `set path=.,**` to make `:find` work seamlessly within project
+* [x] include search
+* [ ] [GNU stow](https://www.gnu.org/software/stow/) symlinks factory program
+  * Manage dotfiles using symlinking
+
+
+## Install
+
+```
+ln --symbolic --verbose \
+  $HOME/dotfiles/vim/vimrc.vim \
+  $HOME/.vim/vimrc
+
+set TARGET $HOME/.config/
+set SOURCE $HOME/dotfiles/
+stow --verbose=2 --target=$TARGET --dir=$SOURCE --stow nvim
+stow --verbose=2 --target=$TARGET --dir=$SOURCE --delete nvim
+stow -v --target=$HOME/.config/ *
+```
+
 ## Alacritty
 
 * rust bases
