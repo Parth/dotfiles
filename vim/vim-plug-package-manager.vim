@@ -16,9 +16,10 @@ Plug 'honza/vim-snippets'                                                 "ultis
 Plug 'tpope/vim-unimpaired'                                               "sane quickfix,,buffer hotkeys
 Plug 'ryanoasis/vim-devicons'                                             "iconify
 Plug 'bronson/vim-visual-star-search'                                     "search url like patterns
+Plug 'vifm/vifm.vim', { 'on':  'Vifm' }                                   "file manager, +ranger killer
 Plug 'jremmen/vim-ripgrep', { 'on':  'Rg' }                               "use rip-grep from within vim
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }                       "fzf cli tool
-Plug 'francoiscabrol/ranger.vim', { 'on':  'Ranger' }                     "cli file browser
+" Plug 'francoiscabrol/ranger.vim', { 'on':  'Ranger' }                   "cli file browser
 Plug 'preservim/nerdtree', { 'on':  'NERDTreeToggle' }                    "vscode like directory browser
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on':  'NERDTreeToggle' }           "nerdtree supliment
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}        "intellisense

@@ -12,6 +12,7 @@ vnoremap : ;
 " Markup blocks
 inoremap <C-d> <ESC>yypA
 " i_<C-m> interferes with Enter
+"doesnt work in nvim
 execute "set <M-m>=\em"
 inoremap <M-m> <ESC>Bi`<ESC>Ea`
 
@@ -42,7 +43,8 @@ nnoremap <Leader>gd <Plug>(coc-definition)
 nnoremap <Leader>gr <Plug>(coc-references)
 
 " Function Keys
-nnoremap <F4> :Ranger<CR>
+" nnoremap <F4> :Ranger<CR>
+nnoremap <F4> :Vifm<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F9> :terminal<CR>             "open terminal half-mode
 nnoremap <S-F9> :shell<CR>              "open terminal full-screen

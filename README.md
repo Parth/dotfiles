@@ -95,3 +95,16 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 - Use vim movement keys for moving between panes.
 - Copy buffer is copied to xclip.
 - Status bar tells you date, time, user, and hostname. Especially useful with nested ssh sessions.
+
+### Q&A
+
+[AppImage Format](https://docs.appimage.org/introduction/index.html)
+:   Linux apps (binaries) that runs anywhere
+
+## Use Sylbolic Links
+
+```
+ln --symbolic --verbose \
+  $HOME/dotfiles/alacritty/alacritty.yml \
+  $HOME/.config/alacritty/alacritty.yml
+```
