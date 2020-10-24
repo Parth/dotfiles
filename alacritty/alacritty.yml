@@ -1,4 +1,5 @@
-draw_bold_text_with_bright_colors: false
+live_config_reload: true
+draw_bold_text_with_bright_colors: true
 
 colors:
   primary:
@@ -25,5 +26,52 @@ colors:
     cyan:    '0x78DCE8'
     white:   '0xFCFCFA'
 
+font:
+  normal:
+    family: monospace
+    style: Regular
+
+  bold:
+    family: monospace
+    style: Bold
+
+  italic:
+    family: monospace
+    style: Italic
+
+  bold_italic:
+    family: monospace
+    style: Bold Italic
+
+  size: 11
+
+# Shell Configuration
+shell:
+  program: /usr/bin/zsh
+  args:
+    - --login
+# Maximum number of lines in the scrollback buffer.
+scrolling:
+  history: 10000
+
+# Window dimensions in character columns and lines
+window:
+  # (changes require restart)
+  dynamic_title: true
+  dimensions:
+    columns: 160
+    lines: 48
+
+mouse_bindings:
+  - { mouse: Middle, action: PasteSelection }
+
+# KeyBindings
+# Command instead of Control for MacOS
 key_bindings:
-- { key: N, mods: Command, action: SpawnNewInstance }
+- { key: W, mods: Control, action: Quit }
+- { key: N, mods: Control, action: SpawnNewInstance }
+- { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
+
+# https://github.com/fatih/dotfiles/blob/master/alacritty.yml
+
+
