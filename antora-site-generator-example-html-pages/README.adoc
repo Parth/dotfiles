@@ -1,0 +1,21 @@
+= Sample custom site generator for Antora
+
+This project is an example of a custom site generator for Antora.
+It imports HTML files in the pages directory into Antora's virtual file system (i.e., content catalog).
+
+== Usage
+
+. Clone project
+
+ $ git clone https://gitlab.com/opendevise/oss/antora-site-generator-example-html-pages.git
+
+. Pass as generator when calling Antora
+
+ $ antora --generator=/path/to/antora-site-generator-example-html-pages antora-playbook.yml
+
+== Copyright and License
+
+Copyright (C) 2020 OpenDevise Inc.
+
+Use of this software is granted under the terms of the https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License Version 2.0] (MPL-2.0).
+See link:LICENSE[] to find the full license text.

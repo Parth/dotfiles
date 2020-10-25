@@ -1,0 +1,42 @@
+{
+  "name": "antora-site-generator-example-html-pages",
+  "version": "0.0.1",
+  "license": "MPL-2.0",
+  "author": "OpenDevise Inc. (https://opendevise.com)",
+  "contributors": [
+    "Dan Allen <dan@opendevise.com>"
+  ],
+  "main": "lib/index.js",
+  "dependencies": {
+    "vinyl": "~2.2"
+  },
+  "optionalDependencies": {
+    "@antora/asciidoc-loader": "~2 >=2.3.1",
+    "@antora/content-aggregator": "~2 >=2.3.1",
+    "@antora/content-classifier": "~2 >=2.3.1",
+    "@antora/document-converter": "~2 >=2.3.1",
+    "@antora/navigation-builder": "~2 >=2.3.1",
+    "@antora/page-composer": "~2 >=2.3.1",
+    "@antora/playbook-builder": "~2 >=2.3.1",
+    "@antora/redirect-producer": "~2 >=2.3.1",
+    "@antora/site-mapper": "~2 >=2.3.1",
+    "@antora/site-publisher": "~2 >=2.3.1",
+    "@antora/ui-loader": "~2 >=2.3.1"
+  },
+  "devDependencies": {
+    "eslint": "~6.8",
+    "eslint-config-standard": "~14.1",
+    "eslint-plugin-import": "~2.20",
+    "eslint-plugin-node": "~11.1",
+    "eslint-plugin-promise": "~4.2",
+    "eslint-plugin-standard": "~4.0",
+    "prettier-eslint-cli": "~5.0"
+  },
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "lint": "eslint lib",
+    "format": "prettier-eslint --write \"`pwd`/lib/**/*.js\""
+  }
+}

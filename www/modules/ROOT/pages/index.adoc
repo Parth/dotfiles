@@ -34,7 +34,7 @@
 
 
 
-= ZSH
+== ZSH
 
 Add plugins as git submodules. Dont forget to set `$ZSH_CUSTOM`
 

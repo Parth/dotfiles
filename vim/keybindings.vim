@@ -1,7 +1,7 @@
-let g:mapleader       = '\'
-let g:maplocalleader  = '['
-" let mapleader="\<Space>"
-" let maplocalleader="\\"
+" let g:mapleader       = '\'
+" let g:maplocalleader  = '['
+let g:mapleader="\<Space>"
+let maplocalleader="\\"
 
 " Key bindings
 " Do not use comments after the line in keymappings
@@ -24,7 +24,7 @@ execute "set <M-m>=\em"
 inoremap <M-m> <ESC>Bi`<ESC>Ea`
 
 " vscode like bindings
-nmap <C-p> :GitFiles<CR>
+nnoremap <C-p> :GitFiles<CR>
 
 " Use g for GIT and GOTO
 " https://github.com/junegunn/fzf.vim/blob/master/README.md
@@ -48,6 +48,12 @@ nnoremap sv :source $MYVIMRC<CR>
 nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 nnoremap <Leader>gd <Plug>(coc-definition)
 nnoremap <Leader>gr <Plug>(coc-references)
+
+" GIT version Control with fugitive
+" ---------------------------------------------------------------------------
+" open git status in vertical split on left, unlike horizontal on top
+nnoremap <Leader>gs :Gstatus<cr><c-w>H
+
 
 " Function Keys
 " nnoremap <F4> :Ranger<CR>

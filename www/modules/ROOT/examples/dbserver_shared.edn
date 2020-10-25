@@ -1,0 +1,162 @@
+;; Some nice default background colors, used to distinguish header sections.
+(defattrs :bg-green {:fill "#a0ffa0"})
+(defattrs :bg-yellow {:fill "#ffffa0"})
+(defattrs :bg-pink {:fill "#ffb0a0"})
+(defattrs :bg-cyan {:fill "#a0fafa"})
+(defattrs :bg-purple {:fill "#e4b5f7"})
+
+(defn draw-group-label-header
+  "Creates a small borderless box used to draw the textual label headers
+  used below the byte labels for remotedb message diagrams.
+  Arguments are the number of colums to span and the text of the
+  label."
+  [span label]
+  (draw-box (text label [:math {:font-size 12}]) {:span    span
+                                                  :borders #{}
+                                                  :height  14}))
+
+(defn draw-field
+  "Generates the two boxes which represent a tagged database field with
+  a particular `kind` and byte `length` of the length bytes. Defaults
+  to a length field size of 4 bytes. Additional attributes can be
+  optionally specified after the size."
+  ([kind label]
+   (draw-field kind label 4 nil))
+  ([kind label size]
+   (draw-field kind label size nil))
+  ([kind label size attr-spec]
+   (draw-box kind [attr-spec :box-first])
+   (draw-box label [attr-spec {:span size} :box-last])))
+
+(defn draw-number-field
+  "Generates the two boxes which represent a number with a particular
+  byte length in a database transaction. Defaults to a size of 4
+  bytes. Additional attributes can be optionally specified after the
+  size."
+  ([label]
+   (draw-number-field label 4 nil))
+  ([label size]
+   (draw-number-field label size nil))
+  ([label size attr-spec]
+   (let [kind (case size
+                1 0x0f
+                2 0x10
+                4 0x11)]
+     (draw-field kind label size attr-spec))))
+
+(defn draw-dmst-field
+  "Generates the number field variant used to specify the device, menu,
+  slot, and track about which a media query is being made. Although it
+  is tagged as a normal four-byte number field, the individual bytes
+  have independent meaning. If the desired menu identifier is known,
+  pass that as `menu`. Otherwise a generic _M_ will be rendered for
+  that byte."
+  ([]
+   (draw-dmst-field (text "M" :math)))
+  ([menu]
+   (draw-box 0x11 :box-first)
+   (draw-boxes [(text "D" :math) menu (text "S" :math [:sub "r"])] :box-related)
+   (draw-box (text "T" :math [:sub "r"]) :box-last)))
+
+(defn draw-gap-field
+  "Generates the related multi-row structures that represent a variable
+  length field in a database transaction. `kind` is the tag byte that
+  identifies the type of the field, and `label` describes the content
+  of the payload. The label drawn inside the length field defaults to
+  the word \"length\" in math style, but can be replaced by overriding
+  the `:length-label` attribute. Since `draw-gap` is used to draw the
+  payload, the minimum length required for its label can be adjusted
+  with the `:min-label-columns` attribute."
+  ([kind label]
+   (draw-gap-field kind label nil))
+  ([kind label attr-spec]
+   (let [{:keys [length-label]
+          :or   {length-label (text "length" :math)}
+          :as   attrs} (eval-attribute-spec attr-spec)]
+     (draw-box kind [attr-spec {:borders {:left   :border-unrelated
+                                          :top    :border-unrelated
+                                          :right  :border-related
+                                          :bottom :border-related}}])
+     (draw-box length-label [attr-spec {:span 4 :borders {:left   :border-related
+                                                          :top    :border-unrelated
+                                                          :right  :border-related
+                                                          :bottom :border-related}}])
+     (draw-gap label [attr-spec {:box-above-style :box-above-related}]))))
+
+(defn draw-binary-field
+  "Generates the variable-length structure representing a binary field.
+  Calls `draw-gap-field` with a `kind` of `0x14`. See that function
+  for other argument details."
+  ([label]
+   (draw-gap-field 0x14 label nil))
+  ([label attr-spec]
+   (draw-gap-field 0x14 label attr-spec)))
+
+(defn draw-string-field
+  "Generates the variable-length structure representing a string field.
+  Calls `draw-gap-field` with a `kind` of `0x26`. See that function
+  for other argument details."
+  ([label]
+   (draw-gap-field 0x26 label nil))
+  ([label attr-spec]
+   (draw-gap-field 0x26 label attr-spec)))
+
+(defn length-label
+  "Handles the common case where a structure has multiple length fields
+  distinguished by subscripts."
+  [subscript]
+  (text "length" :math [:sub subscript]))
+
+(defn draw-remotedb-header
+  "Generates the byte and field labels and standard header fields of a
+  request or response message for the remotedb database server with
+  the specified kind and sequence of argument tag values (the number
+  of arguments can be determined by the count of the tags).
+
+  If `kind` is 0 or \"0 response\" the message is a query context
+  setup request or response, and so we know that the transaction ID
+  will have the magic value 0xfffffffe (and we translate \"0
+  response\" to the standard query response kind of 0x4000, which is
+  what is actually sent). If `kind` is `0x100` then the message is a
+  disconnection request, which uses the same magic transaction ID
+  value."
+  [kind & tags]
+  (draw-column-headers)
+  (draw-group-label-header 5 "start")
+  (draw-group-label-header 5 "TxID")
+  (draw-group-label-header 3 "type")
+  (draw-group-label-header 2 "args")
+  (draw-group-label-header 1 "tags")
+  (next-row 18)
+
+  (draw-number-field 0x872349ae 4 :bg-green)
+  (let [txid (if (#{0 "0 response" 0x100} kind) 0xfffffffe (text "TxID" :math))
+        kind (if (= kind "0 response") 0x4000 kind)]
+    (draw-number-field txid 4 :bg-yellow)
+    (draw-number-field (hex-text kind 4 :bold) 2 :bg-pink))
+  (draw-number-field (hex-text (count tags) 2 :bold) 1 :bg-cyan)
+  (draw-box 0x14 [:bg-purple {:borders {:left   :border-unrelated
+                                        :top    :border-unrelated
+                                        :right  :border-related
+                                        :bottom :border-related}}])
+
+  (draw-box (text "0000000c" :hex [[:plain {:font-weight "lighter" :font-size 16}] " (12)"])
+            [{:span 4} [:bg-purple {:borders {:left   :border-related
+                                              :top    :border-unrelated
+                                              :right  :border-related
+                                              :bottom :border-unrelated}}]])
+  (doseq [val (take 11 tags)]
+    (draw-box (hex-text val 2 :bold) [:box-related :bg-purple]))
+  (let [unused (- 12 (count tags))]
+    (when (> unused 1)
+      (doseq [_ (range (dec unused))]
+        (draw-box 0 [:box-related :bg-purple])))
+    (if (pos? unused)
+      (draw-box 0 [:bg-purple {:borders {:left   :border-related
+                                         :top    :border-related
+                                         :right  :border-unrelated
+                                         :bottom :border-unrelated}}])
+      (draw-box (hex-text (last tags) 2 :bold) [:bg-purple {:borders {:left   :border-related
+                                                                      :top    :border-related
+                                                                      :right  :border-unrelated
+                                                                      :bottom :border-unrelated}}]))))

@@ -1,0 +1,27 @@
+{
+  "name": "Dotfiles",
+  "version": "1.0.0",
+  "description": "Distributed documentation Reconciliation",
+  "main": "index.js",
+  "repository": "git@github.com:avimehenwal/dotfiles-1.git",
+  "author": "avimehenwal <avi.mehanwal@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@antora/cli": "^2.3.4",
+    "@antora/site-generator-default": "^2.3.4",
+    "@deepsymmetry/asciidoctor-bytefield": "^1.5.0",
+    "@djencks/asciidoctor-mathjax": "^0.0.7",
+    "asciidoctor-chart": "^0.3.0",
+    "asciidoctor-emoji": "^0.2.2",
+    "asciidoctor-kroki": "^0.9.2",
+    "asciidoctor-plantuml": "^1.5.0",
+    "asciidoctor-tweet": "^0.2.1",
+    "asciidoctor.js": "^1.5.9"
+  },
+  "dependencies": {
+    "@asciidoctor/core": "^2.2.0",
+    "asciidoctor-color": "^0.2.1",
+    "asciidoctor-extension-interactive-runner": "^1.2.3",
+    "bytefield-svg": "^1.5.0"
+  }
+}

@@ -68,7 +68,7 @@ mouse_bindings:
 # KeyBindings
 # Command instead of Control for MacOS
 key_bindings:
-- { key: W, mods: Control, action: Quit }
+# - { key: W, mods: Control, action: Quit }
 - { key: N, mods: Control, action: SpawnNewInstance }
 - { key: Return,   mods: Control|Shift, action: SpawnNewInstance }
 

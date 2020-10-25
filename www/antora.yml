@@ -1,0 +1,6 @@
+name: www
+title: dotfile documentation
+version: 0.01
+start_page: ROOT:index.adoc
+nav:
+- modules/ROOT/nav.adoc

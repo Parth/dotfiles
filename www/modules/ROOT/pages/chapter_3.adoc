@@ -1,0 +1,91 @@
+= 3 Architecture
+:page-chart: true
+
+== High level Cambridge MQTT description
+
+++++
+<div id="chartICVNSKTR"></div>
+<script>
+  c3.generate({
+    bindto: '#chartICVNSKTR',
+    size: { height: 400, width: 600 },
+    data: {
+      columns: [["Monday", "10"], ["Tuesday", "10"], ["Wednesday", "50"], ["Thursday", "25"]],
+      type: 'pie'
+    }
+  });
+</script>
+++++
+
+=== 3.1 Client scenario
+
+Ogólny diagram sekwencji na którym użytkownik:
+
+* Autoryzuje sie I zdobywa token
+* Subskrybuje sie do kolejki
+* Otrzymuje informacje z danego kanału
+* Odsubskrybowuje sie z kolejki
+
+
+=== 3.1.1 Authorization
+
+Bardziej szczegółowy opis I diagram jak wygląda autoryzacja.
+
+Co taki dany oauth token może zawierać?
+
+[plantuml, 331_authorization]
+....
+@startuml
+"Client " -> "OAuth\nServer ": Authentication Request
+"OAuth\nServer " --> "Client ": Authentication Response
+"Client " -> "Mqtt Broker": Sends requests
+
+@enduml
+....
+
+=== 3.1.2 Subscription
+
+Użytkownik będąc zautoryzowany może zapisać się do kanału.
+
+[plantuml, 332_subscription]
+....
+@startuml
+"Client " -> "Mqtt broker ": subcsribe me to topic
+
+
+@enduml
+....
+
+
+=== 3.1.3 Receiving data
+
+Jak wygladać będzie przykładowa wiadomość z topica
+
+[plantuml, 333_receiving]
+....
+@startuml
+"Mqtt broker " --> "Client ":Sends push messages\n regarding subscribed\ntopic
+....
+
+=== 3.1.4 Unsubscription
+
+Podobne informacje co w przypadku subskrypcji. Tym razem odsubskrybuje sie
+
+[plantuml, 334_unsubscription]
+....
+@startuml
+"Client " -> "Mqtt broker ": unsubcsribe me from topic!
+
+
+@enduml
+....
+
+
+=== 3.2 Application scenario
+
+Ogólny diagram sekwencji na którym Aplikacja:
+
+* Działa zaschedulowana
+* Pobiera dane z  gatewaya
+* Przerabia je na eventy
+* publikuje je dla na brookerze na określonej kolejce
