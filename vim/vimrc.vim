@@ -33,7 +33,7 @@ set rtp+=$HOME/.vim/plugged/gruvbox
 source $HOME/dotfiles/vim/vimPlugPackageManager.vim
 source $HOME/dotfiles/vim/setConfig.vim
 source $HOME/dotfiles/vim/abbreviations.vim
-" source $HOME/dotfiles/
+source $HOME/dotfiles/vim/commentToggle.vim
 " source $HOME/dotfiles/vim/netrwconfig.vim
 source $HOME/dotfiles/vim/keybindings.vim
 source $HOME/dotfiles/vim/autocommands.vim

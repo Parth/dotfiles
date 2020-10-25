@@ -37,7 +37,7 @@ set smartcase          "used with search patterns from / ? n N :g :s only
 
 " search and sort
 " Grepping and searching. Use :vimgrep for quickfix
-set path+=**                          "inbuild fuzzy search at path root
+set path+=.,**                          "inbuild fuzzy search at path root
 set incsearch					                "realtime incremental search as we type
 set hlsearch 						              "highlight search
 set ignorecase
