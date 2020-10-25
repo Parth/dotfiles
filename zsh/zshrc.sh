@@ -1,81 +1,113 @@
-# Vars
-	HISTFILE=~/.zsh_history
-	SAVEHIST=1000 
-	setopt inc_append_history # To save every command before it is executed 
-	setopt share_history # setopt inc_append_history
+ZSH="$HOME/.oh-my-zsh"
+# Install oh-my-zsh Plugin Manager if not already installed
+# fresh oh-my-zsh installation over-writes .zshrc file
 
-	git config --global push.default current
+[ ! -d "$ZSH" ] && sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+export ZSH=$ZSH
 
-# Aliases
-	alias v="vim -p"
-	mkdir -p /tmp/log
-	
-	# This is currently causing problems (fails when you run it anywhere that isn't a git project's root directory)
-	# alias vs="v `git status --porcelain | sed -ne 's/^ M //p'`"
+ZSH_THEME="agnoster"
 
-# Settings
-	export VISUAL=vim
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-source ~/dotfiles/zsh/plugins/fixls.zsh
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-#Functions
-	# Loop a command and show the output in vim
-	loop() {
-		echo ":cq to quit\n" > /tmp/log/output 
-		fc -ln -1 > /tmp/log/program
-		while true; do
-			cat /tmp/log/program >> /tmp/log/output ;
-			$(cat /tmp/log/program) |& tee -a /tmp/log/output ;
-			echo '\n' >> /tmp/log/output
-			vim + /tmp/log/output || break;
-			rm -rf /tmp/log/output
-		done;
-	}
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-# Custom cd
-chpwd() ls
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
 
-# Completions
-# These are all the plugin options available: https://github.com/robbyrussell/oh-my-zsh/tree/291e96dcd034750fbe7473482508c08833b168e3/plugins
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+ZSH_CUSTOM=$HOME/dotfiles/zsh
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git zsh-abbr zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# Edit the array below, or relocate it to ~/.zshrc before anything is sourced
-# For help create an issue at github.com/parth/dotfiles
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-autoload -U compinit
+# ------------------------------------------------------- USER CONFIG
 
-plugins=(
-	docker
-)
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] &&
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] &&
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 
-for plugin ($plugins); do
-    fpath=(~/dotfiles/zsh/plugins/oh-my-zsh/plugins/$plugin $fpath)
-done
+# Use FZF keybindings
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-compinit
+# Source all files from submodule
+# source <(cat $HOME/REPO/aviscripts/*)
 
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
-source ~/dotfiles/zsh/plugins/vi-mode.plugin.zsh
-source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/dotfiles/zsh/keybindings.sh
+# generate aliases and source them
+# $HOME/REPO/aviscripts/convert_fish_abbr_2_bash_alias.sh
+# source $HOME/.bash_aliases
 
-# Fix for arrow-key searching
-# start typing + [Up-Arrow] - fuzzy find history forward
-if [[ "${terminfo[kcuu1]}" != "" ]]; then
-	autoload -U up-line-or-beginning-search
-	zle -N up-line-or-beginning-search
-	bindkey "${terminfo[kcuu1]}" up-line-or-beginning-search
-fi
-# start typing + [Down-Arrow] - fuzzy find history backward
-if [[ "${terminfo[kcud1]}" != "" ]]; then
-	autoload -U down-line-or-beginning-search
-	zle -N down-line-or-beginning-search
-	bindkey "${terminfo[kcud1]}" down-line-or-beginning-search
-fi
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export TERM=xterm                       # else tmux fails
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin"
 
-source ~/dotfiles/zsh/prompt.sh
-export PATH=$PATH:$HOME/dotfiles/utils
-
-source ~/dotfiles/zsh/lockbook.sh
+fpath+=${ZDOTDIR:-~}/.zsh_functions

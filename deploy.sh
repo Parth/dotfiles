@@ -10,8 +10,8 @@
 #
 # DEPENDENCY: GNU Stow
 
-SOURCE=$HOME/dotfiles/
-PARTIAL=$HOME/.config/
+SOURCE=$HOME/dotfiles
+PARTIAL=$HOME/.config
 # BASE_CMD="stow --verbose=2 --dir=$SOURCE"
 BASE_CMD="stow -v --dir=$SOURCE"
 
@@ -37,8 +37,17 @@ function usage {
 EOF
 }
 
+function install_homedir_config {
+	# zsh
+	ZSHRC=$HOME/.zshrc
+	[ -f "$ZSHRC" ] && rm -vf $ZSHRC
+	ln --symbolic --verbose $SOURCE/zsh/zshrc.sh $HOME/.zshrc
+}
+
+
+# MAIN
 for PRG in "${CONFIG_DIRS[@]}"; do
-	TARGET=$PARTIAL$PRG
+	TARGET=$PARTIAL/$PRG
 	STOW="$BASE_CMD --target=$TARGET"
 
 	case "$1" in
@@ -48,6 +57,10 @@ for PRG in "${CONFIG_DIRS[@]}"; do
 		link)
 			create_dir
 			$STOW --stow $PRG
+			;;
+		zsh)
+			install_homedir_config
+			exit 0
 			;;
 		*)
 			usage
