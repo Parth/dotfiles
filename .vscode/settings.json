@@ -5,6 +5,7 @@
     "vim",
     "alacritty",
     "shell",
-    "neovim"
+    "neovim",
+    "www"
   ]
 }

@@ -1,0 +1,72 @@
+@startuml
+!includeurl <aws/common>
+!includeurl <aws/SDKs/Java/Java.puml>
+!includeurl <aws/SDKs/Nodejs/Nodejs.puml>
+
+!includeurl <aws/General/users/users.puml>
+!includeurl <aws/General/client/client.puml>
+!includeurl <aws/General/AWScloud/AWScloud.puml>
+!includeurl <aws/General/mobileclient/mobileclient.puml>
+
+!includeurl <aws/Database/AmazonRDS/AmazonRDS.puml>
+!includeurl <aws/Database/AmazonRDS/DBinstance/DBinstance.puml>
+!includeurl <aws/Database/AmazonRDS/MySQLDBinstance/MySQLDBinstance.puml>
+
+!includeurl <aws/Compute/AWSElasticBeanstalk/AWSElasticBeanstalk.puml>
+!includeurl <aws/Compute/AWSElasticBeanstalk/deployment/deployment.puml>
+!includeurl <aws/Compute/AWSElasticBeanstalk/application/application.puml>
+!includeurl <aws/Compute/ElasticLoadBalancing/ApplicationLoadBalancer/ApplicationLoadBalancer.puml>
+!includeurl <aws/Compute/AWSLambda/AWSLambda.puml>
+!includeurl <aws/Compute/AWSLambda/LambdaFunction/LambdaFunction.puml>
+
+!includeurl <aws/Storage/AmazonS3/AmazonS3.puml>
+!includeurl <aws/Storage/AmazonS3/bucket/bucket.puml>
+!includeurl <aws/Storage/AmazonGlacier/AmazonGlacier.puml>
+!includeurl <aws/Storage/AmazonGlacier/archive/archive.puml>
+
+!includeurl <aws/SecurityIdentityCompliance/AWSIAM/AWSIAM.puml>
+!includeurl <aws/SecurityIdentityCompliance/IAM/permissions/permissions.puml>
+!includeurl <aws/SecurityIdentityCompliance/IAM/role/role.puml>
+
+!includeurl <aws/MobileServices/AmazonCognito/AmazonCognito.puml>
+!includeurl <aws/NetworkingContentDelivery/AmazonRoute53/AmazonRoute53.puml>
+!includeurl <aws/SecurityIdentityCompliance/AWSIAM/AWSIAM.puml>
+
+!includeurl <aws/Analytics/AmazonES/AmazonES.puml>
+!includeurl <aws/ManagementTools/AmazonCloudWatch/AmazonCloudWatch.puml>
+!includeurl <aws/ManagementTools/AWSCloudTrail/AWSCloudTrail.puml>
+
+!includeurl <aws/Messaging/AmazonSNS/AmazonSNS.puml>
+
+skinparam componentArrowColor Black
+skinparam componentBackgroundColor White
+skinparam nodeBackgroundColor White
+skinparam agentBackgroundColor White
+skinparam artifactBackgroundColor White
+
+
+
+
+
+AWSCLOUD(awscloud){
+
+
+    APPLICATIONLOADBALANCER(loadbalancer, "ALB Logs")
+    AMAZONS3(S3, "S3 access Logs")
+    AWSLAMBDA(Lambda, "Lambda logs\nand metrics")
+    AWSCLOUDTRAIL(AWSCloudTrail, "API logs")
+
+    AMAZONCLOUDWATCH(AmazonCloudWatch)
+    AMAZONSNS(AmazonSNS, "Send Notifications\n to Owner/Admin")
+
+
+    loadbalancer --> AmazonCloudWatch
+    S3 --> AmazonCloudWatch
+    Lambda --> AmazonCloudWatch
+    AWSCloudTrail --> AmazonCloudWatch
+
+    AmazonCloudWatch --> AmazonSNS
+
+}
+footer %filename() rendered with PlantUML version %version()\nThe Hitchhiker’s Guide to PlantUML
+@enduml

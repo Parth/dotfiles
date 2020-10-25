@@ -1,6 +1,5 @@
 " author : avimehenwal
 "
-"
 " start vim with zero configuration
 " -N              									Not fully Vi compatible: 'nocompatible'
 " -u <vimrc>      									Use <vimrc> instead of any .vimrc

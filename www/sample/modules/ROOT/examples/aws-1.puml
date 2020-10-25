@@ -1,0 +1,113 @@
+@startuml
+'AWS stuff here
+'================================
+!includeurl <aws/common.puml>
+!includeurl <aws/SDKs/Java/Java.puml>
+!includeurl <aws/SDKs/Nodejs/Nodejs.puml>
+
+!includeurl <aws/General/users/users.puml>
+!includeurl <aws/General/client/client.puml>
+!includeurl <aws/General/AWScloud/AWScloud.puml>
+!includeurl <aws/General/mobileclient/mobileclient.puml>
+
+!includeurl <aws/Database/AmazonRDS/AmazonRDS.puml>
+!includeurl <aws/Database/AmazonRDS/DBinstance/DBinstance.puml>
+!includeurl <aws/Database/AmazonRDS/MySQLDBinstance/MySQLDBinstance.puml>
+
+!includeurl <aws/Compute/AWSElasticBeanstalk/AWSElasticBeanstalk.puml>
+!includeurl <aws/Compute/AWSElasticBeanstalk/deployment/deployment.puml>
+!includeurl <aws/Compute/AWSElasticBeanstalk/application/application.puml>
+!includeurl <aws/Compute/ElasticLoadBalancing/ApplicationLoadBalancer/ApplicationLoadBalancer.puml>
+!includeurl <aws/Compute/AWSLambda/AWSLambda.puml>
+!includeurl <aws/Compute/AWSLambda/LambdaFunction/LambdaFunction.puml>
+
+!includeurl <aws/Storage/AmazonS3/AmazonS3.puml>
+!includeurl <aws/Storage/AmazonS3/bucket/bucket.puml>
+!includeurl <aws/Storage/AmazonGlacier/AmazonGlacier.puml>
+!includeurl <aws/Storage/AmazonGlacier/archive/archive.puml>
+
+!includeurl <aws/SecurityIdentityCompliance/AWSIAM/AWSIAM.puml>
+!includeurl <aws/SecurityIdentityCompliance/IAM/permissions/permissions.puml>
+!includeurl <aws/SecurityIdentityCompliance/IAM/role/role.puml>
+
+!includeurl <aws/MobileServices/AmazonCognito/AmazonCognito.puml>
+!includeurl <aws/NetworkingContentDelivery/AmazonRoute53/AmazonRoute53.puml>
+!includeurl <aws/SecurityIdentityCompliance/AWSIAM/AWSIAM.puml>
+
+!includeurl <aws/Analytics/AmazonES/AmazonES.puml>
+!includeurl <aws/ManagementTools/AmazonCloudWatch/AmazonCloudWatch.puml>
+
+'Elastic stuff here
+'================================
+!define ELASTIC_PUML elastic
+!include <elastic/apm/apm.puml>
+!include <elastic/app_search/app_search.puml>
+!include <elastic/beats/beats.puml>
+!include <elastic/cloud/cloud.puml>
+!include <elastic/cloud_in_kubernetes/cloud_in_kubernetes.puml>
+!include <elastic/code_search/code_search.puml>
+!include <elastic/ece/ece.puml>
+!include <elastic/eck/eck.puml>
+!include <elastic/elasticsearch/elasticsearch.puml>
+!include <elastic/endpoint/endpoint.puml>
+!include <elastic/enterprise_search/enterprise_search.puml>
+!include <elastic/kibana/kibana.puml>
+!include <elastic/logging/logging.puml>
+!include <elastic/logstash/logstash.puml>
+!include <elastic/maps/maps.puml>
+!include <elastic/metrics/metrics.puml>
+!include <elastic/siem/siem.puml>
+!include <elastic/site_search/site_search.puml>
+!include <elastic/stack/stack.puml>
+!include <elastic/uptime/uptime.puml>
+
+
+
+'change color of selected background shape https://plantuml.com/deployment-diagram
+skinparam actorBackgroundColor White
+skinparam agentBackgroundColor White
+skinparam artifactBackgroundColor White
+skinparam boundaryBackgroundColor White
+skinparam cardBackgroundColor White
+skinparam cloudBackgroundColor White
+skinparam componentBackgroundColor White
+skinparam controlBackgroundColor White
+skinparam databaseBackgroundColor White
+skinparam entityBackgroundColor White
+skinparam fileBackgroundColor White
+skinparam folderBackgroundColor White
+skinparam frameBackgroundColor White
+skinparam interfaceBackgroundColor White
+skinparam nodeBackgroundColor White
+skinparam packageBackgroundColor White
+skinparam queueBackgroundColor White
+skinparam stackBackgroundColor White
+skinparam rectangleBackgroundColor White
+skinparam storageBackgroundColor White
+skinparam usecaseBackgroundColor White
+
+
+
+'To change background color to elastic green
+'skinparam componentBackgroundColor 00BFB3
+
+AWSCLOUD(aws) {
+
+    AMAZONS3(s3_bucket,"Logs uploaded to here")
+
+package Elastic {
+
+    'add "node", "component", "agent" etc... to change background shape per https://plantuml.com/deployment-diagram
+    'default is agent
+    ELASTICSEARCH(ElasticSearch, "Search and Analyze",database)
+    LOGSTASH(Logstash, "Parse and Transform",node)
+    KIBANA(Kibana, "Visualize",agent)
+}
+
+    s3_bucket -down-> Logstash: Raw logs
+    Logstash -right-> ElasticSearch: Transformed Data
+    ElasticSearch -right-> Kibana: Data to View
+
+}
+footer %filename() rendered with PlantUML version %version()\nThe Hitchhiker’s Guide to PlantUML
+@enduml

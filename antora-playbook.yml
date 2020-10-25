@@ -1,0 +1,55 @@
+site:
+  title: avimehenwal dotfiles
+  #url: https://avimehenwal.github.io/dotfiles-1
+  url: http://127.0.0.1:8080
+  start_page: sample::chapter_1.adoc
+  robots: allow
+  keys:
+    google_analytics: GTM-XXXXXXXX
+
+git:
+  ensure_git_suffix: false
+
+content:
+  branches: HEAD
+  sources:
+  - url: ./www
+    start_path: sample
+
+asciidoc:
+  attributes:
+    icons: font
+    kroki-fetch-diagram: true
+    experimental: ''
+    author: avimehenwal
+    # toc: top
+    # idprefix: '@'
+    # idseparator: '-@'
+  extensions:
+    # - asciidoctor-plantuml
+    - asciidoctor-kroki
+    - asciidoctor-emoji
+    # - '@djencks/asciidoctor-mathjax'
+    # - '@deepsymmetry/asciidoctor-bytefield'
+    - asciidoctor-chart
+
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+    # url: https://github.com/decidim/documentation-antora-ui/releases/download/v0.2/ui-bundle.zip
+    snapshot: true
+  # supplemental_files: './www/supplemental_ui'
+  # supplemental_files:
+  #   - path: ui.yml
+  #     contents: |
+  #       static_files: [ .nojekyll ]
+  #   - path: .nojekyll
+
+output:
+  clean: true
+  dir: ../docs
+  # destinations:
+  # - provider: archive
+  #   path: ./docs/distzip.zip
+
+# https://gitlab.com/antora/docs.antora.org/-/blob/master/antora-playbook.yml

@@ -1,0 +1,60 @@
+= Antora UI
+:page-chart: true
+
+Antora uses https://www.npmjs.com/package/vinyl[vinyl] virtual filesystem aka *content catalog*
+
+== Framework Variable
+
+https://docs.antora.org/antora-ui-default/templates/[How to deal with antora handlebar templates?]
+
+.Template Variables
+* `siteRootPath`
+* `uiRootPath`
+
+[chart,line]
+....
+January,February,March,April,May,June,July
+28,48,40,19,86,27,90
+65,59,80,81,56,55,40
+....
+
+== Data Attributes
+
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes[How to use data attributes]
+
+Store extra information with HTML elements
+
+.How to data attributes are defined?
+[source,html]
+----
+<div class="ct-chart"
+  data-chart-height="400"
+  data-chart-width="600">
+----
+
+.How to access data-attributes?
+[source,js]
+----
+element.dataset.chartHeight
+element.dataset.chartWidth
+----
+
+=== Use Cases
+
+1. Show captions `onHover` on certain elements
+2. Hide/Show some list items
+3. Pass data to javascript libraries/modules to do something interesting, like generating chart
+
+[qanda]
+How to access keys from `antora-playbook.yml` in partial templates?::
+  `{{#with site.keys.googleAnalytics}}`
+Prebuilt `HTML` pages?::
+  Put them inside `attachments` directory then add a link to them in `nav` file
+What are HTML Data Attributes?::
+  If you want to operate on elements based on data attributes, Eg: drawing charts etc
+
+video::TisD-O6esD4[youtube]
+
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TisD-O6esD4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+++++

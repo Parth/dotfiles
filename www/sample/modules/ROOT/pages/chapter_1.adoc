@@ -1,0 +1,97 @@
+=== 1 Scope of document
+:icons: font
+
+icon:tags[role="blue"] ruby, asciidoctor
+
+Zazwyczaj to co tu jest, a to co każdy zazwyczaj pomija
+[green]#Green text# [red]#red text# [blue]#blue text# and [yellow]#some yellow# text
+*[green]#Green text#* _[red]#red text#_ [blue]#blue text# **and** *[yellow]#some yellow#* text
+
+== Who are using it?
+
+icon:tags[role="blue"] ruby, asciidoctor
+
+icon:heart[size=2x]
+
+. Fedora Docs are on antora <<f,doc>> <<f,source>>
+. https://pagure.io/fedora-docs/fedora-docs-ui
+. https://github.com/apache/camel-website
+. https://docs.fauna.com/fauna/current/
+. https://www.uyuni-project.org/uyuni-docs/uyuni/index.html
+. https://github.com/couchbase/docs-ui
+. https://docs.couchbase.com/home/index.html
+
+NOTE: How to add `css` and `javascript` to individual pages?
+
+* `docinfo` doenst seems to work with antoro, only works well with asciidoctor processor.
+* Have to look into `Trepprocessor` or conditionally add into handlebar templates
+
+== How are they using it?
+
+* Homepage has a layout, with pre-formatted HTML markup
+* We want CI to build and test our website
+
+component:: A section of documentation that can be split up into seperate repo
+
+== How to develop UI
+
+- https://docs.antora.org/antora-ui-default/
+- https://pagure.io/fedora-docs/fedora-docs-ui
+
+kbd:[F11]
+
+== Add Search
+
+. Build The Index
+. Perform a search
+
+== ToDo
+
+* [ ] Augogenerate nav.adoc
+
+== Features
+
+- [x] seggregate documentation as per teams
+
+
+== Collapse
+
+.Click to see solution
+[%collapsible]
+====
+Example block turns into collapsible summary/details.
+====
+
+== Exercise
+
+. Implement the `Application` class with `main(String[] args)` method.
+
+=== Solution
+
+// The title attribute is used as
+// clickable text to open the example block.
+.Click to see solution
+[%collapsible]
+====
+[,java]
+----
+package mrhaki;
+
+import io.micronaut.runtime.Micronaut;
+
+public class Application {
+
+    public static void main(String[] args) {
+        Micronaut.run(Application.class);
+    }
+}
+----
+====
+
+WARNING: Doesnt work
+https://gitlab.com/antora/antora/-/issues/522[Need asciidoctor.js version 2]
+
+== References
+
+- [[[f,doc]]] https://docs.fedoraproject.org/en-US/docs/
+- [[[f,source]]] https://pagure.io/fedora-docs/pages/tree/master[Fedora docs source]
