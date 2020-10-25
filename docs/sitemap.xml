@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/chapter_1.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/chapter_2.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/chapter_3.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/chapter_4.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/chapter_5.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+<url>
+<loc>http://127.0.0.1:8080/www/0.01/index.html</loc>
+<lastmod>2020-10-25T21:05:13.585Z</lastmod>
+</url>
+</urlset>

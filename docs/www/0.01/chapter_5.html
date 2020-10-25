@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Antora UI :: AviMehenwal Dotfiles</title>
+    <link rel="canonical" href="http://127.0.0.1:8080/www/0.01/chapter_5.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../_/css/site.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.3.0/c3.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<link rel="stylesheet" href="../../_/css/search.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXXXXX"></script>
+  <script>function gtag() { dataLayer.push(arguments) }; window.dataLayer = window.dataLayer || []; gtag('js', new Date()); gtag('config', 'GTM-XXXXXXXX')</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.3.0/c3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"> </script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://127.0.0.1:8080">AviMehenwal Dotfiles</a>
+      <div class="navbar-item">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Components</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="http://127.0.0.1:8080/sample/0.01/chapter_1.html">Sample</a>
+            <a class="navbar-item" href="http://127.0.0.1:8080/work_log/0.01/index.html">Worklog</a>
+
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/work_log/0.01/index.html">Worklog</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/sample/0.01/chapter_1.html">Sample</a>
+            <a class="navbar-item" href="/work_log/0.01/index.html">Worklog</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="www" data-version="0.01">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">dotfile documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">index</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_1.html">Chapter 1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_2.html">Chapter 2</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_3.html">Chapter 3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_4.html">Chapter 4</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter_5.html">Chapter 5</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Chapters List</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="_attachments/chart.html">view prebuilt HTML page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="_attachments/chart.pdf">view PDF</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#chart.pdf">pdf</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">dotfile documentation</span>
+    <span class="version">0.01</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">dotfile documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.01</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">dotfile documentation</a></li>
+    <li><a href="chapter_5.html">Chapter 5</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/avi/dotfiles/www/modules/ROOT/pages/chapter_5.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">Antora UI</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Antora uses <a href="https://www.npmjs.com/package/vinyl">vinyl</a> virtual filesystem aka <strong>content catalog</strong></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_framework_variable"><a class="anchor" href="#_framework_variable"></a>Framework Variable</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://docs.antora.org/antora-ui-default/templates/">How to deal with antora handlebar templates?</a></p>
+</div>
+<div class="ulist">
+<div class="title">Template Variables</div>
+<ul>
+<li>
+<p><code>siteRootPath</code></p>
+</li>
+<li>
+<p><code>uiRootPath</code></p>
+</li>
+</ul>
+</div>
+<div class="openblock"><div class="ct-chart" data-chart-height="400" data-chart-width="600" data-chart-type="Line" data-chart-colors="#72B3CC,#8EB33B" data-chart-labels="January,February,March,April,May,June,July" data-chart-series-0="28,48,40,19,86,27,90" data-chart-series-1="65,59,80,81,56,55,40"></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_data_attributes"><a class="anchor" href="#_data_attributes"></a>Data Attributes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">How to use data attributes</a></p>
+</div>
+<div class="paragraph">
+<p>Store extra information with HTML elements</p>
+</div>
+<div class="listingblock">
+<div class="title">How to data attributes are defined?</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">&lt;div class="ct-chart"
+  data-chart-height="400"
+  data-chart-width="600"&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">How to access data-attributes?</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">element.dataset.chartHeight
+element.dataset.chartWidth</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_use_cases"><a class="anchor" href="#_use_cases"></a>Use Cases</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Show captions <code>onHover</code> on certain elements</p>
+</li>
+<li>
+<p>Hide/Show some list items</p>
+</li>
+<li>
+<p>Pass data to javascript libraries/modules to do something interesting, like generating chart</p>
+</li>
+</ol>
+</div>
+<div class="qlist qanda">
+<ol>
+<li>
+<p><em>How to access keys from <code>antora-playbook.yml</code> in partial templates?</em></p>
+<p><code>{{#with site.keys.googleAnalytics}}</code></p>
+</li>
+<li>
+<p><em>Prebuilt <code>HTML</code> pages?</em></p>
+<p>Put them inside <code>attachments</code> directory then add a link to them in <code>nav</code> file</p>
+</li>
+<li>
+<p><em>What are HTML Data Attributes?</em></p>
+<p>If you want to operate on elements based on data attributes, Eg: drawing charts etc</p>
+</li>
+</ol>
+</div>
+<div class="videoblock">
+<div class="content">
+<iframe src="https://www.youtube.com/embed/TisD-O6esD4?rel=0" frameborder="0" allowfullscreen></iframe>
+</div>
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TisD-O6esD4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <h1>CHART true</h1>
+  www
+    0 <br>
+    Key: www Values =
+    <ol>
+        <li> Key: name</li>
+        <ol>
+        </ol>
+        <li> Key: latest</li>
+        <ol>
+            <li> Key: displayVersion Value = 0.01 </li>
+            <li> Key: title Value = dotfile documentation </li>
+            <li> Key: version Value = 0.01 </li>
+            <li> Key: name Value = www </li>
+            <li> Key: url Value = /www/0.01/index.html </li>
+            <li> Key: asciidoc Value = [object Object] </li>
+              <ol>
+                  <li> 0 -> [object Object]</li>
+                  <li> 1 -> [object Object]</li>
+              </ol>
+            <li> Key: navigation Value = [object Object],[object Object] </li>
+        </ol>
+        <li> Key: versions</li>
+        <ol>
+            <li> Key: 0 Value = [object Object] </li>
+        </ol>
+    </ol>
+</footer>
+
+<script src="../../_/js/site.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/www/0.01/chapter_5.html"></script>
+<script async src="../../_/../search-index.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+
+  <script>
+    document.body.querySelectorAll('div.ct-chart').forEach((node) => {
+      const options = {
+        height: node.dataset['chartHeight'],
+        width: node.dataset['chartWidth'],
+        colors: node.dataset['chartColors'].split(',')
+      }
+      const dataset = Object.assign({}, node.dataset)
+      const series = Object.values(Object.keys(dataset)
+        .filter(key => key.startsWith('chartSeries-'))
+        .reduce((obj, key) => {
+          obj[key] = dataset[key]
+          return obj
+        }, {})).map(value => value.split(','))
+      const data = {
+        labels: node.dataset['chartLabels'].split(','),
+        series: series
+      }
+      Chartist[node.dataset['chartType']](node, data, options)
+    })
+  </script>
+  </body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>3 Architecture :: AviMehenwal Dotfiles</title>
+    <link rel="canonical" href="http://127.0.0.1:8080/www/0.01/chapter_3.html">
+    <meta name="generator" content="Antora 2.3.4">
+<link rel="stylesheet" href="../../_/css/site.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.3.0/c3.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<link rel="stylesheet" href="../../_/css/search.css">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GTM-XXXXXXXX"></script>
+  <script>function gtag() { dataLayer.push(arguments) }; window.dataLayer = window.dataLayer || []; gtag('js', new Date()); gtag('config', 'GTM-XXXXXXXX')</script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.3.0/c3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"> </script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="http://127.0.0.1:8080">AviMehenwal Dotfiles</a>
+      <div class="navbar-item">
+        <input id="search-input" type="text" placeholder="Search docs">
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Components</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="http://127.0.0.1:8080/sample/0.01/chapter_1.html">Sample</a>
+            <a class="navbar-item" href="http://127.0.0.1:8080/work_log/0.01/index.html">Worklog</a>
+
+          </div>
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="/work_log/0.01/index.html">Worklog</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="/sample/0.01/chapter_1.html">Sample</a>
+            <a class="navbar-item" href="/work_log/0.01/index.html">Worklog</a>
+            <a class="navbar-item" href="#">Service C</a>
+          </div>
+        </div>
+        <div class="navbar-item">
+          <span class="control">
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header><div class="body">
+<div class="nav-container" data-component="www" data-version="0.01">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">dotfile documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">index</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_1.html">Chapter 1</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_2.html">Chapter 2</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="chapter_3.html">Chapter 3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_4.html">Chapter 4</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="chapter_5.html">Chapter 5</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Chapters List</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="_attachments/chart.html">view prebuilt HTML page</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="_attachments/chart.pdf">view PDF</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="#chart.pdf">pdf</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">dotfile documentation</span>
+    <span class="version">0.01</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">dotfile documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">0.01</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">dotfile documentation</a></li>
+    <li><a href="chapter_3.html">Chapter 3</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///home/avi/dotfiles/www/modules/ROOT/pages/chapter_3.adoc">Edit this Page</a></div>
+</div>
+  <div class="content">
+<article class="doc">
+<h1 class="page">3 Architecture</h1>
+<div class="sect1">
+<h2 id="_high_level_cambridge_mqtt_description"><a class="anchor" href="#_high_level_cambridge_mqtt_description"></a>High level Cambridge MQTT description</h2>
+<div class="sectionbody">
+<div id="chartICVNSKTR"></div>
+<script>
+  c3.generate({
+    bindto: '#chartICVNSKTR',
+    size: { height: 400, width: 600 },
+    data: {
+      columns: [["Monday", "10"], ["Tuesday", "10"], ["Wednesday", "50"], ["Thursday", "25"]],
+      type: 'pie'
+    }
+  });
+</script>
+<div class="sect2">
+<h3 id="_3_1_client_scenario"><a class="anchor" href="#_3_1_client_scenario"></a>3.1 Client scenario</h3>
+<div class="paragraph">
+<p>Ogólny diagram sekwencji na którym użytkownik:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Autoryzuje sie I zdobywa token</p>
+</li>
+<li>
+<p>Subskrybuje sie do kolejki</p>
+</li>
+<li>
+<p>Otrzymuje informacje z danego kanału</p>
+</li>
+<li>
+<p>Odsubskrybowuje sie z kolejki</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_1_1_authorization"><a class="anchor" href="#_3_1_1_authorization"></a>3.1.1 Authorization</h3>
+<div class="paragraph">
+<p>Bardziej szczegółowy opis I diagram jak wygląda autoryzacja.</p>
+</div>
+<div class="paragraph">
+<p>Co taki dany oauth token może zawierać?</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-fa76e27cda17b2b5cea96cee61315839d19303c1.svg" alt="331_authorization">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_1_2_subscription"><a class="anchor" href="#_3_1_2_subscription"></a>3.1.2 Subscription</h3>
+<div class="paragraph">
+<p>Użytkownik będąc zautoryzowany może zapisać się do kanału.</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-7355dffdebb9f9b21fff58d6463e53832892c6b8.svg" alt="332_subscription">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_1_3_receiving_data"><a class="anchor" href="#_3_1_3_receiving_data"></a>3.1.3 Receiving data</h3>
+<div class="paragraph">
+<p>Jak wygladać będzie przykładowa wiadomość z topica</p>
+</div>
+<div class="literalblock kroki-error">
+<div class="content">
+<pre>@startuml
+"Mqtt broker " --&gt; "Client ":Sends push messages\n regarding subscribed\ntopic</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_1_4_unsubscription"><a class="anchor" href="#_3_1_4_unsubscription"></a>3.1.4 Unsubscription</h3>
+<div class="paragraph">
+<p>Podobne informacje co w przypadku subskrypcji. Tym razem odsubskrybuje sie</p>
+</div>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-559ea9c1935a27760533fbbe4c9c3cea004d6f2d.svg" alt="334_unsubscription">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_2_application_scenario"><a class="anchor" href="#_3_2_application_scenario"></a>3.2 Application scenario</h3>
+<div class="paragraph">
+<p>Ogólny diagram sekwencji na którym Aplikacja:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Działa zaschedulowana</p>
+</li>
+<li>
+<p>Pobiera dane z  gatewaya</p>
+</li>
+<li>
+<p>Przerabia je na eventy</p>
+</li>
+<li>
+<p>publikuje je dla na brookerze na określonej kolejce</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</article>
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+  </div>
+</main>
+</div>
+<footer class="footer">
+    <h1>CHART true</h1>
+  www
+    0 <br>
+    Key: www Values =
+    <ol>
+        <li> Key: name</li>
+        <ol>
+        </ol>
+        <li> Key: latest</li>
+        <ol>
+            <li> Key: displayVersion Value = 0.01 </li>
+            <li> Key: title Value = dotfile documentation </li>
+            <li> Key: version Value = 0.01 </li>
+            <li> Key: name Value = www </li>
+            <li> Key: url Value = /www/0.01/index.html </li>
+            <li> Key: asciidoc Value = [object Object] </li>
+              <ol>
+                  <li> 0 -> [object Object]</li>
+                  <li> 1 -> [object Object]</li>
+              </ol>
+            <li> Key: navigation Value = [object Object],[object Object] </li>
+        </ol>
+        <li> Key: versions</li>
+        <ol>
+            <li> Key: 0 Value = [object Object] </li>
+        </ol>
+    </ol>
+</footer>
+
+<script src="../../_/js/site.js"></script>
+<script src="../../_/js/vendor/lunr.js"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/www/0.01/chapter_3.html"></script>
+<script async src="../../_/../search-index.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+
+  <script>
+    document.body.querySelectorAll('div.ct-chart').forEach((node) => {
+      const options = {
+        height: node.dataset['chartHeight'],
+        width: node.dataset['chartWidth'],
+        colors: node.dataset['chartColors'].split(',')
+      }
+      const dataset = Object.assign({}, node.dataset)
+      const series = Object.values(Object.keys(dataset)
+        .filter(key => key.startsWith('chartSeries-'))
+        .reduce((obj, key) => {
+          obj[key] = dataset[key]
+          return obj
+        }, {})).map(value => value.split(','))
+      const data = {
+        labels: node.dataset['chartLabels'].split(','),
+        series: series
+      }
+      Chartist[node.dataset['chartType']](node, data, options)
+    })
+  </script>
+  </body>
+</html>
