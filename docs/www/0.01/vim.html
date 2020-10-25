@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>WWW :: AviMehenwal Dotfiles</title>
-    <link rel="canonical" href="http://127.0.0.1:8080/www/0.01/index.html">
+    <title>VIM :: AviMehenwal Dotfiles</title>
+    <link rel="canonical" href="http://127.0.0.1:8080/www/0.01/vim.html">
     <meta name="generator" content="Antora 2.3.4">
 <link rel="stylesheet" href="../../_/css/site.css">
 
@@ -65,10 +65,10 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <a class="nav-link" href="index.html">index</a>
   </li>
-  <li class="nav-item" data-depth="1">
+  <li class="nav-item is-current-page" data-depth="1">
     <a class="nav-link" href="vim.html">vim</a>
   </li>
 </ul>
@@ -128,185 +128,53 @@
 <main class="article">
 <div class="toolbar" role="navigation">
 <button class="nav-toggle"></button>
-  <a href="index.html" class="home-link is-current"></a>
+  <a href="index.html" class="home-link"></a>
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="index.html">dotfile documentation</a></li>
-    <li><a href="index.html">index</a></li>
+    <li><a href="vim.html">vim</a></li>
   </ul>
 </nav>
-  <div class="edit-this-page"><a href="file:///home/avi/dotfiles/www/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  <div class="edit-this-page"><a href="file:///home/avi/dotfiles/www/modules/ROOT/pages/vim.adoc">Edit this Page</a></div>
 </div>
   <div class="content">
 <article class="doc">
-<h1 class="page">WWW</h1>
+<h1 class="page">VIM</h1>
 <div class="sect1">
-<h2 id="_dependencies"><a class="anchor" href="#_dependencies"></a>Dependencies</h2>
+<h2 id="_todo_list"><a class="anchor" href="#_todo_list"></a>TODO List</h2>
 <div class="sectionbody">
-<div class="paragraph">
-<p><a href="https://docs.antora.org/antora/2.3/install/install-antora/" title="antora, version 2.3.3">antora</a> v2.3.3</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_vim_bram_moolner_talk_2018"><a class="anchor" href="#_vim_bram_moolner_talk_2018"></a>VIM Bram Moolner Talk 2018</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Execute a register <code>@r</code> and repeat with <code>@@</code></p>
-</li>
-<li>
-<p><code>:help modelines</code> execute any command</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. vim feature progression</caption>
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
+<div class="admonitionblock tip">
+<table>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">vi</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">for <a href="https://en.wikipedia.org/wiki/PDP-11">PDP-11</a></p></td>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Use omnicompletion, who wants to make typos anyways!
+</td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">vim 4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Autocommand</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">vim 5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">start of vimscript with <code>if</code> and <code>expressions</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">vim 6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">advent of <code>plugins</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">vim 7</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Use <code>autoload</code> dir to place core of plugin</p></td>
-</tr>
-</tbody>
 </table>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> <span class="blue">Semantic commit</span> message omni completion</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Project based configurations</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Like <code>vim-plug</code> uses a single <code>.vim</code> file placed in <code>autoload</code> dir, then called in <code>vimrc</code> file <code>call plug#begin()</code></p>
-<div class="ulist">
-<ul>
+<p>Individually set <code>makeprg</code> per project, and scopes</p>
+</li>
 <li>
-<p>Not to easy to call functions with <code>#</code> from Ex mode/cli</p>
+<p>Project based thesaurus and abbreviation files</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p><code>:help packadd</code></p>
-</li>
-<li>
-<p>Renaissance of vim</p>
-</li>
-<li>
-<p>VIM has maximum number of LSP plugins</p>
-</li>
-<li>
-<p>vim plugin to start and spawn a curl process in background asynchronously</p>
-</li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="_references"><a class="anchor" href="#_references"></a>References</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://vimconf.org/2018/slides/Vim_From-hjkl-to-a-platform-for-plugins.pdf">Vim_From-hjkl-to-a-platform-for-plugins</a></p>
-</li>
-<li>
-<p><a href="https://vimconf.org/2019/slides/prabir.pdf" class="bare">https://vimconf.org/2019/slides/prabir.pdf</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_zsh"><a class="anchor" href="#_zsh"></a>ZSH</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Add plugins as git submodules. Dont forget to set <code>$ZSH_CUSTOM</code></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash"># better use use https link
-git submodule add \
-  https://github.com/olets/zsh-abbr.git
-  zsh/plugins/zsh-abbr</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_fish_like_abbr"><a class="anchor" href="#_fish_like_abbr"></a>Fish like Abbr</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Fish like auto-expanding abbr on <kbd>space</kbd> ot stop abbreviation expansion <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Space</kbd></span></p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code>abbr import-git-aliases
-abbr import-aliases
-
-# import from fish abbr
-abbr import-fish file/to/save/fish/abbreviations/to</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_nerdfonts"><a class="anchor" href="#_nerdfonts"></a>NerdFonts</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Font and icon (glyph) aggregator.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Full bundle might be <strong>5GB</strong></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_vim_lsp"><a class="anchor" href="#_vim_lsp"></a>VIM LSP</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>coc for other languages
-YCM - you complete me for JS/TS</p>
-</div>
-<div class="paragraph">
-<p>Same Keybindings for both, use autocommands
-* [ ] goto Definition
-* [ ] goto References
-* [ ] refactro Rename</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-<div class="paragraph">
-<p>Cannot use <code>nnoremap</code> with <strong>Plug</strong>. Use <code>nmap</code></p>
-</div>
-</blockquote>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://superuser.com/questions/1222152/what-is-buffer-used-for-on-vim-mapping" class="bare">https://superuser.com/questions/1222152/what-is-buffer-used-for-on-vim-mapping</a></p>
-</li>
-</ul>
-</div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ICU9OEsNiRA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 </div>
 </article>
@@ -347,7 +215,7 @@ YCM - you complete me for JS/TS</p>
 
 <script src="../../_/js/site.js"></script>
 <script src="../../_/js/vendor/lunr.js"></script>
-<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/www/0.01/index.html"></script>
+<script src="../../_/js/vendor/search.js" id="search-script" data-base-path="../.." data-page-path="/www/0.01/vim.html"></script>
 <script async src="../../_/../search-index.js"></script>
 <script async src="../../_/js/vendor/highlight.js"></script>
 

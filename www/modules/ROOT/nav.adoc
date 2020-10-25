@@ -1,12 +1,13 @@
 * xref:index.adoc[index]
-* xref:chapter_1.adoc[Chapter 1]
-* xref:chapter_2.adoc[Chapter 2]
-* xref:chapter_3.adoc[Chapter 3]
-* xref:chapter_4.adoc[Chapter 4]
-* xref:chapter_5.adoc[Chapter 5]
+* xref:vim.adoc[vim]
 
 .Chapters List
 * link:{attachmentsdir}/chart.html[view prebuilt HTML page]
 * link:{attachmentsdir}/chart.pdf[view PDF]
 * xref:chart.pdf[pdf]
+* xref:chapter_1.adoc[Chapter 1]
+* xref:chapter_2.adoc[Chapter 2]
+* xref:chapter_3.adoc[Chapter 3]
+* xref:chapter_4.adoc[Chapter 4]
+* xref:chapter_5.adoc[Chapter 5]
 

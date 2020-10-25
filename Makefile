@@ -7,7 +7,7 @@ DIST:=docs
 clean:
 	rm -rf ${DIST}
 
-build: clean
+build:
 	DOCSEARCH_ENABLED=true DOCSEARCH_ENGINE=lunr NODE_PATH="$(npm -g root)" \
 	antora --to-dir ${DIST} \
 	--generator=./antora-site-generator-example-html-pages \

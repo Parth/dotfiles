@@ -1,0 +1,10 @@
+= VIM
+
+== TODO List
+
+TIP: Use omnicompletion, who wants to make typos anyways!
+
+* [ ] [blue]#Semantic commit# message omni completion
+* [ ] Project based configurations
+** Individually set `makeprg` per project, and scopes
+** Project based thesaurus and abbreviation files
