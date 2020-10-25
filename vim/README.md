@@ -71,3 +71,12 @@ How to configure neovim?
 
 How to configure status line as per your needs?
 :   Has its own statusline `:help status-line`
+
+## Checklist
+
+* [x] Dont have to worry about `autoload/plug`, automatically saved there when vim-plug is installed
+* [x] Install Fonts [fantasque-sans](https://github.com/belluzj/fantasque-sans)
+
+```
+sudo apt-get install -y fonts-fantasque-sans
+```

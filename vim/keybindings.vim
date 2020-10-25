@@ -1,5 +1,7 @@
 let g:mapleader       = '\'
 let g:maplocalleader  = '['
+" let mapleader="\<Space>"
+" let maplocalleader="\\"
 
 " Key bindings
 " Do not use comments after the line in keymappings
@@ -8,6 +10,11 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
+nnoremap Q :q!<CR>
+nnoremap <Tab> :tabNext<CR>
+
+" Remove annoying highlight left after localsearch
+nnoremap <silent> '/ :nohlsearch<CR>
 
 " Markup blocks
 inoremap <C-d> <ESC>yypA

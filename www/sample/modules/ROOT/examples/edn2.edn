@@ -1,3 +1,0 @@
-(draw-column-headers)
-(doseq [val (range 30)]
-  (draw-box val))

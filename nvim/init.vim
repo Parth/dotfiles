@@ -6,32 +6,28 @@
 
 " Plugin Manager
 call plug#begin()
+
 Plug 'tpope/vim-sensible'                               "set config sensible defaults
 Plug 'mhinz/vim-signify'                                "vim gitgutter killer
-Plug 'tpope/vim-fugitive'				"version control
+Plug 'tpope/vim-fugitive'				                        "version control
 Plug 'vim-airline/vim-airline'
-Plug 'tpope/vim-unimpaired'				"complementary pair of mappings
-Plug 'tpope/vim-commentary'				"comment with ranges
-Plug 'ap/vim-css-color'					"vscode like colorbackground for colorcodes
+Plug 'tpope/vim-unimpaired'		                      		"complementary pair of mappings
+Plug 'tpope/vim-commentary'				                      "comment with ranges
+Plug 'ap/vim-css-color'					                        "vscode like colorbackground for colorcodes
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
-set updatetime=100
+set backspace=start,eol,indent			                    " make backspace work in Insert Mode
+set noswapfile											                    " only useful in multi-user systems
+set updatetime=4000                                     " ms automatically write swaps to disk
+set hidden												                      " hide a unsaved buffer instead of showing warning
 
+if has('autocmd')
+  filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
 
-" Build statusline yourself
-set cursorline
-set statusline=
-set statusline+=\ %r       "if file is read-only
-set statusline+=\ %M       "is file modifyable
-set statusline+=\ %y       "type of file
-set statusline+=\ %F       "full file path
-" set statusline+=\ %b       "values of char under cursor
-
-" right leaning
-set statusline+=%=
-set statusline+=\ %p%%       "percentage scroll
-set statusline+=\ %l/%L:%c   "total number of line
-set statusline+=\ [%n]       "buffer number
-
-" Add colors to status line?
+" source $HOME/dotfiles/nvim/statusline.vim

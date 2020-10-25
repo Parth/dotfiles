@@ -11,9 +11,9 @@ git:
   ensure_git_suffix: false
 
 content:
-  branches: HEAD
+  branches: ubuntu
   sources:
-  - url: ./www
+  - url: .
     start_path: sample
 
 asciidoc:

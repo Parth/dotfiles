@@ -1,0 +1,33 @@
+= WWW
+:author: avimehenwal
+:antora: https://docs.antora.org/antora/2.3/install/install-antora/[antora, title="antora, version 2.3.3"]
+
+== Dependencies
+
+{antora} v2.3.3
+
+== Bram Moolner Talk 2018
+
+* Execute a register `@r` and repeat with `@@`
+* `:help modelines` execute any command
+
+.vim feature progression
+|===
+| vi    | for https://en.wikipedia.org/wiki/PDP-11[PDP-11]
+| vim 4 | Autocommand
+| vim 5 | start of vimscript with `if` and `expressions`
+| vim 6 | advent of `plugins`
+| vim 7 | Use `autoload` dir to place core of plugin
+|===
+
+* Like `vim-plug` uses a single `.vim` file placed in `autoload` dir, then called in `vimrc` file `call plug#begin()`
+** Not to easy to call functions with `#` from Ex mode/cli
+* `:help packadd`
+* Renaissance of vim
+* VIM has maximum number of LSP plugins
+* vim plugin to start and spawn a curl process in background asynchronously
+
+
+=== References
+* https://vimconf.org/2018/slides/Vim_From-hjkl-to-a-platform-for-plugins.pdf[Vim_From-hjkl-to-a-platform-for-plugins]
+* https://vimconf.org/2019/slides/prabir.pdf

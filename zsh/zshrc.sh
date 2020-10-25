@@ -59,7 +59,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-abbr zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-abbr zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -106,8 +106,11 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # $HOME/REPO/aviscripts/convert_fish_abbr_2_bash_alias.sh
 # source $HOME/.bash_aliases
 
+# ENVIRONMENT VARIABLES
+export TERM=xterm    # else tmux fails
+# Load fish like auto expanding abbreviation
+export ABBR_USER_ABBREVIATIONS_FILE=$HOME/dotfiles/zsh/abbreviations
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export TERM=xterm                       # else tmux fails
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin"
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions

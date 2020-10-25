@@ -1,0 +1,83 @@
+= WWW
+:author: avimehenwal
+:antora: https://docs.antora.org/antora/2.3/install/install-antora/[antora, title="antora, version 2.3.3"]
+
+== Dependencies
+
+{antora} v2.3.3
+
+== VIM Bram Moolner Talk 2018
+
+* Execute a register `@r` and repeat with `@@`
+* `:help modelines` execute any command
+
+.vim feature progression
+|===
+| vi    | for https://en.wikipedia.org/wiki/PDP-11[PDP-11]
+| vim 4 | Autocommand
+| vim 5 | start of vimscript with `if` and `expressions`
+| vim 6 | advent of `plugins`
+| vim 7 | Use `autoload` dir to place core of plugin
+|===
+
+* Like `vim-plug` uses a single `.vim` file placed in `autoload` dir, then called in `vimrc` file `call plug#begin()`
+** Not to easy to call functions with `#` from Ex mode/cli
+* `:help packadd`
+* Renaissance of vim
+* VIM has maximum number of LSP plugins
+* vim plugin to start and spawn a curl process in background asynchronously
+
+
+=== References
+* https://vimconf.org/2018/slides/Vim_From-hjkl-to-a-platform-for-plugins.pdf[Vim_From-hjkl-to-a-platform-for-plugins]
+* https://vimconf.org/2019/slides/prabir.pdf
+
+
+
+= ZSH
+
+Add plugins as git submodules. Dont forget to set `$ZSH_CUSTOM`
+
+```bash
+# better use use https link
+git submodule add \
+  https://github.com/olets/zsh-abbr.git
+  zsh/plugins/zsh-abbr
+```
+
+== Fish like Abbr
+
+Fish like auto-expanding abbr on kbd:[space] ot stop abbreviation expansion kbd:[Ctrl + Space]
+
+```
+abbr import-git-aliases
+abbr import-aliases
+
+# import from fish abbr
+abbr import-fish file/to/save/fish/abbreviations/to
+```
+
+== NerdFonts
+
+Font and icon (glyph) aggregator.
+
+* Full bundle might be *5GB*
+
+== VIM LSP
+
+coc for other languages
+YCM - you complete me for JS/TS
+
+Same Keybindings for both, use autocommands
+* [ ] goto Definition
+* [ ] goto References
+* [ ] refactro Rename
+
+> Cannot use `nnoremap` with *Plug*. Use `nmap`
+
+* https://superuser.com/questions/1222152/what-is-buffer-used-for-on-vim-mapping
+
+
+++++
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ICU9OEsNiRA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+++++
