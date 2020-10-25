@@ -105,11 +105,21 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # generate aliases and source them
 # $HOME/REPO/aviscripts/convert_fish_abbr_2_bash_alias.sh
 # source $HOME/.bash_aliases
+source $HOME/dotfiles/zsh/alias.zsh
 
 # ENVIRONMENT VARIABLES
-export TERM=xterm    # else tmux fails
+
+# else vifm coloscheme fails, BUT tmux needs TERM=xterm else wont start
+# debug term colors command
+# echo $TERM
+# tput colors
+# infocmp -x
+# export TERM=xterm
+export TERM=xterm-256color
+
 # Load fish like auto expanding abbreviation
 export ABBR_USER_ABBREVIATIONS_FILE=$HOME/dotfiles/zsh/abbreviations
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin"
 
