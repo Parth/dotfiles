@@ -14,11 +14,6 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-" look for Project specific .vimrc files
-" https://akrabat.com/using-vimrc-for-project-specific-settings/
-set exrc
-set secure
-
 " do not make VIM compatible with VI. Might have undesired side-effects
 " like- no undo file, no search highlights, no filetype and expandtab etc.
 set nocompatible           " -N switch

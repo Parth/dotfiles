@@ -1,0 +1,51 @@
+:scripts         scripts scripts scripts
+
+E492: Not an editor command: scripts
+:scriptnames
+
+  1: ~/.vim/vimrc
+  2: ~/dotfiles/.vimrc
+  3: ~/dotfiles/vim/plugin/abbreviations.vim
+  4: ~/dotfiles/vim/plugin/autocommands.vim
+  5: ~/dotfiles/vim/plugin/coc.vim
+  6: ~/dotfiles/vim/plugin/commentToggle.vim
+  7: ~/dotfiles/vim/plugin/keybindings.vim
+  8: ~/dotfiles/vim/plugin/movelines.vim
+  9: ~/dotfiles/vim/plugin/netrwconfig.vim
+ 10: ~/dotfiles/vim/plugin/pluginConfigs.vim
+ 11: ~/.vim/plugged/gruvbox/colors/gruvbox.vim
+ 12: ~/dotfiles/vim/plugin/setConfig.vim
+ 13: /usr/local/share/vim/vim82/filetype.vim
+ 14: /usr/local/share/vim/vim82/ftplugin.vim
+ 15: /usr/local/share/vim/vim82/indent.vim
+ 16: /usr/local/share/vim/vim82/syntax/syntax.vim
+ 17: /usr/local/share/vim/vim82/syntax/synload.vim
+ 18: /usr/local/share/vim/vim82/syntax/syncolor.vim
+ 19: ~/dotfiles/vim/plugin/vimPlugPackageManager.vim
+ 20: ~/.vim/autoload/plug.vim
+ 21: /usr/local/share/vim/vim82/ftoff.vim
+ 22: ~/.vim/plugged/ultisnips/ftdetect/snippets.vim
+ 23: ~/.vim/plugged/vim-fugitive/ftdetect/fugitive.vim
+ 24: ~/.vim/plugged/vim-asciidoc/ftdetect/asciidoc.vim
+ 25: /usr/local/share/vim/vim82/plugin/getscriptPlugin.vim
+ 26: /usr/local/share/vim/vim82/plugin/gzip.vim
+ 27: /usr/local/share/vim/vim82/plugin/logiPat.vim
+ 28: /usr/local/share/vim/vim82/plugin/manpager.vim
+ 29: /usr/local/share/vim/vim82/plugin/matchparen.vim
+ 30: /usr/local/share/vim/vim82/plugin/netrwPlugin.vim
+ 31: /usr/local/share/vim/vim82/plugin/rrhelper.vim
+ 32: /usr/local/share/vim/vim82/plugin/spellfile.vim
+ 33: /usr/local/share/vim/vim82/plugin/tarPlugin.vim
+ 34: /usr/local/share/vim/vim82/plugin/tohtml.vim
+ 35: /usr/local/share/vim/vim82/plugin/vimballPlugin.vim
+ 36: /usr/local/share/vim/vim82/plugin/zipPlugin.vim
+ 37: ~/.vim/plugged/ultisnips/after/plugin/UltiSnips_after.vim
+ 38: ~/.vim/plugged/ultisnips/autoload/UltiSnips/map_keys.vim
+ 39: /usr/local/share/vim/vim82/autoload/netrw.vim
+ 40: ~/.vim/.netrwhist
+ 41: /usr/local/share/vim/vim82/scripts.vim
+ 42: /usr/local/share/vim/vim82/syntax/netrw.vim
+ 43: ~/.vim/plugged/coc.nvim/autoload/coc.vim
+ 44: /usr/local/share/vim/vim82/ftplugin/help.vim
+ 45: /usr/local/share/vim/vim82/syntax/help.vim
+:redir END

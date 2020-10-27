@@ -7,6 +7,7 @@
 " use --glob=! to exclude directories
 set grepprg=rg\ --smart-case\ --vimgrep\ --glob='!docs/*'\ --glob='!*.lock'
 
+set makeprg=make
 
 " exclude path
 " set path-=node_modules

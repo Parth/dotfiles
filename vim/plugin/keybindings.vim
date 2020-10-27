@@ -61,4 +61,7 @@ nnoremap <F4> :Vifm<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F9> :terminal<CR>             "open terminal half-mode
 nnoremap <S-F9> :shell<CR>              "open terminal full-screen
+nnoremap <F12> :make<CR>                "Build project
+nnoremap <S-F12> :make 
+
 

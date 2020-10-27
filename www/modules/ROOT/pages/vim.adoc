@@ -17,6 +17,15 @@ TIP: Use omnicompletion, who wants to make typos anyways!
 * `help :prg`
 * Keywordprg - to look up keyword under the cursor using kbd:[K] . Eg: man, dictionary
 
+== Build Tools
+
+* https://scons.org/
+
+
+== Beginner -> Expert
+
+* HOtkeys for frequently used operations, like saving a file. Make it efficient
+* kbd:[:10,20m50] move lines {10,20} to 50
 
 [qanda]
 === Q&A
@@ -44,4 +53,9 @@ List all vimscript files loaded?::
 * https://stackoverflow.com/questions/1430164/differences-between-emacs-and-vim?rq=1
 * Emacs Pinky
 
+== Resources
 
+* https://stackoverflow.com/questions/42905008/quickfix-list-how-to-add-and-remove-entries
+* https://www.reddit.com/r/vim/comments/7dv9as/how_to_edit_the_vim_quickfix_list/
+* One quickfix list, BUT multiple location list are possible
+* https://stackoverflow.com/questions/20933836/what-is-the-difference-between-location-list-and-quickfix-list-in-vim#:~:text=In%20Vim%20the%20quickfix%20commands,%7C%3Avimgrep%7C%20finds%20pattern%20matches.&text=A%20location%20list%20is%20associated,associated%20with%20only%20one%20window.

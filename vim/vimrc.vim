@@ -30,16 +30,31 @@ let $RC="$HOME/.vim/vimrc"
 set rtp+=$HOME/.fzf/bin/fzf
 set rtp+=$HOME/.vim/plugged/gruvbox
 
-" source vim files
-" sometimes order matters
-source $HOME/dotfiles/vim/vimPlugPackageManager.vim
-source $HOME/dotfiles/vim/setConfig.vim
-source $HOME/dotfiles/vim/abbreviations.vim
-source $HOME/dotfiles/vim/commentToggle.vim
-" source $HOME/dotfiles/vim/netrwconfig.vim
-source $HOME/dotfiles/vim/keybindings.vim
-source $HOME/dotfiles/vim/autocommands.vim
-source $HOME/dotfiles/vim/pluginConfigs.vim
+" look for Project specific .vimrc files
+" https://superuser.com/questions/532593/how-do-i-get-vim-to-automatically-load-vimrc-config-from-the-current-directory
+set exrc
+set secure
+
+" Refactor - use plugin/ftplugin directories
+" Manually sourced vim files, sometimes order matters
+
+
+" Understanding vim directory structure
+" ------------------------------------------------------------------------------------------
+" Whatever goes into plugin is loaded whenever vim starts whereas what you put in ftplugin
+" is only loaded for the specific filetype it corresponds to (so if you have a folder there
+" called python all the files there will be loaded when you open a python file. In autoload
+" you should have the functions corresponding to the the scripts defined in plugin. 
+" The functions here will only be loaded when called by the first time.
+" 
+" In after you should put settings that you want to change from the normal plugin loading.
+" As an example suppose you like the settings that some plugin for latex gives you,
+" but it redefined a mapping that you had in your .vimrc.
+" You can revert this with autocommands or by putting the correct definitions in after.
+"
+" https://stackoverflow.com/questions/14248335/please-explain-vims-configuration-directories-hierarchy
+" https://learnvimscriptthehardway.stevelosh.com/chapters/42.html
+
 
 " vim Session-management
 "":mksession ~/mysession.vim

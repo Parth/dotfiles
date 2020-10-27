@@ -59,7 +59,7 @@ ZSH_CUSTOM=$HOME/dotfiles/zsh
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-abbr zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-autosuggestions zsh-syntax-highlighting zsh-abbr)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -122,5 +122,10 @@ export ABBR_USER_ABBREVIATIONS_FILE=$HOME/dotfiles/zsh/abbreviations
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin"
+
+# Use NVM 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
