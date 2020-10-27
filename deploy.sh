@@ -16,7 +16,7 @@ PARTIAL=$HOME/.config
 BASE_CMD="stow -v --dir=$SOURCE"
 
 # CONFIG_DIRS=(nvim alacritty Code fish ranger vifm)
-CONFIG_DIRS=(nvim alacritty)
+CONFIG_DIRS=(nvim alacritty vifm)
 
 function create_dir {
 	# CONFLICT when stowing alacritty: existing target is not owned by stow: alacritty.yml
@@ -59,6 +59,7 @@ function install_vim {
 		ln --symbolic --verbose ~/dotfiles/vim/plugin/ ~/.vim
 	fi
 }
+
 
 # MAIN
 for PRG in "${CONFIG_DIRS[@]}"; do

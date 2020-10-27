@@ -19,8 +19,10 @@ nnoremap <silent> '/ :nohlsearch<CR>
 " Markup blocks
 inoremap <C-d> <ESC>yypA
 " i_<C-m> interferes with Enter
-"doesnt work in nvim
-execute "set <M-m>=\em"
+if has('vim')
+  "doesnt work in nvim
+  execute "set <M-m>=\em"
+endif
 inoremap <M-m> <ESC>Bi`<ESC>Ea`
 
 " vscode like bindings

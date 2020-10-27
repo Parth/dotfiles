@@ -19,8 +19,9 @@ cnoreabbrev hc helpclose
 
 
 " Emoji shortcuts
+" https://www.emojicopy.com/
 " -----------------------------------------
-inoreabbrev :white_check_mark: ✅
+inoreabbrev :check: ✅
 inoreabbrev :warning: ⚠
 inoreabbrev :bulb: 💡
 inoreabbrev :pushpin: 📌
@@ -36,3 +37,9 @@ inoreabbrev :info: 🛈
 inoreabbrev :telephone: 📞
 inoreabbrev :email: 📧
 inoreabbrev :computer: 💻
+inoreabbrev :+1: 👍
+inoreabbrev :-1: 👎
+inoreabbrev :v: ✌️
+inoreabbrev :): 😎
+inoreabbrev :hi: 🙋
+

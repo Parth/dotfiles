@@ -109,6 +109,10 @@ source $HOME/dotfiles/zsh/alias.zsh
 
 # ENVIRONMENT VARIABLES
 
+# default programs
+export EDITOR=vim
+export BROWSER=brave-browser
+
 # else vifm coloscheme fails, BUT tmux needs TERM=xterm else wont start
 # debug term colors command
 # echo $TERM
@@ -121,7 +125,7 @@ export TERM=xterm-256color
 export ABBR_USER_ABBREVIATIONS_FILE=$HOME/dotfiles/zsh/abbreviations
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin"
+export PATH="$PATH:$HOME/.rvm/bin:$HOME/.yarn/bin:$HOME/dotfiles/scripts/bin"
 
 # Use NVM 
 export NVM_DIR="$HOME/.nvm"

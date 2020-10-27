@@ -8,12 +8,14 @@
 # returns directory location where .git/ directory is present
 
 # echo -e "`pwd` \t starting"
+
 while [ ! -d ./.git ]
 do
   cd ..
-  # echo $(pwd)
+  GITROOT=$(pwd)
+  [ ${GITROOT} == "$HOME" ] && break
 done
 
-echo $(pwd)
+[ ${GITROOT} == "$HOME" ] && echo "." || echo ${GITROOT}
 
 # END
