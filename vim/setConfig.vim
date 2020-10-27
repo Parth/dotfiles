@@ -14,6 +14,11 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
+" look for Project specific .vimrc files
+" https://akrabat.com/using-vimrc-for-project-specific-settings/
+set exrc
+set secure
+
 " do not make VIM compatible with VI. Might have undesired side-effects
 " like- no undo file, no search highlights, no filetype and expandtab etc.
 set nocompatible           " -N switch
@@ -37,7 +42,7 @@ set smartcase          "used with search patterns from / ? n N :g :s only
 
 " search and sort
 " Grepping and searching. Use :vimgrep for quickfix
-set path+=.,**                          "inbuild fuzzy search at path root
+set path+=**                          "inbuild fuzzy search at path root
 set incsearch					                "realtime incremental search as we type
 set hlsearch 						              "highlight search
 set ignorecase
@@ -47,7 +52,8 @@ set autoindent
 set tagstack                          "start storing tags on tagstack
 
 " https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces#:~:text=Always%20keep%20'tabstop'%20at%208,4%20(or%203)%20characters.
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=2 shiftwidth=2 softtabstop=0 smarttab expandtab 
+setlocal textwidth=120
 
 set wildmenu           " visual autocomplete for command menu
 set lazyredraw         " redraw only when needed. Faster macros

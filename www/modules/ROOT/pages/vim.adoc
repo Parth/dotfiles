@@ -1,5 +1,5 @@
 = VIM
-
+        
 == TODO List
 
 TIP: Use omnicompletion, who wants to make typos anyways!
@@ -8,3 +8,40 @@ TIP: Use omnicompletion, who wants to make typos anyways!
 * [ ] Project based configurations
 ** Individually set `makeprg` per project, and scopes
 ** Project based thesaurus and abbreviation files
+
+== External Looks vim supports
+
+* Linters `equalprg`, `formatprg`
+** `dc`, `xmllint`, `clang-format`, `set equalprg=xmllint\ --format\ -`
+* Compiler programss, Build tools `makeprg` with error formatting
+* `help :prg`
+* Keywordprg - to look up keyword under the cursor using kbd:[K] . Eg: man, dictionary
+
+
+[qanda]
+=== Q&A
+
+https://vi.stackexchange.com/questions/627/how-can-i-change-vims-start-or-intro-screen[How do I change vim start/splash screen?]::
+    
+How to list all vim global variable?::
+    `:let g:`
+https://stackoverflow.com/questions/7863804/autocmd-filetype-vs-ftplugin[difference between ftplugin and autocommand fileType]?::
+    Use `ftplugins` directory for filetype settings
+    and use `autocommand` to override that behavious if you need to.
+How to rename current file?::
+    `:saveas <new-name>`
+List known filetypes to vim?::
+    `:setfiletype` kbd:[Ctrl + d] `:help cmdline-completion`
+Command History shortcut?::
+    `:history` kbd:[q :] kbd:[q /] to search through history `:help q?`
+List all command line mode keybindings?::
+    `:help c_CTRL-R` or search inside `:help index`
+List all vimscript files loaded?::
+    `:scriptnames`, `:commands`, `:fucntions`
+                                        
+== Interesting Reads
+
+* https://stackoverflow.com/questions/1430164/differences-between-emacs-and-vim?rq=1
+* Emacs Pinky
+
+

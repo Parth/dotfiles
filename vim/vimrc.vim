@@ -16,7 +16,9 @@
 " 4. $EXINIT												Environment Variable
 " 5. $HOME/.exrc
 " 6. $VIMRUNTIME/defaults.vim
-
+"
+" Try to keep it Language agnostic
+" All FileType specific configs go either into ftplugin dir or autocommands
 
 " linter Tools :retab
 
@@ -54,4 +56,17 @@ source $HOME/dotfiles/vim/pluginConfigs.vim
 "           v v    v      v     v     v
 ""set viminfo=h,'500,<10000,s1000,/1000,:1000
 ""set viminfo='1000,f1,<500  "lines, marks
-"}}}
+"
+"	I   The environment variable VIMINIT (see also |compatible-default|) (*)
+"	    The value of $VIMINIT is used as an Ex command line.
+"	II  The user vimrc file(s):
+"		    "$HOME/.vimrc"	   (for Unix) (*)
+"		    "$HOME/.vim/vimrc"	   (for Unix) (*)
+"		    "s:.vimrc"		   (for Amiga) (*)
+"		    "home:.vimrc"	   (for Amiga) (*)
+"		    "home:vimfiles:vimrc"  (for Amiga) (*)
+"		    "$VIM/.vimrc"	   (for Amiga) (*)
+"		    "$HOME/_vimrc"	   (for Win32) (*)
+"		    "$HOME/vimfiles/vimrc" (for Win32) (*)
+"		    "$VIM/_vimrc"	   (for Win32) (*)
+"		    "$HOME/config/settings/vim/vimrc"	(for Haiku) (*)

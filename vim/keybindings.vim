@@ -10,7 +10,7 @@ nnoremap ; :
 nnoremap : ;
 vnoremap ; :
 vnoremap : ;
-nnoremap Q :q!<CR>
+" nnoremap Q :q!<CR>     interferes with existing Q Multiple Ex-mode commands
 nnoremap <Tab> :tabNext<CR>
 
 " Remove annoying highlight left after localsearch

@@ -177,6 +177,86 @@ Use omnicompletion, who wants to make typos anyways!
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_external_looks_vim_supports"><a class="anchor" href="#_external_looks_vim_supports"></a>External Looks vim supports</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Linters <code>equalprg</code>, <code>formatprg</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>dc</code>, <code>xmllint</code>, <code>clang-format</code>, <code>set equalprg=xmllint\ --format\ -</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Compiler programss, Build tools <code>makeprg</code> with error formatting</p>
+</li>
+<li>
+<p><code>help :prg</code></p>
+</li>
+<li>
+<p>Keywordprg - to look up keyword under the cursor using <kbd>K</kbd> . Eg: man, dictionary</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_qa"><a class="anchor" href="#_qa"></a>Q&amp;A</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://vi.stackexchange.com/questions/627/how-can-i-change-vims-start-or-intro-screen">How do I change vim start/splash screen?</a></dt>
+<dt class="hdlist1">How to list all vim global variable?</dt>
+<dd>
+<p><code>:let g:</code></p>
+</dd>
+<dt class="hdlist1"><a href="https://stackoverflow.com/questions/7863804/autocmd-filetype-vs-ftplugin">difference between ftplugin and autocommand fileType</a>?</dt>
+<dd>
+<p>Use <code>ftplugins</code> directory for filetype settings
+and use <code>autocommand</code> to override that behavious if you need to.</p>
+</dd>
+<dt class="hdlist1">How to rename current file?</dt>
+<dd>
+<p><code>:saveas &lt;new-name&gt;</code></p>
+</dd>
+<dt class="hdlist1">List known filetypes to vim?</dt>
+<dd>
+<p><code>:setfiletype</code> <span class="keyseq"><kbd>Ctrl</kbd>+<kbd>d</kbd></span> <code>:help cmdline-completion</code></p>
+</dd>
+<dt class="hdlist1">Command History shortcut?</dt>
+<dd>
+<p><code>:history</code> <kbd>q :</kbd> <kbd>q /</kbd> to search through history <code>:help q?</code></p>
+</dd>
+<dt class="hdlist1">List all command line mode keybindings?</dt>
+<dd>
+<p><code>:help c_CTRL-R</code> or search inside <code>:help index</code></p>
+</dd>
+<dt class="hdlist1">List all vimscript files loaded?</dt>
+<dd>
+<p><code>:scriptnames</code>, <code>:commands</code>, <code>:fucntions</code></p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_interesting_reads"><a class="anchor" href="#_interesting_reads"></a>Interesting Reads</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/1430164/differences-between-emacs-and-vim?rq=1" class="bare">https://stackoverflow.com/questions/1430164/differences-between-emacs-and-vim?rq=1</a></p>
+</li>
+<li>
+<p>Emacs Pinky</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </article>
 <aside class="toc sidebar" data-title="Contents" data-levels="2">
   <div class="toc-menu"></div>

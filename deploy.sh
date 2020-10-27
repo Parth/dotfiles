@@ -50,6 +50,10 @@ function install_vim {
 	then
 		ln --symbolic --verbose $HOME/dotfiles/vim/vimrc.vim $HOME/.vim/vimrc
 	fi
+	if [[ ! -L "ftplugin" ]]
+	then
+		ln --symbolic --verbose ~/dotfiles/vim/after/* ~/.vim/ftplugin 
+	fi
 }
 
 # MAIN
