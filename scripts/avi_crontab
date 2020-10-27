@@ -1,0 +1,4 @@
+# (Avi Mehenwal) User Startup Actions
+@reboot bash $HOME/aviscripts/on_startup_script.sh
+
+# END

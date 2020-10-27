@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+debug	common.sh	/^debug () {$/;"	f
+empty_file	convert_fish_abbr_2_bash_alias.sh	/^function empty_file () {$/;"	f
+error	common.sh	/^error () {$/;"	f
+freeze_extensions	vscode-extension/vscode-extensions.sh	/^freeze_extensions () {$/;"	f
+generate_bash_aliases	convert_fish_abbr_2_bash_alias.sh	/^function generate_bash_aliases () {$/;"	f
+info	common.sh	/^info () {$/;"	f
+install_extensions	vscode-extension/vscode-extensions.sh	/^install_extensions () {$/;"	f
+log	common.sh	/^log () {$/;"	f
+print_banner	common.sh	/^print_banner () {$/;"	f
+print_banner	vscode-extension/vscode-extensions.sh	/^print_banner () {$/;"	f
+print_cron_logs	on_startup_script.sh	/^print_cron_logs () {$/;"	f
+print_help	vscode-extension/vscode-extensions.sh	/^print_help () {$/;"	f
+provide_package	bring-termina-to-top.sh	/^provide_package() {$/;"	f
+provide_package	common.sh	/^provide_package() {$/;"	f
+pull_dotfiles	on_startup_script.sh	/^pull_dotfiles () {$/;"	f
+remove_all_extensions	vscode-extension/vscode-extensions.sh	/^remove_all_extensions () {$/;"	f
+substring_match	bring-termina-to-top.sh	/^substring_match() {$/;"	f
+substring_match	common.sh	/^substring_match() {$/;"	f
+test_exit_code	on_startup_script.sh	/^test_exit_code () {$/;"	f
+test_logs	common.sh	/^test_logs () {$/;"	f
+warning	common.sh	/^warning () {$/;"	f
