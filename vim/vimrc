@@ -37,7 +37,7 @@ set secure
 
 " Refactor - use plugin/ftplugin directories
 " Manually sourced vim files, sometimes order matters
-source vim-plug-PackageManager.vim
+source $HOME/dotfiles/vim/vim-plug-PackageManager.vim
 
 
 " Understanding vim directory structure

@@ -76,6 +76,10 @@ for PRG in "${CONFIG_DIRS[@]}"; do
 			install_vim
 			exit 0
 			;;
+		vim!)
+			uninstall_vim
+			exit 0
+			;;
 		*)
 			usage
 			exit 0
