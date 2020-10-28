@@ -80,3 +80,20 @@ How to configure status line as per your needs?
 ```
 sudo apt-get install -y fonts-fantasque-sans
 ```
+
+## Use new Plugin system in vim 8+
+
+```
+cd ~/dotfiles
+git submodule init
+git submodule add https://github.com/vim-airline/vim-airline.git vim/pack/shapeshed/start/vim-airline
+git add .gitmodules vim/pack/shapeshed/start/vim-airline
+git commit
+
+git submodule update --remote --merge
+git commit
+```
+
+Within this folder a further folder start is needed to hold plugins. Vim will pick up any packages added to this folder and automatically load the plugins.
+
+Optionally another folder opt may be created to hold packages that are not loaded automatically. Packages added in the opt folder may be loaded using

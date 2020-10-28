@@ -37,6 +37,7 @@ set secure
 
 " Refactor - use plugin/ftplugin directories
 " Manually sourced vim files, sometimes order matters
+source vim-plug-PackageManager.vim
 
 
 " Understanding vim directory structure
@@ -85,3 +86,6 @@ set secure
 "		    "$HOME/vimfiles/vimrc" (for Win32) (*)
 "		    "$VIM/_vimrc"	   (for Win32) (*)
 "		    "$HOME/config/settings/vim/vimrc"	(for Haiku) (*)
+"
+" RESOURCES
+" https://github.com/habamax/.vim

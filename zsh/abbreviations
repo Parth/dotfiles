@@ -25,9 +25,10 @@ abbr etc="cd /etc"
 abbr sbin="cd /usr/sbin/"
 
 # Single Character - most often used
+abbr c="xclip -selection clip"
 abbr m="man"
 abbr r="ranger"
-abbr c="xclip -selection clip"
+abbr v="vifm"
 # abbr v="nvim"
 # abbr nvim="$HOME/mySoftwares/nvim.appimage"
 

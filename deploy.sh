@@ -46,18 +46,11 @@ function install_homedir_config {
 }
 
 function install_vim {
-	if [[ ! -L "vimrc" ]]
-	then
-		ln --symbolic --verbose $HOME/dotfiles/vim/vimrc.vim $HOME/.vim/vimrc
-	fi
-	if [[ ! -L "ftplugin" ]]
-	then
-		ln --symbolic --verbose ~/dotfiles/vim/after/* ~/.vim/ftplugin 
-	fi
-	if [[ ! -L "plugin" ]]
-	then
-		ln --symbolic --verbose ~/dotfiles/vim/plugin/ ~/.vim
-	fi
+	$BASE_CMD --target=$HOME/.vim/ --stow vim
+}
+
+function uninstall_vim {
+	$BASE_CMD --target=$HOME/.vim/ --delete vim
 }
 
 
@@ -69,6 +62,7 @@ for PRG in "${CONFIG_DIRS[@]}"; do
 	case "$1" in
 		clean|unlink)
 			$STOW --delete $PRG
+			uninstall_vim
 			;;
 		link)
 			create_dir
