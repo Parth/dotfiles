@@ -1,0 +1,24 @@
+snippet describe "new test suiite"
+describe('${1:test suite name}', () => {
+  before(() => {
+  });
+
+  beforeEach(() => {
+  });
+
+  afterEach(() => {
+  });
+
+  after(() => {
+  });
+
+	$0
+
+})
+endsnippet
+
+snippet it "it test-case"
+it('${1:test case name}', () => {
+	$0
+});
+endsnippet

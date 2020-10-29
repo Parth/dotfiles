@@ -16,6 +16,8 @@ inoreabbrev lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Elig
 " -----------------------------------------
 " command mode :x does the same thing and is shorter
 cnoreabbrev hc helpclose
+" <F1> with autocommand group vertical_help produces the same result
+cnoreabbrev help vertical help
 
 
 " Emoji shortcuts

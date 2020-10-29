@@ -9,7 +9,9 @@ Plug 'junegunn/fzf.vim'                                                   "GOD o
 Plug 'SirVer/ultisnips'                                                   "vscode like snippets
 Plug 'tpope/vim-sleuth'                                                   "shiftwidth and expandtab manager
 Plug 'tpope/vim-rhubarb'                                                  "fugitive suppliment
+Plug 'mhinz/vim-signify'                                                  "git-gutter alternative, shows +/- gitdiff
 Plug 'markonm/traces.vim'                                                 "search and replace preview
+Plug 'dense-analysis/ale'                                                 "asynchronous lint engine
 Plug 'tpope/vim-fugitive'                                                 "version control within vim
 Plug 'tpope/vim-surround'                                                 "YAGNI - text Objects
 Plug 'honza/vim-snippets'                                                 "ultisnips suppliment
@@ -28,6 +30,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}        "intel
 Plug 'morhetz/gruvbox'                                                    "colorscheme with dark/light mode yob
 Plug 'junegunn/vim-emoji'                                                 "emojify
 Plug 'asciidoc/vim-asciidoc'                                              "adoc markup
+" Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'                                            "statusline
 Plug 'vim-airline/vim-airline-themes'                                     "vim-airline suppliment
 

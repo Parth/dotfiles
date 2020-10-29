@@ -31,10 +31,15 @@ let g:airline#extensions#quickfix#quickfix_text = 'Quickfix'
 
 " ultisnip snippet manager
 " --------------------------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"                                            
+let g:UltiSnipsJumpForwardTrigger="<tab>"                                       
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"  
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-
+" vim-ripGrep
+" ------------------------------------------------------------  
+" open quickfix window in vertical split
+" doesnt look nice, text too cluttered, cant read anything
+" :vertical copen
