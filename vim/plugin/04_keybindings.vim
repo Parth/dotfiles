@@ -23,11 +23,23 @@ nnoremap <silent> '/ :nohlsearch<CR>
 " Markup blocks
 inoremap <C-d> <ESC>yypA
 " i_<C-m> interferes with Enter
-if has('vim')
+if !has('nvim')
   "doesnt work in nvim
   execute "set <M-m>=\em"
 endif
+" inoremap <expr> <M-m> FunctionCall()
+" causes problems E523
 inoremap <M-m> <ESC>Bi`<ESC>Ea`
+" For gnome-terminal use CTRL-V ALT-<key> ... for META key mappings
+" https://stackoverflow.com/a/10633069/1915935
+" i_CTRL-V => insert next non-digit literally
+inoremap i <ESC>Bi*<ESC>Ea*
+inoremap b <ESC>Bi**<ESC>Ea**
+" make META key mappings work on nvim
+if has('nvim')
+  inoremap <M-i> <ESC>Bi*<ESC>Ea*
+  inoremap <M-b> <ESC>Bi**<ESC>Ea**
+endif
 
 " vscode like bindings
 nnoremap <C-p> :GitFiles<CR>
@@ -60,14 +72,18 @@ nnoremap <Leader>gr <Plug>(coc-references)
 
 
 " Function Keys
-" -------------------------------------------------- 
+" ---------------------------------------------------
 nnoremap <F1> :call ToggleHelpF1()<CR>
 nnoremap <F2> :saveas 
 nnoremap <F3> :write<CR>
+inoremap <F3> <ESC>:write<CR>a
 " nnoremap <F4> :Ranger<CR>
 nnoremap <F4> :Vifm<CR>
+nnoremap <S-F4> :NERDTreeToggle<CR>
 
-nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F5> :edit<CR>
+" discard local buffer changes and load from disk
+nnoremap <S-F5> :edit!<CR>
 " open git status in vertical split on left, unlike horizontal on top
 nnoremap <F6> :call ToggleGitStatusF6()<CR>
 nnoremap <S-F6> :Git 
@@ -75,6 +91,7 @@ nnoremap <S-F6> :Git
 " <S-F7> vim formatprg Format program
 " <F8> grepprg
 nnoremap <F8> :Rg 
+nnoremap <S-F8> :grep 
 
 nnoremap <F9> :terminal<CR>             "open terminal half-mode
 nnoremap <S-F9> :shell<CR>              "open terminal full-screen
@@ -95,9 +112,17 @@ endfunction
 " use && and || for AND, OR with of conditions
 function! ToggleGitStatusF6()
   if &filetype == "fugitive"
+    " cannot close last window! If this is the last window open
     execute 'close'
   else
     execute ':Git'
   endif
+endfunction
+
+" E523 Not allowed here
+function! EncloseWord(symbol)
+  "execute "normal! :<ESC>Bi" . a:symbol . "<ESC>Ea" . a:symbol
+  :execute "normal B"
+  ":execute "normal" count . "w"
 endfunction
 

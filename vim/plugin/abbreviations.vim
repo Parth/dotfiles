@@ -45,3 +45,14 @@ inoreabbrev :v: ✌️
 inoreabbrev :): 😎
 inoreabbrev :hi: 🙋
 
+" Markdown abbrevitions
+" better use inoremap as they do not leave a
+" trailing space after abbr is expanded
+" https://stackoverflow.com/questions/11858927/preventing-trailing-whitespace-when-using-vim-abbreviations
+" -------------------------------------------------- 
+inoremap ` ``<left>
+inoremap < <><left>
+inoremap * **<left>
+inoremap ** ****<left><left>
+inoremap [ []<left>
+inoremap ( ()<left>

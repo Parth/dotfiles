@@ -33,7 +33,7 @@ set rtp+=$HOME/.vim/plugged/gruvbox
 " look for Project specific .vimrc files
 " https://superuser.com/questions/532593/how-do-i-get-vim-to-automatically-load-vimrc-config-from-the-current-directory
 set exrc
-set secure
+" set secure
 
 " Refactor - use plugin/ftplugin directories
 " Manually sourced vim files, sometimes order matters

@@ -28,4 +28,9 @@ if has("autocmd")
     "     autocmd InsertEnter * :setlocal cursorline
     "     autocmd InsertLeave * :setlocal nocursorline
     " augroup END
+    "
+    " set cursor behavious
+    " --------------------------------------------------
+    autocmd InsertEnter * set cursorline!
+    autocmd InsertLeave * set cursorline
 endif

@@ -54,6 +54,7 @@ set wildmenu           " visual autocomplete for command menu
 set lazyredraw         " redraw only when needed. Faster macros
 ""set showmatch          " highlight matching [{()}]
 set mouse=a
+set cursorline          "show cursor line in normal mode
 
 set shortmess+=I       " disable intro splash
 if !&scrolloff
@@ -67,7 +68,8 @@ set display+=lastline  " :help 'display'
 
 " -------------------------------------------------------------------------------------------
 " Build Tools and compilers for quickfix
-set makeprg=make
+" NOTE: setting it here overrides the makeprg in project specific .vimrc files
+" set makeprg=make
 " latex gcc npm \run \lint python haml
 " could be updated by plugin for a specific project
 
