@@ -1,95 +1,72 @@
-" General Vim settings
-	syntax on
-	let mapleader=","
-	set autoindent
-	set tabstop=4
-	set shiftwidth=4
-	set dir=/tmp/
-	set relativenumber 
-	set number
+syntax on
 
-	autocmd Filetype html setlocal sw=2 expandtab
-	autocmd Filetype javascript setlocal sw=4 expandtab
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set nobackup
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
 
-	set hlsearch
-	nnoremap <C-l> :nohl<CR><C-l>:echo "Search Cleared"<CR>
-	nnoremap <C-c> :set norelativenumber<CR>:set nonumber<CR>:echo "Line numbers turned off."<CR>
-	nnoremap <C-n> :set relativenumber<CR>:set number<CR>:echo "Line numbers turned on."<CR>
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
 
-	nnoremap n nzzzv
-	nnoremap N Nzzzv
+call plug#begin('~/.vim/plugged')
 
-	nnoremap H 0
-	nnoremap L $
-	nnoremap J G
-	nnoremap K gg
+Plug 'neoclide/coc.nvim', {'branch':'release'}
+Plug 'morhetz/gruvbox'
+Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-utils/vim-man'
+Plug 'lyuts/vim-rtags'
+Plug 'junegunn/fzf', {'do': {-> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mbbill/undotree'
+Plug 'vim-airline/vim-airline'
 
-	map <tab> %
+call plug#end()
 
-	set backspace=indent,eol,start
+colorscheme gruvbox
+set background=dark
 
-	nnoremap <Space> za
-	nnoremap <leader>z zMzvzz
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
 
-	nnoremap vv 0v$
+let g:fzf_layout = {'window': {'width':0.8, 'height':0.8} }
+let SIZE_DEFAULT_OPTS='--reverse'
 
-	set listchars=tab:\|\ 
-	nnoremap <leader><tab> :set list!<cr>
-	set pastetoggle=<F2>
-	set mouse=a
-	set incsearch
+let mapleader = " "
+let g:newtr_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 
-" Language Specific
-	" Tabs
-		so ~/dotfiles/vim/sleuth.vim
-
-	" Typescript
-		autocmd BufNewFile,BufRead *.ts set syntax=javascript
-		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
-
-	" Markup
-		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <leader>ps :Rg<SPACE>
+nnoremap <silent> <leader>+ :vertical resize +5<CR>
+nnoremap <silent> <leader>- :vertical resize -5<CR>
 
 
-" File and Window Management 
-	inoremap <leader>w <Esc>:w<CR>
-	nnoremap <leader>w :w<CR>
+"coc-Plugin python, json, cmake, clangd, pairs, git
 
-	inoremap <leader>q <ESC>:q<CR>
-	nnoremap <leader>q :q<CR>
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-	inoremap <leader>x <ESC>:x<CR>
-	nnoremap <leader>x :x<CR>
-
-	nnoremap <leader>e :Ex<CR>
-	nnoremap <leader>t :tabnew<CR>:Ex<CR>
-	nnoremap <leader>v :vsplit<CR>:w<CR>:Ex<CR>
-	nnoremap <leader>s :split<CR>:w<CR>:Ex<CR>
-
-" Return to the same line you left off at
-	augroup line_return
-		au!
-		au BufReadPost *
-			\ if line("'\"") > 0 && line("'\"") <= line("$") |
-			\	execute 'normal! g`"zvzz' |
-			\ endif
-	augroup END
-
-" Auto load
-	" Triger `autoread` when files changes on disk
-	" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
-	" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
-	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-	set autoread 
-	" Notification after file change
-	" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
-	autocmd FileChangedShellPost *
-	  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-" Future stuff
-	"Swap line
-	"Insert blank below and above
-
-" Fix for: https://github.com/fatih/vim-go/issues/1509
-
-filetype plugin indent on
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
