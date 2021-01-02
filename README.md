@@ -87,6 +87,7 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 ## [Vim](<https://en.wikipedia.org/wiki/Vim_(text_editor)>)
 
 - Leader key has been remapped to `,`
+- Has been changed to ' ' in 
 
 ## [Tmux](https://en.wikipedia.org/wiki/Tmux)
 
