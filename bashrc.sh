@@ -5,6 +5,7 @@ shopt -s checkwinsize
 
 alias rand_console='tr -cd "[:alnum:]" < /dev/urandom | fold -w`tput cols`'
 
+# fuzzy search in chrome history
 c() {
   local cols sep google_history open
   cols=$(( COLUMNS / 3 ))
@@ -32,7 +33,6 @@ fman() {
     man -k . | fzf --prompt='Man> ' | awk '{print $1}' | xargs -r man
 }
 
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -52,9 +52,12 @@ shopt -s checkwinsize
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-
 # vim smali syntax
 echo au BufRead,BufNewFile *.smali set filetype=smali >> ~/.vim/filetype.vim
  && mkdir ~/.vim/syntax && cd $_ && wget http://codetastrophe.com/smali.vim
 
+alias switch_proxy='sudo systemctl reload tor.service && curl -s -x socks5h://localhost:9050 ifconfig.me && echo'
+
+# Disable Ctrl+S (Pause) and Ctrl+Q (continue) shortcuts, I use Ctrl+S to save inside Vim
+stty -ixon 
 
