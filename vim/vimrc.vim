@@ -5,7 +5,7 @@
 	set tabstop=4
 	set shiftwidth=4
 	set dir=/tmp/
-	set relativenumber 
+	set relativenumber
 	set number
 
 	autocmd Filetype html setlocal sw=2 expandtab
@@ -19,21 +19,9 @@
 	nnoremap n nzzzv
 	nnoremap N Nzzzv
 
-	nnoremap H 0
-	nnoremap L $
-	nnoremap J G
-	nnoremap K gg
-
-	map <tab> %
-
-	set backspace=indent,eol,start
-
-	nnoremap <Space> za
-	nnoremap <leader>z zMzvzz
-
 	nnoremap vv 0v$
 
-	set listchars=tab:\|\ 
+	set listchars=tab:\|\
 	nnoremap <leader><tab> :set list!<cr>
 	set pastetoggle=<F2>
 	set mouse=a
@@ -43,15 +31,11 @@
 	" Tabs
 		so ~/dotfiles/vim/sleuth.vim
 
-	" Typescript
-		autocmd BufNewFile,BufRead *.ts set syntax=javascript
-		autocmd BufNewFile,BufRead *.tsx set syntax=javascript
-
 	" Markup
 		inoremap <leader>< <esc>I<<esc>A><esc>yypa/<esc>O<tab>
 
 
-" File and Window Management 
+" File and Window Management
 	inoremap <leader>w <Esc>:w<CR>
 	nnoremap <leader>w :w<CR>
 
@@ -80,7 +64,7 @@
 	" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 	" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
 	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
-	set autoread 
+	set autoread
 	" Notification after file change
 	" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
 	autocmd FileChangedShellPost *
