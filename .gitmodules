@@ -4,6 +4,6 @@
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "zsh/plugins/oh-my-zsh"]
-	path = zsh/plugins/oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "zsh/plugins/fzf-tab"]
+	path = zsh/plugins/fzf-tab
+	url = https://github.com/Aloxaf/fzf-tab

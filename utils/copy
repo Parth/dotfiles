@@ -1,3 +1,4 @@
+#!/bin/zsh
 if [[ $OSTYPE == darwin* ]]; then
   pbcopy
 elif [[ $OSTYPE == cygwin* ]]; then
@@ -6,7 +7,7 @@ else
   if (( $+commands[xclip] )); then
     xclip -in -selection clipboard
   elif (( $+commands[xsel] )); then
-    xsel --clipboard --input 
+    xsel --clipboard --input
   else
     print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
     return 1

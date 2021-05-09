@@ -1,5 +1,5 @@
 " General Vim settings
-	syntax on
+	syntax enable
 	let mapleader=","
 	set autoindent
 	set tabstop=4
