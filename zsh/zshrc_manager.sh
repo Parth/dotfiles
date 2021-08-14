@@ -1,16 +1,5 @@
 time_out () { perl -e 'alarm shift; exec @ARGV' "$@"; }
 
-# Run tmux if exists
-if command -v tmux>/dev/null; then
-	if [ "$DISABLE_TMUX" = "true" ]; then
-		echo "DISABLE_TMUX=true"
-	else
-		[ -z $TMUX ] && exec tmux
-	fi
-else 
-	echo "tmux not installed. Run ./deploy to configure dependencies"
-fi
-
 echo "Checking for updates."
 ({cd ~/dotfiles && git fetch -q} &> /dev/null)
  

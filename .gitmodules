@@ -4,6 +4,3 @@
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "zsh/plugins/fzf-tab"]
-	path = zsh/plugins/fzf-tab
-	url = https://github.com/Aloxaf/fzf-tab
