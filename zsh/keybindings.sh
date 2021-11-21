@@ -1,11 +1,3 @@
-# Edit and rerun
-function edit_and_run() {
-	BUFFER="fc"
-	zle accept-line
-}
-zle -N edit_and_run
-bindkey "^b" edit_and_run
-
 # Enter
 function enter_line() {
 	zle accept-line
@@ -20,15 +12,6 @@ function add_sudo() {
 }
 zle -N add_sudo
 bindkey "^s" add_sudo
-
-# Home - Navigates to the current root workspace
-function git_root() {
-	BUFFER="cd $(git rev-parse --show-toplevel || echo ".")"
-	zle accept-line
-}
-zle -N git_root
-bindkey "^h" git_root
-
 
 # whois a domain or a URL
 function whois() {
@@ -54,7 +37,7 @@ cp_p () {
   rsync -WavP --human-readable --progress $1 $2
 }
 
-# preview csv files. source: http://stackoverflow.com/questions/1875305/command-line-csv-viewer
+# Preview csv files. source: http://stackoverflow.com/questions/1875305/command-line-csv-viewer
 function csvpreview(){
       sed 's/,,/, ,/g;s/,,/, ,/g' "$@" | column -s, -t | less -#2 -N -S
 }
