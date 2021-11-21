@@ -21,7 +21,6 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias cp='cp -i'
 alias mv='mv -i'
-alias dc="cd ~/Documents"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -43,13 +42,14 @@ alias la="ls -lahF ${colorflag}"
 # shellcheck disable=SC2139
 alias lsd="ls -lhF -G | grep --color=never '^d'"
 
+# Check process with grep
+alias psg="ps -ef | rg "
+
 alias ls="command ls ${colorflag}"
 
 # Always enable colored `grep` output
-alias grep='grep --color=auto '
+alias grep="grep --color=auto "
 
-# IP addresses
-alias pubip="dig +short myip.opendns.com @resolver1.opendns.com"
 
 command -v md5sum > /dev/null || alias md5sum="md5"
 
@@ -57,22 +57,8 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
-
-# Kill all the tabs in Chrome to free up memory
-# [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
-
-# copy working directory
-alias cwd='pwd | tr -d "\r\n" | pbcopy'
-
 # copy file interactive
 alias cp='cp -i'
 
 # move file interactive
 alias mv='mv -i'
-
-# Pipe my public key to my clipboard.
-alias pubkey="more ~/.ssh/id_hai8111997.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
-
-# Pipe my private key to my clipboard.
-alias prikey="more ~/.ssh/id_hai8111997 | pbcopy | echo '=> Private key copied to pasteboard.'"
