@@ -1,9 +1,6 @@
 # Awesome Dotfiles
 
 Simple, but extensive customization of ZSH, TMUX, and Vim.
-
-[![VideoWalkthrough](https://img.youtube.com/vi/UgDz_9i2nwc/0.jpg)](https://www.youtube.com/watch?v=UgDz_9i2nwc)
-
 ## Setup Options
 
 There are 3 ways in which you can use this, depending on how much you think you'll be customizing.
@@ -65,30 +62,15 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 - `PID plugin`: appears when you background a task. Tells you what the PID of the task is.
 
 ### Keybindings
-<<<<<<< HEAD
 | Key Stroke | What It Does |
 |------------|--------------|
 | Ctrl-H     | Runs ``cd ~/`` |
 | Ctrl-K     | Runs ``cd ..`` |
-| Ctrl-G     | Runs ``git add .; git commit -v && git push`` |
-| Ctrl-V     | Runs ``fc``. Takes last command and puts it in a vim buffer. |
+| Ctrl-G     | Runs ``git add -u; git commit -v && git push`` |
 | Ctrl-S     | Adds ``sudo`` to the beginning of the buffer. |
 | Ctrl-L     | Runs ``ls``. |
 | Ctrl-O     | Equivalent to hitting ``Enter``. |
 | Ctrl-P     | Equivalent to pressing ``Up Arrow``. |
-=======
-
-| Key Stroke | What It Does                                                                              |
-| ---------- | ------------------------------------------------------------------------------------------|
-| Ctrl-H     | Goes to the root of a git project, runs `cd $(git rev-parse --show-toplevel || echo ".")` |
-| Ctrl-K     | Runs `cd ..`                                                                              |
-| Ctrl-G     | Runs `git add -A; git commit -v && git push`                                              |
-| Ctrl-V     | Runs `fc`. Takes last command and puts it in a vim buffer.                                |
-| Ctrl-S     | Adds `sudo` to the beginning of the buffer.                                               |
-| Ctrl-L     | Runs `ls`.                                                                                |
-| Ctrl-O     | Equivalent to hitting `Enter`.                                                            |
-| Ctrl-P     | Equivalent to pressing `Up Arrow`.                                                        |
->>>>>>> e023825694685fa7d60b4a67804fc5402a3d3118
 
 ### Plugins
 
@@ -105,8 +87,9 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 
 
 ## [Dir-color](http://manpages.ubuntu.com/manpages/xenial/man5/dir_colors.5.html)
-* The color is located in `.dir_colors`. You can change it to dir-colors you want. The default is Zenburn.
-=======
+- The color is located in `.dir_colors`. You can change it to dir-colors you want. The default is Zenburn.
+
+
 - Ctrl-B has been remapped to the backtick character (&#96;). If you want to type the actual backtick character (&#96;) itself, just hit the key twice.
 - `%` has been remapped to `v`.
 - Use vim movement keys for moving between panes.
