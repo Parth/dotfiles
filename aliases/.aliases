@@ -62,3 +62,26 @@ alias cp='cp -i'
 
 # move file interactive
 alias mv='mv -i'
+
+
+###
+# GIT STUFF
+
+function clone() {
+    git clone --depth=1 $1
+    cd $(basename ${1%.*})
+    yarn install
+}
+alias push="git push"
+
+# Networking. IP address, dig, DNS
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+# wget sucks with certificates. Let's keep it simple.
+alias wget="curl -O"
+
+# Recursively delete `.DS_Store` files
+alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Shortcuts
+alias g="git"
+alias v="vim"

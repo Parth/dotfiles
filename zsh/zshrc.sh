@@ -74,7 +74,10 @@ fi
 
 source ~/dotfiles/zsh/prompt.sh
 # Add dir colors for terminal currently doesn't suppor well for mac
-# eval $( dircolors -b ~/dotfiles/.dir_colors )
+if [[ "$OSTYPE" != "darwin" ]]; then
+	eval $( dircolors -b ~/dotfiles/.dir_colors )
+fi
+
 export PATH=$PATH:$HOME/dotfiles/utils
 
 
