@@ -249,6 +249,9 @@ nmap <leader>g3 :diffget //3<CR>
 nmap <leader>g2 :diffget //2<CR>
 nmap <leader>gs :G<CR>
 
++vnoremap <silent> # :s/^/#/<cr>:noh<cr> 
++vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
 " Gutentags
 " " Don't load me if there's no ctags file
 if !executable('ctags')
