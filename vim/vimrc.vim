@@ -130,6 +130,7 @@ set clipboard=unnamedplus
 
 vnoremap <silent> # :s/^/#/<cr>:noh<cr> 
 vnoremap <silent> -# :s/^#//<cr>:noh<cr>
+
 " Gutentags
 " " Don't load me if there's no ctags file
 if !executable('ctags')
