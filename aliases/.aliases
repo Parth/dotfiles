@@ -57,11 +57,6 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 # For example, to list all directories that contain a certain file:
 # find . -name .gitattributes | map dirname
 alias map="xargs -n1"
-# copy file interactive
-alias cp='cp -i'
-
-# move file interactive
-alias mv='mv -i'
 
 
 ###
