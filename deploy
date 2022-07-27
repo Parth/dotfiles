@@ -111,8 +111,7 @@ printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
 ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
 ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
-echo "Process nvim PlugInstall"
-/usr/bin/nvim --headless +PlugInstall +qall > /dev/null 2>&1 || true
+nohup /usr/bin/nvim --headless +PlugInstall +qall > /dev/null &
 
 yes | cp -rf $HOME/dotfiles/gitconfig/. ~/
 
