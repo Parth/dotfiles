@@ -26,29 +26,32 @@ set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-call plug#begin('~/.vim/plugged')
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'hrsh7th/nvim-cmp'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'saadparwaiz1/cmp_luasnip' 
-Plug 'L3MON4D3/LuaSnip'
+call plug#begin('~/.config/nvim/plugged')
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'saadparwaiz1/cmp_luasnip' 
+  Plug 'L3MON4D3/LuaSnip'
 
-" A cool status bar
-Plug 'vim-airline/vim-airline'
-Plug 'scrooloose/nerdtree'
-Plug 'rust-lang/rust.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'neovim/nvim-lspconfig'
-Plug 'ray-x/lsp_signature.nvim'
-Plug 'github/copilot.vim'
+  " A cool status bar
+  Plug 'vim-airline/vim-airline'
+  Plug 'scrooloose/nerdtree'
+  Plug 'rust-lang/rust.vim'
+  Plug 'tpope/vim-fugitive'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'ray-x/lsp_signature.nvim'
 
-" Neovim Tree shitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end()
 
 lua require("lsp")
