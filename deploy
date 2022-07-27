@@ -28,12 +28,18 @@ prompt_install() {
 }
 
 neovim_install() {
-	sudo apt-get install -y fuse
-	wget --quiet https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage --output-document nvim
-	chmod +x nvim
-	sudo chown root:root nvim
-	sudo mv nvim /usr/bin
-	mkdir -p ~/.config/nvim
+	if [ -x "$(command -v apt-get)" ]; then
+		sudo apt-get install -y fuse
+		wget --quiet https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage --output-document nvim
+		chmod +x nvim
+		sudo chown root:root nvim
+		sudo mv nvim /usr/bin
+		mkdir -p ~/.config/nvim
+	elif [ -x "$(command -v brew)" ]; then
+		brew install neovim
+	else
+		echo "I'm not sure what your package manager is! Please install nvim on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
+	fi
 }
 
 check_for_software() {
@@ -111,7 +117,8 @@ printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
 ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
 ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
-nohup /usr/bin/nvim --headless +PlugInstall +qall > /dev/null &
+source ~/.bashrc
+/usr/bin/nvim --headless +PlugInstall +qall > /dev/null 2>&1 || true
 
 yes | cp -rf $HOME/dotfiles/gitconfig/. ~/
 
