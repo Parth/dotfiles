@@ -2,6 +2,8 @@
 	path = .gitconfig-work
 [includeIf "gitdir:~/Documents/personal_project/"]
 	path = .gitconfig-personal
+[includeIf "gitdir:~/dotfiles"]
+	path = .gitconfig-personal
 [push]
 	default = current
 [filter "lfs"]
