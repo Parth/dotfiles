@@ -1,8 +1,14 @@
 draw_bold_text_with_bright_colors: false
-shadow: true
 window:
-  opacity: 0.8
-  decorations: transparent
+  # Spread additional padding evenly around the terminal content.
+  padding:
+    x: 10
+    y: 10
+  opacity: 0.92
+  decorations: none
+  # Open in full screen 
+  startup_mode: SimpleFullscreen
+
 font:
   size: 14.0
 colors:
