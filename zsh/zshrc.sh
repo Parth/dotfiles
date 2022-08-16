@@ -11,6 +11,7 @@ chpwd() ls
 
 autoload -U compinit && compinit
 
+source ~/dotfiles/aliases/.aliases
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/functions.zsh
 source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
