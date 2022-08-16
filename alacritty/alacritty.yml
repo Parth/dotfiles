@@ -1,11 +1,14 @@
 draw_bold_text_with_bright_colors: false
+shadow: true
+window:
+  opacity: 0.8
 font:
   size: 14.0
 colors:
   primary:
     background: '0x2D2A2E'
     foreground: '0xFCFCFA'
-
+  transparent_background_colors: true
   normal:
     black:   '0x403E41'
     red:     '0xFF6188'

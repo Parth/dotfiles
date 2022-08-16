@@ -115,8 +115,22 @@ fi
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
+echo -n "Would you like to use alacritty? (y/n) "
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+	mkdir -p ~/.config/alacritty
+	ln -s $HOME/dotfiles/alacritty/alacritty.yml $HOME/.config/alacritty
+else
+	echo -e "\nNot create config alacritty."
+fi
+
+
 ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
 ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
+
 source ~/.bashrc
 /usr/bin/nvim --headless +PlugInstall +qall > /dev/null 2>&1 || true
 
