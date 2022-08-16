@@ -6,7 +6,7 @@ window:
     y: 10
   opacity: 0.92
   decorations: none
-  # Open in full screen 
+  # Open in full screen
   startup_mode: SimpleFullscreen
 
 font:
