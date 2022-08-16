@@ -2,6 +2,7 @@ draw_bold_text_with_bright_colors: false
 shadow: true
 window:
   opacity: 0.8
+  decorations: transparent
 font:
   size: 14.0
 colors:
