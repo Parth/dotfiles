@@ -78,4 +78,5 @@ alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
 # Shortcuts
 alias g="git"
 alias v="vim"
+alias vim="nvim"
 alias lcenv="set -a && source .env && set +a &&"
