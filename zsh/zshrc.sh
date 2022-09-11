@@ -12,6 +12,7 @@
 
 # Settings
 	export VISUAL=vim
+	export XDG_CONFIG_HOME=~/dotfiles/vim/.config/
 
 source ~/dotfiles/zsh/plugins/fixls.zsh
 
