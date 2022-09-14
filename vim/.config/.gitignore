@@ -1,1 +1,2 @@
-./nvim/plugin/*
+nvim/plugin/
+coc/
