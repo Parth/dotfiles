@@ -1,6 +1,6 @@
 # Vars
-	HISTFILE=~/.zsh_history
-	SAVEHIST=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=10000
 
 
 # Custom cd
@@ -22,12 +22,12 @@ source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source ~/dotfiles/zsh/prompt.sh
 
 # Add dir colors for terminal currently doesn't suppor well for mac
-if [[ "$OSTYPE" != "darwin*" ]]; then
+if [[ "$OSTYPE" != "darwin"* ]]; then
 	eval $( dircolors -b ~/dotfiles/.dir_colors )
 fi
 
 # Set default text editor to vim
-export VISUAL=vim
+export VISUAL=nvim
 
 # Utils
 export PATH=$PATH:$HOME/dotfiles/utils
