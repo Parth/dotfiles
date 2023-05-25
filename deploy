@@ -1,27 +1,35 @@
 prompt_install() {
-	echo -n "$1 is not installed. Would you like to install it? (y/n) " >&2
-	old_stty_cfg=$(stty -g)
-	stty raw -echo
-	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-	stty $old_stty_cfg && echo
-	if echo "$answer" | grep -iq "^y" ;then
-		# This could def use community support
-		if [ -x "$(command -v apt)" ]; then
-			sudo apt install $1 -y
+    echo -n "$1 is not installed. Would you like to install it? (y/n) " >&2
+    old_stty_cfg=$(stty -g)
+    stty raw -echo
+    answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+    stty $old_stty_cfg && echo
+    if echo "$answer" | grep -iq "^y" ;then
+        # This could def use community support
+        if [ "$(uname)" = "Linux" ] && [ -x "$(command -v apt)" ]; then
+            sudo apt install $1 -y
 
-		elif [ -x "$(command -v brew)" ]; then
-			brew install $1
+        elif [ "$(uname)" = "Darwin" ] && [ -x "$(command -v brew)" ]; then
+            # Determine machine's architecture
+            arch_name="$(uname -m)"
+            
+            # If architecture is ARM, install from source
+            if [ "${arch_name}" = "arm64" ]; then
+                brew install --build-from-source $1
+            else
+                brew install $1
+            fi
 
-		elif [ -x "$(command -v pkg)" ]; then
-			sudo pkg install $1
+        elif [ "$(uname)" = "FreeBSD" ] && [ -x "$(command -v pkg)" ]; then
+            sudo pkg install $1
 
-		elif [ -x "$(command -v pacman)" ]; then
-			sudo pacman -S $1
+        elif [ "$(uname)" = "Linux" ] && [ -x "$(command -v pacman)" ]; then
+            sudo pacman -S $1
 
-		else
-			echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
-		fi 
-	fi
+        else
+            echo "I'm not sure what your package manager is! Please install $1 on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)"
+        fi
+    fi
 }
 
 check_for_software() {
@@ -71,7 +79,7 @@ fi
 
 check_for_software zsh
 echo 
-check_for_software nvim
+check_for_software neovim
 echo
 check_for_software tmux
 echo
