@@ -1,5 +1,6 @@
 vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeOpen)
 vim.keymap.set("n", "<C-s>", vim.cmd.write)
+vim.keymap.set("i", "<C-s>", vim.cmd.write)
 vim.keymap.set("n", "<leader>w", vim.cmd.wq)
 
 vim.keymap.set("n", "<C-t>", vim.cmd.tabnew)
