@@ -20,6 +20,7 @@ source ~/dotfiles/zsh/plugins/oh-my-zsh/plugins/web-search/web-search.plugin.zsh
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/prompt.sh
+source ~/dotfiles/zsh/keybindings.sh
 
 # Add dir colors for terminal currently doesn't suppor well for mac
 if [[ "$OSTYPE" != "darwin"* ]]; then
