@@ -5,9 +5,8 @@ window:
     x: 10
     y: 10
   opacity: 0.92
-  decorations: none
   # Open in full screen
-  startup_mode: SimpleFullscreen
+  startup_mode: Windowed
 
 font:
   size: 14.0

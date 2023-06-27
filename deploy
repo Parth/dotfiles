@@ -30,7 +30,7 @@ prompt_install() {
 neovim_install() {
 	if [ -x "$(command -v apt-get)" ]; then
 		sudo apt-get install -y fuse
-		wget --quiet https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage --output-document nvim
+		wget --quiet https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage --output-document nvim
 		chmod +x nvim
 		sudo chown root:root nvim
 		sudo mv nvim /usr/bin
