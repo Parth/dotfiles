@@ -42,7 +42,7 @@ Upon launching a new shell, the first thing that's evaluated is `zshrc_manager.s
 ## [Zsh](https://en.wikipedia.org/wiki/Z_shell)
 
 - `cd` has been reassigned to `cd` and `ls`. Every time you navigate to a new directory, it will display the content of that directory.
-- `v` has been aliased too: `vim -p`. This lets you open multiple files in vim as tabs.
+- `v` has been aliased too: `nvim -p`. This lets you open multiple files in vim as tabs.
 
 ### Prompt
 
@@ -60,17 +60,6 @@ Each plugin is sensitive to where you are and what you're doing, they reveal the
 - `Sudo plugin`: tells you when you can sudo without a password. Or when you're logged in as root.
 - `Time plugin`: appears when a program took more than 1s to execute. Tells you how long it took to execute.
 - `PID plugin`: appears when you background a task. Tells you what the PID of the task is.
-
-### Keybindings
-| Key Stroke | What It Does |
-|------------|--------------|
-| Ctrl-H     | Runs ``cd ~/`` |
-| Ctrl-K     | Runs ``cd ..`` |
-| Ctrl-G     | Runs ``git add -u; git commit -v && git push`` |
-| Ctrl-S     | Adds ``sudo`` to the beginning of the buffer. |
-| Ctrl-L     | Runs ``ls``. |
-| Ctrl-O     | Equivalent to hitting ``Enter``. |
-| Ctrl-P     | Equivalent to pressing ``Up Arrow``. |
 
 ### Plugins
 
