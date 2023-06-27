@@ -28,7 +28,3 @@ fi
 
 # Set default text editor to vim
 export VISUAL=nvim
-
-# Utils
-export PATH=$PATH:$HOME/dotfiles/utils
-
