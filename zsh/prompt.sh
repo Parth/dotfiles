@@ -4,10 +4,15 @@ autoload -U colors && colors
 
 setopt PROMPT_SUBST
 
-set_prompt() {
+function venv_info {
+    if [[ -n "$CONDA_DEFAULT_ENV" ]]; then
+        echo "%{$fg[green]%}(${CONDA_DEFAULT_ENV:t})%{$reset_color%}"
+    fi
+}
 
+set_prompt() {
 	# [
-	PS1="["
+	PS1="$(venv_info)["
 
 	# Path: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 	PS1+="%{$fg_bold[blue]%}${PWD/#$HOME/~}%{$reset_color%}"
