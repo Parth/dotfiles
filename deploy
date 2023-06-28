@@ -47,14 +47,16 @@ neovim_install() {
 	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 	stty $old_stty_cfg && echo
 	if echo "$answer" | grep -iq "^y" ;then
-		prompt_install "curl"
+		check_for_software "curl"
 
 		# Install pyright lsp
-		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+		check_for_software "npm"
 		sudo npm i -g pyright
 
 		# Install efm for auto formatting codes
-		curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
+		if ! [ -x "$(command -v go)" ]; then
+			curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
+		fi
 		go install github.com/mattn/efm-langserver@latest
 	fi
 }
