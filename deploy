@@ -40,6 +40,23 @@ neovim_install() {
 	else
 		echo "I'm not sure what your package manager is! Please install nvim on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
 	fi
+
+	echo -n "Would you like to install full neovim lsp package? (y/n) " >&2
+	old_stty_cfg=$(stty -g)
+	stty raw -echo
+	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+	stty $old_stty_cfg && echo
+	if echo "$answer" | grep -iq "^y" ;then
+		prompt_install "curl"
+
+		# Install pyright lsp
+		curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+		sudo npm i -g pyright
+
+		# Install efm for auto formatting codes
+		curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
+		go install github.com/mattn/efm-langserver@latest
+	fi
 }
 
 check_for_software() {
