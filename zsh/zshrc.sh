@@ -8,19 +8,18 @@ source ~/dotfiles/zsh/plugins/fixls.zsh
 
 chpwd() ls
 
+# a411ef3
 
 autoload -U compinit && compinit
 
 source ~/dotfiles/aliases/.aliases
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/history.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/functions.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/key-bindings.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/lib/completion.zsh
-source ~/dotfiles/zsh/plugins/oh-my-zsh/plugins/web-search/web-search.plugin.zsh
+
 source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/prompt.sh
 source ~/dotfiles/zsh/keybindings.sh
+source ~/dotfiles/zsh/bindings.sh
+
 
 # Add dir colors for terminal currently doesn't suppor well for mac
 if [[ "$OSTYPE" != "darwin"* ]]; then
