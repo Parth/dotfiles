@@ -18,7 +18,8 @@ source ~/dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/dotfiles/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/dotfiles/zsh/prompt.sh
 source ~/dotfiles/zsh/keybindings.sh
-source ~/dotfiles/zsh/bindings.sh
+source ~/dotfiles/zsh/bindings.zsh
+source ~/dotfiles/zsh/history.zsh
 
 
 # Add dir colors for terminal currently doesn't suppor well for mac

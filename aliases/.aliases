@@ -67,7 +67,6 @@ function clone() {
     cd $(basename ${1%.*})
     yarn install
 }
-alias push="git push"
 
 # Networking. IP address, dig, DNS
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -80,6 +79,10 @@ alias g="git"
 alias gadd="git add -u"
 alias gcommit="git commit -m"
 alias gdiff="git diff"
+alias gpull="git pull"
+alias gstatus="git status"
+alias gpush="git push"
+
 alias v="vim"
 alias vim="nvim"
 alias lcenv="set -a && source .env && set +a &&"
