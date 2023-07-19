@@ -7,34 +7,37 @@ window:
   opacity: 0.92
   # Open in full screen
   startup_mode: Windowed
+colors:
+  # Default colors
+  primary:
+    background: '0x002635'
+    foreground: '0xe6e6dc'
+    transparent_background_colors: true
 
+  # Normal colors
+  normal:
+    black:   '0x00384d'
+    red:     '0xc43061'
+    green:   '0x7fc06e'
+    yellow:  '0xf08e48'
+    blue:    '0x1c8db2'
+    magenta: '0xc694ff'
+    cyan:    '0x00cccc'
+    white:   '0x77929e'
+
+  # Bright colors
+  bright:
+    black:   '0x517f8d'
+    red:     '0xff5a67'
+    green:   '0x9cf087'
+    yellow:  '0xffcc1b'
+    blue:    '0x7eb2dd'
+    magenta: '0xfb94ff'
+    cyan:    '0x00ffff'
+    white:   '0xb7cff9'
+
+  cursor:
+    text: "0x002635"
+    cursor: "0xffcc1b"
 font:
   size: 14.0
-colors:
-  primary:
-    background: '0x2D2A2E'
-    foreground: '0xFCFCFA'
-  transparent_background_colors: true
-  normal:
-    black:   '0x403E41'
-    red:     '0xFF6188'
-    green:   '0xA9DC76'
-    yellow:  '0xFFD866'
-    blue:    '0xFC9867'
-    magenta: '0xAB9DF2'
-    cyan:    '0x78DCE8'
-    white:   '0xFCFCFA'
-
-  bright:
-    black:   '0x727072'
-    red:     '0xFF6188'
-    green:   '0xA9DC76'
-    yellow:  '0xFFD866'
-    blue:    '0xFC9867'
-    magenta: '0xAB9DF2'
-    cyan:    '0x78DCE8'
-    white:   '0xFCFCFA'
-
-cursor:
-  style: Underline
-  unfocused_hollow: false
