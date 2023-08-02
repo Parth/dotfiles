@@ -80,6 +80,7 @@ alias gadd="git add -u"
 alias gcommit="git commit -m"
 alias gdiff="git diff"
 alias gpull="git pull"
+alias gcheckout="git checkout"
 alias gstatus="git status"
 alias gpush="git push"
 
