@@ -12,7 +12,7 @@ function venv_info {
 
 set_prompt() {
 	# [
-	PS1="<%{$fg_bold[gray]%}@$(uname -n)%{$reset_color%}>$(venv_info)["
+	PS1="%{$fg_bold[gray]%}@$(uname -n)%{$reset_color%}$(venv_info)["
 
 	# Path: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
 	PS1+="%{$fg_bold[blue]%}${PWD/#$HOME/~}%{$reset_color%}"
