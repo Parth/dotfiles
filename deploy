@@ -29,7 +29,6 @@ prompt_install() {
 
 neovim_install() {
 	if [ -x "$(command -v apt-get)" ]; then
-		sudo apt-get install -y fuse
 		wget --quiet https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage --output-document nvim
 		chmod +x nvim
 		sudo chown root:root nvim
@@ -146,13 +145,18 @@ else
 	echo -e "\nNot create config alacritty."
 fi
 
-
-mkdir -p ~/.config/nvim
-ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
-ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
-
-source ~/.bashrc
-/usr/bin/nvim --headless +PlugInstall +qall > /dev/null 2>&1 || true
+echo -n "Would you like to use nvim? (y/n) "
+old_stty_cfg=$(stty -g)
+stty raw -echo
+answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
+stty $old_stty_cfg
+if echo "$answer" | grep -iq "^y" ;then
+	mkdir -p ~/.config/nvim
+	ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
+	ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
+else
+	echo -e "\nNot create config nvim."
+fi
 
 yes | cp -rf $HOME/dotfiles/gitconfig/. ~/
 
