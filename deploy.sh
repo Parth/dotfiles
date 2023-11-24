@@ -30,33 +30,13 @@ prompt_install() {
 neovim_install() {
 	if [ -x "$(command -v apt-get)" ]; then
 		wget --quiet https://github.com/neovim/neovim/releases/download/v0.9.1/nvim.appimage --output-document nvim
-		chmod +x nvim
+		chmod u+x nvim
 		sudo chown root:root nvim
 		sudo mv nvim /usr/bin
-		mkdir -p ~/.config/nvim
 	elif [ -x "$(command -v brew)" ]; then
 		brew install neovim
 	else
 		echo "I'm not sure what your package manager is! Please install nvim on your own and run this deploy script again. Tests for package managers are in the deploy script you just ran starting at line 13. Feel free to make a pull request at https://github.com/parth/dotfiles :)" 
-	fi
-
-	echo -n "Would you like to install full neovim lsp package? (y/n) " >&2
-	old_stty_cfg=$(stty -g)
-	stty raw -echo
-	answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
-	stty $old_stty_cfg && echo
-	if echo "$answer" | grep -iq "^y" ;then
-		check_for_software "curl"
-
-		# Install pyright lsp
-		check_for_software "npm"
-		sudo npm i -g pyright
-
-		# Install efm for auto formatting codes
-		if ! [ -x "$(command -v go)" ]; then
-			curl -LO https://get.golang.org/$(uname)/go_installer && chmod +x go_installer && ./go_installer && rm go_installer
-		fi
-		go install github.com/mattn/efm-langserver@latest
 	fi
 }
 
@@ -107,8 +87,6 @@ fi
 
 git submodule update --init --recursive
 check_for_software zsh
-echo 
-check_for_software nvim
 echo
 check_for_software tmux
 echo
@@ -133,14 +111,13 @@ fi
 printf "source '$HOME/dotfiles/zsh/zshrc_manager.sh'" > ~/.zshrc
 printf "source-file $HOME/dotfiles/tmux/tmux.conf" > ~/.tmux.conf
 
-echo -n "Would you like to use alacritty? (y/n) "
+echo -n "Would you like to use wezterm config? (y/n) "
 old_stty_cfg=$(stty -g)
 stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
-	mkdir -p ~/.config/alacritty
-	ln -s $HOME/dotfiles/alacritty/alacritty.yml $HOME/.config/alacritty
+	ln -s $HOME/dotfiles/wezterm/.wezterm.lua $HOME/.wezterm.lua
 else
 	echo -e "\nNot create config alacritty."
 fi
@@ -151,9 +128,10 @@ stty raw -echo
 answer=$( while ! head -c 1 | grep -i '[ny]' ;do true ;done )
 stty $old_stty_cfg
 if echo "$answer" | grep -iq "^y" ;then
+	check_for_software nvim
+	echo
 	mkdir -p ~/.config/nvim
-	ln -s $HOME/dotfiles/vim/lua ~/.config/nvim/lua
-	ln -s $HOME/dotfiles/vim/init.vim ~/.config/nvim/init.vim
+	ln -s $HOME/dotfiles/nvim ~/.config/nvim
 else
 	echo -e "\nNot create config nvim."
 fi
