@@ -9,5 +9,6 @@
 + tree goto next diagnostic same way as lsp
 + find current file in tree (cntrl 1 or something)
 + dark mode light mode syntax highlighting is still kinda busted 
++ use a different key bind for save (lsp) vs format
 
 read about nvim rust extensions: https://github.com/rust-lang/rust-analyzer/blob/master/docs/dev/lsp-extensions.md
