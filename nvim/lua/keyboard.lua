@@ -9,11 +9,13 @@ vim.keymap.set('n', '<leader>T', builtin.git_files, {})
 vim.keymap.set('n', '<leader>l', builtin.buffers, {})
 vim.keymap.set('n', '<leader>g', builtin.grep_string, {})
 vim.keymap.set('n', '<leader>lg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>o', builtin.oldfiles, {})
 vim.keymap.set("n", "<leader>ff", "<ESC>:NvimTreeFindFile<CR>")
 vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
 vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch)
 
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
 
@@ -30,15 +32,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, opts)
     vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
     vim.keymap.set('n', '<leader>fmt', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
-    vim.keymap.set('i', '<C-p>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    vim.keymap.set('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<leader>vd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
     vim.keymap.set('n', '<leader>nd', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
     vim.keymap.set('n', '<leader>pd', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    vim.keymap.set('n', '<leader> ', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     vim.keymap.set('n', '<leader>nr', function() require('illuminate').goto_next_reference(wrap) end, opts)
     vim.keymap.set('n', '<leader>pr', function() require('illuminate').goto_prev_reference(wrap) end, opts)
   end
 })
-
 
 -- Completion related keybindings
 local cmp = require('cmp')
