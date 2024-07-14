@@ -16,8 +16,9 @@ vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
 vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch)
-
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
+
+vim.keymap.set("i", "<C-a>", vim.cmd.BlameToggle)
 
 -- LSP keybindings
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -75,3 +76,6 @@ cmp.setup({
     end,
   },
 })
+
+
+-- blame 
