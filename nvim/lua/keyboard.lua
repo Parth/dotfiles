@@ -19,6 +19,7 @@ vim.keymap.set("n", "<leader>/", vim.cmd.nohlsearch)
 vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, {})
 
 vim.keymap.set("i", "<C-a>", vim.cmd.BlameToggle)
+vim.keymap.set("n", "<C-a>", vim.cmd.BlameToggle)
 
 -- LSP keybindings
 vim.api.nvim_create_autocmd('LspAttach', {
@@ -35,8 +36,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<leader>fmt', '<cmd>lua vim.lsp.buf.format()<cr>', opts)
     vim.keymap.set('i', '<C-h>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
     vim.keymap.set('n', '<leader>vd', '<cmd>lua vim.diagnostic.open_float()<cr>', opts)
-    vim.keymap.set('n', '<leader>nd', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-    vim.keymap.set('n', '<leader>pd', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    vim.keymap.set('n', '<leader>nd', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    vim.keymap.set('n', '<leader>pd', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
     vim.keymap.set('n', '<leader> ', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
     vim.keymap.set('n', '<leader>nr', function() require('illuminate').goto_next_reference(wrap) end, opts)
     vim.keymap.set('n', '<leader>pr', function() require('illuminate').goto_prev_reference(wrap) end, opts)
