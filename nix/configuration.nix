@@ -46,6 +46,14 @@ in
     LC_TIME = "en_US.UTF-8";
   };
 
+  programs.fish = {
+  	enable = true;
+	# shellInit = ''
+	# 	fish_vi_key_bindings
+	# '';
+  };
+  users.defaultUserShell = pkgs.fish;
+
   home-manager.users.parth = {
     /* The home.stateVersion option does not have a default and must be set */
     home.stateVersion = "18.09";
@@ -55,6 +63,7 @@ in
       userName  = "parth";
       userEmail = "parth@mehrotra.me";
     };
+
   };
 
   # Enable the X11 windowing system.
@@ -62,7 +71,7 @@ in
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.kde.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -112,6 +121,7 @@ in
 
   # Install firefox.
   programs.firefox.enable = true;
+  programs.git.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -119,8 +129,8 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	git
 	neovim
+	fzf
   ];
 
 
