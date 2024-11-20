@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # strangely i can copy / paste this command but not run this script
 
