@@ -1,94 +1,3 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable",
-        lazypath,
-    })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup(
-    {
-        -- treesitter: richer syntax highlighting
-        {
-            "nvim-treesitter/nvim-treesitter",
-            build = ":TSUpdate",
-            config = function()
-                local configs = require("nvim-treesitter.configs")
-
-                configs.setup({
-                    ensure_installed = { "c", "lua", "vim", "rust", "go" },
-                    sync_install = false,
-                    highlight = { enable = true },
-                    indent = { enable = true },
-                })
-            end
-        },
-
-        -- telescope
-        {
-            'nvim-telescope/telescope.nvim',
-            tag = '0.1.6',
-            dependencies = { 'nvim-lua/plenary.nvim' }
-        },
-
-        -- lsp-zero
-        { 'VonHeikemen/lsp-zero.nvim',        branch = 'v3.x' },
-        { 'neovim/nvim-lspconfig' },
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'hrsh7th/nvim-cmp' },
-        { 'L3MON4D3/LuaSnip' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-
-        -- for nvim config lsp support
-        { "folke/neodev.nvim",                opts = {} },
-
-        -- highlight words
-        { 'RRethy/vim-illuminate' },
-
-        -- lua line
-        {
-            'nvim-lualine/lualine.nvim',
-            dependencies = { 'nvim-tree/nvim-web-devicons' }
-        },
-
-        -- lsp-status populated in lua line
-        { 'nvim-lua/lsp-status.nvim' },
-
-        -- nvim-tree
-        {
-            'nvim-tree/nvim-tree.lua',
-            dependencies = { 'nvim-tree/nvim-web-devicons' }
-        },
-
-        -- blame
-        {
-            "FabijanZulj/blame.nvim",
-        }
-    },
-    {
-        install = {
-            colorscheme = { "default" }
-        }
-    }
-)
-
-require('lsp-zero')
-require('mason').setup({})
-require('mason-lspconfig').setup({
-    ensure_installed = { "rust_analyzer", "lua_ls", "gopls" },
-    handlers = {
-        function(server_name)
-            require('lspconfig')[server_name].setup({})
-        end,
-    },
-})
-
 -- illuminate
 require("illuminate").configure {}
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "CursorLine" })
@@ -147,5 +56,48 @@ require("nvim-tree").setup({
     }
 })
 
+local lspconfig = require("lspconfig")
+
+lspconfig.rust_analyzer.setup({
+    settings = {
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            },
+            checkOnSave = {
+                command = "clippy",
+            },
+        },
+    },
+})
+
+lspconfig.lua_ls.setup {
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using
+                -- (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = {
+                    'vim',
+                    'require'
+                },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
+        },
+    },
+}
+lspconfig.nixd.setup {}
+
 -- blame
-require("blame").setup()
+-- require("blame").setup()
