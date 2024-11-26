@@ -129,12 +129,18 @@ in
       ripgrep
       clang
 
+
+      # move these to neovim specific area 
       rust-analyzer
       rustup
 
       nixd
     ];
   };
+
+  fonts.packages = with pkgs; [
+    nerdfonts
+  ];
 
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "parth";
