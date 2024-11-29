@@ -6,6 +6,14 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
+  lock-false = {
+    Value = false;
+    Status = "locked";
+  };
+  lock-true = {
+    Value = true;
+    Status = "locked";
+  };
 in
 {
   imports =
@@ -59,6 +67,7 @@ in
       userName = "parth";
       userEmail = "parth@mehrotra.me";
     };
+
 
     programs.neovim = {
       enable = true;
@@ -129,6 +138,11 @@ in
       ripgrep
       clang
 
+      _1password-gui
+      google-chrome
+      discord
+      spotify
+      slack
 
       # move these to neovim specific area 
       rust-analyzer
@@ -148,7 +162,14 @@ in
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  programs.firefox.enable = true;
+  programs._1password-gui.enable = true;
+  programs.chromium = {
+    enable = true;
+    extraOpts = {
+      "PasswordManagerEnabled" = false;
+    };
+  };
+
   programs.git.enable = true;
 
   nixpkgs.config.allowUnfree = true;
