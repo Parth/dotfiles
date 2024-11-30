@@ -24,6 +24,7 @@ in
       (import "${home-manager}/nixos")
     ];
 
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
