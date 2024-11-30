@@ -1,12 +1,9 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [
-    "/home/parth/dotfiles/nix/common/configuration.nix"
-  ];
 
-  # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  # Load nvidia driver for Xorg and Wayland
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -15,6 +12,7 @@
 
   hardware.nvidia = {
 
+    forceFullCompositionPipeline = true;
     # Modesetting is required.
     modesetting.enable = true;
 
@@ -44,4 +42,16 @@
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # this config seemed to initially make wayland the default until I forced it to be x11 at the gdm level
+  # the behavior was really strange lots of weird frame stuttering going on until x11 was the default, than
+  # many problems went away.
+  # I don't have screen tearing at this point, and that's generally my litmus test, but I do seem to have
+  # vsync issues (which I've probably never tested for before). But I do have 2 monitors with different 
+  # refresh rates, so maybe that's just my problem.
+  # maybe some combination of a new driver from nvidia and wayland will solve this at some pognt
+
+  imports = [
+    "/home/parth/dotfiles/nix/common/configuration.nix"
+  ];
 }
