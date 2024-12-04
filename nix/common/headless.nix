@@ -1,19 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
-  lock-false = {
-    Value = false;
-    Status = "locked";
-  };
-  lock-true = {
-    Value = true;
-    Status = "locked";
-  };
 in
 {
   imports =
@@ -24,22 +12,10 @@ in
       (import "${home-manager}/nixos")
     ];
 
-  
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -109,42 +85,15 @@ in
     };
   };
 
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.wayland = false;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  services.printing.enable = true;
-
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
   users.users.parth = {
     isNormalUser = true;
     description = "parth";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      fzf
+      xclip
+
       ripgrep
       clang
-
-      _1password-gui
-      google-chrome
-      discord
-      spotify
-      slack
 
       # move these to neovim specific area 
       rust-analyzer
@@ -154,31 +103,13 @@ in
     ];
   };
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
-
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "parth";
 
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
-  programs._1password-gui.enable = true;
-  programs.chromium = {
-    enable = true;
-    extraOpts = {
-      "PasswordManagerEnabled" = false;
-    };
-  };
-
   programs.git.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-
-  environment.systemPackages = with pkgs; [
-    xclip
-  ];
 
   system.stateVersion = "24.05";
 }

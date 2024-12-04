@@ -1,5 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 {
+  networking.hostName = "parth-workstation-nix";
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
@@ -52,6 +53,11 @@
   # maybe some combination of a new driver from nvidia and wayland will solve this at some pognt
 
   imports = [
-    "/home/parth/dotfiles/nix/common/configuration.nix"
+    "/home/parth/dotfiles/nix/common/headless.nix"
+    "/home/parth/dotfiles/nix/common/gui.nix"
   ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }
