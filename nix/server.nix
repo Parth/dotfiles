@@ -13,11 +13,12 @@
   };
 
   services.openssh = {
-      enable = true;
-      settings = {
-        PermitRootLogin = "yes";
-        PasswordAuthentication = true;
-      };
+    enable = true;
+    settings = {
+      PermitRootLogin = "yes";
+      PasswordAuthentication = true;
+    };
   };
 
+  systemd.services."getty@tty1".enable = false;
 }
