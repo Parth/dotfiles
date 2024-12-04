@@ -11,6 +11,8 @@
     driSupport32Bit = true;
   };
 
+  services.xserver.displayManager.gdm.wayland = false;
+
   hardware.nvidia = {
 
     forceFullCompositionPipeline = true;
