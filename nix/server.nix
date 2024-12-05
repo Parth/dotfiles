@@ -32,11 +32,15 @@
     extraPackages = with pkgs; [
       rustup
       gcc
-      gtk3
-      pkg-config
-      glib
-      gobject-introspection
-      gdk-pixbuf
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    gtk3
+    pkg-config
+    glib
+    gobject-introspection
+    gdk-pixbuf
+  ];
+
 }
