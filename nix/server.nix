@@ -32,6 +32,7 @@
     extraPackages = with pkgs; [
       rustup
       gcc
+      gtk3
     ];
   };
 }
