@@ -52,7 +52,6 @@
         pkgs.gdk-pixbuf.dev
         pkgs.pango.dev
         pkgs.cairo.dev
-        pkgs.gobject-introspection-wrapped.dev
         pkgs.gobject-introspection.dev
       ];
       # PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig:${pkgs.gobject-introspection.dev}/lib/pkgconfig:${pkgs.gdk-pixbuf.dev}/lib/pkgconfig:${pkgs.atk.dev}/lib/pkgconfig";
