@@ -33,7 +33,7 @@
       rustup
       gcc
       gtk3
-      pkgconfig
+      pkg-config
     ];
   };
 }
