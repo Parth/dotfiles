@@ -25,6 +25,7 @@
   services.github-runners.lockbook = {
       enable = true;
       name = "ci";
+      extraLabels = [ "ci" ];
       tokenFile = "/home/parth/token";
       url = "https://github.com/lockbook/lockbook";
   };
