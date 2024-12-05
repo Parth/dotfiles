@@ -34,6 +34,9 @@
       gcc
       gtk3
       pkg-config
+      glib
+      gobject-introspection
+      gdk-pixbuf
     ];
   };
 }
