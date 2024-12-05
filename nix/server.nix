@@ -32,7 +32,6 @@
     extraPackages = with pkgs; [
       rustup
       gcc
-      ci-env
       #       pkg-config
       #       gtk3
       #       glib
