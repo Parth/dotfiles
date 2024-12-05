@@ -21,4 +21,11 @@
   };
 
   systemd.services."getty@tty1".enable = false;
+
+  services.github-runners.lockbook = {
+      enable = true;
+      name = "parth-server-nix";
+      tokenFile = "/home/parth/token";
+      url = "https://github.com/lockbook/lockbook";
+  };
 }
