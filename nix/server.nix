@@ -38,8 +38,13 @@
       gobject-introspection
       gdk-pixbuf
     ];
+    serviceOverrides = {
+      ProtectSystem = "no";
+      ProtectHome = "no";
+      PrivateTmp = false;
+      PrivateDevices = false;
+    };
     extraEnvironment = {
-      PATH = "${pkgs.pkg-config}/bin:$PATH";
       PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig";
     };
   };
