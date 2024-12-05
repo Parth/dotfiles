@@ -39,6 +39,7 @@
       gobject-introspection
       gdk-pixbuf
       pango
+      cairo
     ];
     serviceOverrides = {
       ProtectSystem = "no";
