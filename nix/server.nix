@@ -32,11 +32,12 @@
     extraPackages = with pkgs; [
       rustup
       gcc
-      #       pkg-config
-      #       gtk3
-      #       glib
-      #       gobject-introspection
-      #       gdk-pixbuf
+
+      pkg-config
+      gtk3
+      glib
+      gobject-introspection
+      gdk-pixbuf
     ];
     serviceOverrides = {
       ProtectSystem = "no";
@@ -44,22 +45,22 @@
       PrivateTmp = false;
       PrivateDevices = false;
     };
-    #     extraEnvironment = {
-    #       PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig:${pkgs.gobject-introspection.dev}/lib/pkgconfig:${pkgs.gdk-pixbuf.dev}/lib/pkgconfig:${pkgs.atk.dev}/lib/pkgconfig";
-    #     };
+    extraEnvironment = {
+      PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig:${pkgs.gobject-introspection.dev}/lib/pkgconfig:${pkgs.gdk-pixbuf.dev}/lib/pkgconfig:${pkgs.atk.dev}/lib/pkgconfig";
+    };
   };
 
-  environment.systemPackages = with pkgs; [
-    (buildEnv {
-      name = "ci-env";
-      paths = [
-        pkg-config
-        gtk3
-        glib
-        gobject-introspection
-        gdk-pixbuf
-        atk
-      ];
-    })
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   (buildEnv {
+  #     name = "ci-env";
+  #     paths = [
+  #       pkg-config
+  #       gtk3
+  #       glib
+  #       gobject-introspection
+  #       gdk-pixbuf
+  #       atk
+  #     ];
+  #   })
+  # ];
 }
