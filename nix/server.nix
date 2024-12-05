@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   imports = [
     "/home/parth/dotfiles/nix/common/headless.nix"
   ];
@@ -28,5 +28,8 @@
       extraLabels = [ "ci" ];
       tokenFile = "/home/parth/token";
       url = "https://github.com/lockbook/lockbook";
+      extraPackages = with pkgs; [
+        rustup
+      ];
   };
 }
