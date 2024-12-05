@@ -33,13 +33,13 @@
       rustup
       gcc
 
-      pkg-config
-      gtk3
-      glib
-      gobject-introspection
-      gdk-pixbuf
-      pango
-      cairo
+      # pkg-config
+      # gtk3
+      # glib
+      # gobject-introspection
+      # gdk-pixbuf
+      # pango
+      # cairo
     ];
     serviceOverrides = {
       ProtectSystem = "no";
@@ -48,15 +48,16 @@
       PrivateDevices = false;
     };
     extraEnvironment = {
-      PKG_CONFIG_PATH = lib.makeSearchPath "pkgconfig" [
-        pkgs.gtk3.dev
-        pkgs.glib.dev
-        pkgs.gdk-pixbuf.dev
-        pkgs.atk.dev
-        pkgs.pango.dev
-        pkgs.cairo.dev
-        pkgs.gobject-introspection.dev
-      ];
+      NIX_PATH = "/nix/var/nix/profiles/per-user/root/channels/nixos";
+      # PKG_CONFIG_PATH = lib.makeSearchPath "pkgconfig" [
+      #   pkgs.gtk3.dev
+      #   pkgs.glib.dev
+      #   pkgs.gdk-pixbuf.dev
+      #   pkgs.atk.dev
+      #   pkgs.pango.dev
+      #   pkgs.cairo.dev
+      #   pkgs.gobject-introspection.dev
+      # ];
     };
   };
 
