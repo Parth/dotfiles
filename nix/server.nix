@@ -31,6 +31,7 @@
     url = "https://github.com/lockbook/lockbook";
     extraPackages = with pkgs; [
       rustup
+      gcc
     ];
   };
 }
