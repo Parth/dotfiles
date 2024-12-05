@@ -33,6 +33,9 @@
       rustup
       gcc
     ];
+    extraEnvironment = {
+      PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig";
+    };
   };
 
   environment.systemPackages = with pkgs; [
