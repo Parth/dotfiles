@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, concatStringsSep, ... }: {
   imports = [
     "/home/parth/dotfiles/nix/common/headless.nix"
   ];
