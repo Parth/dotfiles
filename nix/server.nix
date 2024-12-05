@@ -49,7 +49,6 @@
     extraEnvironment = {
       PKG_CONFIG_PATH = lib.makeSearchPath "pkgconfig" [
         pkgs.gtk3.dev
-        pkgs.gdk3.dev
         pkgs.glib.dev
         pkgs.gdk-pixbuf.dev
         pkgs.atk.dev
