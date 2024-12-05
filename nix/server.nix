@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     "/home/parth/dotfiles/nix/common/headless.nix"
   ];
@@ -23,13 +23,14 @@
   systemd.services."getty@tty1".enable = false;
 
   services.github-runners.lockbook = {
-      enable = true;
-      name = "lockbook ci";
-      extraLabels = [ "ci" ];
-      tokenFile = "/home/parth/token";
-      url = "https://github.com/lockbook/lockbook";
-      extraPackages = with pkgs; [
-        rustup
-      ];
+    enable = true;
+    name = "lockbook ci";
+    user = "parth";
+    extraLabels = [ "ci" ];
+    tokenFile = "/home/parth/token";
+    url = "https://github.com/lockbook/lockbook";
+    extraPackages = with pkgs; [
+      rustup
+    ];
   };
 }

@@ -90,6 +90,7 @@ in
     description = "parth";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      fzf
       xclip
 
       ripgrep
