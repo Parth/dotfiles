@@ -1,4 +1,4 @@
-{ pkgs, concatStringsSep, ... }: {
+{ pkgs, ... }: {
   imports = [
     "/home/parth/dotfiles/nix/common/headless.nix"
   ];
@@ -45,13 +45,7 @@
       PrivateDevices = false;
     };
     extraEnvironment = {
-      PKG_CONFIG_PATH = concatStringsSep ":" [
-        "${pkgs.gtk3.dev}/lib/pkgconfig"
-        "${pkgs.glib.dev}/lib/pkgconfig"
-        "${pkgs.gobject-introspection.dev}/lib/pkgconfig"
-        "${pkgs.gdk-pixbuf.dev}/lib/pkgconfig"
-        "${pkgs.atk.dev}/lib/pkgconfig"
-      ];
+      PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig:${pkgs.gobject-introspection.dev}/lib/pkgconfig:${pkgs.gdk-pixbuf.dev}/lib/pkgconfig:${pkgs.atk.dev}/lib/pkgconfig";
     };
   };
 
