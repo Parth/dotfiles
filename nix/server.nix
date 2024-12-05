@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   imports = [
     "/home/parth/dotfiles/nix/common/headless.nix"
   ];
