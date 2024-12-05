@@ -32,7 +32,7 @@
     extraPackages = with pkgs; [
       rustup
       gcc
-      xkbcommon
+      libxkbcommon
     ];
     serviceOverrides = {
       ProtectSystem = "no";
@@ -42,7 +42,7 @@
     };
     extraEnvironment = {
       NIX_PATH = "/nix/var/nix/profiles/per-user/root/channels/nixos";
-      # LIBRARY_PATH = "${pkgs.xkbcommon}/lib";
+      LIBRARY_PATH = "${pkgs.libxkbcommon}/lib";
     };
   };
 }
