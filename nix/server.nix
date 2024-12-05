@@ -32,18 +32,20 @@
     extraPackages = with pkgs; [
       rustup
       gcc
+      pkg-config
+      gtk3
+      glib
+      gobject-introspection
+      gdk-pixbuf
     ];
     extraEnvironment = {
+      PATH = "${pkgs.pkg-config}/bin:$PATH";
       PKG_CONFIG_PATH = "${pkgs.gtk3.dev}/lib/pkgconfig:${pkgs.glib.dev}/lib/pkgconfig";
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    pkg-config
-    gtk3
-    glib
-    gobject-introspection
-    gdk-pixbuf
-  ];
+  # environment.systemPackages = with pkgs; [
+
+  # ];
 
 }
