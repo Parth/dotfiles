@@ -5,6 +5,9 @@
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "parth";
+  services.xserver = {
+    xkb.options = "caps:escape";
+  };
 
   services.xserver.xkb = {
     layout = "us";

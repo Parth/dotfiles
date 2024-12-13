@@ -112,6 +112,10 @@ in
           cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/tracing-gcp.git
       fi
     '';
+
+    home.sessionPath = [
+      "$HOME/.cargo/bin"
+    ];
   };
 
   users.users.parth = {
