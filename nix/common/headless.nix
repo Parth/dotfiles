@@ -106,6 +106,11 @@ in
           mkdir -p $HOME/Documents/lockbook/;
           cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/cli-rs.git
       fi
+
+      if [ ! -d $HOME/Documents/lockbook/tracing-gcp ]; then
+          mkdir -p $HOME/Documents/lockbook/;
+          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/tracing-gcp.git
+      fi
     '';
   };
 
