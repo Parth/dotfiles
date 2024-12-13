@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz";
@@ -83,6 +83,30 @@ in
         recursive = true;
       };
     };
+
+    home.activation.cloneLockbook = lib.mkAfter ''
+      #!/usr/bin/env bash
+
+      if [ ! -d $HOME/Documents/lockbook/lockbook ]; then
+          mkdir -p $HOME/Documents/lockbook/;
+          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/lockbook.git
+      fi
+
+      if [ ! -d $HOME/Documents/lockbook/nixpkgs ]; then
+          mkdir -p $HOME/Documents/lockbook/;
+          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/nixpkgs.git
+      fi
+
+      if [ ! -d $HOME/Documents/lockbook/db-rs ]; then
+          mkdir -p $HOME/Documents/lockbook/;
+          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/db-rs.git
+      fi
+
+      if [ ! -d $HOME/Documents/lockbook/cli-rs ]; then
+          mkdir -p $HOME/Documents/lockbook/;
+          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/cli-rs.git
+      fi
+    '';
   };
 
   users.users.parth = {
@@ -95,6 +119,8 @@ in
 
       ripgrep
       clang
+
+      samba
 
       # move these to neovim specific area 
       rust-analyzer
