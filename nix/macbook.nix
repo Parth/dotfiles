@@ -1,4 +1,3 @@
-
 {
   description = "Example nix-darwin system flake";
 
@@ -11,11 +10,11 @@
   };
 
   outputs =
-    inputs@{
-      self,
-      nix-darwin,
-      nixpkgs,
-      home-manager,
+    inputs@{ self
+    , nix-darwin
+    , nixpkgs
+    , home-manager
+    ,
     }:
     let
       configuration =
@@ -23,15 +22,27 @@
         {
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
-          environment.systemPackages = [
-            pkgs.vim
+          environment.systemPackages = with pkgs; [
+            fzf
+            xclip
+
+            ripgrep
+            clang
+
+            samba
+
+            # move these to neovim specific area 
+            rust-analyzer
+            rustup
+
+            nixd
+
+            nixpkgs-fmt
           ];
 
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
 
-          # Enable alternative shell support in nix-darwin.
-          # programs.fish.enable = true;
 
           # Set Git commit hash for darwin-version.
           system.configurationRevision = self.rev or self.dirtyRev or null;
@@ -50,10 +61,13 @@
               	'';
           };
 
+          users.knownUsers = [ "parth" ];
+          users.users.parth.uid = 501;
+
           users.users.parth = {
-              home = "/Users/parth";
-              shell = pkgs.fish;
-            };
+            home = "/Users/parth";
+            shell = pkgs.fish;
+          };
         };
     in
     {
@@ -67,17 +81,52 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-             home-manager.users.parth = { pkgs, ...}: {
-             home.stateVersion = "24.05";
+            home-manager.users.parth = { pkgs, ... }: {
+              home.stateVersion = "24.05";
 
-programs.git = {
-      enable = true;
-      userName = "parth";
-      userEmail = "parth@mehrotra.me";
-    };
+              programs.git = {
+                enable = true;
+                userName = "parth";
+                userEmail = "parth@mehrotra.me";
+              };
 
-            #   
-             };
+              programs.neovim = {
+                enable = true;
+                plugins = with pkgs.vimPlugins; [
+                  nvim-web-devicons
+                  telescope-nvim
+                  nvim-cmp
+                  cmp-nvim-lsp
+                  vim-illuminate
+                  lualine-nvim
+                  lsp-status-nvim
+                  nvim-tree-lua
+                  nvim-lspconfig
+                  luasnip
+                  # todo replace "FabijanZulj/blame.nvim",
+                ];
+
+                extraPackages = with pkgs; [
+                  lua-language-server
+                  # i would like to configure this here but rustup does some wack shit
+                  # rust-analyzer
+                ];
+
+                # extraLuaConfig = ''
+                # 	dofile("/home/parth/dotfiles/nvim/init.lua")
+                # '';
+              };
+
+
+
+              xdg.configFile = {
+                "nvim" = {
+                  source = /Users/parth/dotfiles/nvim;
+                  recursive = true;
+                };
+              };
+
+            };
           }
         ];
       };
