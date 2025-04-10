@@ -40,6 +40,10 @@
             nixpkgs-fmt
           ];
 
+          fonts.packages = with pkgs; [
+            nerd-fonts.jetbrains-mono
+
+          ];
           # Necessary for using flakes on this system.
           nix.settings.experimental-features = "nix-command flakes";
 
