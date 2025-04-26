@@ -7,6 +7,7 @@
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
   };
 
   outputs =
@@ -14,6 +15,7 @@
     , nix-darwin
     , nixpkgs
     , home-manager
+    , nix-homebrew
     ,
     }:
     let
@@ -22,12 +24,15 @@
         {
           # List packages installed in system profile. To search by name, run:
           # $ nix-env -qaP | grep wget
+
+          nixpkgs.config.allowUnfree = true;
+          homebrew.enable = true;
+
           environment.systemPackages = with pkgs; [
             fzf
             xclip
 
             ripgrep
-            clang
 
             samba
 
@@ -35,9 +40,14 @@
             rust-analyzer
             rustup
 
+            # listing clang here makes the macOS clang act strange
+
             nixd
 
             nixpkgs-fmt
+
+            helix
+
           ];
 
           fonts.packages = with pkgs; [
@@ -65,6 +75,7 @@
               	'';
           };
 
+
           users.knownUsers = [ "parth" ];
           users.users.parth.uid = 501;
 
@@ -72,6 +83,12 @@
             home = "/Users/parth";
             shell = pkgs.fish;
           };
+
+          system.keyboard = {
+            enableKeyMapping = true;
+            remapCapsLockToEscape = true;
+          };
+
         };
     in
     {
@@ -81,11 +98,39 @@
         modules = [
           configuration
 
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              enable = true;
+              user = "parth";
+            };
+
+            homebrew = {
+              enable = true;
+
+              masApps = {
+                "XCode" = 497799835;
+                # "Final Cut Pro" = 424389933;
+                "Lockbook" = 1526775001;
+                # 1password
+              };
+
+              casks = [
+                "alacritty"
+                "google-chrome"
+                "nikitabobko/tap/aerospace"
+                # discord
+                # ableton-live-standard
+                # spotify
+              ];
+            };
+          }
+
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.parth = { pkgs, ... }: {
+            home-manager.users.parth = { pkgs, lib, ... }: {
               home.stateVersion = "24.05";
 
               programs.git = {
@@ -93,6 +138,7 @@
                 userName = "parth";
                 userEmail = "parth@mehrotra.me";
               };
+
 
               programs.neovim = {
                 enable = true;
@@ -104,6 +150,7 @@
                   vim-illuminate
                   lualine-nvim
                   lsp-status-nvim
+
                   nvim-tree-lua
                   nvim-lspconfig
                   luasnip
@@ -124,12 +171,19 @@
 
 
               xdg.configFile = {
+
                 "nvim" = {
                   source = /Users/parth/dotfiles/nvim;
                   recursive = true;
                 };
               };
 
+              home.activation.removeAlacrittyQuarantine = lib.mkAfter ''
+                if [ -d /Applications/Alacritty.app ]; then
+                  echo "Removing quarantine from Alacritty.app..."
+                  /usr/bin/xattr -d -r com.apple.quarantine /Applications/Alacritty.app || true
+                fi
+              '';
             };
           }
         ];
