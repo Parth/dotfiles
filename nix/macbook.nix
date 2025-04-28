@@ -22,44 +22,29 @@
       configuration =
         { pkgs, ... }:
         {
-          # List packages installed in system profile. To search by name, run:
-          # $ nix-env -qaP | grep wget
-
           nixpkgs.config.allowUnfree = true;
+          nix.settings.experimental-features = "nix-command flakes";
           homebrew.enable = true;
 
+          # Set Git commit hash for darwin-version.
+          system.configurationRevision = self.rev or self.dirtyRev or null;
+
           environment.systemPackages = with pkgs; [
-            fzf
-            xclip
-
-            ripgrep
-
-            samba
-
-            # move these to neovim specific area 
-            rust-analyzer
-            rustup
-
-            # listing clang here makes the macOS clang act strange
-
-            nixd
-
-            nixpkgs-fmt
-
             helix
 
+            fzf
+
+            nixpkgs-fmt
+            nixd
+            rust-analyzer
+            rustup
+            # listing clang here makes the macOS clang act strange
           ];
 
           fonts.packages = with pkgs; [
             nerd-fonts.jetbrains-mono
-
           ];
-          # Necessary for using flakes on this system.
-          nix.settings.experimental-features = "nix-command flakes";
 
-
-          # Set Git commit hash for darwin-version.
-          system.configurationRevision = self.rev or self.dirtyRev or null;
 
           # Used for backwards compatibility, please read the changelog before changing.
           # $ darwin-rebuild changelog
@@ -75,7 +60,6 @@
               	'';
           };
 
-
           users.knownUsers = [ "parth" ];
           users.users.parth.uid = 501;
 
@@ -88,7 +72,6 @@
             enableKeyMapping = true;
             remapCapsLockToEscape = true;
           };
-
         };
     in
     {
@@ -140,7 +123,6 @@
                 userEmail = "parth@mehrotra.me";
               };
 
-
               programs.neovim = {
                 enable = true;
                 plugins = with pkgs.vimPlugins; [
@@ -172,9 +154,13 @@
 
 
               xdg.configFile = {
-
                 "nvim" = {
                   source = /Users/parth/dotfiles/nvim;
+                  recursive = true;
+                };
+
+                "helix" = {
+                  source = /Users/parth/dotfiles/helix;
                   recursive = true;
                 };
               };
@@ -246,12 +232,12 @@
                 #                 See:
                 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
                 [gaps]
-                    inner.horizontal = 0
-                    inner.vertical =   0
-                    outer.left =       0
-                    outer.bottom =     0
-                    outer.top =        0
-                    outer.right =      0
+                    inner.horizontal = 6
+                    inner.vertical =   6
+                    outer.left =       6
+                    outer.bottom =     6
+                    outer.top =        6
+                    outer.right =      6
 
                 # 'main' binding mode declaration
                 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -403,6 +389,7 @@
             };
           }
         ];
+
       };
     };
 }
