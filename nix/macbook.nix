@@ -34,6 +34,7 @@
 
             fzf
 
+            lua-language-server
             nixpkgs-fmt
             nixd
             rust-analyzer
@@ -99,7 +100,7 @@
               };
 
               casks = [
-                "alacritty"
+                "wezterm"
                 "google-chrome"
                 "nikitabobko/tap/aerospace"
                 # discord
@@ -163,14 +164,17 @@
                   source = /Users/parth/dotfiles/helix;
                   recursive = true;
                 };
-              };
 
-              home.activation.removeAlacrittyQuarantine = lib.mkAfter ''
-                if [ -d /Applications/Alacritty.app ]; then
-                  echo "Removing quarantine from Alacritty.app..."
-                  /usr/bin/xattr -d -r com.apple.quarantine /Applications/Alacritty.app || true
-                fi
-              '';
+                "aerospace" = {
+                  source = /Users/parth/dotfiles/aerospace;
+                  recursive = true;
+                };
+
+                "wezterm" = {
+                  source = /Users/parth/dotfiles/wezterm;
+                  recursive = true;
+                };
+              };
 
               home.file.".aerospace.toml".text = ''
                 # Place a copy of this config to ~/.aerospace.toml

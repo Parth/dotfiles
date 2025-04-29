@@ -1,4 +1,6 @@
-theme = "onedark"
+theme = "tokyonight"
 
-[editor.cursor-shape]
-insert = "bar"
+[editor]
+cursor-shape = { insert = "bar" }
+cursorline = true
+cursorcolumn = true
