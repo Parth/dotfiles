@@ -14,7 +14,7 @@ config.macos_window_background_blur = 100
 config.win32_system_backdrop = 'Acrylic'
 
 if wezterm.gui.get_appearance():find 'Dark' then
-    config.window_background_opacity = 0.5
+    config.window_background_opacity = 1.0
     config.colors = {
         ansi = {
             '#505050', -- black
@@ -38,9 +38,8 @@ if wezterm.gui.get_appearance():find 'Dark' then
         },
 
         foreground = '#FFFFFF',
-        background = '#1A1A1A',
-
-    }
+        background = '#000000',
+   }
 else
     config.colors = {
         ansi = {
@@ -64,7 +63,7 @@ else
             '#1A1A1A', -- brwhite
         },
 
-        foreground = '#1A1A1A',
+        foreground = '#000000',
         background = '#FFFFFF',
     }
 end

@@ -1,4 +1,4 @@
-theme = "tokyonight"
+theme = "base16_default"
 
 [editor]
 cursor-shape = { insert = "bar" }

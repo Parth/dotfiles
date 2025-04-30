@@ -64,7 +64,6 @@ in
       ];
 
       extraPackages = with pkgs; [
-        nixpkgs-fmt
         lua-language-server
         # i would like to configure this here but rustup does some wack shit
         # rust-analyzer
@@ -82,37 +81,22 @@ in
         source = /home/parth/dotfiles/nvim;
         recursive = true;
       };
+
+      "helix" = {
+        source = /home/parth/dotfiles/helix;
+        recursive = true;
+      };
+
+      "aerospace" = {
+        source = /home/parth/dotfiles/aerospace;
+        recursive = true;
+      };
+
+      "wezterm" = {
+        source = /home/parth/dotfiles/wezterm;
+        recursive = true;
+      };
     };
-
-    home.activation.cloneLockbook = lib.mkAfter ''
-      #!/usr/bin/env bash
-
-      if [ ! -d $HOME/Documents/lockbook/lockbook ]; then
-          mkdir -p $HOME/Documents/lockbook/;
-          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/lockbook.git
-      fi
-
-      if [ ! -d $HOME/Documents/lockbook/nixpkgs ]; then
-          mkdir -p $HOME/Documents/lockbook/;
-          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/nixpkgs.git
-      fi
-
-      if [ ! -d $HOME/Documents/lockbook/db-rs ]; then
-          mkdir -p $HOME/Documents/lockbook/;
-          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/db-rs.git
-      fi
-
-      if [ ! -d $HOME/Documents/lockbook/cli-rs ]; then
-          mkdir -p $HOME/Documents/lockbook/;
-          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/cli-rs.git
-      fi
-
-      if [ ! -d $HOME/Documents/lockbook/tracing-gcp ]; then
-          mkdir -p $HOME/Documents/lockbook/;
-          cd $HOME/Documents/lockbook && git clone git@github.com:lockbook/tracing-gcp.git
-      fi
-    '';
-
     home.sessionPath = [
       "$HOME/.cargo/bin"
     ];
@@ -123,6 +107,8 @@ in
     description = "parth";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      helix
+
       fzf
       xclip
 
@@ -131,11 +117,11 @@ in
 
       samba
 
-      # move these to neovim specific area 
       rust-analyzer
       rustup
-
       nixd
+      lua-language-server
+      nixpkgs-fmt
     ];
   };
 

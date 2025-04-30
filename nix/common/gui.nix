@@ -1,21 +1,21 @@
 { pkgs, ... }: {
 
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "parth";
-  services.xserver = {
-    xkb.options = "caps:escape";
-  };
 
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+  # from: https://wiki.nixos.org/wiki/Sway
+  environment.systemPackages = with pkgs; [
+    grim
+    slurp
+    wl-clipboard
+    mako
+  ];
+  services.gnome.gnome-keyring.enable = true;
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
   };
+  # end sway
 
   services.printing.enable = true;
-
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -34,7 +34,8 @@
     google-chrome
     discord
     spotify
-    slack
+    wezterm
+    lockbook-desktop
   ];
 
   programs._1password-gui.enable = true;
