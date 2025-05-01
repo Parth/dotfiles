@@ -6,23 +6,13 @@ set $down j
 set $up k
 set $right l
 
-set $term foot
+set $term wezterm
 # Your preferred application launcher
 set $menu wmenu-run
 
 output 'LG Electronics LG ULTRAGEAR 301NTZNBU797' mode 3840x2160 position 3335,1420
 output 'California Institute of Technology HDMI demoset-1' mode 1920x1200 position 4038,3580
 output 'LG Electronics LG HDR 4K 111NTMX7X891' mode 3840x2160 position 1175,407 transform 90
-
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /run/current-system/sw/share/backgrounds/sway/)
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
 
 ### Idle configuration
 #

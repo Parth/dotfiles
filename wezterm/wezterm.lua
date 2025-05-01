@@ -13,8 +13,9 @@ config.window_padding = {
 config.macos_window_background_blur = 100
 config.win32_system_backdrop = 'Acrylic'
 
+-- presently broken on linux as my system has no real way to set dark / light mode
+
 if wezterm.gui.get_appearance():find 'Dark' then
-    config.window_background_opacity = 1.0
     config.colors = {
         ansi = {
             '#505050', -- black
