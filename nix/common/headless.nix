@@ -96,6 +96,10 @@ in
         source = /home/parth/dotfiles/wezterm;
         recursive = true;
       };
+      "sway" = {
+        source = /home/parth/dotfiles/sway;
+        recursive = true;
+      };
     };
     home.sessionPath = [
       "$HOME/.cargo/bin"

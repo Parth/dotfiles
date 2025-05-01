@@ -7,6 +7,7 @@
     slurp
     wl-clipboard
     mako
+    wdisplays
   ];
   services.gnome.gnome-keyring.enable = true;
   programs.sway = {
