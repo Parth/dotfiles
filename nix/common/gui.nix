@@ -54,4 +54,10 @@
 
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = [ "parth" ];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
+
 }

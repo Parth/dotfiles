@@ -14,6 +14,7 @@ config.macos_window_background_blur = 100
 config.win32_system_backdrop = 'Acrylic'
 
 -- presently broken on linux as my system has no real way to set dark / light mode
+print(wezterm.gui.get_appearance())
 
 if wezterm.gui.get_appearance():find 'Dark' then
     config.colors = {
