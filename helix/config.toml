@@ -4,3 +4,8 @@ theme = "base16_default"
 cursor-shape = { insert = "bar" }
 cursorline = true
 cursorcolumn = true
+indent-guides = { render = true, skip-levels = 1 }
+
+# status line desires
+# git info
+# lsp info

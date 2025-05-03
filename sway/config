@@ -1,3 +1,5 @@
+input "type:keyboard" xkb_options caps:escape
+
 # todo: Use Mod1 for Alt.
 set $mod Mod4
 
@@ -8,9 +10,10 @@ set $down j
 set $up k
 set $right l
 
-set $term wezterm
-# Your preferred application launcher
-set $menu wmenu-run
+bindsym $mod+Return exec wezterm
+bindsym $mod+backslash exec google-chrome-stable
+bindsym $mod+Space exec wmenu-run
+bindsym $mod+o exec lockbook-desktop
 
 output 'LG Electronics LG ULTRAGEAR 301NTZNBU797' mode 3840x2160 position 3335,1420
 output 'California Institute of Technology HDMI demoset-1' mode 1920x1200 position 4038,3580
@@ -47,14 +50,10 @@ output 'LG Electronics LG HDR 4K 111NTMX7X891' mode 3840x2160 position 1175,407 
 #
 # Basics:
 #
-    # Start a terminal
-    bindsym $mod+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
-    # Start your launcher
-    bindsym $mod+d exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -140,7 +139,7 @@ output 'LG Electronics LG HDR 4K 111NTMX7X891' mode 3840x2160 position 1175,407 
     bindsym $mod+Shift+space floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+space focus mode_toggle
+    bindsym $mod+t focus mode_toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
