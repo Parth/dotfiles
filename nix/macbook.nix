@@ -103,6 +103,7 @@
                 "wezterm"
                 "google-chrome"
                 "nikitabobko/tap/aerospace"
+                "insta360-studio"
                 # discord
                 # ableton-live-standard
                 # spotify
