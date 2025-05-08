@@ -42,6 +42,9 @@
     spotify
     wezterm
     lockbook-desktop
+    obs-studio
+    nautilus
+    vlc
   ];
 
   programs._1password-gui.enable = true;

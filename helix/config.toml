@@ -1,3 +1,5 @@
+# hard to tell when 2 suggestions which one is selected in code completion
+# when grepping sometimes previews are un-viewable
 theme = "base16_default"
 
 [editor]
@@ -9,3 +11,18 @@ indent-guides = { render = true, skip-levels = 1 }
 # status line desires
 # git info
 # lsp info
+#
+# ]d should prioritize errors 
+#
+# helix config lsp?
+# toml auto formatter?
+
+[keys.insert]
+# would like to be able to scroll down and up with C-j C-k, tbd on whether cursor should move
+C-e = "insert_at_line_end"
+
+[keys.normal]
+esc = ":wa"
+
+[keys.normal."space"]
+E = "@ D%p !tests %s ERROR"
