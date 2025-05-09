@@ -1,5 +1,9 @@
 # hard to tell when 2 suggestions which one is selected in code completion
 # when grepping sometimes previews are un-viewable
+# find references of get_usage the bar is blue the text is the same blue and I
+# can't see what's going on
+#
+# symbol highlighting also not working, possibly a theme problem
 theme = "base16_default"
 
 [editor]
