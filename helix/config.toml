@@ -4,7 +4,7 @@
 # can't see what's going on
 #
 # symbol highlighting also not working, possibly a theme problem
-theme = "base16_default"
+# theme = "base16_default"
 
 [editor]
 cursor-shape = { insert = "bar" }
