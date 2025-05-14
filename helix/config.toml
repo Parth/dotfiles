@@ -4,6 +4,8 @@
 # can't see what's going on
 #
 # symbol highlighting also not working, possibly a theme problem
+#
+# we cannot use any red for the text -- the diagnostics are shown in the top right and the clash is prohibitive
 theme = "base16_default"
 
 [editor]
@@ -26,7 +28,8 @@ indent-guides = { render = true, skip-levels = 1 }
 C-e = "insert_at_line_end"
 
 [keys.normal]
-esc = ":wa"
+esc = ":write-all"
+C-r = ":reload-all"
 
 [keys.normal."space"]
 E = "@ D%p !tests %s ERROR"
