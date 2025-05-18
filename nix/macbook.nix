@@ -58,6 +58,7 @@
             enable = true;
             shellInit = ''
               		fish_vi_key_bindings
+                  set -gx PATH $HOME/.cargo/bin $PATH
               	'';
           };
 
@@ -152,8 +153,6 @@
                 # 	dofile("/home/parth/dotfiles/nvim/init.lua")
                 # '';
               };
-
-
 
               xdg.configFile = {
                 "nvim" = {
