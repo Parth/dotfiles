@@ -35,6 +35,7 @@
             fzf
 
             lua-language-server
+            zola
             nixpkgs-fmt
             nixd
             rust-analyzer
@@ -98,6 +99,7 @@
                 # "Final Cut Pro" = 424389933;
                 "Lockbook" = 1526775001;
                 # 1password
+                "Lightroom" = 1451544217;
               };
 
               casks = [
@@ -105,6 +107,7 @@
                 "google-chrome"
                 "nikitabobko/tap/aerospace"
                 "insta360-studio"
+                "adobe-creative-cloud"
                 # discord
                 # ableton-live-standard
                 # spotify

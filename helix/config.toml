@@ -1,3 +1,5 @@
+theme = "adwaita-dark"
+
 # hard to tell when 2 suggestions which one is selected in code completion
 # when grepping sometimes previews are un-viewable
 # find references of get_usage the bar is blue the text is the same blue and I
@@ -6,7 +8,7 @@
 # symbol highlighting also not working, possibly a theme problem
 #
 # we cannot use any red for the text -- the diagnostics are shown in the top right and the clash is prohibitive
-theme = "base16_default"
+# theme = "base16_default"
 
 [editor]
 cursor-shape = { insert = "bar" }
@@ -30,6 +32,8 @@ C-e = "insert_at_line_end"
 [keys.normal]
 esc = ":write-all"
 C-r = ":reload-all"
+C-l = ":theme adwaita-light"
+C-k = ":theme adwaita-dark"
 
 [keys.normal."space"]
 E = "@ D%p !tests %s ERROR"
