@@ -112,6 +112,8 @@ in
     description = "parth";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      zola
+
       helix
 
       fzf
