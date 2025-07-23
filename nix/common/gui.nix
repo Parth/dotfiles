@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
 
 
   # from: https://wiki.nixos.org/wiki/Sway
@@ -22,7 +22,7 @@
   # end sway
 
   services.printing.enable = true;
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -31,9 +31,7 @@
     pulse.enable = true;
   };
 
-  fonts.packages = with pkgs; [
-    nerdfonts
-  ];
+  fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   users.users.parth.packages = with pkgs; [
     _1password-gui
