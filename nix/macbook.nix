@@ -40,6 +40,7 @@
             nixd
             rust-analyzer
             rustup
+            lockbook
             # listing clang here makes the macOS clang act strange
           ];
 
@@ -127,6 +128,9 @@
                 enable = true;
                 userName = "parth";
                 userEmail = "parth@mehrotra.me";
+                extraConfig = {
+                  push.default = "current";
+                };
               };
 
               programs.neovim = {
