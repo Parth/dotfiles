@@ -129,6 +129,8 @@ in
       nixd
       lua-language-server
       nixpkgs-fmt
+
+      google-cloud-sdk
     ];
   };
 
