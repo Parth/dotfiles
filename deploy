@@ -7,7 +7,21 @@ prompt_install() {
     if echo "$answer" | grep -iq "^y" ;then
         # This could def use community support
         if [ "$(uname)" = "Linux" ] && [ -x "$(command -v apt)" ]; then
-            sudo apt install $1 -y
+            if [ "$1" = "neovim" ]; then
+                # Install latest neovim from source
+                sudo apt install -y build-essential cmake gettext libtool libtool-bin autoconf automake pkg-config unzip curl doxygen ninja-build
+                cd /tmp
+                git clone --branch release-0.11 git@github.com:neovim/neovim.git
+                cd neovim
+                git checkout stable
+                # Use Unix Makefiles to avoid ninja path issues
+                make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_GENERATOR="Unix Makefiles" CMAKE_INSTALL_PREFIX=/usr
+                sudo make install
+                cd ..
+                sudo rm -rf neovim
+            else
+                sudo apt install $1 -y
+            fi
 
         elif [ "$(uname)" = "Darwin" ] && [ -x "$(command -v brew)" ]; then
             # Determine machine's architecture
