@@ -45,6 +45,9 @@ in
       enable = true;
       userName = "parth";
       userEmail = "parth@mehrotra.me";
+      extraConfig = {
+        push.default = "current";
+      };
     };
 
 
@@ -131,6 +134,7 @@ in
       nixpkgs-fmt
 
       google-cloud-sdk
+      lockbook
     ];
   };
 

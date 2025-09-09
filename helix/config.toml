@@ -37,3 +37,5 @@ C-k = ":theme adwaita-dark"
 
 [keys.normal."space"]
 E = "@ D%p !tests %s ERROR"
+e = "@ D %s ERROR"
+W = "@ D%p !tests %s"

@@ -97,9 +97,8 @@
 
               masApps = {
                 "XCode" = 497799835;
-                # "Final Cut Pro" = 424389933;
+                "Final Cut Pro" = 424389933;
                 "Lockbook" = 1526775001;
-                # 1password
                 "Lightroom" = 1451544217;
               };
 
@@ -109,9 +108,9 @@
                 "nikitabobko/tap/aerospace"
                 "insta360-studio"
                 "adobe-creative-cloud"
-                # discord
-                # ableton-live-standard
-                # spotify
+                "discord"
+                "1password"
+                "spotify"
               ];
             };
           }
@@ -404,3 +403,4 @@
       };
     };
 }
+# https://github.com/dustinlyons/nixos-config/blob/8a14e1f0da074b3f9060e8c822164d922bfeec29/modules/darwin/home-manager.nix#L74
