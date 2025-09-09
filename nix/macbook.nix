@@ -81,7 +81,7 @@
     {
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .#simple
-      darwinConfigurations."parth-macbook" = nix-darwin.lib.darwinSystem {
+      darwinConfigurations."parth-mbp" = nix-darwin.lib.darwinSystem {
         modules = [
           configuration
 
