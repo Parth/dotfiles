@@ -66,6 +66,7 @@
 
           users.knownUsers = [ "parth" ];
           users.users.parth.uid = 501;
+          system.primaryUser = "parth";
 
           users.users.parth = {
             home = "/Users/parth";
