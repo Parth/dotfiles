@@ -112,6 +112,7 @@
                 "discord"
                 "1password"
                 "spotify"
+                "chatgpt"
               ];
             };
           }
