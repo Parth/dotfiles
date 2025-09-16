@@ -113,6 +113,8 @@
                 "1password"
                 "spotify"
                 "chatgpt"
+                "makemkv"
+                "musescore"
               ];
             };
           }
