@@ -45,6 +45,7 @@ in
       enable = true;
       userName = "parth";
       userEmail = "parth@mehrotra.me";
+      lfs.enable = true;
       extraConfig = {
         push.default = "current";
       };
@@ -135,6 +136,8 @@ in
 
       google-cloud-sdk
       lockbook
+
+      git-lfs
     ];
   };
 
