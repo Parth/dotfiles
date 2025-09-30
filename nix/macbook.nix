@@ -31,6 +31,7 @@
 
           environment.systemPackages = with pkgs; [
             helix
+            ffmpeg_6
 
             fzf
 
@@ -107,6 +108,7 @@
               };
 
               casks = [
+                "gimp"
                 "wezterm"
                 "google-chrome"
                 "nikitabobko/tap/aerospace"
