@@ -31,6 +31,7 @@
 
           environment.systemPackages = with pkgs; [
             helix
+            ffmpeg_6
 
             fzf
 
@@ -53,14 +54,19 @@
           # $ darwin-rebuild changelog
           system.stateVersion = 6;
 
+          system.defaults.dock.autohide = true;
+
           # The platform the configuration will be used on.
           nixpkgs.hostPlatform = "aarch64-darwin";
 
+
           programs.fish = {
             enable = true;
-            shellInit = ''
+            interactiveShellInit = ''
               		fish_vi_key_bindings
-                  set -gx PATH $HOME/.cargo/bin $PATH
+                  set -Ux PATH $HOME/.cargo/bin $PATH
+                  set -gx EDITOR nvim
+                  set -gx VISUAL nvim
               	'';
           };
 
@@ -104,6 +110,7 @@
               };
 
               casks = [
+                "gimp"
                 "wezterm"
                 "google-chrome"
                 "nikitabobko/tap/aerospace"
