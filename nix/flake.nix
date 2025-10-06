@@ -64,7 +64,7 @@
             enable = true;
             interactiveShellInit = ''
               		fish_vi_key_bindings
-                  set -Ux PATH $HOME/.cargo/bin $PATH
+                  set -gx PATH $HOME/.cargo/bin $PATH
                   set -gx EDITOR nvim
                   set -gx VISUAL nvim
               	'';
@@ -110,6 +110,7 @@
               };
 
               casks = [
+                "zed"
                 "gimp"
                 "wezterm"
                 "google-chrome"
