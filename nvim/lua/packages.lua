@@ -98,10 +98,15 @@ lspconfig.lua_ls.setup {
     },
 }
 lspconfig.nixd.setup {
-  formatters_by_ft = {
-    nix = { "nixpkgs_fmt" },
-  },
+    settings = {
+        nixd = {
+            formatting = {
+                command = { "nixpkgs-fmt" }
+            }
+        }
+    }
 }
+lspconfig.nil_ls.setup {}
 
 -- blame
 -- require("blame").setup()
