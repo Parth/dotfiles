@@ -25,10 +25,12 @@ output $A mode 3840x2160 position 3335,1420
 output $B mode 1920x1200 position 4038,3580
 output $C mode 3840x2160 position 1175,407 transform 90
 
-exec swayidle -w \
-          timeout 300 'swaylock -f -c 000000' \
-          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-          before-sleep 'swaylock -f -c 000000'
+bindsym $mod+shift+control+q exec swaylock -f -F -c 000000 --ring-color FFDB70 --inside-color FFDB70 --inside-wrong-color FF6680 --inside-ver-color AC8CD9 --key-hl-color 66B2FF
+
+# exec swayidle -w \
+#           timeout 300 'swaylock -f -c 000000' \
+#           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+#           before-sleep 'swaylock -f -c 000000'
 
 # Kill focused window
 bindsym $mod+Shift+q kill
