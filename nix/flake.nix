@@ -92,6 +92,7 @@
         modules = [
           configuration
 
+
           nix-homebrew.darwinModules.nix-homebrew
           {
             nix-homebrew = {
@@ -104,7 +105,6 @@
 
               masApps = {
                 "XCode" = 497799835;
-                "Final Cut Pro" = 424389933;
                 "Lockbook" = 1526775001;
                 "Lightroom" = 1451544217;
               };
@@ -127,6 +127,7 @@
             };
           }
 
+
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
@@ -134,6 +135,10 @@
             home-manager.useUserPackages = true;
             home-manager.users.parth = { pkgs, lib, ... }: {
               home.stateVersion = "24.05";
+
+            imports = [
+                ./common/nvim.nix
+            ];
 
               programs.git = {
                 enable = true;
@@ -144,33 +149,6 @@
                 };
               };
 
-              programs.neovim = {
-                enable = true;
-                plugins = with pkgs.vimPlugins; [
-                  nvim-web-devicons
-                  telescope-nvim
-                  nvim-cmp
-                  cmp-nvim-lsp
-                  vim-illuminate
-                  lualine-nvim
-                  lsp-status-nvim
-
-                  nvim-tree-lua
-                  nvim-lspconfig
-                  luasnip
-                  # todo replace "FabijanZulj/blame.nvim",
-                ];
-
-                extraPackages = with pkgs; [
-                  lua-language-server
-                  # i would like to configure this here but rustup does some wack shit
-                  # rust-analyzer
-                ];
-
-                # extraLuaConfig = ''
-                # 	dofile("/home/parth/dotfiles/nvim/init.lua")
-                # '';
-              };
 
               xdg.configFile = {
                 "nvim" = {

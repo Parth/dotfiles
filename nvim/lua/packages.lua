@@ -103,7 +103,5 @@ lspconfig.nixd.setup {
   },
 }
 
-require('render-markdown').enable()
-
 -- blame
 -- require("blame").setup()
