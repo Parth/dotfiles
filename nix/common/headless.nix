@@ -30,9 +30,11 @@ in
 
   programs.fish = {
     enable = true;
-    shellInit = ''
-      		fish_vi_key_bindings
+    interactiveShellInit = ''
+         	fish_vi_key_bindings
           set -gx PATH $HOME/.cargo/bin $PATH
+          set -gx EDITOR nvim
+          set -gx VISUAL nvim
       	'';
   };
   users.defaultUserShell = pkgs.fish;
@@ -65,6 +67,7 @@ in
         nvim-tree-lua
         nvim-lspconfig
         luasnip
+        render-markdown-nvim
         # todo replace "FabijanZulj/blame.nvim",
       ];
 
@@ -121,6 +124,7 @@ in
       helix
 
       fzf
+      eza
       xclip
 
       ripgrep
@@ -141,7 +145,23 @@ in
     ];
   };
 
+  environment.variables = { EDITOR = "nvim"; VISUAL = "nvim"; };
+
   programs.git.enable = true;
   nixpkgs.config.allowUnfree = true;
   system.stateVersion = "24.05";
+
+    fileSystems."/truenas" = {
+      device = "//192.168.12.2/parth-dataset";
+      fsType = "cifs";
+      options = [
+        "credentials=/etc/nixos/smb-secrets"
+        "uid=1000"
+        "gid=100"
+        "vers=3.0"
+        "x-systemd.automount"
+        "noauto"
+      ];
+    };
+
 }

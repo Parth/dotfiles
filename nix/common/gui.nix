@@ -34,16 +34,23 @@
   fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   users.users.parth.packages = with pkgs; [
+    zed-editor
     _1password-gui
     google-chrome
     discord
     spotify
     wezterm
     lockbook-desktop
-    obs-studio
     nautilus
     vlc
   ];
+
+  programs.obs-studio = {
+    enable = true;
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-vaapi #optional AMD hardware acceleration
+    ];
+  };
 
   programs._1password-gui.enable = true;
   programs.chromium = {

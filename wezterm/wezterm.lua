@@ -5,10 +5,10 @@ local config = wezterm.config_builder()
 config.enable_tab_bar = false
 
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
+  left = 20,
+  right = 20,
+  top = 20,
+  bottom = 20,
 }
 config.macos_window_background_blur = 100
 config.win32_system_backdrop = 'Acrylic'
@@ -71,4 +71,3 @@ else
 end
 
 return config
-
