@@ -14,7 +14,7 @@
       nvim-tree-lua
       nvim-lspconfig
       luasnip
-      vim-sleuth
+      # vim-sleuth
       # todo replace "FabijanZulj/blame.nvim",
     ];
 
