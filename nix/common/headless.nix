@@ -9,7 +9,7 @@ in
       # Include the results of the hardware scan.
       # ./hardware-configuration.nix
       "/etc/nixos/hardware-configuration.nix"
-      "/home/parth/dotfiles/nix/headless/common/fish.nix"
+      "/home/parth/dotfiles/nix/common/fish.nix"
       (import "${home-manager}/nixos")
     ];
 
@@ -38,7 +38,7 @@ in
 
     imports = [
       "/home/parth/dotfiles/nix/common/nvim.nix"
-      "/home/parth/dotfiles/nix/common/fish.nix"
+      "/home/parth/dotfiles/nix/common/git.nix"
       "/home/parth/dotfiles/nix/common/xdg.nix"
     ];
   };

@@ -1,30 +1,26 @@
-{ ... }:
+{ config, ... }:
 {
   xdg.configFile = {
     "nvim" = {
-      source = /home/parth/dotfiles/nvim;
-      recursive = true;
-    };
-
-    "helix" = {
-      source = /home/parth/dotfiles/helix;
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nvim";
       recursive = true;
     };
 
     "aerospace" = {
-      source = /home/parth/dotfiles/aerospace;
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/aerospace";
       recursive = true;
     };
 
     "wezterm" = {
-      source = /home/parth/dotfiles/wezterm;
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wezterm";
       recursive = true;
     };
     "sway" = {
-      source = /home/parth/dotfiles/sway;
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/sway";
       recursive = true;
     };
   };
+
   home.sessionPath = [
     "$HOME/.cargo/bin"
   ];
