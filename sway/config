@@ -34,6 +34,7 @@ bindsym $mod+shift+control+q exec swaylock -f -F -c 000000 --ring-color FFDB70 -
 
 # Kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+shift+control+4 exec grim -g "$(slurp)" - | wl-copy
 
 # Drag floating windows by holding down $mod and left mouse button.
 # Resize them with right mouse button + $mod.

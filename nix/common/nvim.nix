@@ -14,8 +14,10 @@
       nvim-tree-lua
       nvim-lspconfig
       luasnip
-      # vim-sleuth
-      # todo replace "FabijanZulj/blame.nvim",
+      vim-sleuth
+      nvim-treesitter
+      nvim-treesitter.withAllGrammars
+      gitsigns-nvim
     ];
 
     extraPackages = with pkgs; [

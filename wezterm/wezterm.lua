@@ -40,7 +40,7 @@ if wezterm.gui.get_appearance():find 'Dark' then
         },
 
         foreground = '#FFFFFF',
-        background = '#000000',
+        background = '#080808',
    }
 else
     config.colors = {

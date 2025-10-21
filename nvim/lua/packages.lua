@@ -4,12 +4,16 @@ vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "CursorLine" })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "CursorLine" })
 vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "CursorLine" })
 
+require("gitsigns").setup {
+    current_line_blame = true,
+}
+
 -- for status line things
 require('lsp-status').register_progress()
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = '16color',
+        -- theme = '16color',
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
@@ -108,5 +112,12 @@ lspconfig.nixd.setup {
 }
 lspconfig.nil_ls.setup {}
 
--- blame
--- require("blame").setup()
+require('auto-dark-mode').setup {
+    set_dark_mode = function()
+        require('dark_theme').colorscheme()
+    end,
+    set_light_mode = function()
+        require('light_theme').colorscheme()
+    end,
+}
+
