@@ -9,32 +9,57 @@ require("gitsigns").setup {
 }
 
 -- for status line things
-require('lsp-status').register_progress()
+-- require('lsp-status').register_progress()
+require('fidget').setup {}
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        -- theme = '16color',
+        theme = {
+            normal   = {
+                a = { fg = "#000000", bg = "#66B2FF", gui = "bold" },
+                b = { fg = "#FFFFFF", bg = "#242424" },
+                c = { fg = "#FFFFFF", bg = "#1A1A1A" }
+            },
+            insert   = { a = { fg = "#1A1A1A", bg = "#FFDB70", gui = "bold" } },
+            visual   = { a = { fg = "#1A1A1A", bg = "#AC8CD9", gui = "bold" } },
+            replace  = { a = { fg = "#1A1A1A", bg = "#FF6680", gui = "bold" } },
+            command  = { a = { fg = "#1A1A1A", bg = "#6EECF7", gui = "bold" } },
+            inactive = {
+                a = { fg = "#D0D0D0", bg = "#1A1A1A" },
+                b = { fg = "#D0D0D0", bg = "#1A1A1A" },
+                c = { fg = "#D0D0D0", bg = "#1A1A1A" }
+            },
+        },
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-            statusline = {},
-            winbar = {},
+            statusline = { 'NvimTree' },
+            winbar = { 'NvimTree' },
         },
         ignore_focus = {},
         always_divide_middle = true,
         globalstatus = false,
         refresh = {
-            statusline = 1000,
-            tabline = 1000,
-            winbar = 1000,
+            statusline = 100,
+            tabline = 100,
+            winbar = 100,
         }
     },
     sections = {
         lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { "require'lsp-status'.status()" },
+        lualine_b = { 'branch', {
+            'diff',
+            symbols = { added = ' ', modified = ' ', removed = ' ' },
+            diff_color = {
+                added    = { fg = '#67E4B6' },
+                modified = { fg = '#66B2FF' },
+                removed  = { fg = '#FF6680' },
+            },
+            color = { bg = '#2A2A2A', fg = '#FFFFFF' }, -- ← custom background here
+        } },
+        lualine_c = {},
+        lualine_x = { 'filetype' },
+        -- lualine_y = { "require'lsp-status'.status()" },
         lualine_z = { 'location' }
     },
     inactive_sections = {
@@ -46,7 +71,36 @@ require('lualine').setup {
         lualine_z = {}
     },
     tabline = {},
-    winbar = {},
+    winbar = {
+        lualine_a = {
+            {
+                'filename',
+                path = 3, -- 0: just filename, 1: relative, 2: absolute, 3: absolute + tilde (~)
+                symbols = {
+                    modified = ' ●',
+                    readonly = ' ',
+                    unnamed = '[No Name]',
+                },
+            },
+        },
+        lualine_z = {
+            {
+                'diagnostics',
+                sources           = { 'nvim_diagnostic' },
+                sections          = { 'error', 'warn', 'info', 'hint' },
+                symbols           = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+                -- per-severity colors (foregrounds)
+                diagnostics_color = {
+                    error = { fg = '#FF6680', bg = '#2A2A2A' },         -- red text on dark gray
+                    warn  = { fg = '#FFDB70', bg = '#2A2A2A' },         -- yellow
+                    info  = { fg = '#6EECF7', bg = '#2A2A2A' },         -- cyan
+                    hint  = { fg = '#D0D0D0', bg = '#2A2A2A' },         -- light gray
+                },
+                color             = { fg = '#FFFFFF', bg = '#2A2A2A' }, -- set both!
+                -- always_visible = true, -- uncomment to test even with 0 diags
+            },
+        },
+    },
     inactive_winbar = {},
     extensions = {}
 }
@@ -111,13 +165,3 @@ lspconfig.nixd.setup {
     }
 }
 lspconfig.nil_ls.setup {}
-
-require('auto-dark-mode').setup {
-    set_dark_mode = function()
-        require('dark_theme').colorscheme()
-    end,
-    set_light_mode = function()
-        require('light_theme').colorscheme()
-    end,
-}
-

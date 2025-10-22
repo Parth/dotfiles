@@ -9,7 +9,6 @@
       cmp-nvim-lsp
       vim-illuminate
       lualine-nvim
-      lsp-status-nvim
 
       nvim-tree-lua
       nvim-lspconfig
@@ -18,6 +17,7 @@
       nvim-treesitter
       nvim-treesitter.withAllGrammars
       gitsigns-nvim
+      fidget-nvim
     ];
 
     extraPackages = with pkgs; [

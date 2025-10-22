@@ -228,6 +228,8 @@ function M.colorscheme()
 
   set("Cursor",                { reverse = true })
   set("VisualNOS",             { bg = p.selection })
+
+
 end
 
 M.setup = M.colorscheme
