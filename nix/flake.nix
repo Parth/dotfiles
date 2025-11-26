@@ -33,6 +33,7 @@
             ffmpeg_6
 
             fzf
+            ripgrep
 
             lua-language-server
             zola
