@@ -20,10 +20,12 @@ bindsym $mod+o exec lockbook-desktop
 set $A 'LG Electronics LG ULTRAGEAR 301NTZNBU797'
 set $B 'California Institute of Technology HDMI demoset-1'
 set $C 'LG Electronics LG HDR 4K 111NTMX7X891'
+set $D 'Dell Inc. DELL U2518D 0WG2J9BFB69L'
 
 output $A mode 3840x2160 position 3335,1420
 output $B mode 1920x1200 position 4038,3580
 output $C mode 3840x2160 position 1175,407 transform 90
+output $D mode 2560x1440 position 7175,1312 transform 270
 
 bindsym $mod+shift+control+q exec swaylock -f -F -c 000000 --ring-color FFDB70 --inside-color FFDB70 --inside-wrong-color FF6680 --inside-ver-color AC8CD9 --key-hl-color 66B2FF
 
