@@ -35,6 +35,7 @@
             fzf
             ripgrep
 
+            google-cloud-sdk
             lua-language-server
             zola
             nixpkgs-fmt
