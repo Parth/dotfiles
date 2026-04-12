@@ -10,3 +10,5 @@
       	'';
   };
 }
+
+# ctrl-r fzf is broken

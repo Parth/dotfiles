@@ -1,6 +1,5 @@
 { pkgs, lib, ... }: {
 
-
   # from: https://wiki.nixos.org/wiki/Sway
   environment.systemPackages = with pkgs; [
     grim
@@ -43,6 +42,7 @@
     lockbook-desktop
     nautilus
     vlc
+    davinci-resolve-studio
   ];
 
   programs.obs-studio = {
