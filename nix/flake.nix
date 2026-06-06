@@ -104,11 +104,9 @@
               };
 
               casks = [
-                "zed"
                 "gimp"
                 "wezterm"
                 "google-chrome"
-                "nikitabobko/tap/aerospace"
                 "insta360-studio"
                 "adobe-creative-cloud"
                 "discord"
@@ -117,6 +115,8 @@
                 "chatgpt"
                 "makemkv"
                 "musescore"
+                "freecad"
+                "ableton-live-standard"
               ];
             };
           }

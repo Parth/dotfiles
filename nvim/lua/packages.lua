@@ -165,3 +165,5 @@ lspconfig.nixd.setup {
     }
 }
 lspconfig.nil_ls.setup {}
+
+require('colorizer').setup()
