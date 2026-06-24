@@ -5,9 +5,12 @@
 
   networking.hostName = "parth-server-nix";
 
-  # Bootloader (UEFI).
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader (legacy BIOS). Pinned to a stable by-id path because NVMe
+  # device numbers (nvmeXn1) re-enumerate across boots/hardware changes.
+  boot.loader.grub = {
+    enable = true;
+    device = "@BOOT_DISK_BY_ID@"; # disk holding / (nvme4n1) — see below
+  };
 
   services.openssh = {
     enable = true;
