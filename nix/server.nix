@@ -5,12 +5,9 @@
 
   networking.hostName = "parth-server-nix";
 
-  # Bootloader.
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/nvme1n1";
-    useOSProber = true;
-  };
+  # Bootloader (UEFI).
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   services.openssh = {
     enable = true;
