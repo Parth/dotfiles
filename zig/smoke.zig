@@ -62,8 +62,16 @@ fn expectExists(path: []const u8, options: std.Io.Dir.AccessOptions) !void {
 /// Run a command and require a clean exit. When `needle` is given it has to
 /// appear on stdout or stderr -- plenty of tools report their version on
 /// either, and which one is not what is being tested here.
+///
+/// Everything here is a language server or a shell, so everything here will
+/// happily wait on stdin forever if it decides it did not understand the
+/// arguments. The timeout turns that into a failed test instead of a job that
+/// runs until the runner gives up.
 fn expectRun(argv: []const []const u8, needle: ?[]const u8) !void {
-    const result = std.process.run(gpa, testing.io, .{ .argv = argv }) catch |err| {
+    const result = std.process.run(gpa, testing.io, .{
+        .argv = argv,
+        .timeout = .{ .duration = .{ .raw = .fromSeconds(60), .clock = .awake } },
+    }) catch |err| {
         std.debug.print("could not run {s}: {s}\n", .{ argv[0], @errorName(err) });
         return error.CommandFailed;
     };
@@ -100,9 +108,10 @@ test "the binaries we install run" {
     try expectRun(&.{ p.in(&.{ "bin", "fish" }), "--version" }, "fish");
     try expectRun(&.{ p.home(&.{ ".cargo", "bin", "cargo" }), "--version" }, "cargo");
 
-    // lua-language-server has no --version that exits, so this is the most an
-    // install check can honestly claim.
-    try expectExists(p.in(&.{ lua_ls.subdir, "bin", "lua-language-server" }), .{ .execute = true });
+    // Run it rather than stat it. lua-language-server is the one thing here
+    // that is not a static zig or rust binary, so "the file is present" and
+    // "the file runs on this libc" are genuinely different claims.
+    try expectRun(&.{ p.in(&.{ lua_ls.subdir, "bin", "lua-language-server" }), "--version" }, null);
 }
 
 test "rust-analyzer is in the toolchain" {
