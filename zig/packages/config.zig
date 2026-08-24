@@ -4,7 +4,7 @@ const Env = @import("../Env.zig");
 pub const name = "config";
 pub const description = "symlink dotfiles into ~/.config";
 
-const links = [_][2][]const u8{
+pub const links = [_][2][]const u8{
     .{ "fish/conf.d/dotfiles.fish", ".config/fish/conf.d/dotfiles.fish" },
     .{ "wezterm", ".config/wezterm" },
     .{ "nvim", ".config/nvim" },

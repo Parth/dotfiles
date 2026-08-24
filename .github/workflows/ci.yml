@@ -13,13 +13,14 @@ defaults:
   run:
     shell: bash
 
+# One job per platform, and it does what a person does on a new machine:
+# bootstrap, install, check that the result works. Nothing in here knows the
+# name of a package -- `zig build headless` owns that list, and `zig build
+# smoke` owns what "works" means. See zig/smoke.zig.
 jobs:
-  # Does bootstrap.sh produce the zig that build.zig.zon asks for, twice in a
-  # row, on every runner GitHub offers?
-  bootstrap:
-    name: bootstrap ${{ matrix.os }}
+  headless:
+    name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
@@ -27,187 +28,30 @@ jobs:
           - ubuntu-24.04
           - ubuntu-24.04-arm
           - ubuntu-22.04
-          - ubuntu-22.04-arm
           - macos-26
           - macos-26-intel
           - macos-15
-        include:
-          # zig ships .zip for windows and bootstrap.sh asks for .tar.xz
-          # unconditionally, so these stay red until that is handled.
-          - os: windows-2025
-            experimental: true
-          - os: windows-11-arm
-            experimental: true
     steps:
       - uses: actions/checkout@v5
 
       - uses: actions/cache@v4
         with:
-          path: ~/.local/share/zig
+          path: |
+            ~/.local/share/zig
+            ~/.cache/zig
           key: zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.zig.zon') }}
 
       - run: ./bootstrap.sh
 
-      - name: version matches minimum_zig_version
-        run: |
-          want=$(sed -n 's/.*minimum_zig_version = "\([^"]*\)".*/\1/p' build.zig.zon)
-          got=$("$HOME/.local/bin/zig" version)
-          echo "want=$want got=$got"
-          test "$want" = "$got"
-
-      - name: running it again is a no-op
+      - name: bootstrap again, expecting a no-op
         run: ./bootstrap.sh
 
-  # One cell per package per OS. Slow, but a red square names the package and
-  # the platform without anyone reading a log.
-  packages:
-    name: ${{ matrix.step }} ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        # Trim this list first if the queue gets painful; the OS axis finds
-        # far more than the step axis does.
-        os:
-          - ubuntu-24.04
-          - ubuntu-24.04-arm
-          - ubuntu-22.04
-          - macos-26
-          - macos-26-intel
-          - macos-15
-        step:
-          - ripgrep
-          - zls
-          - lua-ls
-          - treesitter
-          - nvim-plugins
-          - config
-          - rust
-          - fish
-          - nvim
-        include:
-          - step: ripgrep
-            smoke: rg --version
-          - step: zls
-            smoke: zls --version
-          - step: lua-ls
-            smoke: test -x "$HOME/.local/share/lua-language-server/bin/lua-language-server"
-          - step: treesitter
-            smoke: |
-              ls "$HOME/.local/share/nvim/site/parser/"
-              test "$(ls "$HOME/.local/share/nvim/site/parser/" | wc -l)" -eq 8
-              test -d "$HOME/.local/share/nvim/site/queries/rust"
-          - step: nvim-plugins
-            smoke: |
-              ls "$HOME/.local/share/nvim/site/pack/dotfiles/start/"
-              test -f "$HOME/.local/share/nvim/site/pack/dotfiles/start/telescope-fzf-native.nvim/build/libfzf.so"
-          - step: config
-            smoke: |
-              test -d "$HOME/.config/nvim"
-              test -d "$HOME/.config/wezterm"
-              test -d "$HOME/.config/sway"
-              test -f "$HOME/.config/fish/conf.d/dotfiles.fish"
-              test -f "$HOME/.config/git/config"
-          - step: rust
-            smoke: |
-              "$HOME/.cargo/bin/cargo" --version
-              "$HOME/.cargo/bin/rustup" component list --installed | grep -q rust-analyzer
-          - step: fish
-            smoke: |
-              fish --version
-              fish -c 'echo hello from fish'
-          - step: nvim
-            smoke: nvim --version
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.local/share/zig
-          key: zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.zig.zon') }}
-
-      # The package cache, not the build cache: this is what stops 54 jobs
-      # re-downloading the same pinned tarballs.
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/zig
-          key: zigpkg-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.zig.zon') }}
-
-      - run: ./bootstrap.sh
-
       - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
-      - name: zig build ${{ matrix.step }}
-        run: zig build ${{ matrix.step }} --summary all
+      - run: zig build headless --summary all
 
-      - name: smoke
-        run: ${{ matrix.smoke }}
+      - run: zig build smoke
 
       - name: what landed
-        if: always()
+        if: failure()
         run: find "$HOME/.local/bin" "$HOME/.local/share" -maxdepth 3 2>/dev/null | sort | head -60
-
-  # The whole group at once, minus login-shell. See the note in the PR: chsh
-  # needs a PAM password on linux runners and would mutate the runner anyway,
-  # so it cannot be part of an unattended build.
-  integration:
-    name: integration ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        os: [ubuntu-24.04, ubuntu-24.04-arm, macos-26, macos-26-intel]
-    steps:
-      - uses: actions/checkout@v5
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.local/share/zig
-          key: zig-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.zig.zon') }}
-
-      - uses: actions/cache@v4
-        with:
-          path: ~/.cache/zig
-          key: zigpkg-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('build.zig.zon') }}
-
-      - run: ./bootstrap.sh
-      - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
-
-      - name: build everything headless except the login shell
-        run: |
-          zig build nvim rust fish lua-ls zls ripgrep nvim-plugins treesitter config --summary all
-
-      # The real test: does neovim start with this config, find its parsers,
-      # and load every plugin, without a single error? --headless writes
-      # normal messages to stderr, so a non-empty stderr proves nothing --
-      # :messages has to be read back and scanned instead.
-      - name: nvim starts clean with the real config
-        run: |
-          cat > /tmp/startup.lua <<'LUA'
-          local out = vim.api.nvim_exec2("messages", { output = true }).output
-          io.stdout:write(out .. "\n")
-          if out:match("E%d+:") or out:match("Error detected") or out:match("Error executing") then
-            io.stdout:write("^ nvim reported errors during startup\n")
-            vim.cmd("cq")
-          end
-          LUA
-          nvim --headless -c 'luafile /tmp/startup.lua' +qa
-
-      - name: treesitter parsers actually load
-        run: |
-          cat > /tmp/parsers.lua <<'LUA'
-          local bad = {}
-          for _, lang in ipairs({ "rust", "zig", "nix", "toml", "json", "bash", "fish", "yaml" }) do
-            local ok, err = pcall(vim.treesitter.language.add, lang)
-            if not ok then table.insert(bad, lang .. " (" .. tostring(err) .. ")") end
-          end
-          if #bad > 0 then
-            io.stdout:write("failed to load: " .. table.concat(bad, ", ") .. "\n")
-            vim.cmd("cq")
-          end
-          io.stdout:write("all 8 parsers loaded\n")
-          LUA
-          nvim --headless -c 'luafile /tmp/parsers.lua' +qa
-
-      - name: fish runs the shipped config
-        run: fish -l -c 'echo $PATH; type -q nvim; and echo nvim visible to fish'

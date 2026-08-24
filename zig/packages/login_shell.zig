@@ -3,7 +3,11 @@ const Env = @import("../Env.zig");
 const fish = @import("fish.zig");
 
 pub const name = "login-shell";
-pub const description = "make the fish we build the login shell";
+pub const description = "make the fish we build the login shell (asks for a password)";
+
+// $SHELL rather than getpwuid: build.zig is compiled without libc on linux, so
+// any std.c call in here is a compile error for the whole build graph, not just
+// for this step.
 
 pub fn install(env: Env) *std.Build.Step {
     const b = env.b;
@@ -12,7 +16,7 @@ pub fn install(env: Env) *std.Build.Step {
 
     const shell = b.pathJoin(&.{ env.prefix, "bin", "fish" });
 
-    if (currentShell()) |current| {
+    if (b.graph.environ_map.get("SHELL")) |current| {
         if (std.mem.eql(u8, current, shell)) return step;
     }
 
@@ -35,11 +39,6 @@ pub fn install(env: Env) *std.Build.Step {
 
     step.dependOn(&run.step);
     return step;
-}
-
-fn currentShell() ?[]const u8 {
-    const pw = std.c.getpwuid(std.c.getuid()) orelse return null;
-    return std.mem.span(pw.shell orelse return null);
 }
 
 fn isRegistered(b: *std.Build, shell: []const u8) bool {
