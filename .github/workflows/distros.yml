@@ -58,6 +58,7 @@ jobs:
   headless:
     name: ${{ matrix.image }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
@@ -84,7 +85,7 @@ jobs:
             ./bootstrap.sh
             export PATH="$HOME/.local/bin:$PATH"
             zig build headless --summary all
-            zig build smoke
+            zig build smoke --summary all
         run: |
           $RUN ${{ matrix.image }} sh -euc '
             cp -a /src /work && cd /work

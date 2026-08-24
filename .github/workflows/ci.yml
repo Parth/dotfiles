@@ -21,6 +21,7 @@ jobs:
   headless:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -50,7 +51,9 @@ jobs:
 
       - run: zig build headless --summary all
 
-      - run: zig build smoke
+      # --summary all so a green run still shows the test tally rather than
+      # silence, which is what a passing zig build prints.
+      - run: zig build smoke --summary all
 
       - name: what landed
         if: failure()
