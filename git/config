@@ -1,0 +1,9 @@
+[user]
+	name = parth
+	email = parth@mehrotra.me
+[push]
+	default = current
+[pull]
+	default = current
+[branch]
+	autoSetupMerge = true

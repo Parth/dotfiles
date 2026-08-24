@@ -1,0 +1,157 @@
+.{
+    .name = .dotfiles,
+    .version = "0.0.0",
+    .fingerprint = 0x1cd9b5b7dc585e50,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{
+        .neovim = .{
+            .url = "git+https://github.com/neovim/neovim#7037e1effe9e3c98d43b36a287dd39e87eaf1bb2",
+            .hash = "neovim-0.13.0-OHowebHQpwO-MSKb0BQFXDna11486ng4HBmdcAw0BRWF",
+        },
+        .fish = .{
+            .url = "https://github.com/fish-shell/fish-shell/archive/refs/tags/4.8.1.tar.gz",
+            .hash = "N-V-__8AACvmgwEfDCls_tggHUNwSUCZQUsScnk0aiBY1U-o",
+        },
+        .lua_ls_macos_aarch64 = .{
+            .url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.1/lua-language-server-3.19.1-darwin-arm64.tar.gz",
+            .hash = "N-V-__8AAACLFQFmx3tEgXLJN1sg2Qf9oZEqNzcs4T6UQ8BQ",
+            .lazy = true,
+        },
+        .lua_ls_macos_x86_64 = .{
+            .url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.1/lua-language-server-3.19.1-darwin-x64.tar.gz",
+            .hash = "N-V-__8AABmWfADktWcTbNuByRZfu8UAKzH_3196Qus55QRJ",
+            .lazy = true,
+        },
+        .lua_ls_linux_aarch64 = .{
+            .url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.1/lua-language-server-3.19.1-linux-arm64.tar.gz",
+            .hash = "N-V-__8AAKlaiQDyi1YWC9tR2QLYOJ1C8g45-gkiBvo0MCRl",
+            .lazy = true,
+        },
+        .lua_ls_linux_x86_64 = .{
+            .url = "https://github.com/LuaLS/lua-language-server/releases/download/3.19.1/lua-language-server-3.19.1-linux-x64.tar.gz",
+            .hash = "N-V-__8AAJjYIwHjA918uYaoAN7ehbzR-yrTid6Dc-RWGzEX",
+            .lazy = true,
+        },
+        .telescope = .{
+            .url = "https://github.com/nvim-telescope/telescope.nvim/archive/refs/tags/v0.2.1.tar.gz",
+            .hash = "N-V-__8AAFgFFwBPFz1IpTNkUYiyFP3j3FHOQTKD8Dx8HXLr",
+            .lazy = true,
+        },
+        .plenary = .{
+            .url = "https://github.com/nvim-lua/plenary.nvim/archive/refs/tags/v0.1.4.tar.gz",
+            .hash = "N-V-__8AAJVJCACqR0Maux-NCz6kR7zJhFrEOCd18iEz41et",
+            .lazy = true,
+        },
+        .telescope_fzf_native = .{
+            .url = "https://github.com/nvim-telescope/telescope-fzf-native.nvim/archive/b25b749b9db64d375d782094e2b9dce53ad53a40.tar.gz",
+            .hash = "N-V-__8AAF9YAQBfJwPm04PakgyKtcmlmkxP2BQzl_bEhdBB",
+            .lazy = true,
+        },
+        .web_devicons = .{
+            .url = "https://github.com/nvim-tree/nvim-web-devicons/archive/refs/tags/v0.100.tar.gz",
+            .hash = "N-V-__8AAFXHAgBlSl7H1Zax8YBiybnmaG_qQPGBtc3eFpWf",
+            .lazy = true,
+        },
+        .ripgrep_macos_aarch64 = .{
+            .url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-apple-darwin.tar.gz",
+            .hash = "N-V-__8AAAoDQwCS8rkd42k79fdCetxcWYjuG2t-6gGz-T1h",
+            .lazy = true,
+        },
+        .ripgrep_macos_x86_64 = .{
+            .url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-apple-darwin.tar.gz",
+            .hash = "N-V-__8AANKxSACWBuHP36FDC5-FzhwN1sHyQqC18f-j8pO3",
+            .lazy = true,
+        },
+        .ripgrep_linux_aarch64 = .{
+            .url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-musl.tar.gz",
+            .hash = "N-V-__8AAGrmSQC8prZ6TkmB3bzcYeP4dypYgEr6POqJKgaN",
+            .lazy = true,
+        },
+        .ripgrep_linux_x86_64 = .{
+            .url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz",
+            .hash = "N-V-__8AAKJJWABw2Ojue2w7riJvmd46AlA2hU1xU4ZwVSkm",
+            .lazy = true,
+        },
+        .ts_rust = .{
+            .url = "https://github.com/tree-sitter/tree-sitter-rust/archive/refs/tags/v0.24.2.tar.gz",
+            .hash = "N-V-__8AAHJYbgAipcanYj2A6rnj9wtGzjGzANkrOsqiFAxm",
+            .lazy = true,
+        },
+        .ts_zig = .{
+            .url = "https://github.com/tree-sitter-grammars/tree-sitter-zig/archive/refs/tags/v1.1.2.tar.gz",
+            .hash = "N-V-__8AAN6NXgCZxLUnqe4620P_FqHrEY8PHTA1-VlOn4yX",
+            .lazy = true,
+        },
+        .ts_nix = .{
+            .url = "https://github.com/nix-community/tree-sitter-nix/archive/refs/tags/v0.3.0.tar.gz",
+            .hash = "N-V-__8AALFvCwC2emRL95X_BumYg4j2s-aFZgF2BTmZWEZO",
+            .lazy = true,
+        },
+        .ts_toml = .{
+            .url = "https://github.com/tree-sitter-grammars/tree-sitter-toml/archive/refs/tags/v0.7.0.tar.gz",
+            .hash = "N-V-__8AAKI7BABbJ5LWswYbVPhQVdmSYR9zKxmZ7ob_RSNI",
+            .lazy = true,
+        },
+        .ts_json = .{
+            .url = "https://github.com/tree-sitter/tree-sitter-json/archive/refs/tags/v0.24.8.tar.gz",
+            .hash = "N-V-__8AACVXAgA_t-N8nrK20OmKiOtw3RhaBCAnXwQIiQ8g",
+            .lazy = true,
+        },
+        .ts_bash = .{
+            .url = "https://github.com/tree-sitter/tree-sitter-bash/archive/refs/tags/v0.25.1.tar.gz",
+            .hash = "N-V-__8AANjenwCy_cXlIbU8nqBzGxMlEHVokLZJYrmIXtoz",
+            .lazy = true,
+        },
+        .ts_yaml = .{
+            .url = "https://github.com/tree-sitter-grammars/tree-sitter-yaml/archive/refs/tags/v0.7.2.tar.gz",
+            .hash = "N-V-__8AAKAZHQAzJI0VPpVIr_ghroKVLgcuo19vFT5dXs3H",
+            .lazy = true,
+        },
+        .ts_fish = .{
+            .url = "https://github.com/ram02z/tree-sitter-fish/archive/refs/heads/master.tar.gz",
+            .hash = "N-V-__8AANLsCQCVxEL0PSC2oD0RrzlWTr1W5Y2aXqsGHXJd",
+            .lazy = true,
+        },
+        .nvim_treesitter_queries = .{
+            .url = "https://github.com/nvim-treesitter/nvim-treesitter/archive/8b98b4470eb326f1c7b50dae79f8c963568e5720.tar.gz",
+            .hash = "N-V-__8AALpuGwCJMj2B5EUeIGA0YAwUY1yJF306y9xE_5pd",
+            .lazy = true,
+        },
+        .nvim_tree = .{
+            .url = "https://github.com/nvim-tree/nvim-tree.lua/archive/refs/tags/v1.18.0.tar.gz",
+            .hash = "N-V-__8AAAfDCgAL2p1LwnJ7DyBCobLJhhTXkaxuPuH0CBXW",
+            .lazy = true,
+        },
+        .zls_macos_aarch64 = .{
+            .url = "https://github.com/zigtools/zls/releases/download/0.16.0/zls-aarch64-macos.tar.xz",
+            .hash = "N-V-__8AABpCOQCLi2Lu9itNHVpRBWZb6kJRTT_dYfrttJY9",
+            .lazy = true,
+        },
+        .zls_macos_x86_64 = .{
+            .url = "https://github.com/zigtools/zls/releases/download/0.16.0/zls-x86_64-macos.tar.xz",
+            .hash = "N-V-__8AAKAPPwDYjRVfBsRit5qa7iCXLrBnQ7v_1sglv5ou",
+            .lazy = true,
+        },
+        .zls_linux_aarch64 = .{
+            .url = "https://github.com/zigtools/zls/releases/download/0.16.0/zls-aarch64-linux.tar.xz",
+            .hash = "N-V-__8AABqoJgGVEv53wmPokCns0y0O1yU-1ZMCmBtRIrkp",
+            .lazy = true,
+        },
+        .zls_linux_x86_64 = .{
+            .url = "https://github.com/zigtools/zls/releases/download/0.16.0/zls-x86_64-linux.tar.xz",
+            .hash = "N-V-__8AAOpqJgEZCp44QqnynD5HPDXTGu2hpQtjf45_enU0",
+            .lazy = true,
+        },
+        .gitsigns = .{
+            .url = "https://github.com/lewis6991/gitsigns.nvim/archive/refs/tags/v2.1.0.tar.gz",
+            .hash = "N-V-__8AADMmCQBgoowAGoa2M64C_RktTQynIQf-d5xjHkln",
+            .lazy = true,
+        },
+        .illuminate = .{
+            .url = "https://github.com/RRethy/vim-illuminate/archive/91313e598ca62e110bc71535c49069b66b9883c9.tar.gz",
+            .hash = "N-V-__8AAJgXAQB_jqK13DGF7yMo1NUmsSZ72Sd1giv862Wb",
+            .lazy = true,
+        },
+    },
+    .paths = .{ "build.zig", "build.zig.zon" },
+}

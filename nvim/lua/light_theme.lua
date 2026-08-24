@@ -1,18 +1,12 @@
--- lua/colors/premonition_light.lua
--- Mnemonic Light Innovation – Neovim colorscheme (starter)
--- Palette mapped from your JSON.
-
 local M = {}
 
 local p = {
-  -- Core
   bg            = "#FFFFFF",
   fg            = "#1A1A1A",
   fg_muted      = "#505050",
   comment       = "#808080",
   border        = "#D0D0D0",
 
-  -- Accents (from JSON)
   blue          = "#207FDF",
   blue_bright   = "#66B2FF",
   magenta       = "#7855AA",
@@ -25,17 +19,14 @@ local p = {
   red_bright    = "#FF6680",
   cyan          = "#0FAEBD",
   cyan_bright   = "#13DAEC",
-  -- syntax cyan in your block uses 00BBCC; keep both:
   cyan_syntax   = "#00BBCC",
 
-  -- UI
-  ui            = "#FFFFFF",   -- status/tab/toolbars
+  ui            = "#FFFFFF",
   tabbar        = "#F0F0F0",
-  active_line   = "#F6F6F6",   -- approx of #A0A0A010 over white
-  selection     = "#EEF6FF",   -- gentle selection for light bg
-  search_bg     = "#DCEFF8",   -- readable take on #13DAEC40
+  active_line   = "#F6F6F6",
+  selection     = "#EEF6FF",
+  search_bg     = "#DCEFF8",
 
-  -- Diagnostics backgrounds
   error_bg      = "#F5DCE0",
   warn_bg       = "#FDF5D9",
   hint_bg       = "#DCEAFB",
@@ -45,9 +36,8 @@ local p = {
 local function set(name, val) vim.api.nvim_set_hl(0, name, val) end
 
 local function setup_terminal()
-  -- Terminal ANSI (from your "terminal.ansi.*")
-  vim.g.terminal_color_0  = "#1A1A1A"   -- black
-  vim.g.terminal_color_8  = "#808080"   -- bright black
+  vim.g.terminal_color_0  = "#1A1A1A"
+  vim.g.terminal_color_8  = "#808080"
 
   vim.g.terminal_color_1  = p.red
   vim.g.terminal_color_9  = p.red_bright
@@ -67,21 +57,17 @@ local function setup_terminal()
   vim.g.terminal_color_6  = p.cyan
   vim.g.terminal_color_14 = p.cyan_bright
 
-  vim.g.terminal_color_7  = "#D0D0D0"  -- white
-  vim.g.terminal_color_15 = "#1A1A1A"  -- bright white (your JSON maps this dark)
+  vim.g.terminal_color_7  = "#D0D0D0"
+  vim.g.terminal_color_15 = "#1A1A1A"
 end
 
 function M.colorscheme()
   vim.cmd("highlight clear")
   if vim.fn.exists("syntax_on") == 1 then vim.cmd("syntax reset") end
 
-  vim.o.background = "light"
   vim.g.colors_name = "premonition_light"
   setup_terminal()
 
-  ---------------------------------------------------------------------------
-  -- Core UI
-  ---------------------------------------------------------------------------
   set("Normal",         { fg = p.fg, bg = p.bg })
   set("NormalNC",       { fg = p.fg_muted, bg = p.bg })
   set("SignColumn",     { bg = p.bg })
@@ -116,13 +102,10 @@ function M.colorscheme()
   set("NonText",        { fg = p.border })
   set("SpecialKey",     { fg = p.border })
 
-  ---------------------------------------------------------------------------
-  -- Syntax (Vim groups)
-  ---------------------------------------------------------------------------
   set("Comment",        { fg = p.comment, italic = true })
   set("Identifier",     { fg = p.fg })
   set("Function",       { fg = p.green, bold = true })
-  set("Statement",      { fg = p.magenta })       -- if/for/return
+  set("Statement",      { fg = p.magenta })
   set("Keyword",        { fg = p.magenta, italic = true })
   set("Conditional",    { fg = p.magenta })
   set("Repeat",         { fg = p.magenta })
@@ -138,9 +121,6 @@ function M.colorscheme()
   set("Special",        { fg = p.green })
   set("Delimiter",      { fg = p.comment })
 
-  ---------------------------------------------------------------------------
-  -- Diagnostics (LSP)
-  ---------------------------------------------------------------------------
   set("Error",                 { fg = p.red })
   set("Todo",                  { fg = p.yellow_bright, bold = true })
   set("ErrorMsg",              { fg = p.red, bg = p.error_bg, bold = true })
@@ -164,9 +144,6 @@ function M.colorscheme()
   set("DiagnosticVirtualTextInfo",  { fg = p.fg_muted, bg = p.info_bg })
   set("DiagnosticVirtualTextHint",  { fg = p.fg_muted, bg = p.hint_bg })
 
-  ---------------------------------------------------------------------------
-  -- Diff / Git
-  ---------------------------------------------------------------------------
   set("DiffAdd",    { bg = "#E9F6F0", fg = p.green })
   set("DiffChange", { bg = "#F6F1E5", fg = p.yellow })
   set("DiffDelete", { bg = "#F6E9EC", fg = p.red })
@@ -176,25 +153,22 @@ function M.colorscheme()
   set("GitSignsChange", { fg = p.yellow })
   set("GitSignsDelete", { fg = p.red })
 
-  ---------------------------------------------------------------------------
-  -- Treesitter (link to Vim groups)
-  ---------------------------------------------------------------------------
   local links = {
     ["@comment"]             = "Comment",
     ["@punctuation"]         = "Delimiter",
     ["@operator"]            = "Operator",
     ["@keyword"]             = "Keyword",
-    ["@conditional"]         = "Conditional",
-    ["@repeat"]              = "Repeat",
+    ["@keyword.conditional"]         = "Conditional",
+    ["@keyword.repeat"]              = "Repeat",
 
     ["@type"]                = "Type",
     ["@type.builtin"]        = "Type",
     ["@type.definition"]     = "Type",
-    ["@storageclass"]        = "StorageClass",
+    ["@keyword.storage"]        = "StorageClass",
 
     ["@string"]              = "String",
     ["@string.escape"]       = "Special",
-    ["@string.regex"]        = "Special",
+    ["@string.regexp"]        = "Special",
     ["@character"]           = "Character",
     ["@boolean"]             = "Boolean",
     ["@number"]              = "Number",
@@ -206,21 +180,18 @@ function M.colorscheme()
 
     ["@function"]            = "Function",
     ["@function.builtin"]    = "Function",
-    ["@method"]              = "Function",
+    ["@function.method"]              = "Function",
     ["@constructor"]         = "Function",
-    ["@parameter"]           = "Identifier",
-    ["@field"]               = "Identifier",
+    ["@variable.parameter"]           = "Identifier",
+    ["@variable.member"]               = "Identifier",
     ["@property"]            = "Identifier",
     ["@attribute"]           = "Identifier",
 
-    ["@text.literal"]        = "String",
+    ["@markup.raw"]        = "String",
     ["@tag"]                 = "Type",
   }
   for from, to in pairs(links) do set(from, { link = to }) end
 
-  ---------------------------------------------------------------------------
-  -- Telescope (minimal)
-  ---------------------------------------------------------------------------
   set("TelescopeNormal",       { fg = p.fg, bg = p.ui })
   set("TelescopeBorder",       { fg = p.border, bg = p.ui })
   set("TelescopeSelection",    { bg = p.selection })
@@ -228,7 +199,6 @@ function M.colorscheme()
 
   set("Cursor",                { reverse = true })
   set("VisualNOS",             { bg = p.selection })
-
 
 end
 
