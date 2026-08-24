@@ -1,7 +1,7 @@
 name: ci
 
-# push is limited to master: with both triggers unfiltered, every commit
-# on a branch with a PR open builds the whole matrix twice.
+# push only on master: with both triggers unfiltered, a branch with a PR open
+# builds everything twice.
 on:
   push:
     branches: [master]
@@ -16,16 +16,14 @@ defaults:
   run:
     shell: bash
 
-# One job per platform, and it does what a person does on a new machine:
-# bootstrap, install, check that the result works. Nothing in here knows the
-# name of a package -- `zig build headless` owns that list, and `zig build
-# smoke` owns what "works" means. See zig/smoke.zig.
+# What a person does on a new machine: bootstrap, install, check it works.
+# `zig build headless` owns the package list, zig/smoke.zig owns what "works"
+# means, and nothing here knows either.
 jobs:
   headless:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
-    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
@@ -35,15 +33,6 @@ jobs:
           - macos-26
           - macos-26-intel
           - macos-15
-        include:
-          # nlua0 -- the bootstrap lua neovim builds to generate its own
-          # headers with -- segfaults on aarch64 linux. Every invocation of it
-          # dies with SIGSEGV while running gen_declarations.lua, so this is
-          # neither flaky nor ours: nothing in this repo is on the stack.
-          # Left running rather than deleted so the row turns green by itself
-          # when neovim fixes it.
-          - os: ubuntu-24.04-arm
-            experimental: true
     steps:
       - uses: actions/checkout@v5
 
@@ -61,10 +50,8 @@ jobs:
 
       - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
-      # --summary failures, not all: a 90-line green tree buries the one
-      # step that broke thousands of lines above the end of the log.
+      # failures, not all: a 90 line green tree buries the step that broke.
       - run: zig build headless --summary failures
 
-      # --summary all here: it is four lines, and it turns a silent pass
-      # into a visible test tally.
+      # all here: four lines, and it turns a silent pass into a test tally.
       - run: zig build smoke --summary all

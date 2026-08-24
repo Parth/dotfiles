@@ -6,8 +6,7 @@ pub const name = "login-shell";
 pub const description = "make the fish we build the login shell";
 
 // $SHELL rather than getpwuid: build.zig is compiled without libc on linux, so
-// any std.c call in here is a compile error for the whole build graph, not just
-// for this step.
+// a std.c call here fails to compile the whole build graph.
 pub fn install(env: Env) *std.Build.Step {
     const b = env.b;
     const step = b.step(name, description);
@@ -19,19 +18,9 @@ pub fn install(env: Env) *std.Build.Step {
         if (std.mem.eql(u8, current, shell)) return step;
     }
 
-    // chsh as an ordinary user asks PAM for a password, which needs a terminal
-    // and so cannot run unattended. Under sudo it does not ask, and sudo was
-    // already required here to append to /etc/shells. As root -- every
-    // container -- there is nothing to elevate and no sudo to elevate with, so
-    // decide at run time rather than baking one of the two in.
-    //
-    // The /etc/shells line is appended without checking whether it is already
-    // there. Duplicates cost nothing: getusershell() enumerates the file and
-    // every consumer is asking "is this shell in here", so a repeated line is
-    // answered the same way as a single one. Nothing depends on the append
-    // either -- chsh only consults /etc/shells for non-root callers, and this
-    // one is always root -- so it is here to keep the file honest about which
-    // shells are login shells, not to make the next line work.
+    // sudo so chsh does not ask PAM for a password; skipped as root, where
+    // there is nothing to elevate and often no sudo. The /etc/shells line is
+    // appended unconditionally -- duplicates are harmless.
     const run = b.addSystemCommand(&.{
         "/bin/sh", "-c",
         b.fmt(

@@ -1,7 +1,6 @@
 const std = @import("std");
 const Env = @import("zig/Env.zig");
 
-// Everything that runs without a display, and the one command CI runs.
 const headless = .{
     @import("zig/packages/neovim.zig"),
     @import("zig/packages/rust.zig"),
@@ -35,10 +34,8 @@ fn group(env: Env, name: []const u8, description: []const u8, comptime packages:
     return step;
 }
 
-// `zig build smoke` asks the installed tree whether it works, which is a
-// different question from whether it built. It deliberately does not depend on
-// the headless step: after an install you want to re-check without rebuilding,
-// and in CI a smoke failure should be a separate red square from a build one.
+// Deliberately independent of the headless step, so it can re-check an
+// existing install without rebuilding.
 fn smoke(env: Env) void {
     const b = env.b;
 

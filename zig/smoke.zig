@@ -1,11 +1,7 @@
-//! Smoke tests for an installed dotfiles tree.
+//! Smoke tests for an installed dotfiles tree, run against $DOTFILES_PREFIX.
 //!
-//! `zig build headless` answers "did it build". These answer "does the machine
-//! work", which is the only question worth asking afterwards, so they run
-//! against $DOTFILES_PREFIX and never look at the build graph.
-//!
-//! The lists they check against are imported from the packages themselves, so
-//! adding a grammar or a plugin extends the tests without touching this file.
+//! The lists come from the packages themselves, so adding a grammar or a
+//! plugin extends the tests without touching this file.
 
 const std = @import("std");
 const testing = std.testing;
@@ -40,7 +36,7 @@ const Path = struct {
         return w.buffered();
     }
 
-    /// Resolve a path relative to $HOME. Only rustup lands outside the prefix.
+    /// Resolve a path relative to $HOME, for the rustup files outside the prefix.
     fn home(p: *Path, parts: []const []const u8) []const u8 {
         var w: std.Io.Writer = .fixed(&p.buf);
         w.writeAll(env("HOME") orelse @panic("HOME is not set")) catch @panic("path too long");
@@ -59,14 +55,9 @@ fn expectExists(path: []const u8, options: std.Io.Dir.AccessOptions) !void {
     };
 }
 
-/// Run a command and require a clean exit. When `needle` is given it has to
-/// appear on stdout or stderr -- plenty of tools report their version on
-/// either, and which one is not what is being tested here.
-///
-/// Everything here is a language server or a shell, so everything here will
-/// happily wait on stdin forever if it decides it did not understand the
-/// arguments. The timeout turns that into a failed test instead of a job that
-/// runs until the runner gives up.
+/// Run a command and require a clean exit. `needle` may appear on either
+/// stream, since tools disagree about where to print a version. The timeout is
+/// because a language server given arguments it dislikes waits on stdin.
 fn expectRun(argv: []const []const u8, needle: ?[]const u8) !void {
     const result = std.process.run(gpa, testing.io, .{
         .argv = argv,
@@ -108,9 +99,8 @@ test "the binaries we install run" {
     try expectRun(&.{ p.in(&.{ "bin", "fish" }), "--version" }, "fish");
     try expectRun(&.{ p.home(&.{ ".cargo", "bin", "cargo" }), "--version" }, "cargo");
 
-    // Run it rather than stat it. lua-language-server is the one thing here
-    // that is not a static zig or rust binary, so "the file is present" and
-    // "the file runs on this libc" are genuinely different claims.
+    // Run it rather than stat it: this is the only dynamically linked binary
+    // we install, so present and runnable are different questions.
     try expectRun(&.{ p.in(&.{ lua_ls.subdir, "bin", "lua-language-server" }), "--version" }, null);
 }
 
@@ -146,8 +136,7 @@ test "every plugin is unpacked" {
         try expectExists(p.in(&.{ nvim_plugins.pack, plugin[1] }), .{});
     }
 
-    // The one plugin with a compiled component; telescope falls back to a slow
-    // pure-lua sorter if this is missing rather than saying anything.
+    // Telescope silently falls back to a slow pure-lua sorter without this.
     try expectExists(
         p.in(&.{ nvim_plugins.pack, "telescope-fzf-native.nvim", "build", "libfzf.so" }),
         .{},
@@ -163,8 +152,8 @@ test "every grammar is compiled" {
     }
 }
 
-/// nvim --headless writes ordinary messages to stderr, so a non-empty stderr
-/// proves nothing. :messages has to be read back and scanned instead.
+/// nvim --headless writes ordinary messages to stderr, so :messages has to be
+/// read back and scanned instead.
 const startup =
     "lua local out = vim.api.nvim_exec2('messages', {output=true}).output " ++
     "io.stdout:write(out) " ++
@@ -176,8 +165,7 @@ test "nvim starts clean with the shipped config" {
     try expectRun(&.{ p.in(&.{ "bin", "nvim" }), "--headless", "-c", startup, "+qa" }, null);
 }
 
-/// Compiled and installed is not the same as loadable: a grammar built against
-/// the wrong ABI only fails here.
+/// Installed is not loadable: a wrong-ABI grammar only fails here.
 const load_parsers = blk: {
     var langs: []const u8 = "";
     for (treesitter.grammars, 0..) |grammar, i| {
@@ -197,6 +185,6 @@ test "nvim loads every grammar" {
 
 test "fish runs the shipped config" {
     var p: Path = .{};
-    // conf.d sets these; if the symlink or fish_add_path broke, this is empty.
+    // Set by conf.d; empty if the symlink or fish_add_path broke.
     try expectRun(&.{ p.in(&.{ "bin", "fish" }), "-l", "-c", "echo $EDITOR" }, "nvim");
 }

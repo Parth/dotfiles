@@ -1,7 +1,7 @@
 name: distros
 
-# push is limited to master: with both triggers unfiltered, every commit
-# on a branch with a PR open builds the whole matrix twice.
+# push only on master: with both triggers unfiltered, a branch with a PR open
+# builds everything twice.
 on:
   push:
     branches: [master]
@@ -18,19 +18,17 @@ defaults:
   run:
     shell: bash
 
-# Containers are driven with `docker run` from an ubuntu runner rather than
-# `container:` -- actions/checkout needs a glibc node, which alpine does not
-# have, and the point here is to test images that are deliberately bare.
+# docker run rather than `container:` -- actions/checkout needs a glibc node,
+# which alpine does not have, and these images are deliberately bare.
 env:
   RUN: >-
     docker run --rm -v ${{ github.workspace }}:/src:ro
     -e SETUP -e SCRIPT -w /
 
 jobs:
-  # Which images can run bootstrap.sh with nothing added? This reports rather
-  # than asserts: half of these are expected to be missing curl or xz, and a
-  # square that is red on purpose is a square nobody reads. The answer lands in
-  # the run summary instead.
+  # Which images run bootstrap.sh with nothing added? Reports rather than
+  # asserts: several are expected to lack curl or xz, and a square that is red
+  # on purpose is a square nobody reads.
   bare:
     name: bare images
     runs-on: ubuntu-24.04
@@ -48,12 +46,7 @@ jobs:
             rockylinux/rockylinux:9
           )
 
-          # Run bootstrap.sh in a stock image with nothing installed, and
-          # repeat everything it said. The exit status is the verdict; the
-          # output only gets read when that verdict is failure.
-          #
-          # Spelled out rather than reusing $RUN because this job passes no
-          # SETUP or SCRIPT: there is nothing to configure, which is the point.
+          # Exit status is the verdict; output is only read when it fails.
           bootstrap_in() {
             local image=$1
             docker run --rm -v "$PWD:/src:ro" -w / "$image" sh -euc '
@@ -64,15 +57,9 @@ jobs:
             ' 2>&1
           }
 
-          # Reduce that output to the commands the image turned out to lack:
-          #
-          #   ./bootstrap.sh: 38: wget: not found      \
-          #   tar (grandchild): xz: Cannot exec         > becomes "wget xz"
-          #
-          # grep exits 1 when nothing matches, which means the image failed
-          # for a reason we have no name for. That is a real answer, not an
-          # error, so it must not abort the step -- hence the || true, without
-          # which `set -e` would kill the job before the fallback below.
+          # "wget: not found" and "xz: Cannot exec" become "wget xz". grep
+          # exits 1 on no match, which means a failure we have no name for --
+          # an answer, not an error, so it must not trip `set -e`.
           missing_commands() {
             grep -Eio '[a-z0-9_-]+: (not found|cannot exec)' \
               | cut -d: -f1 \
@@ -94,7 +81,6 @@ jobs:
             rows+=("| \`$image\` | $verdict |")
           done
 
-          # One place that knows the table's shape, written once at the end.
           {
             echo '| image | bootstrap.sh as shipped |'
             echo '| --- | --- |'
@@ -102,13 +88,11 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
   # The same thing ci.yml does, on distros GitHub does not offer as a runner.
-  # `setup` is the finding: it is the documented floor for that distro, and it
-  # grows only when a row here goes red.
+  # `setup` is the finding: the documented floor for that distro.
   headless:
     name: ${{ matrix.image }}
     runs-on: ubuntu-24.04
     timeout-minutes: 60
-    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
@@ -119,24 +103,6 @@ jobs:
             setup: dnf install -y tar xz gcc glibc-devel util-linux-user
           - image: rockylinux/rockylinux:9
             setup: dnf install -y tar xz gcc glibc-devel util-linux-user
-          # musl, and the answer is now precise: 7 of 8 smoke tests pass.
-          #
-          # linux-headers is here because libuv wants linux/errqueue.h, which
-          # alpine does not ship. With it, everything builds -- neovim, fish,
-          # the grammars -- and everything runs except lua-language-server,
-          # which fails to spawn at all:
-          #
-          #   could not run .../bin/lua-language-server: FileNotFound
-          #
-          # That is a glibc ELF on musl: execve cannot find its interpreter.
-          # It is the only dynamically linked thing we install, so it is the
-          # only one that can fail this way. zls is fine -- static zig binary,
-          # which is why the old "zls and lua-ls are glibc-only" note was half
-          # wrong. Fixing it means a musl build of lua-language-server, which
-          # upstream does not publish, so the row stays experimental.
-          - image: alpine:3.22
-            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev linux-headers shadow
-            experimental: true
     steps:
       - uses: actions/checkout@v5
       - name: bootstrap, install, smoke test
@@ -155,10 +121,9 @@ jobs:
             eval "$SCRIPT"
           '
 
-  # zig bundles clang, lld, musl and headers for 76 targets. If that claim is
-  # real, the tree-sitter grammars compile on an image with no gcc, no clang,
-  # no make and no pkg-config. This is the load-bearing assumption of the whole
-  # repo, so it is the one job that names a package on purpose.
+  # zig bundles clang, lld, musl and headers for 76 targets. If that is real,
+  # the tree-sitter grammars compile with no gcc, clang, make or pkg-config.
+  # The load-bearing claim of the repo, so it gets to name a package.
   no-system-compiler:
     name: no cc ${{ matrix.image }}
     runs-on: ubuntu-24.04
