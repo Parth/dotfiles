@@ -38,22 +38,68 @@ jobs:
       - uses: actions/checkout@v5
       - name: what does bootstrap.sh need?
         run: |
-          echo "| image | bootstrap.sh as shipped |" >> "$GITHUB_STEP_SUMMARY"
-          echo "| --- | --- |" >> "$GITHUB_STEP_SUMMARY"
-          for image in alpine:3.22 debian:13 debian:12 ubuntu:22.04 \
-                       fedora:43 archlinux:latest rockylinux/rockylinux:9; do
-            if out=$($RUN "$image" sh -euc '
-                       cp -a /src /work && cd /work
-                       ./bootstrap.sh && "$HOME/.local/bin/zig" version
-                     ' 2>&1); then
-              note="works"
+          images=(
+            alpine:3.22
+            debian:13
+            debian:12
+            ubuntu:22.04
+            fedora:43
+            archlinux:latest
+            rockylinux/rockylinux:9
+          )
+
+          # Run bootstrap.sh in a stock image with nothing installed, and
+          # repeat everything it said. The exit status is the verdict; the
+          # output only gets read when that verdict is failure.
+          #
+          # Spelled out rather than reusing $RUN because this job passes no
+          # SETUP or SCRIPT: there is nothing to configure, which is the point.
+          bootstrap_in() {
+            local image=$1
+            docker run --rm -v "$PWD:/src:ro" -w / "$image" sh -euc '
+              cp -a /src /work
+              cd /work
+              ./bootstrap.sh
+              "$HOME/.local/bin/zig" version
+            ' 2>&1
+          }
+
+          # Reduce that output to the commands the image turned out to lack:
+          #
+          #   ./bootstrap.sh: 38: wget: not found      \
+          #   tar (grandchild): xz: Cannot exec         > becomes "wget xz"
+          #
+          # grep exits 1 when nothing matches, which means the image failed
+          # for a reason we have no name for. That is a real answer, not an
+          # error, so it must not abort the step -- hence the || true, without
+          # which `set -e` would kill the job before the fallback below.
+          missing_commands() {
+            grep -Eio '[a-z0-9_-]+: (not found|cannot exec)' \
+              | cut -d: -f1 \
+              | sort -u \
+              | paste -sd' ' - \
+              || true
+          }
+
+          rows=()
+          for image in "${images[@]}"; do
+            if output=$(bootstrap_in "$image"); then
+              verdict='works as shipped'
             else
-              note="$(printf '%s' "$out" | grep -Eio '[a-z0-9_-]+: (not found|Cannot exec)' | sort -u | paste -sd' ' -)"
-              note="needs: ${note:-see logs}"
+              missing=$(missing_commands <<<"$output")
+              verdict="missing: ${missing:-unclear, read the log}"
             fi
-            echo "| \`$image\` | $note |" >> "$GITHUB_STEP_SUMMARY"
-            echo "$image: $note"
+
+            echo "$image -> $verdict"
+            rows+=("| \`$image\` | $verdict |")
           done
+
+          # One place that knows the table's shape, written once at the end.
+          {
+            echo '| image | bootstrap.sh as shipped |'
+            echo '| --- | --- |'
+            printf '%s\n' "${rows[@]}"
+          } >> "$GITHUB_STEP_SUMMARY"
 
   # The same thing ci.yml does, on distros GitHub does not offer as a runner.
   # `setup` is the finding: it is the documented floor for that distro, and it
