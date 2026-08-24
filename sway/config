@@ -1,6 +1,5 @@
 input "type:keyboard" xkb_options caps:escape
 
-# todo: Use Mod1 for Alt.
 set $mod Mod4
 
 gaps inner 10
@@ -29,54 +28,33 @@ output $D mode 2560x1440 position 7175,1312 transform 270
 
 bindsym $mod+shift+control+q exec swaylock -f -F -c 000000 --ring-color FFDB70 --inside-color FFDB70 --inside-wrong-color FF6680 --inside-ver-color AC8CD9 --key-hl-color 66B2FF
 
-# exec swayidle -w \
-#           timeout 300 'swaylock -f -c 000000' \
-#           timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#           before-sleep 'swaylock -f -c 000000'
-
-# Kill focused window
 bindsym $mod+Shift+q kill
 bindsym $mod+shift+control+4 exec grim -g "$(slurp)" - | wl-copy
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
 floating_modifier $mod normal
 
-# Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-# Move your focus around
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
-# Or use $mod+[up|down|left|right]
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Move the focused window with the same, but add Shift
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-# Ditto, with arrow keys
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
-#
-# Workspaces:
-#
 
-# Switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
 bindsym $mod+3 workspace number 3
@@ -87,7 +65,6 @@ bindsym $mod+7 workspace number 7
 bindsym $mod+8 workspace number 8
 bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
-# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
 bindsym $mod+Shift+2 move container to workspace number 2
 bindsym $mod+Shift+3 move container to workspace number 3
@@ -99,82 +76,46 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-# You can "split" the current object of your focus with
-# $mod+b or $mod+v, for horizontal and vertical splits
-# respectively.
 bindsym $mod+b splith
 bindsym $mod+v splitv
 
-# Switch the current container between different layout styles
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# Make the current focus fullscreen
 bindsym $mod+f fullscreen
 
-# Toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+space floating toggle
 
-# Swap focus between the tiling area and the floating area
 bindsym $mod+t focus mode_toggle
 
-# Move focus to the parent container
 bindsym $mod+a focus parent
-#
-# Scratchpad:
-#
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
 
-    # Move the currently focused window to the scratchpad
     bindsym $mod+Shift+minus move scratchpad
 
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
-#
-# Resizing containers:
-#
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
     bindsym $up resize shrink height 10px
     bindsym $right resize grow width 10px
 
-    # Ditto, with arrow keys
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
     bindsym Right resize grow width 10px
 
-    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
-#
-# Utilities:
-#
-    # Special keys to adjust volume via PulseAudio
     bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
-    # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
-    # Special key to take a screenshot with grim
     bindsym Print exec grim
-
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
 
 set $grey       #808080
 set $red        #FF6680
@@ -188,15 +129,12 @@ set $white      #F0F0F0
 bar {
     position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
     status_command while date +'%Y-%m-%d %X  '; do sleep 1; done
 
     colors {
         statusline #ffffff
         background #000000
 
-# border background text
         focused_workspace     $yellow $yellow #000000
         active_workspace      $yellow #000000 $yellow
          inactive_workspace    #000000 #000000 $yellow
@@ -205,13 +143,10 @@ bar {
     }
 }
 
-# default_border pixel 2
-# default_floating_border pixel 2
 default_border normal
 default_floating_border normal
 titlebar_padding 6 8
 
-# === Palette ===
 exec_always swaybg -c '#000000'
 
 set $grey       #808080
@@ -223,16 +158,6 @@ set $magenta    #AC8CD9
 set $cyan       #6EECF7
 set $white      #F0F0F0
 
-# set $black      #505050
-# set $red        #DF2040
-# set $green      #2DD296
-# set $yellow     #FFBF00
-# set $blue       #207FDF
-# set $magenta    #7855AA
-# set $cyan       #13DAEC
-# set $white      #D0D0D0
-
-# client.<state>        <border>   <background> <text>   <indicator> <child_border>
 client.focused          $yellow   $yellow       #000000    $yellow     $yellow
 client.focused_inactive $grey   #000000       $yellow  $grey         $grey
 client.unfocused        $grey     #000000       #ffffff  $grey         $grey

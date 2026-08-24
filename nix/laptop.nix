@@ -1,7 +1,7 @@
 {
   imports = [
-    "/home/parth/dotfiles/nix/common/headless.nix"
-    "/home/parth/dotfiles/nix/common/gui.nix"
+    "/home/parth/dotfiles/nix/common.nix"
+    "/home/parth/dotfiles/nix/gui.nix"
   ];
 
   networking.hostName = "parth-laptop-nix";

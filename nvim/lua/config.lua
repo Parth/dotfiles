@@ -15,4 +15,3 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.cursorline = true
-vim.api.nvim_set_hl(0, 'CursorLine', { underline = true })

@@ -1,14 +1,5 @@
 { pkgs, lib, ... }: {
 
-  # from: https://wiki.nixos.org/wiki/Sway
-  environment.systemPackages = with pkgs; [
-    grim
-    slurp
-    wl-clipboard
-    mako
-    wdisplays
-  ];
-  services.gnome.gnome-keyring.enable = true;
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -18,9 +9,22 @@
     wlr.enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
-  # end sway
+  services.gnome.gnome-keyring.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    swaylock
+    swaybg
+    wmenu
+    brightnessctl
+    grim
+    slurp
+    wl-clipboard
+    mako
+    wdisplays
+  ];
 
   services.printing.enable = true;
+  services.flatpak.enable = true;
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -30,15 +34,16 @@
     pulse.enable = true;
   };
 
-  fonts.packages = [ ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   users.users.parth.packages = with pkgs; [
-    zed-editor
-    _1password-gui
+    wezterm
     google-chrome
+    _1password-gui
     discord
     spotify
-    wezterm
+    zed-editor
+    lockbook
     lockbook-desktop
     nautilus
     vlc
@@ -48,7 +53,7 @@
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
-      obs-vaapi #optional AMD hardware acceleration
+      obs-vaapi
     ];
   };
 
@@ -67,5 +72,4 @@
   users.groups.libvirtd.members = [ "parth" ];
   virtualisation.libvirtd.enable = true;
   virtualisation.spiceUSBRedirection.enable = true;
-
 }

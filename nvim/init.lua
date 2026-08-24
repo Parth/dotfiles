@@ -1,16 +1,14 @@
-vim.g.mapleader = ' ';
+vim.g.mapleader = ' '
 
-require("keyboard")
 require("config")
+require("theme")
+require("treesitter")
+require("plugins")
+require("keyboard")
+require("ui")
 
-require('auto-dark-mode').setup {
-    set_dark_mode = function()
-        require('dark_theme').colorscheme()
-        require('packages')
-    end,
-    set_light_mode = function()
-        require('light_theme').colorscheme()
-        require('packages')
-    end,
-}
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect', 'popup', 'fuzzy' }
 
+vim.lsp.enable({ 'rust_analyzer', 'lua_ls', 'zls' })
+
+vim.api.nvim_create_user_command('LspLog', function() vim.cmd.tabnew(vim.lsp.log.get_filename()) end, {})
