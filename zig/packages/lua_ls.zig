@@ -4,7 +4,7 @@ const Env = @import("../Env.zig");
 pub const name = "lua-ls";
 pub const description = "lua-language-server, from its prebuilt release";
 
-const subdir = "share/lua-language-server";
+pub const subdir = "share/lua-language-server";
 
 pub fn install(env: Env) *std.Build.Step {
     const b = env.b;

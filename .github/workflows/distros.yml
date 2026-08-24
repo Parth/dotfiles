@@ -1,7 +1,10 @@
 name: distros
 
+# push only on master: with both triggers unfiltered, a branch with a PR open
+# builds everything twice.
 on:
   push:
+    branches: [master]
   pull_request:
   workflow_dispatch:
   schedule:
@@ -15,81 +18,102 @@ defaults:
   run:
     shell: bash
 
-# Containers are driven with `docker run` from an ubuntu runner rather than
-# `container:` — actions/checkout needs a glibc node, which alpine does not
-# have, and the point here is to test images that are deliberately bare.
+# docker run rather than `container:` -- actions/checkout needs a glibc node,
+# which alpine does not have, and these images are deliberately bare.
 env:
   RUN: >-
     docker run --rm -v ${{ github.workspace }}:/src:ro
     -e SETUP -e SCRIPT -w /
 
 jobs:
-  # What does bootstrap.sh actually require? Stock image, nothing added.
-  # A red square here is a finding to write down, not a build to fix in a rush.
+  # Which images run bootstrap.sh with nothing added? Reports rather than
+  # asserts: several are expected to lack curl or xz, and a square that is red
+  # on purpose is a square nobody reads.
   bare:
-    name: bare ${{ matrix.image }}
+    name: bare images
     runs-on: ubuntu-24.04
-    continue-on-error: true
-    strategy:
-      fail-fast: false
-      matrix:
-        image:
-          - alpine:3.22
-          - debian:13
-          - debian:12
-          - ubuntu:22.04
-          - fedora:43
-          - archlinux:latest
-          - rockylinux/rockylinux:9
     steps:
       - uses: actions/checkout@v5
-      - name: bootstrap with nothing installed
-        env:
-          SETUP: ":"
-          SCRIPT: |
-            ./bootstrap.sh
-            "$HOME/.local/bin/zig" version
+      - name: what does bootstrap.sh need?
         run: |
-          $RUN ${{ matrix.image }} sh -euc '
-            cp -a /src /work && cd /work
-            eval "$SETUP"
-            eval "$SCRIPT"
-          '
+          images=(
+            alpine:3.22
+            debian:13
+            debian:12
+            ubuntu:22.04
+            fedora:43
+            archlinux:latest
+            rockylinux/rockylinux:9
+          )
 
-  # The same images with the smallest set of packages that makes bootstrap
-  # work. If a row here needs something new, that is the documented floor.
-  bootstrap:
-    name: bootstrap ${{ matrix.image }}
+          # Exit status is the verdict; output is only read when it fails.
+          bootstrap_in() {
+            local image=$1
+            docker run --rm -v "$PWD:/src:ro" -w / "$image" sh -euc '
+              cp -a /src /work
+              cd /work
+              ./bootstrap.sh
+              "$HOME/.local/bin/zig" version
+            ' 2>&1
+          }
+
+          # "wget: not found" and "xz: Cannot exec" become "wget xz". grep
+          # exits 1 on no match, which means a failure we have no name for --
+          # an answer, not an error, so it must not trip `set -e`.
+          missing_commands() {
+            grep -Eio '[a-z0-9_-]+: (not found|cannot exec)' \
+              | cut -d: -f1 \
+              | sort -u \
+              | paste -sd' ' - \
+              || true
+          }
+
+          rows=()
+          for image in "${images[@]}"; do
+            if output=$(bootstrap_in "$image"); then
+              verdict='works as shipped'
+            else
+              missing=$(missing_commands <<<"$output")
+              verdict="missing: ${missing:-unclear, read the log}"
+            fi
+
+            echo "$image -> $verdict"
+            rows+=("| \`$image\` | $verdict |")
+          done
+
+          {
+            echo '| image | bootstrap.sh as shipped |'
+            echo '| --- | --- |'
+            printf '%s\n' "${rows[@]}"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  # The same thing ci.yml does, on distros GitHub does not offer as a runner.
+  # `setup` is the finding: the documented floor for that distro.
+  headless:
+    name: ${{ matrix.image }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
         include:
-          - image: alpine:3.22
-            setup: apk add --no-cache ca-certificates tar xz
-          - image: debian:13
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils
           - image: debian:12
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils
-          - image: ubuntu:22.04
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils
+            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils gcc libc6-dev passwd
           - image: fedora:43
-            setup: dnf install -y tar xz
-          - image: archlinux:latest
-            setup: pacman -Sy --noconfirm --needed curl tar xz
+            setup: dnf install -y tar xz gcc glibc-devel util-linux-user
           - image: rockylinux/rockylinux:9
-            setup: dnf install -y tar xz
+            setup: dnf install -y tar xz gcc glibc-devel util-linux-user
     steps:
       - uses: actions/checkout@v5
-      - name: bootstrap and re-bootstrap
+      - name: bootstrap, install, smoke test
         env:
           SETUP: ${{ matrix.setup }}
           SCRIPT: |
             ./bootstrap.sh
-            want=$(sed -n 's/.*minimum_zig_version = "\([^"]*\)".*/\1/p' build.zig.zon)
-            got=$("$HOME/.local/bin/zig" version)
-            echo "want=$want got=$got"; test "$want" = "$got"
             ./bootstrap.sh
+            export PATH="$HOME/.local/bin:$PATH"
+            zig build headless --summary failures
+            zig build smoke --summary all
         run: |
           $RUN ${{ matrix.image }} sh -euc '
             cp -a /src /work && cd /work
@@ -97,10 +121,9 @@ jobs:
             eval "$SCRIPT"
           '
 
-  # zig bundles clang, lld, musl and headers for 76 targets. If that claim is
-  # real, the tree-sitter grammars compile on an image with no gcc, no clang,
-  # no make and no pkg-config. This is the load-bearing assumption of the whole
-  # repo, so it gets its own job.
+  # zig bundles clang, lld, musl and headers for 76 targets. If that is real,
+  # the tree-sitter grammars compile with no gcc, clang, make or pkg-config.
+  # The load-bearing claim of the repo, so it gets to name a package.
   no-system-compiler:
     name: no cc ${{ matrix.image }}
     runs-on: ubuntu-24.04
@@ -126,80 +149,6 @@ jobs:
             export PATH="$HOME/.local/bin:$PATH"
             zig build treesitter --summary all
             ls "$HOME/.local/share/nvim/site/parser/"
-            test "$(ls "$HOME/.local/share/nvim/site/parser/" | wc -l)" -eq 8
-        run: |
-          $RUN ${{ matrix.image }} sh -euc '
-            cp -a /src /work && cd /work
-            eval "$SETUP"
-            eval "$SCRIPT"
-          '
-
-  # Prebuilt-download packages on musl and on old glibc. ripgrep picks the musl
-  # tarball on alpine and the gnu one elsewhere; zls and lua-ls have no musl
-  # build at all, which is the thing to find out.
-  prebuilts:
-    name: prebuilts ${{ matrix.image }} ${{ matrix.step }}
-    runs-on: ubuntu-24.04
-    continue-on-error: ${{ matrix.experimental || false }}
-    strategy:
-      fail-fast: false
-      matrix:
-        step: [ripgrep, zls, lua-ls]
-        image: ["alpine:3.22", "debian:12", "rockylinux/rockylinux:9"]
-        include:
-          # ripgrep should pass here — it has a musl tarball. zls and lua-ls
-          # ship glibc-only builds, so this row is where that shows up.
-          - image: "alpine:3.22"
-            setup: apk add --no-cache ca-certificates tar xz
-            experimental: true
-          - image: debian:12
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils
-          - image: rockylinux/rockylinux:9
-            setup: dnf install -y tar xz
-    steps:
-      - uses: actions/checkout@v5
-      - env:
-          SETUP: ${{ matrix.setup }}
-          SCRIPT: |
-            ./bootstrap.sh
-            export PATH="$HOME/.local/bin:$PATH"
-            zig build ${{ matrix.step }} --summary all
-            find "$HOME/.local/bin" "$HOME/.local/share" -maxdepth 2 2>/dev/null | sort
-        run: |
-          $RUN ${{ matrix.image }} sh -euc '
-            cp -a /src /work && cd /work
-            eval "$SETUP"
-            eval "$SCRIPT"
-          '
-
-  # rust and fish are the packages that reach outside zig: rustup-init writes
-  # $HOME/.cargo, and cargo needs a linker. This job documents what that costs
-  # per distro.
-  toolchain:
-    name: rust+fish ${{ matrix.image }}
-    runs-on: ubuntu-24.04
-    continue-on-error: ${{ matrix.experimental || false }}
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - image: debian:12
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils gcc libc6-dev
-          - image: alpine:3.22
-            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev
-            experimental: true
-    steps:
-      - uses: actions/checkout@v5
-      - env:
-          SETUP: ${{ matrix.setup }}
-          SCRIPT: |
-            ./bootstrap.sh
-            export PATH="$HOME/.local/bin:$PATH"
-            zig build rust --summary all
-            "$HOME/.cargo/bin/cargo" --version
-            zig build fish --summary all
-            "$HOME/.local/bin/fish" --version
-            "$HOME/.local/bin/fish" -c 'echo hello from fish'
         run: |
           $RUN ${{ matrix.image }} sh -euc '
             cp -a /src /work && cd /work

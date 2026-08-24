@@ -5,6 +5,8 @@ const fish = @import("fish.zig");
 pub const name = "login-shell";
 pub const description = "make the fish we build the login shell";
 
+// $SHELL rather than getpwuid: build.zig is compiled without libc on linux, so
+// a std.c call here fails to compile the whole build graph.
 pub fn install(env: Env) *std.Build.Step {
     const b = env.b;
     const step = b.step(name, description);
@@ -12,22 +14,23 @@ pub fn install(env: Env) *std.Build.Step {
 
     const shell = b.pathJoin(&.{ env.prefix, "bin", "fish" });
 
-    if (currentShell()) |current| {
+    if (b.graph.environ_map.get("SHELL")) |current| {
         if (std.mem.eql(u8, current, shell)) return step;
     }
 
-    const register = if (isRegistered(b, shell)) "" else b.fmt(
-        "printf '%s\\n' \"{s}\" | sudo tee -a /etc/shells >/dev/null\n",
-        .{shell},
-    );
-
+    // sudo so chsh does not ask PAM for a password; skipped as root, where
+    // there is nothing to elevate and often no sudo. The /etc/shells line is
+    // appended unconditionally -- duplicates are harmless.
     const run = b.addSystemCommand(&.{
         "/bin/sh", "-c",
         b.fmt(
             \\set -e
-            \\"{0s}" -c 'exit 0'
-            \\{1s}chsh -s "{0s}"
-        , .{ shell, register }),
+            \\shell="{s}"
+            \\"$shell" -c 'exit 0'
+            \\if [ "$(id -u)" = 0 ]; then sudo=; else sudo=sudo; fi
+            \\printf '%s\n' "$shell" | $sudo tee -a /etc/shells >/dev/null
+            \\$sudo chsh -s "$shell" "$(id -un)"
+        , .{shell}),
     });
     run.has_side_effects = true;
 
@@ -35,19 +38,4 @@ pub fn install(env: Env) *std.Build.Step {
 
     step.dependOn(&run.step);
     return step;
-}
-
-fn currentShell() ?[]const u8 {
-    const pw = std.c.getpwuid(std.c.getuid()) orelse return null;
-    return std.mem.span(pw.shell orelse return null);
-}
-
-fn isRegistered(b: *std.Build, shell: []const u8) bool {
-    const io = b.graph.io;
-    const text = std.Io.Dir.cwd().readFileAlloc(io, "/etc/shells", b.allocator, .limited(64 * 1024)) catch return false;
-    var lines = std.mem.tokenizeScalar(u8, text, '\n');
-    while (lines.next()) |line| {
-        if (std.mem.eql(u8, std.mem.trim(u8, line, " \t\r"), shell)) return true;
-    }
-    return false;
 }

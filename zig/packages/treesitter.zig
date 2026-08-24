@@ -4,14 +4,14 @@ const Env = @import("../Env.zig");
 pub const name = "treesitter";
 pub const description = "tree-sitter grammars, compiled by zig";
 
-const Grammar = struct {
+pub const Grammar = struct {
     lang: []const u8,
     dep: []const u8,
     scanner: bool = false,
     flags: []const []const u8 = &.{},
 };
 
-const grammars = [_]Grammar{
+pub const grammars = [_]Grammar{
     .{ .lang = "rust", .dep = "ts_rust", .scanner = true },
     .{ .lang = "zig", .dep = "ts_zig" },
     .{ .lang = "nix", .dep = "ts_nix", .scanner = true },

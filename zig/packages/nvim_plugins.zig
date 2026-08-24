@@ -4,9 +4,9 @@ const Env = @import("../Env.zig");
 pub const name = "nvim-plugins";
 pub const description = "neovim plugins, pinned in build.zig.zon";
 
-const pack = "share/nvim/site/pack/dotfiles/start";
+pub const pack = "share/nvim/site/pack/dotfiles/start";
 
-const plugins = [_][2][]const u8{
+pub const plugins = [_][2][]const u8{
     .{ "plenary", "plenary.nvim" },
     .{ "telescope", "telescope.nvim" },
     .{ "web_devicons", "nvim-web-devicons" },
