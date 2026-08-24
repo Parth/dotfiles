@@ -24,6 +24,14 @@ pub fn install(env: Env) *std.Build.Step {
     // already required here to append to /etc/shells. As root -- every
     // container -- there is nothing to elevate and no sudo to elevate with, so
     // decide at run time rather than baking one of the two in.
+    //
+    // The /etc/shells line is appended without checking whether it is already
+    // there. Duplicates cost nothing: getusershell() enumerates the file and
+    // every consumer is asking "is this shell in here", so a repeated line is
+    // answered the same way as a single one. Nothing depends on the append
+    // either -- chsh only consults /etc/shells for non-root callers, and this
+    // one is always root -- so it is here to keep the file honest about which
+    // shells are login shells, not to make the next line work.
     const run = b.addSystemCommand(&.{
         "/bin/sh", "-c",
         b.fmt(
@@ -31,7 +39,7 @@ pub fn install(env: Env) *std.Build.Step {
             \\shell="{s}"
             \\"$shell" -c 'exit 0'
             \\if [ "$(id -u)" = 0 ]; then sudo=; else sudo=sudo; fi
-            \\grep -qxF "$shell" /etc/shells || printf '%s\n' "$shell" | $sudo tee -a /etc/shells >/dev/null
+            \\printf '%s\n' "$shell" | $sudo tee -a /etc/shells >/dev/null
             \\$sudo chsh -s "$shell" "$(id -un)"
         , .{shell}),
     });
