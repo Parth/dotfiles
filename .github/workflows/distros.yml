@@ -68,11 +68,11 @@ jobs:
       matrix:
         include:
           - image: debian:12
-            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils gcc libc6-dev
+            setup: apt-get update && apt-get install -y --no-install-recommends ca-certificates curl xz-utils gcc libc6-dev passwd
           - image: fedora:43
-            setup: dnf install -y tar xz gcc glibc-devel
+            setup: dnf install -y tar xz gcc glibc-devel util-linux-user
           - image: rockylinux/rockylinux:9
-            setup: dnf install -y tar xz gcc glibc-devel
+            setup: dnf install -y tar xz gcc glibc-devel util-linux-user
           # musl, and the answer is now precise: 7 of 8 smoke tests pass.
           #
           # linux-headers is here because libuv wants linux/errqueue.h, which
@@ -89,7 +89,7 @@ jobs:
           # wrong. Fixing it means a musl build of lua-language-server, which
           # upstream does not publish, so the row stays experimental.
           - image: alpine:3.22
-            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev linux-headers
+            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev linux-headers shadow
             experimental: true
     steps:
       - uses: actions/checkout@v5
