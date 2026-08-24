@@ -53,3 +53,24 @@ for lhs, dir in pairs({ ['<Tab>'] = 1, ['<S-Tab>'] = -1 }) do
         return lhs == '<Tab>' and '<Tab>' or '<S-Tab>'
     end, { expr = true })
 end
+
+local function yank_location(first, last)
+    local file = vim.fn.expand('%:.')
+    if file == '' then
+        vim.notify('no file in this buffer', vim.log.levels.WARN)
+        return
+    end
+    local ref = file .. ':' .. first .. (last > first and '-' .. last or '')
+    vim.fn.setreg('+', ref)
+    vim.notify('copied ' .. ref)
+end
+
+vim.keymap.set('n', '<leader>y', function()
+    local line = vim.fn.line('.')
+    yank_location(line, line)
+end, { desc = 'copy file:line for an agent prompt' })
+
+vim.keymap.set('x', '<leader>y', function()
+    vim.cmd('normal! \27')
+    yank_location(vim.fn.line("'<"), vim.fn.line("'>"))
+end, { desc = 'copy file:range for an agent prompt' })
