@@ -9,6 +9,7 @@ const headless = .{
     @import("zig/packages/lua_ls.zig"),
     @import("zig/packages/zls.zig"),
     @import("zig/packages/ripgrep.zig"),
+    @import("zig/packages/claude_code.zig"),
     @import("zig/packages/nvim_plugins.zig"),
     @import("zig/packages/treesitter.zig"),
     @import("zig/packages/config.zig"),

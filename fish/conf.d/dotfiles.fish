@@ -12,3 +12,8 @@ fish_add_path -gP /Applications/WezTerm.app/Contents/MacOS
 
 set -gx EDITOR nvim
 set -gx VISUAL nvim
+
+# claude code ships a native updater that rewrites ~/.local/bin/claude, which
+# is where `zig build claude-code` installs it. Without this the two fight and
+# the version pinned in zig/packages/claude_code.zig becomes a fiction.
+set -gx DISABLE_AUTOUPDATER 1
