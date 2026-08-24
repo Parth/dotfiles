@@ -1,7 +1,10 @@
 name: ci
 
+# push is limited to master: with both triggers unfiltered, every commit
+# on a branch with a PR open builds the whole matrix twice.
 on:
   push:
+    branches: [master]
   pull_request:
   workflow_dispatch:
 
@@ -22,16 +25,25 @@ jobs:
     name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 60
+    continue-on-error: ${{ matrix.experimental || false }}
     strategy:
       fail-fast: false
       matrix:
         os:
           - ubuntu-24.04
-          - ubuntu-24.04-arm
           - ubuntu-22.04
           - macos-26
           - macos-26-intel
           - macos-15
+        include:
+          # nlua0 -- the bootstrap lua neovim builds to generate its own
+          # headers with -- segfaults on aarch64 linux. Every invocation of it
+          # dies with SIGSEGV while running gen_declarations.lua, so this is
+          # neither flaky nor ours: nothing in this repo is on the stack.
+          # Left running rather than deleted so the row turns green by itself
+          # when neovim fixes it.
+          - os: ubuntu-24.04-arm
+            experimental: true
     steps:
       - uses: actions/checkout@v5
 

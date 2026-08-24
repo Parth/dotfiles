@@ -1,7 +1,10 @@
 name: distros
 
+# push is limited to master: with both triggers unfiltered, every commit
+# on a branch with a PR open builds the whole matrix twice.
 on:
   push:
+    branches: [master]
   pull_request:
   workflow_dispatch:
   schedule:
@@ -70,12 +73,13 @@ jobs:
             setup: dnf install -y tar xz gcc glibc-devel
           - image: rockylinux/rockylinux:9
             setup: dnf install -y tar xz gcc glibc-devel
-          # musl: 58 of 59 steps pass here. rust, fish, the prebuilts, the
-          # grammars and the config links are all fine; neovim's own build is
-          # the single thing that fails, and the smoke tests never get to say
-          # whether the glibc-only zls and lua-ls binaries would have run.
+          # musl: linux-headers is here because libuv wants linux/errqueue.h
+          # and alpine does not ship kernel headers by default -- exactly the
+          # kind of finding this job exists for. Still experimental: zls and
+          # lua-language-server publish glibc-only binaries, so the smoke tests
+          # are expected to be the next thing that fails.
           - image: alpine:3.22
-            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev
+            setup: apk add --no-cache ca-certificates tar xz gcc musl-dev linux-headers
             experimental: true
     steps:
       - uses: actions/checkout@v5
