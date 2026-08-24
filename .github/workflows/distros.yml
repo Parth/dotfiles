@@ -70,8 +70,10 @@ jobs:
             setup: dnf install -y tar xz gcc glibc-devel
           - image: rockylinux/rockylinux:9
             setup: dnf install -y tar xz gcc glibc-devel
-          # musl: zls and lua-language-server publish glibc-only binaries, so
-          # this row documents that gap rather than gating the build on it.
+          # musl: 58 of 59 steps pass here. rust, fish, the prebuilts, the
+          # grammars and the config links are all fine; neovim's own build is
+          # the single thing that fails, and the smoke tests never get to say
+          # whether the glibc-only zls and lua-ls binaries would have run.
           - image: alpine:3.22
             setup: apk add --no-cache ca-certificates tar xz gcc musl-dev
             experimental: true
@@ -84,7 +86,7 @@ jobs:
             ./bootstrap.sh
             ./bootstrap.sh
             export PATH="$HOME/.local/bin:$PATH"
-            zig build headless --summary all
+            zig build headless --summary failures
             zig build smoke --summary all
         run: |
           $RUN ${{ matrix.image }} sh -euc '

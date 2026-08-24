@@ -49,12 +49,10 @@ jobs:
 
       - run: echo "$HOME/.local/bin" >> "$GITHUB_PATH"
 
-      - run: zig build headless --summary all
+      # --summary failures, not all: a 90-line green tree buries the one
+      # step that broke thousands of lines above the end of the log.
+      - run: zig build headless --summary failures
 
-      # --summary all so a green run still shows the test tally rather than
-      # silence, which is what a passing zig build prints.
+      # --summary all here: it is four lines, and it turns a silent pass
+      # into a visible test tally.
       - run: zig build smoke --summary all
-
-      - name: what landed
-        if: failure()
-        run: find "$HOME/.local/bin" "$HOME/.local/share" -maxdepth 3 2>/dev/null | sort | head -60
