@@ -36,7 +36,7 @@ else
         curl -fL --progress-bar "$url"
     else
         wget -O- "$url"
-    fi | tar -xf - -C "$tmp"
+    fi | tar -xJf - -C "$tmp"
     set -- "$tmp"/zig-*/zig
     [ -x "$1" ] || { say "failed: nothing usable came back from $url"; exit 1; }
     say "installing to $dest"
