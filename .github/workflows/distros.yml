@@ -73,14 +73,21 @@ jobs:
             setup: dnf install -y tar xz gcc glibc-devel
           - image: rockylinux/rockylinux:9
             setup: dnf install -y tar xz gcc glibc-devel
-          # musl. linux-headers is here because libuv wants linux/errqueue.h
-          # and alpine ships no kernel headers by default -- exactly the kind
-          # of finding this job exists for. With it, the whole build and all
-          # eight smoke tests pass, so the old note that zls is glibc-only was
-          # wrong: it is a static zig binary. lua-language-server is the one
-          # thing here that is not static, and the smoke tests now run it
-          # instead of stat-ing it, so this row is where that gets answered.
-          # Experimental until it has answered.
+          # musl, and the answer is now precise: 7 of 8 smoke tests pass.
+          #
+          # linux-headers is here because libuv wants linux/errqueue.h, which
+          # alpine does not ship. With it, everything builds -- neovim, fish,
+          # the grammars -- and everything runs except lua-language-server,
+          # which fails to spawn at all:
+          #
+          #   could not run .../bin/lua-language-server: FileNotFound
+          #
+          # That is a glibc ELF on musl: execve cannot find its interpreter.
+          # It is the only dynamically linked thing we install, so it is the
+          # only one that can fail this way. zls is fine -- static zig binary,
+          # which is why the old "zls and lua-ls are glibc-only" note was half
+          # wrong. Fixing it means a musl build of lua-language-server, which
+          # upstream does not publish, so the row stays experimental.
           - image: alpine:3.22
             setup: apk add --no-cache ca-certificates tar xz gcc musl-dev linux-headers
             experimental: true
