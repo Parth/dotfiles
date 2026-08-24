@@ -4,6 +4,10 @@
 [push]
 	default = current
 [pull]
-	default = current
+	; there is no such thing as pull.default -- git's own `git help -c` lists
+	; only pull.ff, pull.octopus, pull.rebase and pull.twohead, and unknown
+	; keys are ignored silently. This file used to say `default = current`,
+	; mirroring push.default, which meant divergent branches still errored.
+	rebase = false
 [branch]
 	autoSetupMerge = true
