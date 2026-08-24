@@ -24,37 +24,33 @@ env:
     -e SETUP -e SCRIPT -w /
 
 jobs:
-  # What does bootstrap.sh actually require? Stock image, nothing added.
-  # A red square here is a finding to write down, not a build to fix in a rush.
+  # Which images can run bootstrap.sh with nothing added? This reports rather
+  # than asserts: half of these are expected to be missing curl or xz, and a
+  # square that is red on purpose is a square nobody reads. The answer lands in
+  # the run summary instead.
   bare:
-    name: bare ${{ matrix.image }}
+    name: bare images
     runs-on: ubuntu-24.04
-    continue-on-error: true
-    strategy:
-      fail-fast: false
-      matrix:
-        image:
-          - alpine:3.22
-          - debian:13
-          - debian:12
-          - ubuntu:22.04
-          - fedora:43
-          - archlinux:latest
-          - rockylinux/rockylinux:9
     steps:
       - uses: actions/checkout@v5
-      - name: bootstrap with nothing installed
-        env:
-          SETUP: ":"
-          SCRIPT: |
-            ./bootstrap.sh
-            "$HOME/.local/bin/zig" version
+      - name: what does bootstrap.sh need?
         run: |
-          $RUN ${{ matrix.image }} sh -euc '
-            cp -a /src /work && cd /work
-            eval "$SETUP"
-            eval "$SCRIPT"
-          '
+          echo "| image | bootstrap.sh as shipped |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| --- | --- |" >> "$GITHUB_STEP_SUMMARY"
+          for image in alpine:3.22 debian:13 debian:12 ubuntu:22.04 \
+                       fedora:43 archlinux:latest rockylinux/rockylinux:9; do
+            if out=$($RUN "$image" sh -euc '
+                       cp -a /src /work && cd /work
+                       ./bootstrap.sh && "$HOME/.local/bin/zig" version
+                     ' 2>&1); then
+              note="works"
+            else
+              note="$(printf '%s' "$out" | grep -Eio '[a-z0-9_-]+: (not found|Cannot exec)' | sort -u | paste -sd' ' -)"
+              note="needs: ${note:-see logs}"
+            fi
+            echo "| \`$image\` | $note |" >> "$GITHUB_STEP_SUMMARY"
+            echo "$image: $note"
+          done
 
   # The same thing ci.yml does, on distros GitHub does not offer as a runner.
   # `setup` is the finding: it is the documented floor for that distro, and it
